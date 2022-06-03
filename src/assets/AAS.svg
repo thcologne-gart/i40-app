@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X5 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="71.9324mm" height="58.3573mm" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 2668 2164"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:#2B2A29;stroke-width:7.41673}
+    .fil1 {fill:none}
+    .fil0 {fill:#7DB4DB}
+    .fil2 {fill:#DBDDDC}
+   ]]>
+  </style>
+ </defs>
+ <g id="Ebene_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <polygon class="fil0" points="380,926 2287,926 2413,1077 2413,2164 2668,2164 2668,154 2538,0 130,0 0,154 0,2164 255,2164 255,1077 "/>
+  <line class="fil1 str0" x1="405" y1="1153" x2="405" y2= "2117" />
+  <line class="fil1 str0" x1="2311" y1="1153" x2="2311" y2= "2117" />
+  <line class="fil1 str0" x1="495" y1="1030" x2="2221" y2= "1030" />
+  <line class="fil1 str0" x1="405" y1="1153" x2="495" y2= "1030" />
+  <line class="fil1 str0" x1="2221" y1="1030" x2="2311" y2= "1153" />
+  <line class="fil1 str0" x1="405" y1="2117" x2="2311" y2= "2117" />
+  <polygon class="fil2 str0" points="405,2117 2311,2117 2311,1153 2221,1030 495,1030 405,1153 "/>
+ </g>
+</svg>

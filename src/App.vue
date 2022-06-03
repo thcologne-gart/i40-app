@@ -1,14 +1,70 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="wrapper">
+        <div id="nav">
+        <top-header></top-header>
+        </div>
+        <router-view />
     </div>
-    <router-view/>
+    <footer>
+        <Footer />
+    </footer>
   </div>
 </template>
 
+<script>
+// @ is an alias to /src
+import TopHeader from '@/components/TopHeader.vue'
+import Footer from '@/components/Footer.vue'
+
+export default {
+  name: 'App',
+  components: { 'top-header': TopHeader, Footer },
+  data () {
+    return {
+      submodelsJson: []
+    }
+  },
+  computed: {
+    selectSubmodels: function () {
+      for (const i of this.submodels) {
+        console.log(i)
+      }
+      return this.submodels
+    }
+  }
+  /*
+  methods: {
+    async fetchTasks () {
+      const res = await fetch('http://localhost:5000/submodels')
+
+      const data = await res.json()
+      console.log(data)
+      return data
+    }
+  },
+
+  async created () {
+    this.submodelsJson = await this.fetchTasks()
+    console.log(this.chapterSections)
+  }
+  */
+}
+</script>
+
 <style lang="scss">
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: scroll;
+}
+.wrapper {
+  min-height: calc(100vh - 60px);
+}
+footer {
+  height: 60px;
+  background: #025939;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -17,16 +73,76 @@
   color: #2c3e50;
 }
 
+.text-left {
+    text-align: left;
+}
+
 #nav {
-  padding: 30px;
+  font-weight: bold;
+  color: #025939;
 
   a {
-    font-weight: bold;
-    color: #2c3e50;
+  &.router-link-exact-active {
+    color: #025939;
+  }
+  }
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
+#building-navbar {
+  color: #025939;
+
+  a {
+  &.router-link-exact-active {
+    color: #025939;
+  }
+  }
+}
+
+#chapter {
+  display: inline;
+
+  a {
+  &.router-link-active {
+    box-shadow: 2px 2px #F2B705;
     }
   }
+}
+
+#nav-bar {
+  background: #F2B705;
+}
+
+#nav-brand {
+  color: #025939;
+}
+#sticky-ems-chapter {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 999;
+  border-bottom-style: solid;
+  border-color: #F2F2F2;
+}
+
+.nav-pills .nav-link.active {
+    background-color: white !important;
+    border: 2px solid #F2B705 !important;
+    color: green !important;
+}
+
+.carousel-control-prev, .carousel-control-next {
+  opacity: 1 !important;
+  background: rgba(247, 249, 252, .3) !important;
+}
+
+.carousel-caption {
+    background: rgba(247, 249, 252, .3) !important;
+}
+
+#energy-source-card {
+    max-inline-size: 50%;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 </style>
