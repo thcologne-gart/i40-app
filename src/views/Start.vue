@@ -42,20 +42,40 @@
         </section>
         <section id = "sustain" class="pictures">
             <StickyNavbar />
-            <b-row class= "reveal">
-                <b-col>
-                    <b-card  title="Energiemanagementsystem"><b-card-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                    </b-card-text>
-                    <b-button to="/ems" variant="secondary">Energiemanagement</b-button>
-                    </b-card>
-                </b-col>
-                <b-col>
-                    <b-card title="Performance Monitoring"><b-card-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                    </b-card-text>
-                    <b-button to="/performance" variant="secondary">Performance Monitoring</b-button>
-                    </b-card>
-                </b-col>
-            </b-row>
+                <b-row class= "reveal">
+                    <b-col cols="3">
+                        <b-card  title="Energy Management System"><b-card-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                        </b-card-text>
+                        <template #footer>
+                            <b-button to="/ems" variant="secondary">Energy Management</b-button>
+                        </template>
+                        </b-card>
+                    </b-col>
+                    <b-col cols="3">
+                        <b-card title="Performance Monitoring"><b-card-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                        </b-card-text>
+                        <template #footer>
+                            <b-button to="/performance" variant="secondary">Performance Monitoring</b-button>
+                        </template>
+                        </b-card>
+                    </b-col>
+                    <b-col cols="3">
+                        <b-card  title="Building Performance"><b-card-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                        </b-card-text>
+                        <template #footer>
+                            <b-button to="/buildingperformance" variant="secondary">Building Performance</b-button>
+                        </template>
+                        </b-card>
+                    </b-col>
+                    <b-col cols="3">
+                        <b-card title="Digital Twins"><b-card-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                        </b-card-text>
+                        <template #footer>
+                            <b-button to="/digitaltwins" variant="secondary">Digital Twins</b-button>
+                        </template>
+                        </b-card>
+                    </b-col>
+                </b-row>
         </section>
     </div>
 </template>

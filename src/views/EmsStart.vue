@@ -12,7 +12,7 @@
         <b-card-text>
           Starten Sie mit der Konfiguration Ihres Energiemanagentsystems
         </b-card-text>
-        <b-button to="/context" variant="outline-secondary">Start</b-button>
+        <b-button to="/emsstart" variant="outline-secondary">Start</b-button>
       </b-card>
     </div>
   </div>

@@ -27,7 +27,12 @@ const routes = [
   {
     path: '/context',
     name: 'Context',
-    component: () => import('../views/OrganizationContext.vue'),
+    component: () => import('../views/OrganizationContext.vue')
+  },
+  {
+    path: '/emsstart',
+    name: 'EMS Start',
+    component: () => import('../views/EMSWelcome.vue'),
     beforeEnter: AuthGuard
   },
   {
@@ -48,7 +53,8 @@ const routes = [
   {
     path: '/digitaltwinsoverview',
     name: 'Digital Twins Overview',
-    component: () => import('../views/DTOverview.vue')
+    component: () => import('../views/DTOverview.vue'),
+    beforeEnter: AuthGuard
   },
   {
     path: '/digitaltwinsoverview/aasdetail',
@@ -152,6 +158,21 @@ const routes = [
     path: '/context/buildings',
     name: 'Buildings',
     component: () => import('../views/Buildings.vue')
+  },
+  {
+    path: '/energy-goals',
+    name: 'Energieziele',
+    component: () => import('../views/EnergyGoals.vue')
+  },
+  {
+    path: '/competence',
+    name: 'Kompetenz',
+    component: () => import('../views/Competence.vue')
+  },
+  {
+    path: '/operation',
+    name: 'Operation',
+    component: () => import('../views/Operation.vue')
   }
 ]
 
