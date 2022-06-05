@@ -173,6 +173,26 @@ const routes = [
     path: '/operation',
     name: 'Operation',
     component: () => import('../views/Operation.vue')
+  },
+  {
+    path: '/buying',
+    name: 'Buying',
+    component: () => import('../views/Buying.vue')
+  },
+  {
+    path: '/communication',
+    name: 'Communication',
+    component: () => import('../views/Communication.vue')
+  },
+  {
+    path: '/analysis',
+    name: 'Analysis',
+    component: () => import('../views/Analysis.vue')
+  },
+  {
+    path: '/optimization',
+    name: 'Optimization',
+    component: () => import('../views/Optimization.vue')
   }
 ]
 

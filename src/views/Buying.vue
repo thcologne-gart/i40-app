@@ -18,7 +18,7 @@ import EmsChapter from '@/components/EmsChapter.vue'
 import EmsGrid from '@/components/EmsGrid.vue'
 
 export default {
-  name: 'EnergyGoals',
+  name: 'Buying',
   components: { EmsChapter, EmsGrid },
   data () {
     return {
@@ -54,7 +54,7 @@ export default {
     this.submodels = [
       { id: 1, name: 'Platzhalter', link: '' }
     ]
-    this.emsChapter = { name: 'Energieziele', link: '/energy-goals' }
+    this.emsChapter = { name: 'Beschaffung und Auslegung', link: '/buying' }
   }
 }
 </script>

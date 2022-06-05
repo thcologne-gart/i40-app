@@ -16,13 +16,13 @@
                             <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="/ressources">3</b-button></b-nav-item>
                             <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="/energetic-evaluation">4</b-button></b-nav-item>
                             <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="/energy-performance-indicator">5</b-button></b-nav-item>
-                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning">6</b-button></b-nav-item>
-                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning">7</b-button></b-nav-item>
-                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning">8</b-button></b-nav-item>
-                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning">9</b-button></b-nav-item>
-                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning">10</b-button></b-nav-item>
-                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning">11</b-button></b-nav-item>
-                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning">12</b-button></b-nav-item>
+                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="energy-goals">6</b-button></b-nav-item>
+                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="competence">7</b-button></b-nav-item>
+                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="operation">8</b-button></b-nav-item>
+                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="buying">9</b-button></b-nav-item>
+                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="communication">10</b-button></b-nav-item>
+                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="analysis">11</b-button></b-nav-item>
+                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="optimization">12</b-button></b-nav-item>
                         </b-navbar-nav>
                     </b-collapse>
                 </b-col>
