@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import EnergeticEvaluation from '@/views/EnergeticEvaluation.vue'
+import EnergeticEvaluation from '@/views/ems/evaluation/EnergeticEvaluation.vue'
 import SubmodelHeader from '@/components/ems/SubmodelHeader.vue'
 import EnergyTypeInformationForEnergySource from '@/components/ems/evaluation/EnergyTypeInformationForEnergySource.vue'
 import EnergySourceGroups from '@/components/ems/evaluation/EnergySourceGroups.vue'
@@ -93,10 +93,10 @@ export default {
   created () {
     this.submodelName = 'Energieeinsatz'
     this.energySources = [
-      { id: 1, name: 'Grundwasserwärmepumpe', pic: require('../assets/grundwärmepumpe.jpg'), link: '/energetic-evaluation/energy-source/ground-water-hp' },
-      { id: 2, name: 'Luftwärmepumpe', pic: require('../assets/luftwärmepumpe.jpg'), link: '/energetic-evaluation/energy-source/air-hp' },
-      { id: 3, name: 'Erdwärmepumpe', pic: require('../assets/erdwärmepumpe.jpg'), link: '/energetic-evaluation/energy-source/ground-hp' },
-      { id: 4, name: 'Gasbrennwertkessel', pic: require('../assets/gasbrennwert.jpg'), link: '/energetic-evaluation/energy-source/gas-boiler' }
+      { id: 1, name: 'Grundwasserwärmepumpe', pic: require('@/assets/grundwärmepumpe.jpg'), link: '/energetic-evaluation/energy-source/ground-water-hp' },
+      { id: 2, name: 'Luftwärmepumpe', pic: require('@/assets/luftwärmepumpe.jpg'), link: '/energetic-evaluation/energy-source/air-hp' },
+      { id: 3, name: 'Erdwärmepumpe', pic: require('@/assets/erdwärmepumpe.jpg'), link: '/energetic-evaluation/energy-source/ground-hp' },
+      { id: 4, name: 'Gasbrennwertkessel', pic: require('@/assets/gasbrennwert.jpg'), link: '/energetic-evaluation/energy-source/gas-boiler' }
     ]
   }
 }

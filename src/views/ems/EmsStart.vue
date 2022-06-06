@@ -8,7 +8,7 @@
         style="max-width: 40rem;"
         class="mx-auto"
       >
-        <b-card-img :src="require('../assets/ems-start.jpeg')"></b-card-img>
+        <b-card-img :src="require('@/assets/ems-start.jpeg')"></b-card-img>
         <b-card-text>
           Starten Sie mit der Konfiguration Ihres Energiemanagentsystems
         </b-card-text>

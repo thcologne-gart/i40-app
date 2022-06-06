@@ -218,7 +218,7 @@ export default {
       { id: 4, name: 'SEU', link: '/energetic-evaluation/seu' }
     ]
     this.emsChapter = { name: 'Energetische Bewertung', link: '/energetic-evaluation' }
-    this.energySourceName = { id: 1, name: 'Erdwärmepumpe', pic: require('../assets/erdwärmepumpe.jpg') }
+    this.energySourceName = { id: 1, name: 'Erdwärmepumpe', pic: require('@/assets/erdwärmepumpe.jpg') }
   }
 }
 </script>

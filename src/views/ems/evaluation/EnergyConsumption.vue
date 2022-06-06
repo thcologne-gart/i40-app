@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import EnergeticEvaluation from '@/views/EnergeticEvaluation.vue'
+import EnergeticEvaluation from '@/views/ems/evaluation/EnergeticEvaluation.vue'
 import SubmodelHeader from '@/components/ems/SubmodelHeader.vue'
 import EnergyConsumptionGroups from '@/components/ems/evaluation/EnergyConsumptionGroups.vue'
 

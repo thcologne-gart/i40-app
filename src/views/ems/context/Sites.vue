@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import OrganizationContext from '@/views/OrganizationContext.vue'
+import OrganizationContext from '@/views/ems/context/OrganizationContext.vue'
 import SubmodelHeaderFirst from '@/components/ems/SubmodelHeaderFirst.vue'
 import SiteInformation from '@/components/ems/context/SiteInformation.vue'
 import AddSiteInformation from '@/components/ems/context/AddSiteInformation.vue'

@@ -27,18 +27,18 @@ const routes = [
   {
     path: '/context',
     name: 'Context',
-    component: () => import('../views/OrganizationContext.vue')
+    component: () => import('../views/ems/context/OrganizationContext.vue')
   },
   {
     path: '/emsstart',
     name: 'EMS Start',
-    component: () => import('../views/EMSWelcome.vue'),
+    component: () => import('../views/ems/EMSWelcome.vue'),
     beforeEnter: AuthGuard
   },
   {
     path: '/ems',
     name: 'Energiemanagement',
-    component: () => import('../views/EmsStart.vue')
+    component: () => import('../views/ems/EmsStart.vue')
   },
   {
     path: '/buildingperformance',
@@ -75,124 +75,124 @@ const routes = [
   {
     path: '/management',
     name: 'Management',
-    component: () => import('../views/Management.vue')
+    component: () => import('../views/ems/management/Management.vue')
   },
   {
     path: '/ressources',
     name: 'Ressourcen',
-    component: () => import('../views/Ressources.vue')
+    component: () => import('../views/ems/ressources/Ressources.vue')
   },
   {
     path: '/energetic-evaluation',
     name: 'Energetic Evaluation',
-    component: () => import('../views/EnergeticEvaluation.vue')
+    component: () => import('../views/ems/evaluation/EnergeticEvaluation.vue')
   },
   {
     path: '/energy-performance-indicator',
     name: 'Energy Performance Indicators',
-    component: () => import('../views/EnergyPerformanceIndicators.vue')
+    component: () => import('../views/ems/indicators/EnergyPerformanceIndicators.vue')
   },
   {
     path: '/energetic-evaluation/energy-type',
     name: 'Energy Type',
-    component: () => import('../views/EnergyType.vue')
+    component: () => import('../views/ems/evaluation/EnergyType.vue')
   },
   {
     path: '/energetic-evaluation/energy-source',
     name: 'Energy Source',
-    component: () => import('../views/EnergySource.vue')
+    component: () => import('../views/ems/evaluation/EnergySource.vue')
   },
   {
     path: '/energetic-evaluation/energy-source/energy-source-group',
     name: 'Energy Source Group',
-    component: () => import('../views/EnergySourceGroup.vue'),
+    component: () => import('../views/ems/evaluation/EnergySourceGroup.vue'),
     props: true
   },
   {
     path: '/energetic-evaluation/energy-consumption',
     name: 'Energy Consumption',
-    component: () => import('../views/EnergyConsumption.vue')
+    component: () => import('../views/ems/evaluation/EnergyConsumption.vue')
   },
   {
     path: '/energetic-evaluation/seu',
     name: 'Energy Consumption',
-    component: () => import('../views/SEU.vue')
+    component: () => import('../views/ems/evaluation/SEU.vue')
   },
   {
     path: '/energetic-evaluation/energy-source/component',
     name: 'Component',
-    component: () => import('../views/Component.vue'),
+    component: () => import('../views/ems/evaluation/Component.vue'),
     props: true
   },
   {
     path: '/energetic-evaluation/energy-source/gas-boiler',
     name: 'Gas Boiler',
-    component: () => import('../views/GasBoiler.vue')
+    component: () => import('../views/ems/evaluation/GasBoiler.vue')
   },
   {
     path: '/energy-performance-indicator/heating',
     name: 'EnPi Heating',
-    component: () => import('../views/EnPiHeating.vue')
+    component: () => import('../views/ems/indicators/EnPiHeating.vue')
   },
   {
     path: '/energy-performance-indicator/air',
     name: 'EnPi AHU',
-    component: () => import('../views/EnPiAHU.vue')
+    component: () => import('../views/ems/indicators/EnPiAHU.vue')
   },
   {
     path: '/energy-performance-indicator/electricity',
     name: 'EnPi Electric',
-    component: () => import('../views/EnPiElectric.vue')
+    component: () => import('../views/ems/indicators/EnPiElectric.vue')
   },
   {
     path: '/context/organization',
     name: 'Organization',
-    component: () => import('../views/Organization.vue')
+    component: () => import('../views/ems/context/Organization.vue')
   },
   {
     path: '/context/sites',
     name: 'Sites',
-    component: () => import('../views/Sites.vue')
+    component: () => import('../views/ems/context/Sites.vue')
   },
   {
     path: '/context/buildings',
     name: 'Buildings',
-    component: () => import('../views/Buildings.vue')
+    component: () => import('../views/ems/context/Buildings.vue')
   },
   {
     path: '/energy-goals',
     name: 'Energieziele',
-    component: () => import('../views/EnergyGoals.vue')
+    component: () => import('../views/ems/goals/EnergyGoals.vue')
   },
   {
     path: '/competence',
     name: 'Kompetenz',
-    component: () => import('../views/Competence.vue')
+    component: () => import('../views/ems/competence/Competence.vue')
   },
   {
     path: '/operation',
     name: 'Operation',
-    component: () => import('../views/Operation.vue')
+    component: () => import('../views/ems/operation/Operation.vue')
   },
   {
     path: '/buying',
     name: 'Buying',
-    component: () => import('../views/Buying.vue')
+    component: () => import('../views/ems/buying/Buying.vue')
   },
   {
     path: '/communication',
     name: 'Communication',
-    component: () => import('../views/Communication.vue')
+    component: () => import('../views/ems/communication/Communication.vue')
   },
   {
     path: '/analysis',
     name: 'Analysis',
-    component: () => import('../views/Analysis.vue')
+    component: () => import('../views/ems/analysis/Analysis.vue')
   },
   {
     path: '/optimization',
     name: 'Optimization',
-    component: () => import('../views/Optimization.vue')
+    component: () => import('../views/ems/optimization/Optimization.vue')
   }
 ]
 

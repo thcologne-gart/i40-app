@@ -182,18 +182,18 @@ export default {
   },
   created () {
     this.elements = [
-      { id: 1, name: 'Kontext der Organisation', pic: require('../assets/orga.jpeg'), link: '/context' },
-      { id: 2, name: 'Führung', pic: require('../assets/management.jpeg'), link: '/management' },
-      { id: 3, name: 'Ressourcen', pic: require('../assets/resources.jpeg'), link: '/ressources' },
-      { id: 4, name: 'Energetische Bewertung', pic: require('../assets/energy-evaluation.jpeg'), link: '/energetic-evaluation' },
-      { id: 5, name: 'Energielesitungskennzahlen', pic: require('../assets/performance.jpeg'), link: '/energy-performance-indicator' },
-      { id: 6, name: 'Ziele', pic: require('../assets/goals.jpeg'), link: '/energy-goals' },
-      { id: 7, name: 'Kompetenz', pic: require('../assets/awarness.jpeg'), link: '/competence' },
-      { id: 8, name: 'Betrieb', pic: require('../assets/maintenance.jpeg'), link: '/operation' },
-      { id: 9, name: 'Beschaffung', pic: require('../assets/buying.jpeg'), link: '/buying' },
-      { id: 10, name: 'Kommunikation', pic: require('../assets/communication.jpeg'), link: '/communication' },
-      { id: 11, name: 'Analyse', pic: require('../assets/analysis.jpeg'), link: '/analysis' },
-      { id: 12, name: 'Optimierung', pic: require('../assets/optimization.jpeg'), link: '/optimization' }
+      { id: 1, name: 'Kontext der Organisation', pic: require('@/assets/orga.jpeg'), link: '/context' },
+      { id: 2, name: 'Führung', pic: require('@/assets/management.jpeg'), link: '/management' },
+      { id: 3, name: 'Ressourcen', pic: require('@/assets/resources.jpeg'), link: '/ressources' },
+      { id: 4, name: 'Energetische Bewertung', pic: require('@/assets/energy-evaluation.jpeg'), link: '/energetic-evaluation' },
+      { id: 5, name: 'Energielesitungskennzahlen', pic: require('@/assets/performance.jpeg'), link: '/energy-performance-indicator' },
+      { id: 6, name: 'Ziele', pic: require('@/assets/goals.jpeg'), link: '/energy-goals' },
+      { id: 7, name: 'Kompetenz', pic: require('@/assets/awarness.jpeg'), link: '/competence' },
+      { id: 8, name: 'Betrieb', pic: require('@/assets/maintenance.jpeg'), link: '/operation' },
+      { id: 9, name: 'Beschaffung', pic: require('@/assets/buying.jpeg'), link: '/buying' },
+      { id: 10, name: 'Kommunikation', pic: require('@/assets/communication.jpeg'), link: '/communication' },
+      { id: 11, name: 'Analyse', pic: require('@/assets/analysis.jpeg'), link: '/analysis' },
+      { id: 12, name: 'Optimierung', pic: require('@/assets/optimization.jpeg'), link: '/optimization' }
     ]
   }
 }

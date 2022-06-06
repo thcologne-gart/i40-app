@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import EnergyPerformanceIndicators from '@/views/EnergyPerformanceIndicators.vue'
+import EnergyPerformanceIndicators from '@/views/ems/indicators/EnergyPerformanceIndicators.vue'
 import SubmodelHeader from '@/components/ems/SubmodelHeader.vue'
 import EnPis from '@/components/ems/indicators/EnPis.vue'
 

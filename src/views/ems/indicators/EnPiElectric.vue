@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import EnergyPerformanceIndicators from '@/views/EnergyPerformanceIndicators.vue'
+import EnergyPerformanceIndicators from '@/views/ems/indicators/EnergyPerformanceIndicators.vue'
 import SubmodelHeader from '@/components/ems/SubmodelHeader.vue'
 import EnPis from '@/components/ems/indicators/EnPis.vue'
 
@@ -44,8 +44,8 @@ export default {
     }
   },
   created () {
-    this.submodelName = 'Energieleistungskennzahlen Heizung'
-    this.submodelId = 'submodel/enpi-heating'
+    this.submodelName = 'Energieleistungskennzahlen Strom'
+    this.submodelId = 'submodel/enpi-electric'
   }
 }
 </script>

@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import EnergeticEvaluation from '@/views/EnergeticEvaluation.vue'
+import EnergeticEvaluation from '@/views/ems/evaluation/EnergeticEvaluation.vue'
 import EnergyTypeCard from '@/components/ems/evaluation/EnergyTypeCard.vue'
 import SubmodelHeader from '@/components/ems/SubmodelHeader.vue'
 import EnergyTypeInformation from '@/components/ems/evaluation/EnergyTypeInformation.vue'
@@ -206,13 +206,13 @@ export default {
   },
   async created () {
     this.energyTypes = [
-      { id: 'submodel/energyTypeElectricity', name: 'Strom', pic: require('../assets/electricity.jpg'), nameForSubmodel: 'Energieart Strom', idShortCD: 'SubmodelEnergyTypeElectricity' },
-      { id: 'submodel/energyTypeHeat', name: 'Wärme', pic: require('../assets/heat.jpg'), nameForSubmodel: 'Energieart Wärme', idShortCD: 'SubmodelEnergyTypeHeat' },
-      { id: 'submodel/energyTypeGas', name: 'Gas', pic: require('../assets/gas.jpg'), nameForSubmodel: 'Energieart Gas', idShortCD: 'SubmodelEnergyTypeGas' },
-      { id: 'submodel/energyTypeOil', name: 'Öl', pic: require('../assets/oil.jpg'), nameForSubmodel: 'Energieart Öl', idShortCD: 'SubmodelEnergyTypeOil' },
-      { id: 'submodel/energyTypeBiomass', name: 'Biomasse', pic: require('../assets/biomass.jpg'), nameForSubmodel: 'Energieart Biomasse', idShortCD: 'SubmodelEnergyTypeBiomass' },
-      { id: 'submodel/energyTypePellets', name: 'Holzpellets', pic: require('../assets/pellets.jpg'), nameForSubmodel: 'Energieart Holzpellets', idShortCD: 'SubmodelEnergyTypePellets' },
-      { id: 'submodel/energyTypeSteam', name: 'Dampf', pic: require('../assets/steam.jpg'), nameForSubmodel: 'Energieart Danpf', idShortCD: 'SubmodelEnergyTypeSteam' }
+      { id: 'submodel/energyTypeElectricity', name: 'Strom', pic: require('@/assets/electricity.jpg'), nameForSubmodel: 'Energieart Strom', idShortCD: 'SubmodelEnergyTypeElectricity' },
+      { id: 'submodel/energyTypeHeat', name: 'Wärme', pic: require('@/assets/heat.jpg'), nameForSubmodel: 'Energieart Wärme', idShortCD: 'SubmodelEnergyTypeHeat' },
+      { id: 'submodel/energyTypeGas', name: 'Gas', pic: require('@/assets/gas.jpg'), nameForSubmodel: 'Energieart Gas', idShortCD: 'SubmodelEnergyTypeGas' },
+      { id: 'submodel/energyTypeOil', name: 'Öl', pic: require('@/assets/oil.jpg'), nameForSubmodel: 'Energieart Öl', idShortCD: 'SubmodelEnergyTypeOil' },
+      { id: 'submodel/energyTypeBiomass', name: 'Biomasse', pic: require('@/assets/biomass.jpg'), nameForSubmodel: 'Energieart Biomasse', idShortCD: 'SubmodelEnergyTypeBiomass' },
+      { id: 'submodel/energyTypePellets', name: 'Holzpellets', pic: require('@/assets/pellets.jpg'), nameForSubmodel: 'Energieart Holzpellets', idShortCD: 'SubmodelEnergyTypePellets' },
+      { id: 'submodel/energyTypeSteam', name: 'Dampf', pic: require('@/assets/steam.jpg'), nameForSubmodel: 'Energieart Danpf', idShortCD: 'SubmodelEnergyTypeSteam' }
     ]
     this.submodelName = 'Energieart'
     // this.submodelsJson = await this.fetchTasks()

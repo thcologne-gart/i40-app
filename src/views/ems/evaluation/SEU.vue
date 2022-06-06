@@ -5,7 +5,6 @@
             <div v-for="site2 in numberofSites" :key="site2">
                 <div v-if="site === site2">
                     <SubmodelHeader :submodelName="submodelName" />
-                    <EnergySourceSheet :energySourceName="energySourceName" />
                 </div>
             </div>
         </template>
@@ -14,12 +13,14 @@
 </template>
 
 <script>
-import EnergeticEvaluation from '@/views/EnergeticEvaluation.vue'
+import EnergeticEvaluation from '@/views/ems/evaluation/EnergeticEvaluation.vue'
 import SubmodelHeader from '@/components/ems/SubmodelHeader.vue'
-import EnergySourceSheet from '@/components/ems/evaluation/EnergySourceSheet.vue'
 
 export default {
-  components: { EnergeticEvaluation, SubmodelHeader, EnergySourceSheet },
+  components: { EnergeticEvaluation, SubmodelHeader },
+  data () {
+    return {}
+  },
   computed: {
     numberofSites () {
       const loadInfos = this.$store.getters.loadedOrganizationInformation
@@ -41,8 +42,7 @@ export default {
     }
   },
   created () {
-    this.submodelName = 'Energieträger'
-    this.energySourceName = { id: 1, name: 'Gasbrennwertkessel', pic: require('../assets/gasbrennwert.jpg') }
+    this.submodelName = 'Significant Energy Use'
   }
 }
 </script>

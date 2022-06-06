@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import OrganizationContext from '@/views/OrganizationContext.vue'
+import OrganizationContext from '@/views/ems/context/OrganizationContext.vue'
 import SubmodelHeader from '@/components/ems/SubmodelHeader.vue'
 import AddBuildingInformation from '@/components/ems/context/AddBuildingInformation.vue'
 import BuildingInformation from '@/components/ems/context/BuildingInformation.vue'
