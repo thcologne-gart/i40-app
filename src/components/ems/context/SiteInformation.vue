@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import EditSiteInformation from '@/components/EditSiteInformation.vue'
+import EditSiteInformation from '@/components/ems/context/EditSiteInformation.vue'
 export default {
   props: {
     site: Array

@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import AddOrganizationInformation from '@/components/AddOrganizationInformation.vue'
-import EditOrganizationInformation from '@/components/EditOrganizationInformation.vue'
+import AddOrganizationInformation from '@/components/ems/context/AddOrganizationInformation.vue'
+import EditOrganizationInformation from '@/components/ems/context/EditOrganizationInformation.vue'
 
 export default {
   name: 'OrganizationInformation',

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import ConsumptionComponents from '@/components/ConsumptionComponents.vue'
+import ConsumptionComponents from '@/components/ems/evaluation/ConsumptionComponents.vue'
 
 export default {
   components: { ConsumptionComponents },
@@ -51,6 +51,7 @@ export default {
           })
         }
       }
+      console.log(componentInfo)
       return componentInfo
     }
   }

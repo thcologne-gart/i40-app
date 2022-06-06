@@ -60,8 +60,8 @@
 </template>
 
 <script>
-import EnergySourceCard from '@/components/EnergySourceCard.vue'
-import SelectedEnergySourceComponents from '@/components/SelectedEnergySourceComponents.vue'
+import EnergySourceCard from '@/components/ems/evaluation/EnergySourceCard.vue'
+import SelectedEnergySourceComponents from '@/components/ems/evaluation/SelectedEnergySourceComponents.vue'
 
 export default {
   components: { EnergySourceCard, SelectedEnergySourceComponents },

@@ -30,9 +30,9 @@
 
 <script>
 import EnergeticEvaluation from '@/views/EnergeticEvaluation.vue'
-import EnergyTypeCard from '@/components/EnergyTypeCard.vue'
-import SubmodelHeader from '@/components/SubmodelHeader.vue'
-import EnergyTypeInformation from '@/components/EnergyTypeInformation.vue'
+import EnergyTypeCard from '@/components/ems/evaluation/EnergyTypeCard.vue'
+import SubmodelHeader from '@/components/ems/SubmodelHeader.vue'
+import EnergyTypeInformation from '@/components/ems/evaluation/EnergyTypeInformation.vue'
 // import GetSubmodel from '@/components/GetSubmodel.vue'
 
 export default {

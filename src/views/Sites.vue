@@ -25,9 +25,9 @@
 
 <script>
 import OrganizationContext from '@/views/OrganizationContext.vue'
-import SubmodelHeaderFirst from '@/components/SubmodelHeaderFirst.vue'
-import SiteInformation from '@/components/SiteInformation.vue'
-import AddSiteInformation from '@/components/AddSiteInformation.vue'
+import SubmodelHeaderFirst from '@/components/ems/SubmodelHeaderFirst.vue'
+import SiteInformation from '@/components/ems/context/SiteInformation.vue'
+import AddSiteInformation from '@/components/ems/context/AddSiteInformation.vue'
 
 export default {
   components: { OrganizationContext, SubmodelHeaderFirst, SiteInformation, AddSiteInformation },

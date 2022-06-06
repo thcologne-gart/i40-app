@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import EnergyConsumptionBuilding from '@/components/EnergyConsumptionBuilding.vue'
+import EnergyConsumptionBuilding from '@/components/ems/evaluation/EnergyConsumptionBuilding.vue'
 
 export default {
   data () {
@@ -85,33 +85,33 @@ export default {
   },
   created () {
     this.energySourceGroups = [
-      { id: 1, groupName: 'Energie Gruppe Heizung', pic: require('../assets/heating-system.jpeg'), name: 'Energy Source Group' },
-      { id: 2, groupName: 'Energie Gruppe Kühlung', pic: require('../assets/cooling-system.jpeg'), name: 'Energy Source Group' },
-      { id: 3, groupName: 'Energie Gruppe Lüftung', pic: require('../assets/air-system.jpeg'), name: 'Energy Source Group' }
+      { id: 1, groupName: 'Energie Gruppe Heizung', pic: require('@/assets/heating-system.jpeg'), name: 'Energy Source Group' },
+      { id: 2, groupName: 'Energie Gruppe Kühlung', pic: require('@/assets/cooling-system.jpeg'), name: 'Energy Source Group' },
+      { id: 3, groupName: 'Energie Gruppe Lüftung', pic: require('@/assets/air-system.jpeg'), name: 'Energy Source Group' }
     ]
     this.energySources = [
-      { id: 1, groupType: 'Heizung', sourceName: 'Grundwasserwärmepumpe', pic: require('../assets/grundwärmepumpe.svg'), name: 'Component', idShortCD: 'GroundwaterHeatPump' },
-      { id: 2, groupType: 'Heizung', sourceName: 'Luftwärmepumpe', pic: require('../assets/luftwärmepumpe.svg'), name: 'Component', idShortCD: 'AirHeatPump' },
-      { id: 3, groupType: 'Heizung', sourceName: 'Erdwärmepumpe', pic: require('../assets/erdwärmepumpe.svg'), name: 'Component', idShortCD: 'GroundSourceHeatPump' },
-      { id: 4, groupType: 'Kühlung', sourceName: 'Grundwasserwärmepumpe', pic: require('../assets/grundwärmepumpe.svg'), name: 'Component', idShortCD: 'GroundWaterHeatPump' },
-      { id: 5, groupType: 'Kühlung', sourceName: 'Luftwärmepumpe', pic: require('../assets/luftwärmepumpe.svg'), name: 'Component', idShortCD: 'AirHeatPump' },
-      { id: 6, groupType: 'Kühlung', sourceName: 'Erdwärmepumpe', pic: require('../assets/erdwärmepumpe.svg'), name: 'Component', idShortCD: 'GroundSourceHeatPump' },
-      { id: 7, groupType: 'Kühlung', sourceName: 'Kaltwassersatz', pic: require('../assets/kaltwasser.svg'), name: 'Component', idShortCD: 'ColdWaterSet' },
-      { id: 8, groupType: 'Kühlung', sourceName: 'Splitgerät', pic: require('../assets/split.svg'), name: 'Component', idShortCD: 'SplitDevice' },
-      { id: 9, groupType: 'Lüftung', sourceName: 'Klimaanlage', pic: require('../assets/klimaanlage.svg'), name: 'Component', idShortCD: 'AirConditioningSystem' },
+      { id: 1, groupType: 'Heizung', sourceName: 'Grundwasserwärmepumpe', pic: require('@/assets/grundwärmepumpe.svg'), name: 'Component', idShortCD: 'GroundwaterHeatPump' },
+      { id: 2, groupType: 'Heizung', sourceName: 'Luftwärmepumpe', pic: require('@/assets/luftwärmepumpe.svg'), name: 'Component', idShortCD: 'AirHeatPump' },
+      { id: 3, groupType: 'Heizung', sourceName: 'Erdwärmepumpe', pic: require('@/assets/erdwärmepumpe.svg'), name: 'Component', idShortCD: 'GroundSourceHeatPump' },
+      { id: 4, groupType: 'Kühlung', sourceName: 'Grundwasserwärmepumpe', pic: require('@/assets/grundwärmepumpe.svg'), name: 'Component', idShortCD: 'GroundWaterHeatPump' },
+      { id: 5, groupType: 'Kühlung', sourceName: 'Luftwärmepumpe', pic: require('@/assets/luftwärmepumpe.svg'), name: 'Component', idShortCD: 'AirHeatPump' },
+      { id: 6, groupType: 'Kühlung', sourceName: 'Erdwärmepumpe', pic: require('@/assets/erdwärmepumpe.svg'), name: 'Component', idShortCD: 'GroundSourceHeatPump' },
+      { id: 7, groupType: 'Kühlung', sourceName: 'Kaltwassersatz', pic: require('@/assets/kaltwasser.svg'), name: 'Component', idShortCD: 'ColdWaterSet' },
+      { id: 8, groupType: 'Kühlung', sourceName: 'Splitgerät', pic: require('@/assets/split.svg'), name: 'Component', idShortCD: 'SplitDevice' },
+      { id: 9, groupType: 'Lüftung', sourceName: 'Klimaanlage', pic: require('@/assets/klimaanlage.svg'), name: 'Component', idShortCD: 'AirConditioningSystem' },
       // { id: 10, groupType: 'Lüftung', sourceName: 'Teilklimaanlage', pic: require('../assets/teilklimaanlage.svg'), name: 'Component' },
-      { id: 11, groupType: 'Lüftung', sourceName: 'Lüftungsanlage', pic: require('../assets/lüftungsanlage.svg'), name: 'Component', idShortCD: 'VentilationSystem' }
+      { id: 11, groupType: 'Lüftung', sourceName: 'Lüftungsanlage', pic: require('@/assets/lüftungsanlage.svg'), name: 'Component', idShortCD: 'VentilationSystem' }
     ]
     this.heatingComponents = [
-      { id: 1, groupType: 'Pumpe', sourceName: 'Kreiselpumpe', pic: require('../assets/kreiselpumpe.svg'), name: 'Component', idShortCD: 'CentrifugalPump' },
-      { id: 2, groupType: 'Pumpe', sourceName: 'Verdrängerpumpe', pic: require('../assets/verdrängerpumpe.svg'), name: 'Component', idShortCD: 'DisplacementPump' },
-      { id: 3, groupType: 'Pumpe', sourceName: 'Strahlpumpe', pic: require('../assets/strahlpumpe.svg'), name: 'Component', idShortCD: 'JetPump' }
+      { id: 1, groupType: 'Pumpe', sourceName: 'Kreiselpumpe', pic: require('@/assets/kreiselpumpe.svg'), name: 'Component', idShortCD: 'CentrifugalPump' },
+      { id: 2, groupType: 'Pumpe', sourceName: 'Verdrängerpumpe', pic: require('@/assets/verdrängerpumpe.svg'), name: 'Component', idShortCD: 'DisplacementPump' },
+      { id: 3, groupType: 'Pumpe', sourceName: 'Strahlpumpe', pic: require('@/assets/strahlpumpe.svg'), name: 'Component', idShortCD: 'JetPump' }
     ]
     this.airComponents = [
-      { id: 1, groupType: 'Lüftung', sourceName: 'Ventilator', pic: require('../assets/ventilator.svg'), name: 'Component', idShortCD: 'Fan' },
-      { id: 2, groupType: 'Klimaanlage', sourceName: 'Erhitzer', pic: require('../assets/erhitzer.svg'), name: 'Component', idShortCD: 'Heater' },
-      { id: 3, groupType: 'Klimaanlage', sourceName: 'Kühler', pic: require('../assets/kühler.svg'), name: 'Component', idShortCD: 'Cooler' },
-      { id: 4, groupType: 'Klimaanlage', sourceName: 'Wärmerückgewinnung', pic: require('../assets/wrg.svg'), name: 'Component', idShortCD: 'HeatRecovery' }
+      { id: 1, groupType: 'Lüftung', sourceName: 'Ventilator', pic: require('@/assets/ventilator.svg'), name: 'Component', idShortCD: 'Fan' },
+      { id: 2, groupType: 'Klimaanlage', sourceName: 'Erhitzer', pic: require('@/assets/erhitzer.svg'), name: 'Component', idShortCD: 'Heater' },
+      { id: 3, groupType: 'Klimaanlage', sourceName: 'Kühler', pic: require('@/assets/kühler.svg'), name: 'Component', idShortCD: 'Cooler' },
+      { id: 4, groupType: 'Klimaanlage', sourceName: 'Wärmerückgewinnung', pic: require('@/assets/wrg.svg'), name: 'Component', idShortCD: 'HeatRecovery' }
     ]
   }
 }

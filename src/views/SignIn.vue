@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import Alert from '@/components/Alert.vue'
+import Alert from '@/components/general/Alert.vue'
 
 export default {
   data () {

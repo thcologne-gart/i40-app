@@ -22,7 +22,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/PerformanceStart.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/performancemonitoring/PerformanceStart.vue')
   },
   {
     path: '/context',
@@ -43,23 +43,23 @@ const routes = [
   {
     path: '/buildingperformance',
     name: 'Building Performance',
-    component: () => import('../views/BPStart.vue')
+    component: () => import('../views/buildingperformance/BPStart.vue')
   },
   {
     path: '/digitaltwins',
     name: 'Digital Twins',
-    component: () => import('../views/DTStart.vue')
+    component: () => import('../views/digitaltwin/DTStart.vue')
   },
   {
     path: '/digitaltwinsoverview',
     name: 'Digital Twins Overview',
-    component: () => import('../views/DTOverview.vue'),
+    component: () => import('../views/digitaltwin/DTOverview.vue'),
     beforeEnter: AuthGuard
   },
   {
     path: '/digitaltwinsoverview/aasdetail',
     name: 'AAS Detail',
-    component: () => import('../views/AASDetail.vue'),
+    component: () => import('../views/digitaltwin/AASDetail.vue'),
     props: true
   },
   {

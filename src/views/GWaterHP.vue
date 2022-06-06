@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import EmsChapter from '@/components/EmsChapter.vue'
-import EmsGrid from '@/components/EmsGrid.vue'
-import EnergySourceSheet from '@/components/EnergySourceSheet.vue'
+import EmsChapter from '@/components/ems/EmsChapter.vue'
+import EmsGrid from '@/components/ems/EmsGrid.vue'
+import EnergySourceSheet from '@/components/ems/evaluation/EnergySourceSheet.vue'
 
 export default {
   components: { EmsGrid, EmsChapter, EnergySourceSheet },

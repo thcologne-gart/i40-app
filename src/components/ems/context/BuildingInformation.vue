@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import EditBuildingInformation from '@/components/EditBuildingInformation.vue'
+import EditBuildingInformation from '@/components/ems/context/EditBuildingInformation.vue'
 export default {
   props: {
     site: Array,

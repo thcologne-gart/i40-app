@@ -39,9 +39,9 @@
 
 <script>
 import OrganizationContext from '@/views/OrganizationContext.vue'
-import SubmodelHeader from '@/components/SubmodelHeader.vue'
-import AddBuildingInformation from '@/components/AddBuildingInformation.vue'
-import BuildingInformation from '@/components/BuildingInformation.vue'
+import SubmodelHeader from '@/components/ems/SubmodelHeader.vue'
+import AddBuildingInformation from '@/components/ems/context/AddBuildingInformation.vue'
+import BuildingInformation from '@/components/ems/context/BuildingInformation.vue'
 // import UploadBuildingModel from '@/components/UploadBuildingModel.vue'
 
 export default {

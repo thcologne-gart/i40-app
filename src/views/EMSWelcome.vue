@@ -21,7 +21,7 @@
                         <b-link v-bind:to = elements[1].link>
                             <b-img v-if="isHovered1" class="grey" :src= elements[1].pic fluid></b-img>
                             <b-img v-else :src= elements[1].pic fluid></b-img>
-                            <h5 v-if="isHovered1" class="centered">Führung</h5>
+                            <h5 v-if="isHovered1" class="centered">Management</h5>
                         </b-link>
                     </div>
                 </b-col>

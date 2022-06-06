@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import EnergyGroupHeating from '@/components/EnergyGroupHeating.vue'
-import EnergyGroupCooling from '@/components/EnergyGroupCooling.vue'
-import EnergyGroupAir from '@/components/EnergyGroupAir.vue'
+import EnergyGroupHeating from '@/components/ems/evaluation/EnergyGroupHeating.vue'
+import EnergyGroupCooling from '@/components/ems/evaluation/EnergyGroupCooling.vue'
+import EnergyGroupAir from '@/components/ems/evaluation/EnergyGroupAir.vue'
 
 export default {
   components: { EnergyGroupHeating, EnergyGroupCooling, EnergyGroupAir },

@@ -25,9 +25,9 @@
 
 <script>
 import EnergeticEvaluation from '@/views/EnergeticEvaluation.vue'
-import SubmodelHeader from '@/components/SubmodelHeader.vue'
-import EnergyTypeInformationForEnergySource from '@/components/EnergyTypeInformationForEnergySource.vue'
-import EnergySourceGroups from '@/components/EnergySourceGroups.vue'
+import SubmodelHeader from '@/components/ems/SubmodelHeader.vue'
+import EnergyTypeInformationForEnergySource from '@/components/ems/evaluation/EnergyTypeInformationForEnergySource.vue'
+import EnergySourceGroups from '@/components/ems/evaluation/EnergySourceGroups.vue'
 
 export default {
   components: { EnergeticEvaluation, SubmodelHeader, EnergyTypeInformationForEnergySource, EnergySourceGroups },

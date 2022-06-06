@@ -8,7 +8,7 @@
         style="max-width: 40rem;"
         class="mx-auto"
       >
-        <b-card-img :src="require('../assets/performance-start.jpeg')"></b-card-img>
+        <b-card-img :src="require('@/assets/performance-start.jpeg')"></b-card-img>
         <b-card-text>
           Starten Sie mit der Konfiguration Ihres Performance Monitorings
         </b-card-text>

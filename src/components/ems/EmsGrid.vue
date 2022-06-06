@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import SubmodelsNameLeft from '@/components/SubmodelsNameLeft.vue'
+import SubmodelsNameLeft from '@/components/ems/SubmodelsNameLeft.vue'
 // import GetSubmodels from '@/components/getSubmodels.vue'
 
 export default {

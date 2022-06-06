@@ -91,9 +91,9 @@ export default {
     return {
       numberSystems: null,
       energyUseGroup: [
-        { id: 'energyUseGroupHeating', name: 'Heizung', pic: require('../assets/heizung.jpg'), nameForSubmodelElementCollection: 'EnergieGruppeHeizung', idShortCD: 'EnergyGroupHeating' },
-        { id: 'energyUseGroupCooling', name: 'Kühlung', pic: require('../assets/kuehlung.jpg'), nameForSubmodelElementCollection: 'EnergieGruppeKühlung', idShortCD: 'EnergyGroupCooling' },
-        { id: 'energyUseGroupAirHandling', name: 'Lüftung', pic: require('../assets/lueftung.jpg'), nameForSubmodelElementCollection: 'EnergieGruppeLüftung', idShortCD: 'EnergyGroupAirHandling' }
+        { id: 'energyUseGroupHeating', name: 'Heizung', pic: require('@/assets/heizung.jpg'), nameForSubmodelElementCollection: 'EnergieGruppeHeizung', idShortCD: 'EnergyGroupHeating' },
+        { id: 'energyUseGroupCooling', name: 'Kühlung', pic: require('@/assets/kuehlung.jpg'), nameForSubmodelElementCollection: 'EnergieGruppeKühlung', idShortCD: 'EnergyGroupCooling' },
+        { id: 'energyUseGroupAirHandling', name: 'Lüftung', pic: require('@/assets/lueftung.jpg'), nameForSubmodelElementCollection: 'EnergieGruppeLüftung', idShortCD: 'EnergyGroupAirHandling' }
       ]
     }
   },

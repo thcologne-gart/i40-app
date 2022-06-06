@@ -33,8 +33,8 @@
 </template>
 
 <script>
-import AddEnpis from '@/components/AddEnpis.vue'
-import EditEnpi from '@/components/EditEnpi.vue'
+import AddEnpis from '@/components/ems/indicators/AddEnpis.vue'
+import EditEnpi from '@/components/ems/indicators/EditEnpi.vue'
 
 export default {
   name: 'EnPis',

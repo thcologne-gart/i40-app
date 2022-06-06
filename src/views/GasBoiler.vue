@@ -15,8 +15,8 @@
 
 <script>
 import EnergeticEvaluation from '@/views/EnergeticEvaluation.vue'
-import SubmodelHeader from '@/components/SubmodelHeader.vue'
-import EnergySourceSheet from '@/components/EnergySourceSheet.vue'
+import SubmodelHeader from '@/components/ems/SubmodelHeader.vue'
+import EnergySourceSheet from '@/components/ems/evaluation/EnergySourceSheet.vue'
 
 export default {
   components: { EnergeticEvaluation, SubmodelHeader, EnergySourceSheet },

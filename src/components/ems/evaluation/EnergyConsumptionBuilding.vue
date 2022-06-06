@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import EnergyConsumptionHeating from '@/components/EnergyConsumptionHeating.vue'
-import EnergyConsumptionCooling from '@/components/EnergyConsumptionCooling.vue'
-import EnergyConsumptionAir from '@/components/EnergyConsumptionAir.vue'
+import EnergyConsumptionHeating from '@/components/ems/evaluation/EnergyConsumptionHeating.vue'
+import EnergyConsumptionCooling from '@/components/ems/evaluation/EnergyConsumptionCooling.vue'
+import EnergyConsumptionAir from '@/components/ems/evaluation/EnergyConsumptionAir.vue'
 
 export default {
   components: { EnergyConsumptionHeating, EnergyConsumptionCooling, EnergyConsumptionAir },

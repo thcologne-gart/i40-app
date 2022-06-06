@@ -2,24 +2,24 @@
   <div>
     <div>
       <b-card
-        id="digital-twins-start"
-        title="Digital Twins"
+        id="bp-start"
+        title="Building Performance"
         tag="article"
         style="max-width: 40rem;"
         class="mx-auto"
       >
-        <b-card-img :src="require('../assets/dt-start.jpeg')"></b-card-img>
+        <b-card-img :src="require('@/assets/bp-start.jpeg')"></b-card-img>
         <b-card-text>
-          Visualisieren Sie die digitalen Zwillinge ihrer technischen Komponenten
+          Starten Sie mit der Konfiguration Ihrer Building Performance Applikation
         </b-card-text>
-        <b-button to="/digitaltwinsoverview" variant="outline-secondary">Start</b-button>
+        <b-button to="/buildingperformance" variant="outline-secondary">Start</b-button>
       </b-card>
     </div>
   </div>
 </template>
 
 <style>
-#digital-twins-start {
+#bp-start {
   margin-top: 20px;
   margin-bottom: 20px;
 }

@@ -59,13 +59,13 @@
 </template>
 
 <script>
-import EnergyTypeElectricity from '@/components/EnergyTypeElectricity.vue'
-import EnergyTypeHeat from '@/components/EnergyTypeHeat.vue'
-import EnergyTypeGas from '@/components/EnergyTypeGas.vue'
-import EnergyTypeOil from '@/components/EnergyTypeOil.vue'
-import EnergyTypeBiomass from '@/components/EnergyTypeBiomass.vue'
-import EnergyTypePellets from '@/components/EnergyTypePellets.vue'
-import EnergyTypeSteam from '@/components/EnergyTypeSteam.vue'
+import EnergyTypeElectricity from '@/components/ems/evaluation/EnergyTypeElectricity.vue'
+import EnergyTypeHeat from '@/components/ems/evaluation/EnergyTypeHeat.vue'
+import EnergyTypeGas from '@/components/ems/evaluation/EnergyTypeGas.vue'
+import EnergyTypeOil from '@/components/ems/evaluation/EnergyTypeOil.vue'
+import EnergyTypeBiomass from '@/components/ems/evaluation/EnergyTypeBiomass.vue'
+import EnergyTypePellets from '@/components/ems/evaluation/EnergyTypePellets.vue'
+import EnergyTypeSteam from '@/components/ems/evaluation/EnergyTypeSteam.vue'
 
 export default {
   props: {

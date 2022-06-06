@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import StickyNavbar from '@/components/StickyNavbarStart.vue'
+import StickyNavbar from '@/components/general/StickyNavbarStart.vue'
 
 export default {
   components: { StickyNavbar },

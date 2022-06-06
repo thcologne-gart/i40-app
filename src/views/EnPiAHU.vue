@@ -15,8 +15,8 @@
 
 <script>
 import EnergyPerformanceIndicators from '@/views/EnergyPerformanceIndicators.vue'
-import SubmodelHeader from '@/components/SubmodelHeader.vue'
-import EnPis from '@/components/EnPis.vue'
+import SubmodelHeader from '@/components/ems/SubmodelHeader.vue'
+import EnPis from '@/components/ems/indicators/EnPis.vue'
 
 export default {
   components: { EnergyPerformanceIndicators, SubmodelHeader, EnPis },

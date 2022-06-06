@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import EnergySourceSheet from '@/components/EnergySourceSheet.vue'
+import EnergySourceSheet from '@/components/ems/evaluation/EnergySourceSheet.vue'
 
 export default {
   props: {

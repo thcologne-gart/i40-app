@@ -28,8 +28,8 @@
 
 <script>
 import EnergeticEvaluation from '@/views/EnergeticEvaluation.vue'
-import EnergySourceGroupBuilding from '@/components/EnergySourceGroupBuilding.vue'
-import SubmodelHeader from '@/components/SubmodelHeader.vue'
+import EnergySourceGroupBuilding from '@/components/ems/evaluation/EnergySourceGroupBuilding.vue'
+import SubmodelHeader from '@/components/ems/SubmodelHeader.vue'
 
 export default {
   props: {

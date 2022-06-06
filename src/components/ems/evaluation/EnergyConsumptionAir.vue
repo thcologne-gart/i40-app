@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import ConsumptionComponents from '@/components/ConsumptionComponents.vue'
+import ConsumptionComponents from '@/components/ems/evaluation/ConsumptionComponents.vue'
 
 export default {
   components: { ConsumptionComponents },
@@ -40,7 +40,6 @@ export default {
           }
         }
       }
-      // let component
       const componentInfo = []
       for (const element in energySourceComponents) {
         const allComponentsOfCollection = energySourceComponents[element].value
@@ -52,7 +51,6 @@ export default {
           })
         }
       }
-      // console.log(componentInfo)
       return componentInfo
     }
   }

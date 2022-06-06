@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import EmsChapter from '@/components/EmsChapter.vue'
-import EmsGrid from '@/components/EmsGrid.vue'
+import EmsChapter from '@/components/ems/EmsChapter.vue'
+import EmsGrid from '@/components/ems/EmsGrid.vue'
 
 export default {
   name: 'Operation',

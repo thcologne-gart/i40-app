@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import SubmodelHeaderFirst from '@/components/SubmodelHeaderFirst.vue'
-import OrganizationInformation from '@/components/OrganizationInformation.vue'
-import EmsChapter from '@/components/EmsChapter.vue'
-import EmsGrid from '@/components/EmsGrid.vue'
+import SubmodelHeaderFirst from '@/components/ems/SubmodelHeaderFirst.vue'
+import OrganizationInformation from '@/components/ems/context/OrganizationInformation.vue'
+import EmsChapter from '@/components/ems/EmsChapter.vue'
+import EmsGrid from '@/components/ems/EmsGrid.vue'
 
 export default {
   name: 'Organization',
