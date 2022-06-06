@@ -6,9 +6,9 @@
         title="Nachhaltigere und effizientere Gebäude durch smarte Automatisierung und künstliche Intelligenz"
         tag="article"
         style="max-width: 40rem;"
-        class="mx-auto"
+        class="shadow p-3 mb-5 bg-white rounded mx-auto"
       >
-        <b-card-img :src="require('../assets/home.jpeg')"></b-card-img>
+        <b-card-img :src="require('@/assets/home.jpeg')"></b-card-img>
         <b-card-text>
           Lösungen für KI-gestützte Anwendungen im Gebäudesektor
         </b-card-text>

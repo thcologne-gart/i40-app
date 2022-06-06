@@ -4,7 +4,7 @@
         <b-button v-b-toggle.my-collapse variant="outline-secondary">Gebäude hinzufügen</b-button>
       </div>
       <b-collapse id="my-collapse">
-        <b-card id ="cardBuildingForm">
+        <b-card id ="cardBuildingForm" class="shadow p-3 mb-5 bg-white rounded">
                 <b-form @submit="onCreateBuildingAas" @reset="onReset">
 
                 <b-form-group

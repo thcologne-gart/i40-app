@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-card class = "showBuildingInfo">
+        <b-card class = "shadow p-3 mb-5 bg-white rounded showBuildingInfo">
             <div id ="displayBuildingInformation">
                 <h5 id="selected">Ausgewählte Energiearten</h5>
                 <div v-for="energyType in energyTypes" :key="energyType[0].key">

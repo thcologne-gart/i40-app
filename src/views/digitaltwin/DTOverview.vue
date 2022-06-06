@@ -3,7 +3,7 @@
     <h4 id ="header">Verwaltungsschalen</h4>
     <b-card-group>
         <div v-for="aas in allAas" :key="aas.assetAdministrationShells">
-        <b-card
+        <b-card class="shadow p-3 mb-5 bg-white rounded"
         :sub-title= aas.aas.assetAdministrationShells[0].idShort>
             <router-link :to = "{ name: 'AAS Detail', params: { aas: aas } }">
                 <b-card-img height="80px" top fluid :src= aas.pic></b-card-img>

@@ -2,7 +2,7 @@
     <div>
       <AddOrganizationInformation />
       <div v-if="organization != null">
-        <b-card class = "showOrgaInfo">
+        <b-card class = "shadow p-3 mb-5 bg-white rounded showOrgaInfo">
             <div id ="displayOrganizationInformation">
                 <b-row id="header">
                     <b-col><h5>Name</h5></b-col>

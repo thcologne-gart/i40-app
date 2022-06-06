@@ -1,6 +1,6 @@
 <template>
     <div v-if="buildings != null">
-        <b-card class = "showBuildingInfo">
+        <b-card class = "shadow p-3 mb-5 bg-white rounded showBuildingInfo">
         <div id ="displayBuildingInformation">
             <b-row id="header">
                 <b-col><h5>Name</h5></b-col>

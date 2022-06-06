@@ -1,6 +1,6 @@
 <template>
     <div>
-      <b-card id ="cardSiteForm">
+      <b-card id ="cardSiteForm" class="shadow p-3 mb-5 bg-white rounded">
             <b-form @submit="onCreateSiteAas" @reset="onReset">
 
             <b-form-group

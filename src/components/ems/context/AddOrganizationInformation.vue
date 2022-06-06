@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-card id ="cardOrganizationForm">
+        <b-card id ="cardOrganizationForm" class="shadow p-3 mb-5 bg-white rounded">
             <b-form @submit="onCreateEmsAas" @reset="onReset">
             <b-form-group
                 id="organization-name"

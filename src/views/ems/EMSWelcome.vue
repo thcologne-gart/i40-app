@@ -5,6 +5,34 @@
                 <h4>Energiemanagementsystem nach DIN EN ISO 50001</h4>
             </b-row>
         </div>
+        <b-container id="points">
+            <b-card-group>
+                <b-card v-bind:title = points[0].name :img-src= points[0].pic img-top class="shadow p-3 mb-5 bg-white rounded">
+                    <hr>
+                    <b-card-text>
+                        Gebäude sind für <b>40 %</b> des gesamten Energieverbrauchs und <b>36 %</b> aller Treibhausgasemissionen verantwortlich.
+                    </b-card-text>
+                </b-card>
+                <b-card v-bind:title = points[1].name :img-src= points[1].pic img-top class="shadow p-3 mb-5 bg-white rounded">
+                    <hr>
+                    <b-card-text>
+                        Nach dem Green Deal der EU sollen die Treibhausgase bis 2030 gegenüber 1990 um <b>55 %</b> reduziert werden.
+                    </b-card-text>
+                </b-card>
+                <b-card v-bind:title = points[2].name :img-src= points[2].pic img-top class="shadow p-3 mb-5 bg-white rounded">
+                    <hr>
+                    <b-card-text>
+                        Die Renovierungsrate von Gebäuden innerhalb der EU liegt momentan bei rund <b>1 %</b>.
+                    </b-card-text>
+                </b-card>
+                <b-card v-bind:title = points[3].name :img-src= points[3].pic img-top class="shadow p-3 mb-5 bg-white rounded">
+                    <hr>
+                    <b-card-text>
+                        Durch die Einführung eines Energiemanagement Systems kann im Durchschnitt <b>30 %</b> der Energie eingespart werden.
+                    </b-card-text>
+                </b-card>
+            </b-card-group>
+        </b-container>
         <b-container fluid>
             <b-row>
                 <b-col md>
@@ -195,6 +223,12 @@ export default {
       { id: 11, name: 'Analyse', pic: require('@/assets/analysis.jpeg'), link: '/analysis' },
       { id: 12, name: 'Optimierung', pic: require('@/assets/optimization.jpeg'), link: '/optimization' }
     ]
+    this.points = [
+      { id: 1, name: 'Energieverbrauch Gebäude', pic: require('@/assets/building.svg') },
+      { id: 2, name: 'Reduzierung Treibhausgase', pic: require('@/assets/co2.svg') },
+      { id: 3, name: 'Renovierungsrate in der EU', pic: require('@/assets/rennovation.svg') },
+      { id: 4, name: 'Energieeffizienz von Gebäuden', pic: require('@/assets/emission.svg') }
+    ]
   }
 }
 </script>
@@ -203,6 +237,18 @@ export default {
 #header {
     margin-top: 15px;
     color: #025939;
+}
+.card {
+    margin-inline: 5%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    max-width: 20%;
+}
+.card-img-top {
+    max-height: 60px;
+}
+.card-title {
+    font-size: 110%;
 }
 .col-md {
     padding-right: 0px;

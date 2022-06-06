@@ -4,7 +4,7 @@
       <EmsGrid :submodels="submodels">
         <h4 id = "component-title">{{ component.idShort }}</h4>
         <hr>
-        <b-card id="component-info">
+        <b-card id="component-info" class="shadow p-3 mb-5 bg-white rounded">
             <b-row>
                 <b-col class="text-left" cols="4">
                     <p id = "property-header">Properties</p>

@@ -4,6 +4,7 @@
             <b-col :key="energyGroup.id" v-for="energyGroup in energyUseGroup">
                 <b-card id="energyUseGroup"
                     v-bind:title = energyGroup.name
+                    class="shadow p-3 mb-5 bg-white rounded"
                 >
                     <div v-if="energyGroup.name === 'Heizung'">
                         <a href="#">

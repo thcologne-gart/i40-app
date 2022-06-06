@@ -2,7 +2,7 @@
     <div>
         <b-card
             v-bind:title = energySource.sourceName
-            class="mx-4"
+            class="shadow p-3 mb-5 bg-white rounded mx-4"
             id="energy-source-card"
         >
         <!--

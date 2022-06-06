@@ -6,7 +6,7 @@
         title="Digital Twins"
         tag="article"
         style="max-width: 40rem;"
-        class="mx-auto"
+        class="shadow p-3 mb-5 bg-white rounded mx-auto"
       >
         <b-card-img :src="require('@/assets/dt-start.jpeg')"></b-card-img>
         <b-card-text>

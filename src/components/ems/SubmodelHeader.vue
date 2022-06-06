@@ -12,7 +12,7 @@
         </b-navbar>
         -->
         <div v-if="buildings.length < numberOfBuildingsAsArray.length">
-            <b-card no-body>
+            <b-card no-body class="shadow p-3 mb-5 bg-white rounded">
                 <b-tabs card pills vertical id="buildings-tabs">
                     <b-tab v-bind:title="'Gebäude ' + building" v-for="building in numberOfBuildingsAsArray" :key="building">
                         <slot name="building" v-bind:building="building">Platzhalter</slot>
@@ -21,7 +21,7 @@
             </b-card>
         </div>
         <div v-else-if="buildings.length === numberOfBuildingsAsArray.length">
-            <b-card no-body>
+            <b-card no-body class="shadow p-3 mb-5 bg-white rounded">
                 <b-tabs card pills vertical id="buildings-tabs">
                     <b-tab v-bind:title="building.buildingNames" v-for="building in buildings" :key="building.buildingNames">
                         <slot name="building" v-bind:building="building.buildingNumber">Platzhalter</slot>

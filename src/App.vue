@@ -57,6 +57,7 @@ body {
   margin: 0;
   height: 100vh;
   overflow: scroll;
+  hyphens: auto;
 }
 .wrapper {
   min-height: calc(100vh - 60px);

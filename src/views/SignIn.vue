@@ -1,6 +1,6 @@
 <template>
     <div>
-      <b-card>
+      <b-card class="shadow p-3 mb-5 bg-white rounded">
             <b-row v-if="error" >
                 <Alert @dismissed="onDismissed" :text="error.message" />
             </b-row>

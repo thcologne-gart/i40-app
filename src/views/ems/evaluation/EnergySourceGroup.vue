@@ -6,7 +6,7 @@
                     <div v-if="site === site2">
                         <SubmodelHeader :site ="site2" :submodelName="submodelName" :numberOfBuildings="numberOfBuildings">
                             <template v-slot:building="{ building }">
-                                <b-card id="energy-source-card">
+                                <b-card id="energy-source-card" class="shadow p-3 mb-5 bg-white rounded">
                                     <b-tabs content-class="mt-3" id ="source-groups-tabs">
                                         <div v-for="element in allEnergyTypesWithGroup" :key="element.elementCollectionId">
                                             <div v-if="element.site === site2 && building === element.building">

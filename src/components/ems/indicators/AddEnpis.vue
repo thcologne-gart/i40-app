@@ -4,7 +4,7 @@
       <b-button v-b-toggle.my-collapse variant="outline-secondary">EnPi hinzufügen</b-button>
     </div>
     <b-collapse id="my-collapse">
-        <b-card>
+        <b-card class="shadow p-3 mb-5 bg-white rounded">
             <b-form @submit="onSubmitEnpi" @reset="onReset" v-if="show">
             <b-form-group
                 id="input-group-1"

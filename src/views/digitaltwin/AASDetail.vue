@@ -2,6 +2,7 @@
     <div>
         <div>
             <b-card
+            class="shadow p-3 mb-5 bg-white rounded"
             :title= aas.aas.assetAdministrationShells[0].idShort
             :sub-title = aas.aas.assets[0].idShort>
                 <hr>
@@ -9,7 +10,7 @@
                 <div v-for="submodel in aasInfo" :key="submodel.submodelName">
                     <b-button v-b-toggle="submodel.submodelName" id = "submodel-button" variant="outline-secondary">{{ submodel.submodelName }}</b-button>
                     <b-collapse v-bind:id="submodel.submodelName">
-                      <b-card id="submodel-card">
+                      <b-card id="submodel-card" class="shadow p-3 mb-5 bg-white rounded">
                         <div v-for="submodelElement in submodel.submodelElements" :key="submodelElement.idShort">
                             <div v-if="submodelElement.seType === 'Property'">
                                 <b-row>
