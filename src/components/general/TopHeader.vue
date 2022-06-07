@@ -77,7 +77,7 @@ export default {
         menuItems = [
           { icon: '', title: 'Home', link: '/home' },
           { icon: '', title: 'Performance Monitoring', link: '/performance' },
-          { icon: '', title: 'Energiemanagement', link: '/ems' },
+          { icon: '', title: 'Energiemanagement', link: '/emsstart' },
           { icon: '', title: 'Building Performance', link: '/buildingperformance' },
           { icon: '', title: 'Digital Twins', link: '/digitaltwins' }
         ]

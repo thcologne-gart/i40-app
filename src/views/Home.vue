@@ -12,7 +12,7 @@
         <b-card-text>
           Lösungen für KI-gestützte Anwendungen im Gebäudesektor
         </b-card-text>
-        <b-button to="/ems" variant="outline-secondary">Energiemanagement</b-button>
+        <b-button to="/emsstart" variant="outline-secondary">Energiemanagement</b-button>
         <b-button to="/performance" variant="outline-secondary">Performance Monitoring</b-button>
         <b-button to="/buildingperformance" variant="outline-secondary">Building Performance</b-button>
         <b-button to="/digitaltwins" variant="outline-secondary">Digital Twins</b-button>
