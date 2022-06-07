@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2018 (64 Bit) -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="22.5919mm" height="22.5864mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 274.1 274.03"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str2 {stroke:#4C4B4B;stroke-width:8.56;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str1 {stroke:#4C4B4B;stroke-width:8.56;stroke-linecap:square;stroke-miterlimit:10}
+    .str0 {stroke:#4C4B4B;stroke-width:8.56;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10}
+    .fil0 {fill:none;fill-rule:nonzero}
+   ]]>
+  </style>
+ </defs>
+ <g id="Ebene_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <polyline class="fil0 str0" points="60.09,269.58 51.53,59.86 13.01,59.86 4.45,269.58 "/>
+  <line class="fil0 str0" x1="34.41" y1="89.82" x2="51.53" y2= "89.82" />
+  <line class="fil0 str0" x1="34.41" y1="115.5" x2="51.53" y2= "115.5" />
+  <polyline class="fil0 str0" points="72.93,162.58 107.17,136.9 124.3,136.9 124.3,179.7 179.94,136.9 197.06,136.9 197.06,179.7 252.7,136.9 269.82,136.9 269.82,269.58 "/>
+  <line class="fil0 str0" x1="124.3" y1="175.42" x2="124.3" y2= "196.82" />
+  <line class="fil0 str0" x1="197.06" y1="175.42" x2="197.06" y2= "196.82" />
+  <polyline class="fil0 str1" points="132.85,269.58 132.85,235.34 184.22,235.34 184.22,269.58 "/>
+  <path class="fil0 str2" d="M92.03 21.48c72.15,-53.15 104.95,33.1 138.99,36.23 -4.46,2.94 -86.29,82.48 -133.3,-5.62"/>
+  <path class="fil0 str2" d="M142.28 39.5c0,0 -54.61,-34.33 -99.17,-4.94"/>
+ </g>
+</svg>

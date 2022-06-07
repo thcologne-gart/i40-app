@@ -1,8 +1,8 @@
 <template>
     <div>
-        <b-card class = "shadow p-3 mb-5 bg-white rounded showBuildingInfo">
+        <b-card class = "shadow p-3 mb-5 bg-white rounded showBuildingInfo" title="Ausgewählte Energiearten">
+            <hr>
             <div id ="displayBuildingInformation">
-                <h4 id="selected">Ausgewählte Energiearten</h4>
                 <div v-for="item in energyTypes" :key="item[0].key">
                     <div v-if="item[1][0].modelType.name === 'Property'">
                         <div v-if="item[1][0].value === site[4].value && item[2][1].value === building " >
@@ -74,6 +74,10 @@ export default {
 .card {
     margin-inline: 20%;
     margin-bottom: 30px;
+}
+.card-title {
+    margin-top: -10px;
+    font-size: 20px;
 }
 .form-group {
     text-align: left;

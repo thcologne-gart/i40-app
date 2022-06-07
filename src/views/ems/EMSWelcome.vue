@@ -245,10 +245,13 @@ export default {
     max-width: 20%;
 }
 .card:hover {
-  background-color: #2c3e50 !important;
-  opacity: 0.8;
+  background-color: #025939 !important;
   color: #F2F2F2;
   transition: all 0.5s ease;
+}
+.card:hover img{
+   -webkit-filter: invert(1);
+   filter: invert(1);
 }
 .card-img-top {
     max-height: 60px;

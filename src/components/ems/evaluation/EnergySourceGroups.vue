@@ -1,8 +1,8 @@
 <template>
     <div>
-        <b-card class = "shadow p-3 mb-5 bg-white rounded showBuildingInfo">
+        <b-card class = "shadow p-3 mb-5 bg-white rounded showBuildingInfo" title="Energieeinsatzgruppen">
+            <hr>
             <div id ="displayBuildingInformation">
-                <h5 id="selected">Energieeinsatz Gruppen</h5>
                 <b-carousel
                   id="carousel-energy-source-groups"
                   v-model="slide"
@@ -209,5 +209,8 @@ export default {
     margin-inline: 10%;
     margin-bottom: 30px;
 }
-
+.card-title {
+    margin-top: -10px;
+    font-size: 20px;
+}
 </style>

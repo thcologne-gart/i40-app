@@ -6,7 +6,8 @@
                 <div v-if="site === site2">
                     <SubmodelHeader :site ="site2" :submodelName="submodelName" :numberOfBuildings="numberOfBuildings">
                         <template v-slot:building="{ building }">
-                            <b-card class="shadow p-3 mb-5 bg-white rounded">
+                            <b-card class="shadow p-3 mb-5 bg-white rounded" style="width: 100%;" title="Energiearten">
+                                <hr>
                                 <b-row>
                                     <b-col :key="energyType.id" v-for="energyType in energyTypes">
                                         <!--<EnergyTypeCard :energyType="energyType" @add-new-energy-type=addEnergyType @add-submodel-ref-aas=addAasRef />//-->
@@ -206,13 +207,13 @@ export default {
   },
   async created () {
     this.energyTypes = [
-      { id: 'submodel/energyTypeElectricity', name: 'Strom', pic: require('@/assets/electricity.jpg'), nameForSubmodel: 'Energieart Strom', idShortCD: 'SubmodelEnergyTypeElectricity' },
-      { id: 'submodel/energyTypeHeat', name: 'Wärme', pic: require('@/assets/heat.jpg'), nameForSubmodel: 'Energieart Wärme', idShortCD: 'SubmodelEnergyTypeHeat' },
-      { id: 'submodel/energyTypeGas', name: 'Gas', pic: require('@/assets/gas.jpg'), nameForSubmodel: 'Energieart Gas', idShortCD: 'SubmodelEnergyTypeGas' },
-      { id: 'submodel/energyTypeOil', name: 'Öl', pic: require('@/assets/oil.jpg'), nameForSubmodel: 'Energieart Öl', idShortCD: 'SubmodelEnergyTypeOil' },
-      { id: 'submodel/energyTypeBiomass', name: 'Biomasse', pic: require('@/assets/biomass.jpg'), nameForSubmodel: 'Energieart Biomasse', idShortCD: 'SubmodelEnergyTypeBiomass' },
-      { id: 'submodel/energyTypePellets', name: 'Holzpellets', pic: require('@/assets/pellets.jpg'), nameForSubmodel: 'Energieart Holzpellets', idShortCD: 'SubmodelEnergyTypePellets' },
-      { id: 'submodel/energyTypeSteam', name: 'Dampf', pic: require('@/assets/steam.jpg'), nameForSubmodel: 'Energieart Danpf', idShortCD: 'SubmodelEnergyTypeSteam' }
+      { id: 'submodel/energyTypeElectricity', name: 'Strom', pic: require('@/assets/electricity.svg'), nameForSubmodel: 'Energieart Strom', idShortCD: 'SubmodelEnergyTypeElectricity' },
+      { id: 'submodel/energyTypeHeat', name: 'Wärme', pic: require('@/assets/heat.svg'), nameForSubmodel: 'Energieart Wärme', idShortCD: 'SubmodelEnergyTypeHeat' },
+      { id: 'submodel/energyTypeGas', name: 'Gas', pic: require('@/assets/gas.svg'), nameForSubmodel: 'Energieart Gas', idShortCD: 'SubmodelEnergyTypeGas' },
+      { id: 'submodel/energyTypeOil', name: 'Öl', pic: require('@/assets/oil.svg'), nameForSubmodel: 'Energieart Öl', idShortCD: 'SubmodelEnergyTypeOil' },
+      { id: 'submodel/energyTypeBiomass', name: 'Biomasse', pic: require('@/assets/biomass.svg'), nameForSubmodel: 'Energieart Biomasse', idShortCD: 'SubmodelEnergyTypeBiomass' },
+      { id: 'submodel/energyTypePellets', name: 'Holzpellets', pic: require('@/assets/pellets.svg'), nameForSubmodel: 'Energieart Holzpellets', idShortCD: 'SubmodelEnergyTypePellets' },
+      { id: 'submodel/energyTypeSteam', name: 'Dampf', pic: require('@/assets/steam.svg'), nameForSubmodel: 'Energieart Danpf', idShortCD: 'SubmodelEnergyTypeSteam' }
     ]
     this.submodelName = 'Energieart'
     // this.submodelsJson = await this.fetchTasks()
@@ -224,6 +225,10 @@ export default {
 </script>
 
 <style scoped>
+.card-title {
+    margin-top: -10px;
+    font-size: 20px;
+}
 #selected {
     margin-top: 20px;
     color: #025939;
