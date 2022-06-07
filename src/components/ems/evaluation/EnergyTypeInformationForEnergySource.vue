@@ -9,7 +9,7 @@
                             <b-row id="ausgewählteEnergieart">
                                 <b-col>
                                     <div class="mb-3">
-                                        <b-button v-b-toggle="energyType[0].submodelId" variant="outline-secondary">
+                                        <b-button v-b-toggle="energyType[0].submodelId" variant="outline-secondary" id="energy-type-button">
                                         {{ energyType[0].submodelName }}
                                         </b-button>
                                     </div>
@@ -106,6 +106,9 @@ export default {
 .btn {
     margin-left: 20px;
     margin-right: 20px;
+}
+#energy-type-button {
+    width: 10rem;
 }
 #displayBuildingInformation {
     margin-inline: 10%;

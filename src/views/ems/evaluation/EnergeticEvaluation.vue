@@ -66,7 +66,7 @@ export default {
       { id: 4, name: 'Documented information', link: '/energetic-evaluation/seu' }
     ]
     */
-    this.emsChapter = { name: 'Energetische Bewertung', link: '/energetic-evaluation' }
+    this.emsChapter = { name: 'Energetische Bewertung', link: '/evaluation-start' }
   }
 }
 </script>

@@ -13,18 +13,19 @@ import EmsChapter from '@/components/ems/EmsChapter.vue'
 import EmsGrid from '@/components/ems/EmsGrid.vue'
 
 export default {
-  components: { EmsChapter, EmsGrid },
+  name: 'Management',
   data () {
     return {
       submodels: []
     }
   },
+  components: { EmsChapter, EmsGrid },
   created () {
     this.submodels = [
-      { id: 3, name: 'Operation' },
-      { id: 4, name: 'Management' }
+      { id: 1, name: 'Operation', link: '' },
+      { id: 2, name: 'Management', link: '' }
     ]
-    this.emsChapter = { name: 'Management', link: '/management' }
+    this.emsChapter = { name: 'Management', link: '/management-start' }
   }
 }
 </script>

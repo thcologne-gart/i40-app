@@ -1,7 +1,10 @@
 <template>
     <div>
       <EmsChapter :emsChapter="emsChapter" />
-      <EmsGrid :submodels="submodels"/>
+      <EmsGrid :submodels="submodels">
+          <div>Platzhalter
+          </div>
+      </EmsGrid>
     </div>
 </template>
 

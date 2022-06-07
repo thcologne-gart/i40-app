@@ -49,7 +49,7 @@ export default {
       { id: 2, name: 'Standorte', link: '/context/sites' },
       { id: 3, name: 'Gebäude', link: '/context/buildings' }
     ]
-    this.emsChapter = { name: 'Kontext', link: '/context' }
+    this.emsChapter = { name: 'Kontext', link: '/contextstart' }
   }
 }
 </script>

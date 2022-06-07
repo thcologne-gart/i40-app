@@ -25,6 +25,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/performancemonitoring/PerformanceStart.vue')
   },
   {
+    path: '/contextstart',
+    name: 'Context Start',
+    component: () => import('../views/ems/context/ContextStart.vue')
+  },
+  {
     path: '/context',
     name: 'Context',
     component: () => import('../views/ems/context/OrganizationContext.vue')
@@ -78,9 +83,19 @@ const routes = [
     component: () => import('../views/ems/management/Management.vue')
   },
   {
+    path: '/management-start',
+    name: 'Management Start',
+    component: () => import('../views/ems/management/ManagementStart.vue')
+  },
+  {
     path: '/ressources',
     name: 'Ressourcen',
     component: () => import('../views/ems/ressources/Ressources.vue')
+  },
+  {
+    path: '/ressources-start',
+    name: 'Ressourcen Start',
+    component: () => import('../views/ems/ressources/RessourcesStart.vue')
   },
   {
     path: '/energetic-evaluation',
@@ -88,9 +103,19 @@ const routes = [
     component: () => import('../views/ems/evaluation/EnergeticEvaluation.vue')
   },
   {
+    path: '/evaluation-start',
+    name: 'Evaluation Start',
+    component: () => import('../views/ems/evaluation/EvaluationStart.vue')
+  },
+  {
     path: '/energy-performance-indicator',
     name: 'Energy Performance Indicators',
     component: () => import('../views/ems/indicators/EnergyPerformanceIndicators.vue')
+  },
+  {
+    path: '/indicators-start',
+    name: 'Indicators Start',
+    component: () => import('../views/ems/indicators/IndicatorsStart.vue')
   },
   {
     path: '/energetic-evaluation/energy-type',
@@ -163,6 +188,11 @@ const routes = [
     path: '/energy-goals',
     name: 'Energieziele',
     component: () => import('../views/ems/goals/EnergyGoals.vue')
+  },
+  {
+    path: '/goals-start',
+    name: 'Energieziele Start',
+    component: () => import('../views/ems/goals/GoalsStart.vue')
   },
   {
     path: '/competence',
