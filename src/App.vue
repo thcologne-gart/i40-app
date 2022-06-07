@@ -88,6 +88,17 @@ footer {
   }
   }
 }
+#submodel-item {
+  color: #025939;
+
+  a {
+  &.router-link-exact-active {
+    border: 2px solid #F2B705;
+    color: #025939;
+    border-radius: 4px;
+  }
+  }
+}
 
 #building-navbar {
   color: #025939;

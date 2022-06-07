@@ -4,7 +4,6 @@
           <template v-slot:site="{ site }" >
             <div v-for="site2 in numberofSites" :key="site2">
                 <div v-if="site === site2">
-                    <SubmodelHeaderFirst :submodelName="submodelName" />
                     <div v-if="sites === null">
                       <AddSiteInformation :site="site"/>
                     </div>
@@ -25,12 +24,11 @@
 
 <script>
 import OrganizationContext from '@/views/ems/context/OrganizationContext.vue'
-import SubmodelHeaderFirst from '@/components/ems/SubmodelHeaderFirst.vue'
 import SiteInformation from '@/components/ems/context/SiteInformation.vue'
 import AddSiteInformation from '@/components/ems/context/AddSiteInformation.vue'
 
 export default {
-  components: { OrganizationContext, SubmodelHeaderFirst, SiteInformation, AddSiteInformation },
+  components: { OrganizationContext, SiteInformation, AddSiteInformation },
   data () {
     return {}
   },

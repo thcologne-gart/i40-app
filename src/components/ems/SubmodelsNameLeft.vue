@@ -27,7 +27,7 @@ export default {
 <style scoped>
 #submodel-item {
     margin-top: -5px;
-    margin-bottom: -5px;
+    margin-bottom: -5px;;
 }
 .nav-item {
     border-bottom-style: solid;

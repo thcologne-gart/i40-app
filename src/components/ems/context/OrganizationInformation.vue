@@ -61,6 +61,7 @@ export default {
 .card {
     margin-inline: 20%;
     margin-bottom: 30px;
+    margin-top: 30px;
 }
 #header {
     color: #025939;

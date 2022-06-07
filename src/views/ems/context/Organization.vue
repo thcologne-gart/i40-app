@@ -2,14 +2,12 @@
     <div>
       <EmsChapter :emsChapter="emsChapter" />
       <EmsGrid :submodels="submodels">
-            <SubmodelHeaderFirst :submodelName="submodelName" />
             <OrganizationInformation />
       </EmsGrid>
     </div>
 </template>
 
 <script>
-import SubmodelHeaderFirst from '@/components/ems/SubmodelHeaderFirst.vue'
 import OrganizationInformation from '@/components/ems/context/OrganizationInformation.vue'
 import EmsChapter from '@/components/ems/EmsChapter.vue'
 import EmsGrid from '@/components/ems/EmsGrid.vue'
@@ -41,7 +39,7 @@ export default {
       return numberOfSites
     }
   },
-  components: { SubmodelHeaderFirst, OrganizationInformation, EmsChapter, EmsGrid },
+  components: { OrganizationInformation, EmsChapter, EmsGrid },
   created () {
     this.submodelName = 'Unternehmen'
     this.submodels = [
