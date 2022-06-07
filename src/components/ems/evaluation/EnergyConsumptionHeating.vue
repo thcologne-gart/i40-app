@@ -4,7 +4,7 @@
         id="heating-systems"
         title= 'Energieverbrauch'
         :sub-title= energySourceGroup.elementCollection
-        class="shadow p-3 mb-5 bg-white rounded mb-2"
+        class="mb-2"
         >
             <ConsumptionComponents :energySources="energySources" :energySourceGroup="energySourceGroup" :energySourceComponents="energySourceComponents" />
         </b-card>

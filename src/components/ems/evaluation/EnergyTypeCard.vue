@@ -3,7 +3,7 @@
         <b-card
             v-bind:title = energyType.name
             style="max-width: 20rem;"
-            class="shadow p-3 mb-5 bg-white rounded mx-auto"
+            class="mx-auto"
         >
           <a href="#">
             <b-card-img @click="onSubmitEnergyType" href="#" style="max-width: 40%;" top fluid :src= energyType.pic></b-card-img>

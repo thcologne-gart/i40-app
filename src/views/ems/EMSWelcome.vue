@@ -244,6 +244,12 @@ export default {
     margin-top: 30px;
     max-width: 20%;
 }
+.card:hover {
+  background-color: #2c3e50 !important;
+  opacity: 0.8;
+  color: #F2F2F2;
+  transition: all 0.5s ease;
+}
 .card-img-top {
     max-height: 60px;
 }
