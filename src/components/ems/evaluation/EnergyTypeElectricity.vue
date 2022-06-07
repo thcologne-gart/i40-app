@@ -2,85 +2,85 @@
     <div>
         <b-row>
             <b-col :key="energyGroup.id" v-for="energyGroup in energyUseGroup">
-                <b-card id="energyUseGroup"
-                    v-bind:title = energyGroup.name
-                    class="shadow p-3 mb-5 bg-white rounded"
-                >
-                    <div v-if="energyGroup.name === 'Heizung'">
+                <a href="#">
+                    <b-card id="energyUseGroup"
+                        v-bind:title = energyGroup.name
+                        class="shadow p-3 mb-5 bg-white rounded"
+                    >
+                        <div v-if="energyGroup.name === 'Heizung'">
+                                <b-card-img v-b-modal="energyType[0].key + 'heating'" href="#" style="max-width: 20%;" top fluid :src= energyGroup.pic></b-card-img>
+                            <b-modal v-bind:id="energyType[0].key + 'heating'" hide-footer width="350px" persistent :title="energyGroup.name">
+                                <b-form-group
+                                    id="input-group-1"
+                                    label="Anzahl getrennter Heizsysteme im Gebäude:"
+                                    label-for="input-1"
+                                >
+                                    <b-form-input
+                                    id="input-1"
+                                    placeholder="Anzahl Heizsysteme"
+                                    v-model.number="numberSystems"
+                                    required
+                                    ></b-form-input>
+                                </b-form-group>
+
+                                <hr>
+                                <b-button class="mt-3" variant="outline-secondary" block  @click="onSubmitEnergySourceGroup ([energyGroup, numberSystems, energyType])">Save</b-button>
+                            </b-modal>
+                        </div>
+
+                        <div v-else-if="energyGroup.name === 'Kühlung'">
+                            <a href="#">
+                                <b-card-img v-b-modal="energyType[0].key + 'cooling'" href="#" style="max-width: 20%;" top fluid :src= energyGroup.pic></b-card-img>
+                            </a>
+                            <b-modal v-bind:id="energyType[0].key + 'cooling'" hide-footer width="350px" persistent :title="energyGroup.name">
+                                <b-form-group
+                                    id="input-group-1"
+                                    label="Anzahl getrennter Kühlsysteme im Gebäude:"
+                                    label-for="input-1"
+                                >
+                                    <b-form-input
+                                    id="input-1"
+                                    placeholder="Anzahl Kühlsysteme"
+                                    v-model.number="numberSystems"
+                                    required
+                                    ></b-form-input>
+                                </b-form-group>
+
+                                <hr>
+                                <b-button class="mt-3" variant="outline-secondary" block  @click="onSubmitEnergySourceGroup ([energyGroup, numberSystems, energyType])">Save</b-button>
+                            </b-modal>
+                        </div>
+
+                        <div v-else-if="energyGroup.name === 'Lüftung'">
+                            <a href="#">
+                                <b-card-img v-b-modal="energyType[0].key + 'air'" href="#" style="max-width: 20%;" top fluid :src= energyGroup.pic></b-card-img>
+                            </a>
+                            <b-modal v-bind:id="energyType[0].key + 'air'" hide-footer width="350px" persistent :title="energyGroup.name">
+                                <b-form-group
+                                    id="input-group-1"
+                                    label="Anzahl getrennter Lüftungssysteme im Gebäude:"
+                                    label-for="input-1"
+                                >
+                                    <b-form-input
+                                    id="input-1"
+                                    placeholder="Anzahl Lüftungssysteme"
+                                    v-model.number="numberSystems"
+                                    required
+                                    ></b-form-input>
+                                </b-form-group>
+
+                                <hr>
+                                <b-button class="mt-3" variant="outline-secondary" block  @click="onSubmitEnergySourceGroup ([energyGroup, numberSystems, energyType])">Save</b-button>
+                            </b-modal>
+                        </div>
+
+                        <!--
                         <a href="#">
-                            <b-card-img v-b-modal="energyType[0].key + 'heating'" href="#" style="max-width: 20%;" top fluid :src= energyGroup.pic></b-card-img>
+                            <b-card-img v-b-modal="energyGroup.name" @click="onSubmitEnergySourceGroup (energyGroup)" href="#" style="max-width: 20%;" top fluid :src= energyGroup.pic></b-card-img>
                         </a>
-                        <b-modal v-bind:id="energyType[0].key + 'heating'" hide-footer width="350px" persistent :title="energyGroup.name">
-                            <b-form-group
-                                id="input-group-1"
-                                label="Anzahl getrennter Heizsysteme im Gebäude:"
-                                label-for="input-1"
-                            >
-                                <b-form-input
-                                id="input-1"
-                                placeholder="Anzahl Heizsysteme"
-                                v-model.number="numberSystems"
-                                required
-                                ></b-form-input>
-                            </b-form-group>
-
-                            <hr>
-                            <b-button class="mt-3" variant="outline-secondary" block  @click="onSubmitEnergySourceGroup ([energyGroup, numberSystems, energyType])">Save</b-button>
-                        </b-modal>
-                    </div>
-
-                    <div v-else-if="energyGroup.name === 'Kühlung'">
-                        <a href="#">
-                            <b-card-img v-b-modal="energyType[0].key + 'cooling'" href="#" style="max-width: 20%;" top fluid :src= energyGroup.pic></b-card-img>
-                        </a>
-                        <b-modal v-bind:id="energyType[0].key + 'cooling'" hide-footer width="350px" persistent :title="energyGroup.name">
-                            <b-form-group
-                                id="input-group-1"
-                                label="Anzahl getrennter Kühlsysteme im Gebäude:"
-                                label-for="input-1"
-                            >
-                                <b-form-input
-                                id="input-1"
-                                placeholder="Anzahl Kühlsysteme"
-                                v-model.number="numberSystems"
-                                required
-                                ></b-form-input>
-                            </b-form-group>
-
-                            <hr>
-                            <b-button class="mt-3" variant="outline-secondary" block  @click="onSubmitEnergySourceGroup ([energyGroup, numberSystems, energyType])">Save</b-button>
-                        </b-modal>
-                    </div>
-
-                    <div v-else-if="energyGroup.name === 'Lüftung'">
-                        <a href="#">
-                            <b-card-img v-b-modal="energyType[0].key + 'air'" href="#" style="max-width: 20%;" top fluid :src= energyGroup.pic></b-card-img>
-                        </a>
-                        <b-modal v-bind:id="energyType[0].key + 'air'" hide-footer width="350px" persistent :title="energyGroup.name">
-                            <b-form-group
-                                id="input-group-1"
-                                label="Anzahl getrennter Lüftungssysteme im Gebäude:"
-                                label-for="input-1"
-                            >
-                                <b-form-input
-                                id="input-1"
-                                placeholder="Anzahl Lüftungssysteme"
-                                v-model.number="numberSystems"
-                                required
-                                ></b-form-input>
-                            </b-form-group>
-
-                            <hr>
-                            <b-button class="mt-3" variant="outline-secondary" block  @click="onSubmitEnergySourceGroup ([energyGroup, numberSystems, energyType])">Save</b-button>
-                        </b-modal>
-                    </div>
-
-                    <!--
-                    <a href="#">
-                        <b-card-img v-b-modal="energyGroup.name" @click="onSubmitEnergySourceGroup (energyGroup)" href="#" style="max-width: 20%;" top fluid :src= energyGroup.pic></b-card-img>
-                    </a>
-                    -->
-                </b-card>
+                        -->
+                    </b-card>
+                </a>
             </b-col>
         </b-row>
     </div>
@@ -92,9 +92,9 @@ export default {
     return {
       numberSystems: null,
       energyUseGroup: [
-        { id: 'energyUseGroupHeating', name: 'Heizung', pic: require('@/assets/heizung.jpg'), nameForSubmodelElementCollection: 'EnergieGruppeHeizung', idShortCD: 'EnergyGroupHeating' },
-        { id: 'energyUseGroupCooling', name: 'Kühlung', pic: require('@/assets/kuehlung.jpg'), nameForSubmodelElementCollection: 'EnergieGruppeKühlung', idShortCD: 'EnergyGroupCooling' },
-        { id: 'energyUseGroupAirHandling', name: 'Lüftung', pic: require('@/assets/lueftung.jpg'), nameForSubmodelElementCollection: 'EnergieGruppeLüftung', idShortCD: 'EnergyGroupAirHandling' }
+        { id: 'energyUseGroupHeating', name: 'Heizung', pic: require('@/assets/heizung.svg'), nameForSubmodelElementCollection: 'EnergieGruppeHeizung', idShortCD: 'EnergyGroupHeating' },
+        { id: 'energyUseGroupCooling', name: 'Kühlung', pic: require('@/assets/kuehlung.svg'), nameForSubmodelElementCollection: 'EnergieGruppeKühlung', idShortCD: 'EnergyGroupCooling' },
+        { id: 'energyUseGroupAirHandling', name: 'Lüftung', pic: require('@/assets/lueftung.svg'), nameForSubmodelElementCollection: 'EnergieGruppeLüftung', idShortCD: 'EnergyGroupAirHandling' }
       ]
     }
   },
@@ -336,5 +336,18 @@ export default {
 <style scoped>
 .card-title {
     font-size: 20px;
+}
+#energyUseGroup:hover {
+  background-color: #025939 !important;
+  color: #F2F2F2;
+  transition: all 0.5s ease;
+}
+#energyUseGroup:hover img{
+   -webkit-filter: invert(1);
+   filter: invert(1);
+}
+a {
+  color: #025939;
+  text-decoration: none;
 }
 </style>

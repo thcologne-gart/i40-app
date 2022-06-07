@@ -1,32 +1,32 @@
 <template>
     <div>
-        <b-card
-            v-bind:title = energySource.sourceName
-            class="shadow p-3 mb-5 bg-white rounded mx-4"
-            id="energy-source-card"
-        >
-        <!--
-          <router-link  :to = "{ name: energySource.name, params: { energySource: energySource, energySourceGroup: energySourceGroup }}">
-            <b-card-img @click="addComponentEnergySource([energySource, energySourceGroup])" style="max-width: 70px;" top fluid :src= energySource.pic></b-card-img>
-          </router-link>
-        -->
-         <!--
-            <b-button v-b-toggle="energySource.sourceName" variant="light" size="lg">
-                <b-card-img @click="addComponentEnergySource([energySource, energySourceGroup])" height="80px" top fluid :src= energySource.pic></b-card-img>
-            </b-button>
-            <b-collapse v-bind:id="energySource.sourceName">
-                <EnergySourceSheet :energySource="energySource" :energySourceGroup="energySourceGroup" />
-            </b-collapse>
-        -->
-            <a href="#">
-                <b-card-img v-b-modal="energySourceGroup.elementCollectionId + energySource.sourceName" height="80px" top fluid :src= energySource.pic></b-card-img>
-            </a>
-            <b-modal v-bind:id="energySourceGroup.elementCollectionId + energySource.sourceName" hide-footer width="350px" persistent :title="energySource.sourceName">
-                <p>Möchten Sie eine {{ energySource.sourceName }} zu der Energieeinsatz Gruppe {{ energySourceGroup.elementCollection }} hinzufügen?</p>
-                <hr>
-                <b-button class="mt-3" variant="outline-secondary" block  @click="addComponentEnergySource([energySource, energySourceGroup])">Ja</b-button>
-            </b-modal>
-        </b-card>
+        <a href="#">
+            <b-card
+                v-bind:title = energySource.sourceName
+                class="shadow p-3 mb-5 bg-white rounded mx-4"
+                id="card-source"
+            >
+            <!--
+            <router-link  :to = "{ name: energySource.name, params: { energySource: energySource, energySourceGroup: energySourceGroup }}">
+                <b-card-img @click="addComponentEnergySource([energySource, energySourceGroup])" style="max-width: 70px;" top fluid :src= energySource.pic></b-card-img>
+            </router-link>
+            -->
+            <!--
+                <b-button v-b-toggle="energySource.sourceName" variant="light" size="lg">
+                    <b-card-img @click="addComponentEnergySource([energySource, energySourceGroup])" height="80px" top fluid :src= energySource.pic></b-card-img>
+                </b-button>
+                <b-collapse v-bind:id="energySource.sourceName">
+                    <EnergySourceSheet :energySource="energySource" :energySourceGroup="energySourceGroup" />
+                </b-collapse>
+            -->
+                    <b-card-img v-b-modal="energySourceGroup.elementCollectionId + energySource.sourceName" height="80px" top fluid :src= energySource.pic></b-card-img>
+                    <b-modal v-bind:id="energySourceGroup.elementCollectionId + energySource.sourceName" hide-footer width="350px" persistent :title="energySource.sourceName">
+                        <p>Möchten Sie eine {{ energySource.sourceName }} zu der Energieeinsatz Gruppe {{ energySourceGroup.elementCollection }} hinzufügen?</p>
+                        <hr>
+                        <b-button class="mt-3" variant="outline-secondary" block  @click="addComponentEnergySource([energySource, energySourceGroup])">Ja</b-button>
+                    </b-modal>
+            </b-card>
+        </a>
     </div>
 </template>
 
@@ -540,15 +540,31 @@ export default {
 </script>
 
 <style scoped>
+#card-source:hover {
+  background-color: #025939 !important;
+  color: #F2F2F2;
+  transition: all 0.5s ease;
+}
+#card-source:hover img{
+   -webkit-filter: invert(1);
+   filter: invert(1);
+}
 .card-title {
     font-size: large;
 }
-#energy-source-card {
-    max-inline-size: 50%;
+#card-source {
+    max-width: 35%;
     align-content: center !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 #button-yes {
     margin-right: 40px;
+}
+a {
+  color: #025939;
+  text-decoration: none;
 }
 </style>

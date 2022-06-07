@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2018 (64 Bit) -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="15.2858mm" height="16.2278mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 1072.79 1138.9"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str1 {stroke:#5B5857;stroke-width:49.52;stroke-miterlimit:10}
+    .str0 {stroke:#5B5857;stroke-width:49.52;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .fil0 {fill:none;fill-rule:nonzero}
+   ]]>
+  </style>
+ </defs>
+ <g id="Ebene_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <line class="fil0 str0" x1="305.27" y1="346.62" x2="305.27" y2= "99.03" />
+  <polyline class="fil0 str0" points="231,148.55 305.27,222.83 379.55,148.55 "/>
+  <line class="fil0 str0" x1="239.19" y1="383.76" x2="24.75" y2= "259.97" />
+  <polyline class="fil0 str0" points="30.5,349.05 131.96,321.86 104.77,220.41 "/>
+  <line class="fil0 str0" x1="362.98" y1="383.76" x2="577.4" y2= "259.97" />
+  <polyline class="fil0 str0" points="571.65,349.05 470.19,321.86 497.37,220.41 "/>
+  <line class="fil0 str0" x1="305.27" y1="495.18" x2="305.27" y2= "742.77" />
+  <polyline class="fil0 str0" points="231,680.86 305.27,606.59 379.55,680.86 "/>
+  <line class="fil0 str0" x1="239.19" y1="445.66" x2="24.75" y2= "569.45" />
+  <polyline class="fil0 str0" points="30.5,480.37 131.96,507.56 104.77,609.02 "/>
+  <line class="fil0 str0" x1="362.98" y1="445.66" x2="577.4" y2= "569.45" />
+  <polyline class="fil0 str0" points="571.65,480.37 470.19,507.56 497.37,609.02 "/>
+  <line class="fil0 str1" x1="973.76" y1="173.31" x2="1072.79" y2= "173.31" />
+  <line class="fil0 str1" x1="973.76" y1="321.86" x2="1072.79" y2= "321.86" />
+  <line class="fil0 str1" x1="973.76" y1="470.42" x2="1072.79" y2= "470.42" />
+  <line class="fil0 str1" x1="973.76" y1="618.97" x2="1072.79" y2= "618.97" />
+  <path class="fil0 str1" d="M899.48 837.07l0 -738.03c0,-41.02 -33.25,-74.27 -74.27,-74.27 -41,0 -74.28,33.25 -74.28,74.27l0 738.03c-44.34,25.69 -74.27,73.58 -74.27,128.52 0,82.05 66.53,148.55 148.55,148.55 82.05,0 148.55,-66.5 148.55,-148.55 0,-54.95 -29.9,-102.83 -74.27,-128.52z"/>
+ </g>
+</svg>
