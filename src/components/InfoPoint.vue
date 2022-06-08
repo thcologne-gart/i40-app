@@ -21,11 +21,11 @@ export default {
 .card {
     margin-inline: 5%;
     margin-bottom: 30px;
-    margin-top: 30px;
+    margin-top: 12rem;
     max-width: 20%;
 }
 #point:hover {
-  background-color: #025939 !important;
+  background-color: #F2B705 !important;
   color: #F2F2F2;
   transition: all 0.5s ease;
 }

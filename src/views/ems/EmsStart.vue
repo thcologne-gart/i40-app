@@ -1,23 +1,28 @@
 <template>
-  <div>
+  <div id="ems-staring-site">
     <b-container id ="picture-text">
         <b-card-group>
             <b-card
+            id="ems-start-image"
             overlay
             title='Energiemanagementsystem nach DIN EN ISO 50001'
             text-variant="white"
             style="width: 100%;"
-            :img-src="require('@/assets/ems-start.jpeg')">
+            :img-src="require('@/assets/ems-welcome.jpeg')">
+              <b-card-text>Test
+              </b-card-text>
             </b-card>
+            <!--
             <b-card
             class="card mb-4 border-0">
               <b-card-text>Test
               </b-card-text>
             </b-card>
+            -->
         </b-card-group>
     </b-container>
     <b-container id="points">
-        <b-card-group>
+        <b-card-group id="point-card-group">
                 <InfoPoint :point="points[0].name" :image="points[0].pic" :text="points[0].text">
                 </InfoPoint>
                 <InfoPoint :point="points[1].name" :image="points[1].pic" :text="points[1].text">
@@ -28,6 +33,24 @@
                 </InfoPoint>
         </b-card-group>
     </b-container>
+    <b-container id ="card-start-button">
+        <b-card id ="lets-start" no-body class="overflow-hidden" text-variant="white">
+            <b-row no-gutters>
+            <b-col md="8">
+                <b-card-img :src="require('@/assets/laptop.jpeg')" alt="Image" class="rounded-0"></b-card-img>
+            </b-col>
+            <b-col md="4">
+                <b-card-body>
+                <b-card-text>
+                    Platzhalter für Blabla
+                </b-card-text>
+                <b-button to="/emsstart" variant="warning">Start</b-button>
+                </b-card-body>
+            </b-col>
+            </b-row>
+        </b-card>
+    </b-container>
+    <!--
     <div>
       <b-card
         id="ems-start"
@@ -43,6 +66,7 @@
         <b-button to="/emsstart" variant="outline-secondary">Start</b-button>
       </b-card>
     </div>
+    -->
   </div>
 </template>
 
@@ -63,6 +87,9 @@ export default {
 </script>
 
 <style scoped>
+#ems-staring-site {
+    background-color: #025939;
+}
 #ems-start {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -71,14 +98,22 @@ export default {
     margin-top: 15px;
     color: #025939;
 }
-.card {
-    width: 100%;
+#points {
+    height: 100vh;
 }
 .card-img {
     border-radius: 0;
+    height: 100vh;
 }
 .card-title {
     font-size: 110%;
+}
+#ems-start-image {
+    margin-top: -60px;
+}
+#text-sticky {
+    position: sticky;
+    top: 20px;
 }
 .container {
   position: relative;
@@ -92,5 +127,15 @@ export default {
   max-width: 4000px;
   border-style: 0;
   font-size: 200%;
+}
+#card-start-button {
+  margin-left: 0px;
+  margin-right: 0px;
+  max-width: 4000px;
+  border-style: 0;
+  font-size: 200%;
+}
+#lets-start {
+    background-color: #025939;
 }
 </style>
