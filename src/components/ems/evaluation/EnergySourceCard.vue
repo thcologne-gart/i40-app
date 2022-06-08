@@ -553,13 +553,15 @@ export default {
     font-size: large;
 }
 #card-source {
-    max-width: 35%;
+    width: 40%;
     align-content: center !important;
     display: block !important;
     margin-left: auto !important;
     margin-right: auto !important;
 }
-
+.card-image {
+    width: 40%;
+}
 #button-yes {
     margin-right: 40px;
 }

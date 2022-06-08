@@ -43,9 +43,9 @@ export default {
   created () {
     this.submodelName = 'Unternehmen'
     this.submodels = [
-      { id: 1, name: 'Unternehmen', link: '/context/organization' },
-      { id: 2, name: 'Standorte', link: '/context/sites' },
-      { id: 3, name: 'Gebäude', link: '/context/buildings' }
+      { id: 1, name: 'Unternehmen', link: '/contextstart/organization' },
+      { id: 2, name: 'Standorte', link: '/contextstart/sites' },
+      { id: 3, name: 'Gebäude', link: '/contextstart/buildings' }
     ]
     this.emsChapter = { name: 'Kontext', link: '/contextstart' }
   }

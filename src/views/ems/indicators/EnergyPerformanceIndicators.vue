@@ -52,11 +52,11 @@ export default {
   },
   created () {
     this.submodels = [
-      { id: 1, name: 'EnPis Heizung', link: '/energy-performance-indicator/heating' },
-      { id: 2, name: 'EnPis Lüftung', link: '/energy-performance-indicator/air' },
-      { id: 3, name: 'EnPis Strom', link: '/energy-performance-indicator/electricity' }
+      { id: 1, name: 'EnPis Heizung', link: '/indicators-start/heating' },
+      { id: 2, name: 'EnPis Lüftung', link: '/indicators-start/air' },
+      { id: 3, name: 'EnPis Strom', link: '/indicators-start/electricity' }
     ]
-    this.emsChapter = { name: 'Energieleistungskennzahlen', link: '/energy-performance-indicator' }
+    this.emsChapter = { name: 'Energieleistungskennzahlen', link: '/indicators-start' }
   }
 }
 </script>

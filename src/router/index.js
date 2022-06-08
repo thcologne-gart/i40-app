@@ -118,33 +118,33 @@ const routes = [
     component: () => import('../views/ems/indicators/IndicatorsStart.vue')
   },
   {
-    path: '/energetic-evaluation/energy-type',
+    path: '/evaluation-start/energy-type',
     name: 'Energy Type',
     component: () => import('../views/ems/evaluation/EnergyType.vue')
   },
   {
-    path: '/energetic-evaluation/energy-source',
+    path: '/evaluation-start/energy-source',
     name: 'Energy Source',
     component: () => import('../views/ems/evaluation/EnergySource.vue')
   },
   {
-    path: '/energetic-evaluation/energy-source/energy-source-group',
+    path: '/evaluation-start/energy-source/energy-source-group',
     name: 'Energy Source Group',
     component: () => import('../views/ems/evaluation/EnergySourceGroup.vue'),
     props: true
   },
   {
-    path: '/energetic-evaluation/energy-consumption',
+    path: '/evaluation-start/energy-consumption',
     name: 'Energy Consumption',
     component: () => import('../views/ems/evaluation/EnergyConsumption.vue')
   },
   {
-    path: '/energetic-evaluation/seu',
+    path: '/evaluation-start/seu',
     name: 'Energy Consumption',
     component: () => import('../views/ems/evaluation/SEU.vue')
   },
   {
-    path: '/energetic-evaluation/energy-source/component',
+    path: '/evaluation-start/energy-source/component',
     name: 'Component',
     component: () => import('../views/ems/evaluation/Component.vue'),
     props: true
@@ -155,32 +155,32 @@ const routes = [
     component: () => import('../views/ems/evaluation/GasBoiler.vue')
   },
   {
-    path: '/energy-performance-indicator/heating',
+    path: '/indicators-start/heating',
     name: 'EnPi Heating',
     component: () => import('../views/ems/indicators/EnPiHeating.vue')
   },
   {
-    path: '/energy-performance-indicator/air',
+    path: '/indicators-start/air',
     name: 'EnPi AHU',
     component: () => import('../views/ems/indicators/EnPiAHU.vue')
   },
   {
-    path: '/energy-performance-indicator/electricity',
+    path: '/indicators-start/electricity',
     name: 'EnPi Electric',
     component: () => import('../views/ems/indicators/EnPiElectric.vue')
   },
   {
-    path: '/context/organization',
+    path: '/contextstart/organization',
     name: 'Organization',
     component: () => import('../views/ems/context/Organization.vue')
   },
   {
-    path: '/context/sites',
+    path: '/contextstart/sites',
     name: 'Sites',
     component: () => import('../views/ems/context/Sites.vue')
   },
   {
-    path: '/context/buildings',
+    path: '/contextstart/buildings',
     name: 'Buildings',
     component: () => import('../views/ems/context/Buildings.vue')
   },
