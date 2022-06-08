@@ -15,7 +15,8 @@
                                     </b-col>
                                 </b-row>
                             </b-card>
-                            <div v-for="site in sites" :key="site[2].value">
+                            <div v-for="site in sites" :key="site.value">
+                            <!--<div v-for="site in sites" :key="site[2].value">-->
                                 <div v-if="site[4].value === site2">
                                     <EnergyTypeInformation :site="site" :building="building" :buildings="buildings" />
                                 </div>
