@@ -643,6 +643,412 @@ export default {
           this.$store.dispatch('addSubmodelToAas', [submodelKeys, key])
         }
       }
+      // Add Concept Description EnPis
+      const electricityEnpi = idShorts.includes('SubmodelEnPiElectricity')
+      if (electricityEnpi !== true && this.energyType.idShortCDEnpi === 'SubmodelEnpiElectricity') {
+        const newConceptDescriptionEnergyTypeSubmodel = {}
+        newConceptDescriptionEnergyTypeSubmodel.identification = {
+          idType: 'IRI',
+          id: this.energyType.idEnpi
+        }
+        newConceptDescriptionEnergyTypeSubmodel.idShort = this.energyType.idShortCDEnpi
+        newConceptDescriptionEnergyTypeSubmodel.modelType = {
+          name: 'ConceptDescription'
+        }
+        newConceptDescriptionEnergyTypeSubmodel.embeddedDataSpecification = [
+          {
+            dataSpecification: {
+              keys: []
+            },
+            dataSpecificationContent: {
+              preferredName: [
+                {
+                  language: 'DE',
+                  text: this.energyType.nameForSubmodelEnpi
+                },
+                {
+                  language: 'EN',
+                  text: this.energyType.idShortCDEnpi
+                }
+              ],
+              shortName: [
+                {
+                  language: 'DE',
+                  text: this.energyType.nameForSubmodelEnpi
+                },
+                {
+                  language: 'EN',
+                  text: this.energyType.idShortCDEnpi
+                }
+              ],
+              unit: '',
+              dataType: '',
+              definition: [
+                {
+                  language: 'DE',
+                  text: 'Teilmodell der ' + this.energyType.nameForSubmodelEnpi
+                },
+                {
+                  language: 'EN',
+                  text: 'Submodel of' + this.energyType.idShortCDEnpi
+                }
+              ]
+            }
+          }
+        ]
+        newConceptDescriptionEnergyTypeSubmodel.isCaseOf = []
+        newConceptDescriptionEnergyTypeSubmodel.descriptions = []
+
+        this.$store.dispatch('createConceptDescriptions', newConceptDescriptionEnergyTypeSubmodel)
+      }
+
+      const heatEnpi = idShorts.includes('SubmodelEnpieHeat')
+      if (heatEnpi !== true && this.energyType.idShortCDEnpi === 'SubmodelEnpiHeat') {
+        const newConceptDescriptionEnergyTypeSubmodel = {}
+        newConceptDescriptionEnergyTypeSubmodel.identification = {
+          idType: 'IRI',
+          id: this.energyType.idEnpi
+        }
+        newConceptDescriptionEnergyTypeSubmodel.idShort = this.energyType.idShortCDEnpi
+        newConceptDescriptionEnergyTypeSubmodel.modelType = {
+          name: 'ConceptDescription'
+        }
+        newConceptDescriptionEnergyTypeSubmodel.embeddedDataSpecification = [
+          {
+            dataSpecification: {
+              keys: []
+            },
+            dataSpecificationContent: {
+              preferredName: [
+                {
+                  language: 'DE',
+                  text: this.energyType.nameForSubmodelEnpi
+                },
+                {
+                  language: 'EN',
+                  text: this.energyType.idShortCDEnpi
+                }
+              ],
+              shortName: [
+                {
+                  language: 'DE',
+                  text: this.energyType.nameForSubmodelEnpi
+                },
+                {
+                  language: 'EN',
+                  text: this.energyType.idShortCDEnpi
+                }
+              ],
+              unit: '',
+              dataType: '',
+              definition: [
+                {
+                  language: 'DE',
+                  text: 'Teilmodell der ' + this.energyType.nameForSubmodelEnpi
+                },
+                {
+                  language: 'EN',
+                  text: 'Submodel of' + this.energyType.idShortCDEnpi
+                }
+              ]
+            }
+          }
+        ]
+        newConceptDescriptionEnergyTypeSubmodel.isCaseOf = []
+        newConceptDescriptionEnergyTypeSubmodel.descriptions = []
+
+        this.$store.dispatch('createConceptDescriptions', newConceptDescriptionEnergyTypeSubmodel)
+      }
+
+      const gasEnpi = idShorts.includes('SubmodelEnpiGas')
+      if (gasEnpi !== true && this.energyType.idShortCDEnpi === 'SubmodelEnpiGas') {
+        const newConceptDescriptionEnergyTypeSubmodel = {}
+        newConceptDescriptionEnergyTypeSubmodel.identification = {
+          idType: 'IRI',
+          id: this.energyType.idEnpi
+        }
+        newConceptDescriptionEnergyTypeSubmodel.idShort = this.energyType.idShortCDEnpi
+        newConceptDescriptionEnergyTypeSubmodel.modelType = {
+          name: 'ConceptDescription'
+        }
+        newConceptDescriptionEnergyTypeSubmodel.embeddedDataSpecification = [
+          {
+            dataSpecification: {
+              keys: []
+            },
+            dataSpecificationContent: {
+              preferredName: [
+                {
+                  language: 'DE',
+                  text: this.energyType.nameForSubmodelEnpi
+                },
+                {
+                  language: 'EN',
+                  text: this.energyType.idShortCDEnpi
+                }
+              ],
+              shortName: [
+                {
+                  language: 'DE',
+                  text: this.energyType.nameForSubmodelEnpi
+                },
+                {
+                  language: 'EN',
+                  text: this.energyType.idShortCDEnpi
+                }
+              ],
+              unit: '',
+              dataType: '',
+              definition: [
+                {
+                  language: 'DE',
+                  text: 'Teilmodell der ' + this.energyType.nameForSubmodelEnpi
+                },
+                {
+                  language: 'EN',
+                  text: 'Submodel of' + this.energyType.idShortCDEnpi
+                }
+              ]
+            }
+          }
+        ]
+        newConceptDescriptionEnergyTypeSubmodel.isCaseOf = []
+        newConceptDescriptionEnergyTypeSubmodel.descriptions = []
+
+        this.$store.dispatch('createConceptDescriptions', newConceptDescriptionEnergyTypeSubmodel)
+      }
+
+      const oilEnpi = idShorts.includes('SubmodelEnpiOil')
+      if (oilEnpi !== true && this.energyType.idShortCDEnpi === 'SubmodelEnpiOil') {
+        const newConceptDescriptionEnergyTypeSubmodel = {}
+        newConceptDescriptionEnergyTypeSubmodel.identification = {
+          idType: 'IRI',
+          id: this.energyType.idEnpi
+        }
+        newConceptDescriptionEnergyTypeSubmodel.idShort = this.energyType.idShortCDEnpi
+        newConceptDescriptionEnergyTypeSubmodel.modelType = {
+          name: 'ConceptDescription'
+        }
+        newConceptDescriptionEnergyTypeSubmodel.embeddedDataSpecification = [
+          {
+            dataSpecification: {
+              keys: []
+            },
+            dataSpecificationContent: {
+              preferredName: [
+                {
+                  language: 'DE',
+                  text: this.energyType.nameForSubmodelEnpi
+                },
+                {
+                  language: 'EN',
+                  text: this.energyType.idShortCDEnpi
+                }
+              ],
+              shortName: [
+                {
+                  language: 'DE',
+                  text: this.energyType.nameForSubmodelEnpi
+                },
+                {
+                  language: 'EN',
+                  text: this.energyType.idShortCDEnpi
+                }
+              ],
+              unit: '',
+              dataType: '',
+              definition: [
+                {
+                  language: 'DE',
+                  text: 'Teilmodell der ' + this.energyType.nameForSubmodelEnpi
+                },
+                {
+                  language: 'EN',
+                  text: 'Submodel of' + this.energyType.idShortCDEnpi
+                }
+              ]
+            }
+          }
+        ]
+        newConceptDescriptionEnergyTypeSubmodel.isCaseOf = []
+        newConceptDescriptionEnergyTypeSubmodel.descriptions = []
+
+        this.$store.dispatch('createConceptDescriptions', newConceptDescriptionEnergyTypeSubmodel)
+      }
+
+      const biomassEnpi = idShorts.includes('SubmodelEnpiBiomass')
+      if (biomassEnpi !== true && this.energyType.idShortCDEnpi === 'SubmodelEnpiBiomass') {
+        const newConceptDescriptionEnergyTypeSubmodel = {}
+        newConceptDescriptionEnergyTypeSubmodel.identification = {
+          idType: 'IRI',
+          id: this.energyType.idEnpi
+        }
+        newConceptDescriptionEnergyTypeSubmodel.idShort = this.energyType.idShortCDEnpi
+        newConceptDescriptionEnergyTypeSubmodel.modelType = {
+          name: 'ConceptDescription'
+        }
+        newConceptDescriptionEnergyTypeSubmodel.embeddedDataSpecification = [
+          {
+            dataSpecification: {
+              keys: []
+            },
+            dataSpecificationContent: {
+              preferredName: [
+                {
+                  language: 'DE',
+                  text: this.energyType.nameForSubmodelEnpi
+                },
+                {
+                  language: 'EN',
+                  text: this.energyType.idShortCDEnpi
+                }
+              ],
+              shortName: [
+                {
+                  language: 'DE',
+                  text: this.energyType.nameForSubmodelEnpi
+                },
+                {
+                  language: 'EN',
+                  text: this.energyType.idShortCDEnpi
+                }
+              ],
+              unit: '',
+              dataType: '',
+              definition: [
+                {
+                  language: 'DE',
+                  text: 'Teilmodell der ' + this.energyType.nameForSubmodelEnpi
+                },
+                {
+                  language: 'EN',
+                  text: 'Submodel of' + this.energyType.idShortCDEnpi
+                }
+              ]
+            }
+          }
+        ]
+        newConceptDescriptionEnergyTypeSubmodel.isCaseOf = []
+        newConceptDescriptionEnergyTypeSubmodel.descriptions = []
+
+        this.$store.dispatch('createConceptDescriptions', newConceptDescriptionEnergyTypeSubmodel)
+      }
+
+      const pelletsEnpi = idShorts.includes('SubmodelEnpiPellets')
+      if (pelletsEnpi !== true && this.energyType.idShortCDEnpi === 'SubmodelEnpiPellets') {
+        const newConceptDescriptionEnergyTypeSubmodel = {}
+        newConceptDescriptionEnergyTypeSubmodel.identification = {
+          idType: 'IRI',
+          id: this.energyType.idEnpi
+        }
+        newConceptDescriptionEnergyTypeSubmodel.idShort = this.energyType.idShortCDEnpi
+        newConceptDescriptionEnergyTypeSubmodel.modelType = {
+          name: 'ConceptDescription'
+        }
+        newConceptDescriptionEnergyTypeSubmodel.embeddedDataSpecification = [
+          {
+            dataSpecification: {
+              keys: []
+            },
+            dataSpecificationContent: {
+              preferredName: [
+                {
+                  language: 'DE',
+                  text: this.energyType.nameForSubmodelEnpi
+                },
+                {
+                  language: 'EN',
+                  text: this.energyType.idShortCDEnpi
+                }
+              ],
+              shortName: [
+                {
+                  language: 'DE',
+                  text: this.energyType.nameForSubmodelEnpi
+                },
+                {
+                  language: 'EN',
+                  text: this.energyType.idShortCDEnpi
+                }
+              ],
+              unit: '',
+              dataType: '',
+              definition: [
+                {
+                  language: 'DE',
+                  text: 'Teilmodell der ' + this.energyType.nameForSubmodelEnpi
+                },
+                {
+                  language: 'EN',
+                  text: 'Submodel of' + this.energyType.idShortCDEnpi
+                }
+              ]
+            }
+          }
+        ]
+        newConceptDescriptionEnergyTypeSubmodel.isCaseOf = []
+        newConceptDescriptionEnergyTypeSubmodel.descriptions = []
+
+        this.$store.dispatch('createConceptDescriptions', newConceptDescriptionEnergyTypeSubmodel)
+      }
+
+      const steamEnpi = idShorts.includes('SubmodelEnpiSteam')
+      if (steamEnpi !== true && this.energyType.idShortCDEnpi === 'SubmodelEnpiSteam') {
+        const newConceptDescriptionEnergyTypeSubmodel = {}
+        newConceptDescriptionEnergyTypeSubmodel.identification = {
+          idType: 'IRI',
+          id: this.energyType.idEnpi
+        }
+        newConceptDescriptionEnergyTypeSubmodel.idShort = this.energyType.idShortCDEnpi
+        newConceptDescriptionEnergyTypeSubmodel.modelType = {
+          name: 'ConceptDescription'
+        }
+        newConceptDescriptionEnergyTypeSubmodel.embeddedDataSpecification = [
+          {
+            dataSpecification: {
+              keys: []
+            },
+            dataSpecificationContent: {
+              preferredName: [
+                {
+                  language: 'DE',
+                  text: this.energyType.nameForSubmodelEnpi
+                },
+                {
+                  language: 'EN',
+                  text: this.energyType.idShortCDEnpi
+                }
+              ],
+              shortName: [
+                {
+                  language: 'DE',
+                  text: this.energyType.nameForSubmodelEnpi
+                },
+                {
+                  language: 'EN',
+                  text: this.energyType.idShortCDEnpi
+                }
+              ],
+              unit: '',
+              dataType: '',
+              definition: [
+                {
+                  language: 'DE',
+                  text: 'Teilmodell der ' + this.energyType.nameForSubmodelEnpi
+                },
+                {
+                  language: 'EN',
+                  text: 'Submodel of' + this.energyType.idShortCDEnpi
+                }
+              ]
+            }
+          }
+        ]
+        newConceptDescriptionEnergyTypeSubmodel.isCaseOf = []
+        newConceptDescriptionEnergyTypeSubmodel.descriptions = []
+
+        this.$store.dispatch('createConceptDescriptions', newConceptDescriptionEnergyTypeSubmodel)
+      }
     }
   }
 }
