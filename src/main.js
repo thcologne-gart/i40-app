@@ -55,6 +55,7 @@ new Vue({
     this.$store.dispatch('loadSiteInformation')
     this.$store.dispatch('loadBuildingInformation')
     this.$store.dispatch('loadEnergyTypeInformation')
+    this.$store.dispatch('loadEnpiSubmodels')
     this.$store.dispatch('loadEnpis')
 
     // this.$store.dispatch('loadEnergyTypes')

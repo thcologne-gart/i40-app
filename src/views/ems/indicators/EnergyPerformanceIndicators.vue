@@ -8,7 +8,7 @@
                     <slot name="site" v-bind:site="site">Platzhalter</slot>
                 </b-tab>
             </div>
-        </b-tabs>
+          </b-tabs>
       </EmsGrid>
     </div>
 </template>

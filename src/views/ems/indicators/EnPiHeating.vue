@@ -6,8 +6,16 @@
                 <div v-if="site === site2">
                     <SubmodelHeader :site ="site2" :submodelName="submodelName" :numberOfBuildings="numberOfBuildings">
                         <template v-slot:building="{ building }">
-                            <b-card class="shadow p-3 mb-5 bg-white rounded" style="width: 100%;" :title="submodelName">
-                                <hr>
+                            <b-card class="shadow p-3 mb-5 bg-white rounded" style="width: 100%;">
+                                <b-tabs content-class="mt-3" id ="nav-tabs">
+                                    <div v-for="enpi in enpiSubmodels" :key="enpi">
+                                        <div v-if="site === enpi[1][0].value && building === enpi[2][1].value">
+                                            <b-tab v-bind:title= enpi[0].submodelName >
+                                                <slot name="site" v-bind:site="enpi[0].submodelName"></slot>
+                                            </b-tab>
+                                        </div>
+                                    </div>
+                                </b-tabs>
                                 <b-row>
                                     <EnPis :submodelId ="submodelId" :site="site" :building="building" :buildings="buildings" />
                                 </b-row>
@@ -94,6 +102,32 @@ export default {
         console.log(i)
       }
       return this.submodels
+    },
+    enpiSubmodels () {
+      const enpiSubmodels = this.$store.getters.loadedEnpiSubmodels
+      console.log(enpiSubmodels)
+      // console.log(this.energySourceGroup)
+      const submodels = []
+      for (const item in enpiSubmodels) {
+        // console.log(energyTypeSubmodels[item])
+        submodels.push(enpiSubmodels[item][0].submodelName)
+        /*
+        if (energyTypeSubmodels[item][0].submodelId === this.energySourceGroup.submodelId) {
+          // console.log(energyTypeSubmodels[item])
+          for (const elementCollection in energyTypeSubmodels[item]) {
+            const test = energyTypeSubmodels[item][elementCollection]
+            // console.log(test.idShort)
+            for (const wow in test) {
+              if (test[wow].idShort === this.energySourceGroup.elementCollection) {
+                energySourceComponents = test
+              }
+            }
+          }
+        }
+        */
+      }
+      console.log(submodels)
+      return enpiSubmodels
     }
   },
   created () {

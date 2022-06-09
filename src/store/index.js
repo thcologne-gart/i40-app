@@ -17,6 +17,7 @@ export default new Vuex.Store({
     loadedSiteInformation: null,
     loadedBuildingInformation: null,
     loadedEnergyTypeInformation: null,
+    loadedEnpiSubmodels: null,
     loadEnergySourceGroupsComponents: null,
     // loadedEnergyTypes: null,
     loadedPdfs: null,
@@ -47,6 +48,9 @@ export default new Vuex.Store({
     updateEnergyTypes (state, payload) {
       state.loadedEnergyTypeInformation = payload
     },
+    updateEnpis (state, payload) {
+      state.loadedEnpiSubmodels = payload
+    },
     setLoadedAas (state, payload) {
       state.loadedAas = payload
     },
@@ -67,6 +71,9 @@ export default new Vuex.Store({
     },
     setLoadedEnergyTypeInformation (state, payload) {
       state.loadedEnergyTypeInformation = payload
+    },
+    setLoadedEnpiSubmodels (state, payload) {
+      state.loadedEnpiSubmodels = payload
     },
     setLoadedEnpis (state, payload) {
       state.loadedEnpis = payload
@@ -404,6 +411,40 @@ export default new Vuex.Store({
         }
       })
     },
+    loadEnpiSubmodels ({ commit }) {
+      const database = getDatabase()
+      onValue(ref(database, 'submodels/'), (snapshot) => {
+        const data = snapshot.val()
+        console.log(data)
+        let keySubmodelContext2
+        const submodelElements2 = []
+        for (const key in data) {
+          if (data[key].payload.semanticId.keys[0].value === 'submodel/enpiElectricity' || data[key].payload.semanticId.keys[0].value === 'submodel/enpiHeat' || data[key].payload.semanticId.keys[0].value === 'submodel/enpiGas' || data[key].payload.semanticId.keys[0].value === 'submodel/enpiOil' || data[key].payload.semanticId.keys[0].value === 'submodel/enpiBiomass' || data[key].payload.semanticId.keys[0].value === 'submodel/enpiPellets' || data[key].payload.semanticId.keys[0].value === 'submodel/enpiSteam') {
+            keySubmodelContext2 = key
+            const allSubmodelElements = []
+            allSubmodelElements.push({
+              submodelName: data[key].payload.idShort,
+              submodelId: data[key].payload.identification.id,
+              key: keySubmodelContext2,
+              submodelSemanticId: data[key].payload.semanticId.keys[0].value
+            })
+            for (const element in data[key].payload.submodelElements) {
+              if (data[key].payload.submodelElements[element].modelType.name === 'Property') {
+                allSubmodelElements.push({
+                  [element]: data[key].payload.submodelElements[element]
+                })
+              } else if (data[key].payload.submodelElements[element].modelType.name === 'SubmodelElementCollection') {
+                allSubmodelElements.push({
+                  [element]: data[key].payload.submodelElements[element]
+                })
+              }
+            }
+            submodelElements2.push(allSubmodelElements)
+            commit('setLoadedEnpiSubmodels', submodelElements2)
+          }
+        }
+      })
+    },
 
     loadOrganizationInformation ({ commit }) {
       const database = getDatabase()
@@ -517,7 +558,6 @@ export default new Vuex.Store({
           console.log(error)
         })
     },
-
     loadEnpis ({ commit }) {
       const database = getDatabase()
       // const readEnpis = ref(database, 'enpis/')
@@ -850,6 +890,9 @@ export default new Vuex.Store({
     },
     loadedEnergyTypeInformation (state) {
       return state.loadedEnergyTypeInformation
+    },
+    loadedEnpiSubmodels (state) {
+      return state.loadedEnpiSubmodels
     },
     loadedEnpis (state) {
       return state.loadedEnpis
