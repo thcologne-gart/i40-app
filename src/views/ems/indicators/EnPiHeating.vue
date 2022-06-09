@@ -6,7 +6,7 @@
                 <div v-if="site === site2">
                     <SubmodelHeader :site ="site2" :submodelName="submodelName" :numberOfBuildings="numberOfBuildings">
                         <template v-slot:building="{ building }">
-                            <b-card class="shadow p-3 mb-5 bg-white rounded" style="width: 100%;">
+                            <b-card class="shadow p-3 mb-5 bg-white rounded" id="enpi-card">
                                 <b-tabs content-class="mt-3" id ="nav-tabs">
                                     <div v-for="enpi in enpiSubmodels" :key="enpi">
                                         <div v-if="site === enpi[1][0].value && building === enpi[2][1].value">
@@ -136,3 +136,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+#enpi-card {
+    width: 100%;
+    padding: 0;
+}
+</style>

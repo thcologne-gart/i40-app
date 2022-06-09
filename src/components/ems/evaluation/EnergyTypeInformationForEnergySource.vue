@@ -5,7 +5,7 @@
             <div id ="displayBuildingInformation">
                 <div v-for="energyType in energyTypes" :key="energyType[0].key">
                     <div v-if="energyType[1][0].modelType.name === 'Property'">
-                        <div v-if="energyType[1][0].value === site[4].value && energyType[2][1].value === building " >
+                        <div v-if="energyType[1][0].value === site[4].value && energyType[2][1].value === building" >
                             <b-row id="ausgewählteEnergieart">
                                 <b-col>
                                     <div class="mb-3">
@@ -15,7 +15,7 @@
                                     </div>
                                     <div v-if="energyType[0].submodelSemanticId === 'submodel/energyTypeElectricity'">
                                         <b-collapse v-bind:id="energyType[0].submodelId">
-                                            <EnergyTypeElectricity :energyType="energyType" />
+                                            <EnergyTypeElectricity :energyType="energyType" :enpis="enpis" :site="site[4].value" :building="building"/>
                                         </b-collapse>
                                     </div>
                                     <div v-if="energyType[0].submodelSemanticId === 'submodel/energyTypeHeat'">
@@ -77,6 +77,9 @@ export default {
   computed: {
     energyTypes () {
       return this.$store.getters.loadedEnergyTypeInformation
+    },
+    enpis () {
+      return this.$store.getters.loadedEnpiSubmodels
     },
     aas () {
       const aas = this.$store.getters.loadedAas
