@@ -208,13 +208,13 @@ export default {
   },
   async created () {
     this.energyTypes = [
-      { id: 'submodel/energyTypeElectricity', name: 'Strom', pic: require('@/assets/electricity.svg'), nameForSubmodel: 'Energieart Strom', idShortCD: 'SubmodelEnergyTypeElectricity' },
-      { id: 'submodel/energyTypeHeat', name: 'Wärme', pic: require('@/assets/heat.svg'), nameForSubmodel: 'Energieart Wärme', idShortCD: 'SubmodelEnergyTypeHeat' },
-      { id: 'submodel/energyTypeGas', name: 'Gas', pic: require('@/assets/gas.svg'), nameForSubmodel: 'Energieart Gas', idShortCD: 'SubmodelEnergyTypeGas' },
-      { id: 'submodel/energyTypeOil', name: 'Öl', pic: require('@/assets/oil.svg'), nameForSubmodel: 'Energieart Öl', idShortCD: 'SubmodelEnergyTypeOil' },
-      { id: 'submodel/energyTypeBiomass', name: 'Biomasse', pic: require('@/assets/biomass.svg'), nameForSubmodel: 'Energieart Biomasse', idShortCD: 'SubmodelEnergyTypeBiomass' },
-      { id: 'submodel/energyTypePellets', name: 'Holzpellets', pic: require('@/assets/pellets.svg'), nameForSubmodel: 'Energieart Holzpellets', idShortCD: 'SubmodelEnergyTypePellets' },
-      { id: 'submodel/energyTypeSteam', name: 'Dampf', pic: require('@/assets/steam.svg'), nameForSubmodel: 'Energieart Danpf', idShortCD: 'SubmodelEnergyTypeSteam' }
+      { id: 'submodel/energyTypeElectricity', name: 'Strom', pic: require('@/assets/electricity.svg'), nameForSubmodel: 'Energieart Strom', idShortCD: 'SubmodelEnergyTypeElectricity', idEnpi: 'submodel/enpiElectricity', nameEnpi: 'Strom', nameForSubmodelEnpi: 'EnPi Strom', idShortCDEnpi: 'SubmodelEnpiElectricity' },
+      { id: 'submodel/energyTypeHeat', name: 'Wärme', pic: require('@/assets/heat.svg'), nameForSubmodel: 'Energieart Wärme', idShortCD: 'SubmodelEnergyTypeHeat', idEnpi: 'submodel/enpiHeat', nameEnpi: 'Wärme', nameForSubmodelEnpi: 'EnPi Wärme', idShortCDEnpi: 'SubmodelEnpiHeat' },
+      { id: 'submodel/energyTypeGas', name: 'Gas', pic: require('@/assets/gas.svg'), nameForSubmodel: 'Energieart Gas', idShortCD: 'SubmodelEnergyTypeGas', idEnpi: 'submodel/enpiGas', nameEnpi: 'Gas', nameForSubmodelEnpi: 'EnPi Gas', idShortCDEnpi: 'SubmodelEnpiGas' },
+      { id: 'submodel/energyTypeOil', name: 'Öl', pic: require('@/assets/oil.svg'), nameForSubmodel: 'Energieart Öl', idShortCD: 'SubmodelEnergyTypeOil', idEnpi: 'submodel/enpiOil', nameEnpi: 'Öl', nameForSubmodelEnpi: 'EnPi Öl', idShortCDEnpi: 'SubmodelEnpiOil' },
+      { id: 'submodel/energyTypeBiomass', name: 'Biomasse', pic: require('@/assets/biomass.svg'), nameForSubmodel: 'Energieart Biomasse', idShortCD: 'SubmodelEnergyTypeBiomass', idEnpi: 'submodel/enpiBiomass', nameEnpi: 'Biomasse', nameForSubmodelEnpi: 'EnPi Biomasse', idShortCDEnpi: 'SubmodelEnpiBiomass' },
+      { id: 'submodel/energyTypePellets', name: 'Holzpellets', pic: require('@/assets/pellets.svg'), nameForSubmodel: 'Energieart Holzpellets', idShortCD: 'SubmodelEnergyTypePellets', idEnpi: 'submodel/enpiPellets', nameEnpi: 'Holzpellets', nameForSubmodelEnpi: 'EnPi Holzpellets', idShortCDEnpi: 'SubmodelEnpiPellets' },
+      { id: 'submodel/energyTypeSteam', name: 'Dampf', pic: require('@/assets/steam.svg'), nameForSubmodel: 'Energieart Danpf', idShortCD: 'SubmodelEnergyTypeSteam', idEnpi: 'submodel/enpiSteam', nameEnpi: 'Dampf', nameForSubmodelEnpi: 'EnPi Dampf', idShortCDEnpi: 'SubmodelEnpiSteam' }
     ]
     this.submodelName = 'Energieart'
     // this.submodelsJson = await this.fetchTasks()

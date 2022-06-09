@@ -52,9 +52,7 @@ export default {
   },
   created () {
     this.submodels = [
-      { id: 1, name: 'EnPis Heizung', link: '/indicators-start/heating' },
-      { id: 2, name: 'EnPis Lüftung', link: '/indicators-start/air' },
-      { id: 3, name: 'EnPis Strom', link: '/indicators-start/electricity' }
+      { id: 1, name: 'EnPis', link: '/indicators-start/heating' }
     ]
     this.emsChapter = { name: 'Energieleistungskennzahlen', link: '/indicators-start' }
   }

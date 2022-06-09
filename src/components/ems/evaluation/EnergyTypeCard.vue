@@ -36,6 +36,7 @@ export default {
   methods: {
     onSubmitEnergyType (event) {
       event.preventDefault()
+      console.log(this.energyType)
       const newEnergyType = {}
       const submodelIdentification = Math.floor(Math.random() * 100000)
       const submodelKeySemanticId = {
@@ -543,6 +544,104 @@ export default {
         newConceptDescriptionEnergyTypeSubmodel.descriptions = []
 
         this.$store.dispatch('createConceptDescriptions', newConceptDescriptionEnergyTypeSubmodel)
+      }
+      // Add EnPi Submodels
+      const newEnPi = {}
+      const submodelIdentificationEnPi = Math.floor(Math.random() * 100000)
+      const submodelKeySemanticIdEnPi = {
+        type: 'GlobalReference',
+        local: true,
+        // value: 'building/energy-type',
+        value: this.energyType.idEnpi,
+        index: 0,
+        idType: 'IRDI'
+      }
+      newEnPi.semanticId = {
+        keys: [submodelKeySemanticIdEnPi]
+      }
+      newEnPi.qualifiers = []
+      newEnPi.identification = {
+        idType: 'IRI',
+        id: `submodels/enpi/${submodelIdentificationEnPi}`
+      }
+      newEnPi.idShort = this.energyType.nameForSubmodelEnpi
+      newEnPi.category = 'CONSTANT'
+      newEnPi.modelType = {
+        name: 'Submodel'
+      }
+      newEnPi.kind = 'Instance'
+
+      newEnPi.submodelElements = [
+        {
+          value: this.site,
+          semanticId: {
+            keys: [{
+              type: 'GlobalReference',
+              local: true,
+              value: 'ems/context-semantics/numberSite',
+              index: 0,
+              idType: 'IRI'
+            }]
+          },
+          constraints: [],
+          idShort: 'NumberOfSite',
+          category: 'CONSTANT',
+          modelType: {
+            name: 'Property'
+          },
+          valuetype: {
+            dataObjectType: {
+              name: 'INTEGER'
+            }
+          },
+          kind: 'Instance'
+        },
+        {
+          value: this.buildingNumber,
+          semanticId: {
+            keys: [{
+              type: 'GlobalReference',
+              local: true,
+              value: 'ems/context-semantics/buildingNumber',
+              index: 0,
+              idType: 'IRI'
+            }]
+          },
+          constraints: [],
+          idShort: 'BuildingNumber',
+          category: 'CONSTANT',
+          modelType: {
+            name: 'Property'
+          },
+          valuetype: {
+            dataObjectType: {
+              name: 'INTEGER'
+            }
+          },
+          kind: 'Instance'
+        }
+      ]
+      this.$store.dispatch('createSubmodelContext', newEnPi)
+      let submodelIdEnPi
+      for (const building in this.buildings) {
+        if (this.buildingNumber === this.buildings[building].buildingNumber && this.site === this.buildings[building].numberOfSite) {
+          submodelIdEnPi = this.buildings[building].submodelIdEnPi
+          // console.log(this.buildings[building].buildingNumber)
+        }
+      }
+      for (const item in this.aas) {
+        // console.log(this.aas)
+        if (submodelIdEnPi === this.aas[item].submodelId) {
+          const key = this.aas[item].key
+          const submodelKeys = {
+            type: 'Submodel',
+            local: true,
+            value: `submodels/energy-type/${submodelIdentificationEnPi}`,
+            index: 0,
+            idType: 'IRI'
+          }
+          this.$store.dispatch('addSubmodelToAas', [submodelKeys, key])
+        }
       }
     }
   }

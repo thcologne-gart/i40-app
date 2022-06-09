@@ -204,6 +204,7 @@ export default new Vuex.Store({
 
     createSubmodelContext ({ commit }, payload) {
       const database = getDatabase()
+      console.log(payload)
       push(ref(database, 'submodels/'), {
         payload
       })
@@ -397,7 +398,7 @@ export default new Vuex.Store({
             })
             */
             submodelElements2.push(allSubmodelElements)
-            console.log(submodelElements2)
+            // console.log(submodelElements2)
             commit('setLoadedEnergyTypeInformation', submodelElements2)
           }
         }

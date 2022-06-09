@@ -96,6 +96,7 @@ footer {
     border: 2px solid #F2B705;
     color: #025939;
     border-radius: 4px;
+    min-width: 9rem;
   }
   }
 }
