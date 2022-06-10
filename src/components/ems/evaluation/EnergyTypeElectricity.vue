@@ -3,8 +3,6 @@
         <b-row>
             <b-col :key="energyGroup.id" v-for="energyGroup in energyUseGroup">
                 <a href="#">
-                    <div>{{ building }}</div>
-                    <div>{{ getEnpis }}</div>
                     <b-card id="energyUseGroup"
                         v-bind:title = energyGroup.name
                         class="shadow p-3 mb-5 bg-white rounded"
@@ -94,9 +92,9 @@ export default {
     return {
       numberSystems: null,
       energyUseGroup: [
-        { id: 'energyUseGroupHeating', name: 'Heizung', pic: require('@/assets/heizung.svg'), nameForSubmodelElementCollection: 'EnergieGruppeHeizung', idShortCD: 'EnergyGroupHeating', idEnpi: 'enpiGroupHeating', nameEnpi: 'Enpi Heizung', nameForSubmodelElementCollectionEnpi: 'EnpiEnergieGruppeHeizung', idShortCDEnpi: 'EnpiEnergyGroupHeating' },
-        { id: 'energyUseGroupCooling', name: 'Kühlung', pic: require('@/assets/kuehlung.svg'), nameForSubmodelElementCollection: 'EnergieGruppeKühlung', idShortCD: 'EnergyGroupCooling', idEnpi: 'enpiGroupCoolinf', nameEnpi: 'Enpi Kühlung', nameForSubmodelElementCollectionEnpi: 'EnpiEnergieGruppeKühlung', idShortCDEnpi: 'EnpiEnergyGroupCooling' },
-        { id: 'energyUseGroupAirHandling', name: 'Lüftung', pic: require('@/assets/lueftung.svg'), nameForSubmodelElementCollection: 'EnergieGruppeLüftung', idShortCD: 'EnergyGroupAirHandling', idEnpi: 'enpiGroupAirHandling', nameEnpi: 'Enpi Lüftung', nameForSubmodelElementCollectionEnpi: 'EnpiEnergieGruppeLüftung', idShortCDEnpi: 'EnpiEnergyGroupAirHandling' }
+        { id: 'energyUseGroupHeating', name: 'Heizung', pic: require('@/assets/heizung.svg'), nameForSubmodelElementCollection: 'Energiegruppe Heizung', idShortCD: 'EnergyGroupHeating', idEnpi: 'enpiGroupHeating', nameEnpi: 'Enpi Heizung', nameForSubmodelElementCollectionEnpi: 'Enpis Energiegruppe Heizung', idShortCDEnpi: 'EnpiEnergyGroupHeating' },
+        { id: 'energyUseGroupCooling', name: 'Kühlung', pic: require('@/assets/kuehlung.svg'), nameForSubmodelElementCollection: 'Energiegruppe Kühlung', idShortCD: 'EnergyGroupCooling', idEnpi: 'enpiGroupCoolinf', nameEnpi: 'Enpi Kühlung', nameForSubmodelElementCollectionEnpi: 'Enpis Energiegruppe Kühlung', idShortCDEnpi: 'EnpiEnergyGroupCooling' },
+        { id: 'energyUseGroupAirHandling', name: 'Lüftung', pic: require('@/assets/lueftung.svg'), nameForSubmodelElementCollection: 'Energiegruppe Lüftung', idShortCD: 'EnergyGroupAirHandling', idEnpi: 'enpiGroupAirHandling', nameEnpi: 'Enpi Lüftung', nameForSubmodelElementCollectionEnpi: 'Enpis Energiegruppe Lüftung', idShortCDEnpi: 'EnpiEnergyGroupAirHandling' }
       ]
     }
   },
@@ -158,7 +156,7 @@ export default {
             },
             constraints: [],
             hasDataSpecification: [],
-            idShort: energyGroup.nameForSubmodelElementCollection + system,
+            idShort: energyGroup.nameForSubmodelElementCollection + ' ' + system,
             category: 'CONSTANT',
             modelType: {
               name: 'SubmodelElementCollection'
@@ -371,7 +369,7 @@ export default {
             },
             constraints: [],
             hasDataSpecification: [],
-            idShort: energyGroup.nameForSubmodelElementCollectionEnpi + system,
+            idShort: energyGroup.nameForSubmodelElementCollectionEnpi + ' ' + system,
             category: 'CONSTANT',
             modelType: {
               name: 'SubmodelElementCollection'

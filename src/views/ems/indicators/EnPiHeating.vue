@@ -8,14 +8,22 @@
                         <template v-slot:building="{ building }">
                             <b-card class="shadow p-3 mb-5 bg-white rounded" id="enpi-card">
                                 <b-tabs content-class="mt-3" id ="nav-tabs">
-                                    <div v-for="enpi in enpiSubmodels" :key="enpi">
+                                    <div v-for="enpi in enpiSubmodels" :key="enpi[0].submodelId">
                                         <div v-if="site === enpi[1][0].value && building === enpi[2][1].value">
                                             <b-tab v-bind:title= enpi[0].submodelName >
-                                                <slot name="site" v-bind:site="enpi[0].submodelName"></slot>
+                                                <slot name="enpiSubmodel" v-bind:enpiSubmodel="enpi[0].submodelName"></slot>
+                                                <EnpisEnergyGroups :enpiSubmodel="enpi"/>
                                             </b-tab>
                                         </div>
                                     </div>
                                 </b-tabs>
+                                <!--
+                                <b-tabs card pills vertical id="enpis-vertical-tabs">
+                                    <b-tab v-bind:title="'Gebäude ' + building" v-for="building in numberOfBuildingsAsArray" :key="building">
+                                        <slot name="building" v-bind:building="building">Platzhalter</slot>
+                                    </b-tab>
+                                </b-tabs>
+                                -->
                                 <b-row>
                                     <EnPis :submodelId ="submodelId" :site="site" :building="building" :buildings="buildings" />
                                 </b-row>
@@ -33,9 +41,10 @@
 import EnergyPerformanceIndicators from '@/views/ems/indicators/EnergyPerformanceIndicators.vue'
 import SubmodelHeader from '@/components/ems/SubmodelHeader.vue'
 import EnPis from '@/components/ems/indicators/EnPis.vue'
+import EnpisEnergyGroups from '@/components/ems/indicators/EnpisEnergyGroups.vue'
 
 export default {
-  components: { EnergyPerformanceIndicators, SubmodelHeader, EnPis },
+  components: { EnergyPerformanceIndicators, SubmodelHeader, EnPis, EnpisEnergyGroups },
   data () {
     return {}
   },
@@ -108,6 +117,7 @@ export default {
       console.log(enpiSubmodels)
       // console.log(this.energySourceGroup)
       const submodels = []
+      // const enpiSubmodelCollections = []
       for (const item in enpiSubmodels) {
         // console.log(energyTypeSubmodels[item])
         submodels.push(enpiSubmodels[item][0].submodelName)
@@ -126,7 +136,7 @@ export default {
         }
         */
       }
-      console.log(submodels)
+      console.log(enpiSubmodels)
       return enpiSubmodels
     }
   },
