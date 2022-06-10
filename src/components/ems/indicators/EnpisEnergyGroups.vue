@@ -2,8 +2,8 @@
     <div id = "header">
         <div v-if="getSubmodelCollections.length != 0">
             <b-card no-body>
-                <b-tabs card pills vertical id="energy-group-enpis">
-                    <b-tab v-bind:title="enpi.id" v-for="enpi in getSubmodelCollections" :key="enpi.id">
+                <b-tabs card pills vertical nav-wrapper-class="col-2" id="energy-group-enpis">
+                    <b-tab v-bind:title="enpi.id" v-for="enpi in getSubmodelCollections" :key="enpi.id" id="enpi-tab">
                         <slot name="enpi" v-bind:enpi="enpi">Platzhalter</slot>
                     </b-tab>
                 </b-tabs>
@@ -40,3 +40,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.col-auto {
+    max-width: 20px;
+}
+</style>

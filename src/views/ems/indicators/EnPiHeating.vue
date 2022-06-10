@@ -24,9 +24,11 @@
                                     </b-tab>
                                 </b-tabs>
                                 -->
+                                <!--
                                 <b-row>
                                     <EnPis :submodelId ="submodelId" :site="site" :building="building" :buildings="buildings" />
                                 </b-row>
+                                -->
                             </b-card>
                         </template>
                     </SubmodelHeader>
@@ -40,11 +42,12 @@
 <script>
 import EnergyPerformanceIndicators from '@/views/ems/indicators/EnergyPerformanceIndicators.vue'
 import SubmodelHeader from '@/components/ems/SubmodelHeader.vue'
-import EnPis from '@/components/ems/indicators/EnPis.vue'
+// import EnPis from '@/components/ems/indicators/EnPis.vue'
 import EnpisEnergyGroups from '@/components/ems/indicators/EnpisEnergyGroups.vue'
 
 export default {
-  components: { EnergyPerformanceIndicators, SubmodelHeader, EnPis, EnpisEnergyGroups },
+  // components: { EnergyPerformanceIndicators, SubmodelHeader, EnPis, EnpisEnergyGroups },
+  components: { EnergyPerformanceIndicators, SubmodelHeader, EnpisEnergyGroups },
   data () {
     return {}
   },
