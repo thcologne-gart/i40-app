@@ -1,12 +1,14 @@
 <template>
     <div id = "header">
-        <b-card no-body class="shadow p-3 mb-5 bg-white rounded">
-            <b-tabs card pills vertical id="energy-group-enpis">
-                <b-tab v-bind:title="enpi.id" v-for="enpi in getSubmodelCollections" :key="enpi.id">
-                    <slot name="enpi" v-bind:enpi="enpi">Platzhalter</slot>
-                </b-tab>
-            </b-tabs>
-        </b-card>
+        <div v-if="getSubmodelCollections.length != 0">
+            <b-card no-body>
+                <b-tabs card pills vertical id="energy-group-enpis">
+                    <b-tab v-bind:title="enpi.id" v-for="enpi in getSubmodelCollections" :key="enpi.id">
+                        <slot name="enpi" v-bind:enpi="enpi">Platzhalter</slot>
+                    </b-tab>
+                </b-tabs>
+            </b-card>
+        </div>
     </div>
 </template>
 
@@ -23,7 +25,7 @@ export default {
         for (const element in this.enpiSubmodel[item]) {
           // console.log(this.enpiSubmodel[item][element])
           const collection = this.enpiSubmodel[item][element]
-          if (typeof collection.idShort !== 'undefined' && collection.idShort.includes('Enpis Energiegruppe')) {
+          if (typeof collection.idShort !== 'undefined' && collection.idShort.includes('EnPis Energiegruppe')) {
             console.log(this.enpiSubmodel[item][element])
             const enpiCollection = {
               id: collection.idShort

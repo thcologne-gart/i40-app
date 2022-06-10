@@ -92,9 +92,9 @@ export default {
     return {
       numberSystems: null,
       energyUseGroup: [
-        { id: 'energyUseGroupHeating', name: 'Heizung', pic: require('@/assets/heizung.svg'), nameForSubmodelElementCollection: 'Energiegruppe Heizung', idShortCD: 'EnergyGroupHeating', idEnpi: 'enpiGroupHeating', nameEnpi: 'Enpi Heizung', nameForSubmodelElementCollectionEnpi: 'Enpis Energiegruppe Heizung', idShortCDEnpi: 'EnpiEnergyGroupHeating' },
-        { id: 'energyUseGroupCooling', name: 'Kühlung', pic: require('@/assets/kuehlung.svg'), nameForSubmodelElementCollection: 'Energiegruppe Kühlung', idShortCD: 'EnergyGroupCooling', idEnpi: 'enpiGroupCoolinf', nameEnpi: 'Enpi Kühlung', nameForSubmodelElementCollectionEnpi: 'Enpis Energiegruppe Kühlung', idShortCDEnpi: 'EnpiEnergyGroupCooling' },
-        { id: 'energyUseGroupAirHandling', name: 'Lüftung', pic: require('@/assets/lueftung.svg'), nameForSubmodelElementCollection: 'Energiegruppe Lüftung', idShortCD: 'EnergyGroupAirHandling', idEnpi: 'enpiGroupAirHandling', nameEnpi: 'Enpi Lüftung', nameForSubmodelElementCollectionEnpi: 'Enpis Energiegruppe Lüftung', idShortCDEnpi: 'EnpiEnergyGroupAirHandling' }
+        { id: 'energyUseGroupHeating', name: 'Heizung', pic: require('@/assets/heizung.svg'), nameForSubmodelElementCollection: 'Energiegruppe Heizung', idShortCD: 'EnergyGroupHeating', idEnpi: 'enpiGroupHeating', nameEnpi: 'Enpi Heizung', nameForSubmodelElementCollectionEnpi: 'EnPis Energiegruppe Heizung', idShortCDEnpi: 'EnpiEnergyGroupHeating' },
+        { id: 'energyUseGroupCooling', name: 'Kühlung', pic: require('@/assets/kuehlung.svg'), nameForSubmodelElementCollection: 'Energiegruppe Kühlung', idShortCD: 'EnergyGroupCooling', idEnpi: 'enpiGroupCoolinf', nameEnpi: 'Enpi Kühlung', nameForSubmodelElementCollectionEnpi: 'EnPis Energiegruppe Kühlung', idShortCDEnpi: 'EnpiEnergyGroupCooling' },
+        { id: 'energyUseGroupAirHandling', name: 'Lüftung', pic: require('@/assets/lueftung.svg'), nameForSubmodelElementCollection: 'Energiegruppe Lüftung', idShortCD: 'EnergyGroupAirHandling', idEnpi: 'enpiGroupAirHandling', nameEnpi: 'Enpi Lüftung', nameForSubmodelElementCollectionEnpi: 'EnPis Energiegruppe Lüftung', idShortCDEnpi: 'EnpiEnergyGroupAirHandling' }
       ]
     }
   },
@@ -380,6 +380,178 @@ export default {
         const submodelKey = enpiInformations.key
         console.log(submodelKey)
         this.$store.dispatch('addEnergyUseGroup', [newEnpiGroup, submodelKey])
+      }
+      // Add Concept Descriptions der Enpi Collections
+      const heatingEnpi = idShorts.includes('EnpiEnergyGroupHeating')
+      if (heatingEnpi !== true && energyGroup.idShortCDEnpi === 'EnpiEnergyGroupHeating') {
+        const newConceptDescriptionEnergySourceGroup = {}
+        newConceptDescriptionEnergySourceGroup.identification = {
+          idType: 'IRI',
+          id: energyGroup.idEnpi
+        }
+        newConceptDescriptionEnergySourceGroup.idShort = energyGroup.idShortCDEnpi
+        newConceptDescriptionEnergySourceGroup.modelType = {
+          name: 'ConceptDescription'
+        }
+        newConceptDescriptionEnergySourceGroup.embeddedDataSpecification = [
+          {
+            dataSpecification: {
+              keys: []
+            },
+            dataSpecificationContent: {
+              preferredName: [
+                {
+                  language: 'DE',
+                  text: energyGroup.nameForSubmodelElementCollectionEnpi
+                },
+                {
+                  language: 'EN',
+                  text: energyGroup.idShortCDEnpi
+                }
+              ],
+              shortName: [
+                {
+                  language: 'DE',
+                  text: energyGroup.nameForSubmodelElementCollectionEnpi
+                },
+                {
+                  language: 'EN',
+                  text: energyGroup.idShortCDEnpi
+                }
+              ],
+              unit: '',
+              dataType: '',
+              definition: [
+                {
+                  language: 'DE',
+                  text: 'Sammlung der Energieleistungskennzahlen der Energiegruppe Heizung'
+                },
+                {
+                  language: 'EN',
+                  text: 'Collection of the energy performance indicators of the energy group heating'
+                }
+              ]
+            }
+          }
+        ]
+        newConceptDescriptionEnergySourceGroup.isCaseOf = []
+        newConceptDescriptionEnergySourceGroup.descriptions = []
+
+        this.$store.dispatch('createConceptDescriptions', newConceptDescriptionEnergySourceGroup)
+      }
+      const coolingEnpi = idShorts.includes('EnpiEnergyGroupCooling')
+      if (coolingEnpi !== true && energyGroup.idShortCDEnpi === 'EnpiEnergyGroupCooling') {
+        const newConceptDescriptionEnergySourceGroup = {}
+        newConceptDescriptionEnergySourceGroup.identification = {
+          idType: 'IRI',
+          id: energyGroup.idEnpi
+        }
+        newConceptDescriptionEnergySourceGroup.idShort = energyGroup.idShortCDEnpi
+        newConceptDescriptionEnergySourceGroup.modelType = {
+          name: 'ConceptDescription'
+        }
+        newConceptDescriptionEnergySourceGroup.embeddedDataSpecification = [
+          {
+            dataSpecification: {
+              keys: []
+            },
+            dataSpecificationContent: {
+              preferredName: [
+                {
+                  language: 'DE',
+                  text: energyGroup.nameForSubmodelElementCollectionEnpi
+                },
+                {
+                  language: 'EN',
+                  text: energyGroup.idShortCDEnpi
+                }
+              ],
+              shortName: [
+                {
+                  language: 'DE',
+                  text: energyGroup.nameForSubmodelElementCollectionEnpi
+                },
+                {
+                  language: 'EN',
+                  text: energyGroup.idShortCDEnpi
+                }
+              ],
+              unit: '',
+              dataType: '',
+              definition: [
+                {
+                  language: 'DE',
+                  text: 'Sammlung der Energieleistungskennzahlen der Energiegruppe Kühlung'
+                },
+                {
+                  language: 'EN',
+                  text: 'Collection of the energy performance indicators of the energy group cooling'
+                }
+              ]
+            }
+          }
+        ]
+        newConceptDescriptionEnergySourceGroup.isCaseOf = []
+        newConceptDescriptionEnergySourceGroup.descriptions = []
+
+        this.$store.dispatch('createConceptDescriptions', newConceptDescriptionEnergySourceGroup)
+      }
+      const airEnpi = idShorts.includes('EnpiEnergyGroupAirHandling')
+      if (airEnpi !== true && energyGroup.idShortCDEnpi === 'EnpiEnergyGroupAirHandling') {
+        const newConceptDescriptionEnergySourceGroup = {}
+        newConceptDescriptionEnergySourceGroup.identification = {
+          idType: 'IRI',
+          id: energyGroup.idEnpi
+        }
+        newConceptDescriptionEnergySourceGroup.idShort = energyGroup.idShortCDEnpi
+        newConceptDescriptionEnergySourceGroup.modelType = {
+          name: 'ConceptDescription'
+        }
+        newConceptDescriptionEnergySourceGroup.embeddedDataSpecification = [
+          {
+            dataSpecification: {
+              keys: []
+            },
+            dataSpecificationContent: {
+              preferredName: [
+                {
+                  language: 'DE',
+                  text: energyGroup.nameForSubmodelElementCollectionEnpi
+                },
+                {
+                  language: 'EN',
+                  text: energyGroup.idShortCDEnpi
+                }
+              ],
+              shortName: [
+                {
+                  language: 'DE',
+                  text: energyGroup.nameForSubmodelElementCollectionEnpi
+                },
+                {
+                  language: 'EN',
+                  text: energyGroup.idShortCDEnpi
+                }
+              ],
+              unit: '',
+              dataType: '',
+              definition: [
+                {
+                  language: 'DE',
+                  text: 'Sammlung der Energieleistungskennzahlen der Energiegruppe Lüftung'
+                },
+                {
+                  language: 'EN',
+                  text: 'Collection of the energy performance indicators of the energy group air handling'
+                }
+              ]
+            }
+          }
+        ]
+        newConceptDescriptionEnergySourceGroup.isCaseOf = []
+        newConceptDescriptionEnergySourceGroup.descriptions = []
+
+        this.$store.dispatch('createConceptDescriptions', newConceptDescriptionEnergySourceGroup)
       }
     }
   }
