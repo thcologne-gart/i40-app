@@ -38,7 +38,8 @@ export default {
   // components: { EnergySourceSheet },
   props: {
     energySourceGroup: Object,
-    energySource: Object
+    energySource: Object,
+    enpiSubmodels: Array
   },
   data () {
     return {
@@ -55,6 +56,7 @@ export default {
     addComponentEnergySource ([energySource, energySourceGroup]) {
       this.$bvModal.hide(energySourceGroup.elementCollectionId + energySource.sourceName)
       console.log(this.energySourceGroup)
+      console.log(this.energySource)
       const newSecComponent = [
         {
           ordered: false,
@@ -477,6 +479,171 @@ export default {
 
         this.$store.dispatch('createConceptDescriptions', newConceptDescriptionDateManufacture)
       }
+      // Add Enpi for Component
+      const energySourceGroupName = this.energySourceGroup.elementCollection
+      console.log(energySourceGroupName)
+      for (const item in this.enpiSubmodels) {
+        if (this.enpiSubmodels[item].elementCollection.includes(energySourceGroupName)) {
+          console.log(this.enpiSubmodels[item])
+          const newSecComponent = [
+            {
+              ordered: false,
+              allowDuplicates: false,
+              value: [],
+              semanticId: {
+                keys: [{
+                  type: 'GlobalReference',
+                  local: true,
+                  value: 'component/' + energySource.idShortCDEnpi,
+                  index: 0,
+                  idType: 'IRI'
+                }]
+              },
+              constraints: [],
+              hasDataSpecification: [],
+              idShort: energySource.idShortEnpi,
+              category: 'CONSTANT',
+              modelType: {
+                name: 'SubmodelElementCollection'
+              }
+            }
+          ]
+          const submodelKey = this.enpiSubmodels[item].submodelKey
+          const elementCollectionKey = this.enpiSubmodels[item].elementCollectionId
+          this.$store.dispatch('addComponentEnergySource', [newSecComponent, submodelKey, elementCollectionKey])
+        }
+      }
+      /*
+      const newSecComponent = [
+        {
+          ordered: false,
+          allowDuplicates: false,
+          value: [],
+          semanticId: {
+            keys: [{
+              type: 'GlobalReference',
+              local: true,
+              value: 'component/' + energySource.idShortCD,
+              index: 0,
+              idType: 'IRI'
+            }]
+          },
+          constraints: [],
+          hasDataSpecification: [],
+          idShort: energySource.sourceName,
+          category: 'CONSTANT',
+          modelType: {
+            name: 'SubmodelElementCollection'
+          }
+        }
+      ]
+
+      // if (energySource.sourceName === 'Grundwasserwärmepumpe' || energySource.sourceName === 'Luftwärmepumpe' || energySource.sourceName === 'Erdwärmepumpe') {
+      newSecComponent[0].value = [
+        {
+          value: '',
+          semanticId: {
+            keys: [{
+              type: 'GlobalReference',
+              local: true,
+              value: 'component/energy-information/energy-consumption',
+              index: 0,
+              idType: 'IRI'
+            }]
+          },
+          constraints: [],
+          idShort: 'EnergyConsumption',
+          category: 'VARIABLE',
+          modelType: {
+            name: 'Property'
+          },
+          valuetype: {
+            dataObjectType: {
+              name: 'REAL'
+            }
+          },
+          kind: 'Instance'
+        },
+        {
+          value: '',
+          semanticId: {
+            keys: [{
+              type: 'GlobalReference',
+              local: true,
+              value: '0173-1#02-AAO677#002',
+              index: 0,
+              idType: 'IRI'
+            }]
+          },
+          constraints: [],
+          idShort: 'Manufacturer name',
+          category: 'PARAMETER',
+          modelType: {
+            name: 'Property'
+          },
+          valuetype: {
+            dataObjectType: {
+              name: 'STRING'
+            }
+          },
+          kind: 'Instance'
+        },
+        {
+          value: '',
+          semanticId: {
+            keys: [{
+              type: 'GlobalReference',
+              local: true,
+              value: 'component/device-information/serial-number',
+              index: 0,
+              idType: 'IRI'
+            }]
+          },
+          constraints: [],
+          idShort: 'SerialNumber',
+          category: 'PARAMETER',
+          modelType: {
+            name: 'Property'
+          },
+          valuetype: {
+            dataObjectType: {
+              name: 'STRING'
+            }
+          },
+          kind: 'Instance'
+        },
+        {
+          value: '',
+          semanticId: {
+            keys: [{
+              type: 'GlobalReference',
+              local: true,
+              value: 'component/device-information/maufacture-date',
+              index: 0,
+              idType: 'IRI'
+            }]
+          },
+          constraints: [],
+          idShort: 'ManufactureDate',
+          category: 'PARAMETER',
+          modelType: {
+            name: 'Property'
+          },
+          valuetype: {
+            dataObjectType: {
+              name: 'STRING'
+            }
+          },
+          kind: 'Instance'
+        }
+      ]
+
+      console.log(newSecComponent)
+
+      const submodelKey = energySourceGroup.submodelKey
+      const elementCollectionKey = energySourceGroup.elementCollectionId
+      this.$store.dispatch('addComponentEnergySource', [newSecComponent, submodelKey, elementCollectionKey])
+      */
     },
 
     newConceptDescription (energySource) {

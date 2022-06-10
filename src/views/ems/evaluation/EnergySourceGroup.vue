@@ -11,7 +11,7 @@
                                         <div v-for="element in allEnergyTypesWithGroup" :key="element.elementCollectionId">
                                             <div v-if="element.site === site2 && building === element.building">
                                                 <b-tab v-bind:title="element.group.toString()">
-                                                    <EnergySourceGroupBuilding :energySources="energySources" :building="building" :energySourceGroup="element" :heatingComponents="heatingComponents" :airComponents="airComponents" />
+                                                    <EnergySourceGroupBuilding :energySources="energySources" :building="building" :energySourceGroup="element" :heatingComponents="heatingComponents" :airComponents="airComponents" :enpiSubmodels="enpiSubmodels" />
                                                 </b-tab>
                                             </div>
                                         </div>
@@ -129,6 +129,31 @@ export default {
         }
       }
       return energySourceGroups
+    },
+    enpiSubmodels () {
+      const enpiSubmodels = []
+      const loadedEnpiInformation = this.$store.getters.loadedEnpiSubmodels
+      for (const item in loadedEnpiInformation) {
+        let i
+        for (i = 1; i < loadedEnpiInformation[item].length; i++) {
+          for (const key in loadedEnpiInformation[item][i]) {
+            if (loadedEnpiInformation[item][i][key].modelType.name === 'SubmodelElementCollection') {
+              enpiSubmodels.push({
+                submodelKey: loadedEnpiInformation[item][0].key,
+                submodelId: loadedEnpiInformation[item][0].submodelId,
+                submodelName: loadedEnpiInformation[item][0].submodelName,
+                submodelSemanticId: loadedEnpiInformation[item][0].submodelSemanticId,
+                elementCollection: loadedEnpiInformation[item][i][key].idShort,
+                elementCollectionId: key,
+                site: loadedEnpiInformation[item][1][0].value,
+                building: loadedEnpiInformation[item][2][1].value,
+                elementCollectionSemanticId: loadedEnpiInformation[item][i][key].semanticId.keys[0].value
+              })
+            }
+          }
+        }
+      }
+      return enpiSubmodels
     }
   },
   created () {

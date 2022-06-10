@@ -1,13 +1,13 @@
 <template>
     <div>
         <div v-if="energySourceGroup.elementCollectionSemanticId === 'energyUseGroupHeating'">
-            <EnergyGroupHeating :energySources="energySources" :energySourceGroup="energySourceGroup" :building="building" :heatingComponents="heatingComponents"/>
+            <EnergyGroupHeating :energySources="energySources" :energySourceGroup="energySourceGroup" :building="building" :heatingComponents="heatingComponents" :enpiSubmodels="enpiSubmodels"/>
         </div>
         <div v-if="energySourceGroup.elementCollectionSemanticId === 'energyUseGroupCooling'">
-            <EnergyGroupCooling  :energySources="energySources" :energySourceGroup="energySourceGroup" :building="building" />
+            <EnergyGroupCooling  :energySources="energySources" :energySourceGroup="energySourceGroup" :building="building" :enpiSubmodels="enpiSubmodels"/>
         </div>
         <div v-if="energySourceGroup.elementCollectionSemanticId === 'energyUseGroupAirHandling'">
-            <EnergyGroupAir :energySources="energySources" :energySourceGroup="energySourceGroup" :building="building" :airComponents="airComponents" />
+            <EnergyGroupAir :energySources="energySources" :energySourceGroup="energySourceGroup" :building="building" :airComponents="airComponents" :enpiSubmodels="enpiSubmodels"/>
         </div>
     </div>
 </template>
@@ -24,7 +24,8 @@ export default {
     energySourceGroup: Object,
     energySources: Array,
     heatingComponents: Array,
-    airComponents: Array
+    airComponents: Array,
+    enpiSubmodels: Array
   }
 }
 
