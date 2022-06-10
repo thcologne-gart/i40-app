@@ -28,7 +28,9 @@ export default {
     this.allAas = [
       { pic: require('@/assets/AAS.svg'), aas: require('@/assets/aas/example_aas.json') },
       { pic: require('@/assets/AAS.svg'), aas: require('@/assets/aas/Example_AAS_ServoDCMotor_21.json') },
-      { pic: require('@/assets/AAS.svg'), aas: require('@/assets/aas/14_Siemens.json') }
+      { pic: require('@/assets/AAS.svg'), aas: require('@/assets/aas/14_Siemens.json') },
+      { pic: require('@/assets/AAS.svg'), aas: require('@/assets/aas/RLTGALab_mitProperties_rev10.json') },
+      { pic: require('@/assets/AAS.svg'), aas: require('@/assets/aas/SupplyTemperature_20210201.json') }
     ]
     console.log(this.allAas)
     // this.submodelsJson = await this.fetchTasks()

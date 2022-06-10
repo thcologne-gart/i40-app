@@ -1,0 +1,2953 @@
+{
+  "assetAdministrationShells": [
+    {
+     
+      "asset": {
+        "keys": [
+          {
+            "type": "Asset",
+            "local": true,
+            "value": "www.GAlab.th-koeln.de/ids/asset/1001",
+            "index": 0,
+            "idType": "IRI"
+          }
+        ]
+      },
+      "submodels": [
+        {
+          "keys": [
+            {
+              "type": "Submodel",
+              "local": true,
+              "value": "www.GAlab.th-koeln.de/ids/sm/10001",
+              "index": 0,
+              "idType": "IRI"
+            }
+          ]
+        },
+        {
+          "keys": [
+            {
+              "type": "Submodel",
+              "local": true,
+              "value": "www.GAlab.th-koeln.de/ids/sm/10002",
+              "index": 0,
+              "idType": "IRI"
+            }
+          ]
+        },
+        {
+          "keys": [
+            {
+              "type": "Submodel",
+              "local": true,
+              "value": "www.GAlab.th-koeln.de/ids/sm/10003",
+              "index": 0,
+              "idType": "IRI"
+            }
+          ]
+        },
+        {
+          "keys": [
+            {
+              "type": "Submodel",
+              "local": true,
+              "value": "www.GAlab.th-koeln.de/ids/sm/10004",
+              "index": 0,
+              "idType": "IRI"
+            }
+          ]
+        },
+        {
+          "keys": [
+            {
+              "type": "Submodel",
+              "local": true,
+              "value": "www.GAlab.th-koeln.de/ids/sm/10005",
+              "index": 0,
+              "idType": "IRI"
+            }
+          ]
+        },
+        {
+          "keys": [
+            {
+              "type": "Submodel",
+              "local": true,
+              "value": "www.GAlab.th-koeln.de/ids/sm/10006",
+              "index": 0,
+              "idType": "IRI"
+            }
+          ]
+        },
+        {
+          "keys": [
+            {
+              "type": "Submodel",
+              "local": true,
+              "value": "www.GAlab.th-koeln.de/ids/sm/10007",
+              "index": 0,
+              "idType": "IRI"
+            }
+          ]
+        },
+        {
+          "keys": [
+            {
+              "type": "Submodel",
+              "local": true,
+              "value": "www.GAlab.th-koeln.de/ids/sm/10008",
+              "index": 0,
+              "idType": "IRI"
+            }
+          ]
+        },
+        {
+          "keys": [
+            {
+              "type": "Submodel",
+              "local": true,
+              "value": "http://GAlab.th-koeln.de/ids/sm/10009",
+              "index": 0,
+              "idType": "IRI"
+            }
+          ]
+        },
+        {
+          "keys": [
+            {
+              "type": "Submodel",
+              "local": true,
+              "value": "http://GAlab.th-koeln.de/ids/sm/10010",
+              "index": 0,
+              "idType": "IRI"
+            }
+          ]
+        },
+        {
+          "keys": [
+            {
+              "type": "Submodel",
+              "local": true,
+              "value": "www.GAlab.th-koeln.de/ids/sm/10011",
+              "index": 0,
+              "idType": "IRI"
+            }
+          ]
+        },
+        {
+          "keys": [
+            {
+              "type": "Submodel",
+              "local": true,
+              "value": "www.GAlab.th-koeln.de/ids/sm/10012",
+              "index": 0,
+              "idType": "IRI"
+            }
+          ]
+        },
+        {
+          "keys": [
+            {
+              "type": "Submodel",
+              "local": true,
+              "value": "www.GAlab.th-koeln.de/ids/sm/10013",
+              "index": 0,
+              "idType": "IRI"
+            }
+          ]
+        },
+        {
+          "keys": [
+            {
+              "type": "Submodel",
+              "local": true,
+              "value": "www.GAlab.th-koeln.de/ids/sm/10014",
+              "index": 0,
+              "idType": "IRI"
+            }
+          ]
+        },
+        {
+          "keys": [
+            {
+              "type": "Submodel",
+              "local": true,
+              "value": "www.GAlab.th-koeln.de/ids/sm/10015",
+              "index": 0,
+              "idType": "IRI"
+            }
+          ]
+        },
+        {
+          "keys": [
+            {
+              "type": "Submodel",
+              "local": true,
+              "value": "www.GAlab.th-koeln.de/ids/sm/10016",
+              "index": 0,
+              "idType": "IRI"
+            }
+          ]
+        }
+      ],
+      "conceptDictionaries": [],
+      "identification": {
+        "idType": "IRI",
+        "id": "www.GAlab.th-koeln.de/ids/aas/1001"
+      },
+      "idShort": "RLTLaborGAaas",
+      "modelType": {
+        "name": "AssetAdministrationShell"
+      }
+    }
+  ],
+  "assets": [
+    {
+      "hasDataSpecification": [],
+      "identification": {
+        "idType": "IRI",
+        "id": "www.GAlab.th-koeln.de/ids/asset/1001"
+      },
+      "idShort": "RLTLaborGA",
+      "category": "",
+      "modelType": {
+        "name": "Asset"
+      },
+      "kind": "Instance",
+      "descriptions": [
+        {
+          "language": "DE",
+          "text": "Die RLT-Anlage im Labor für Gebäudeautomation der TH Köln"
+        },
+        {
+          "language": "EN",
+          "text": "Air Handling Unit in the Lab of Buildung Automation at TH Köln"
+        }
+      ]
+    }
+  ],
+  "submodels": [
+    {
+      "semanticId": {
+        "keys": []
+      },
+      "qualifiers": [],
+      "hasDataSpecification": [],
+      "identification": {
+        "idType": "IRI",
+        "id": "www.GAlab.th-koeln.de/ids/sm/10001"
+      },
+      "idShort": "Identification",
+      "modelType": {
+        "name": "Submodel"
+      },
+      "kind": "Instance",
+      "submodelElements": [],
+      "descriptions": [
+        {
+          "language": "DE",
+          "text": "Identifikation der RLT-Anlage"
+        },
+        {
+          "language": "EN",
+          "text": "Identification of the Air Handling Unit"
+        }
+      ]
+    },
+    {
+      "semanticId": {
+        "keys": []
+      },
+      "qualifiers": [],
+      "hasDataSpecification": [],
+      "identification": {
+        "idType": "IRI",
+        "id": "www.GAlab.th-koeln.de/ids/sm/10002"
+      },
+      "idShort": "Design",
+      "modelType": {
+        "name": "Submodel"
+      },
+      "kind": "Instance",
+      "submodelElements": [
+        {
+          "value": "true",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "Controllable",
+          "category": "CONSTANT",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "boolean"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "de",
+              "text": "Ist das Asset Controllable"
+            }
+          ]
+        },
+        {
+          "value": "true",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "OfferedFieldbuses",
+          "category": "CONSTANT",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "boolean"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "de",
+              "text": "Hat das Asset Feldbusse"
+            }
+          ]
+        },
+        {
+          "value": "3000",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "MaximumVolumetricAirFlow",
+          "category": "PARAMETER",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "de",
+              "text": "Maximaler Volumentrom"
+            }
+          ]
+        },
+        {
+          "value": "0,2500",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "MaximumLeakageRate",
+          "category": "PARAMETER",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "de",
+              "text": "Maximale Leckage Rate"
+            }
+          ]
+        },
+        {
+          "value": "-10",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "MinimumAllowableAirTemperature",
+          "category": "CONSTANT",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "de",
+              "text": "Min Temp"
+            }
+          ]
+        },
+        {
+          "value": "1,65",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "NominalAirSpeedInTheAirHandlingUnit",
+          "category": "PARAMETER",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "de",
+              "text": "Nennluftgeschwindigkeit"
+            }
+          ]
+        },
+        {
+          "value": "1500",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "NominalVolumetricAirFlow",
+          "category": "PARAMETER",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "de",
+              "text": "Nennvolumenstrom"
+            }
+          ]
+        },
+        {
+          "value": "Raumtemperaturregelung",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "TypeOfAirFlowControl",
+          "category": "PARAMETER",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "string"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "de",
+              "text": "Regelart"
+            }
+          ]
+        },
+        {
+          "value": "Zentral",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "TypeOfVentilationSystem",
+          "category": "PARAMETER",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "string"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "de",
+              "text": "Dezantral oder Zentral"
+            }
+          ]
+        }
+      ],
+      "descriptions": [
+        {
+          "language": "DE",
+          "text": "Allgemeine Daten zum RLT-Gerät"
+        },
+        {
+          "language": "EN",
+          "text": "General Data of the Air Handling Unit"
+        }
+      ]
+    },
+    {
+      "semanticId": {
+        "keys": []
+      },
+      "qualifiers": [],
+      "hasDataSpecification": [],
+      "identification": {
+        "idType": "IRI",
+        "id": "www.GAlab.th-koeln.de/ids/sm/10003"
+      },
+      "idShort": "SystemRequirements",
+      "modelType": {
+        "name": "Submodel"
+      },
+      "kind": "Instance",
+      "submodelElements": [],
+      "descriptions": [
+        {
+          "language": "DE",
+          "text": "Anforderungen an das System, in das das Asset integriert wird"
+        },
+        {
+          "language": "EN",
+          "text": "Requirements for the System into which the asset is integrated"
+        }
+      ]
+    },
+    {
+      "semanticId": {
+        "keys": []
+      },
+      "qualifiers": [],
+      "hasDataSpecification": [],
+      "identification": {
+        "idType": "IRI",
+        "id": "www.GAlab.th-koeln.de/ids/sm/10004"
+      },
+      "idShort": "Maintenance",
+      "modelType": {
+        "name": "Submodel"
+      },
+      "kind": "Instance",
+      "submodelElements": [
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "OperatingTimeSupplyAirFan",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Zeitspanne, in der der Zuluftventilatore im Betriebszustand ist"
+            },
+            {
+              "language": "EN",
+              "text": "Time interval throughout which the supply air fan is in operating state"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "OperatingTimeExtractAirFan",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Zeitspanne, in der der Abluftventilatore im Betriebszustand ist"
+            },
+            {
+              "language": "EN",
+              "text": "Time interval throughout which the extract air fan is in operating state"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "OperatingTimePreheaterPump",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Zeitspanne, in der die Vorerhitzerpumpe im Betriebszustand ist"
+            },
+            {
+              "language": "EN",
+              "text": "Time interval throughout which the preheater pump is in operating state"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "OperatingTimeReheaterPump",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Zeitspanne, in der die Nacherhitzerpumpe im Betriebszustand ist"
+            },
+            {
+              "language": "EN",
+              "text": "Time interval throughout which the reheater pump is in operating state"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "OperatingTimeCoolerPump",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Zeitspanne, in der die Kühlerpumpe im Betriebszustand ist"
+            },
+            {
+              "language": "EN",
+              "text": "Time interval throughout which the cooler pump is in operating state"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "StandbyTimeCoolerPump",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Zeitspanne, in der die Kühlerpumpe im Bereitschaftszustand ist"
+            },
+            {
+              "language": "EN",
+              "text": "Time interval throughout which the cooler pump is in standby state"
+            }
+          ]
+        }
+      ],
+      "descriptions": [
+        {
+          "language": "DE",
+          "text": "Allgemeine Informationen über die Instandhaltung des Assets"
+        },
+        {
+          "language": "EN",
+          "text": "General information about the Maintenance of the asset"
+        }
+      ]
+    },
+    {
+      "semanticId": {
+        "keys": []
+      },
+      "qualifiers": [],
+      "hasDataSpecification": [],
+      "identification": {
+        "idType": "IRI",
+        "id": "www.GAlab.th-koeln.de/ids/sm/10005"
+      },
+      "idShort": "ConditionBasedMaintenance",
+      "modelType": {
+        "name": "Submodel"
+      },
+      "kind": "Instance",
+      "submodelElements": [],
+      "descriptions": [
+        {
+          "language": "DE",
+          "text": "Instandhaltungsstrategie auf Basis einer Ausfallvorhersage"
+        },
+        {
+          "language": "EN",
+          "text": "Maintenance strategy based on a failure prediction"
+        }
+      ]
+    },
+    {
+      "semanticId": {
+        "keys": []
+      },
+      "qualifiers": [],
+      "hasDataSpecification": [],
+      "identification": {
+        "idType": "IRI",
+        "id": "www.GAlab.th-koeln.de/ids/sm/10006"
+      },
+      "idShort": "BreakdownMaintenance",
+      "modelType": {
+        "name": "Submodel"
+      },
+      "kind": "Instance",
+      "submodelElements": [],
+      "descriptions": [
+        {
+          "language": "DE",
+          "text": "Instandhaltungsstrategie, bei der die Instandsetzung nach Ausfall der Anlage erfolgt"
+        },
+        {
+          "language": "EN",
+          "text": "Maintenance strategy, in which the repair is carried out after the system has failed"
+        }
+      ]
+    },
+    {
+      "semanticId": {
+        "keys": []
+      },
+      "qualifiers": [],
+      "hasDataSpecification": [],
+      "identification": {
+        "idType": "IRI",
+        "id": "www.GAlab.th-koeln.de/ids/sm/10007"
+      },
+      "idShort": "PreventiveMaintenance",
+      "modelType": {
+        "name": "Submodel"
+      },
+      "kind": "Instance",
+      "submodelElements": [],
+      "descriptions": [
+        {
+          "language": "DE",
+          "text": "Instandhaltungsstrategie, bei der die Instandhaltung nach einem festgelgten Zeitplan erfolgt"
+        },
+        {
+          "language": "EN",
+          "text": "Maintenance strategy in which maintenance is performed according to a fixed schedule"
+        }
+      ]
+    },
+    {
+      "semanticId": {
+        "keys": []
+      },
+      "qualifiers": [],
+      "hasDataSpecification": [],
+      "identification": {
+        "idType": "IRI",
+        "id": "www.GAlab.th-koeln.de/ids/sm/10008"
+      },
+      "idShort": "Measurements",
+      "modelType": {
+        "name": "Submodel"
+      },
+      "kind": "Instance",
+      "submodelElements": [
+        {
+          "value": "",
+          "valueId": {
+            "keys": []
+          },
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "MeasuredVolumetricAirFlow",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Gemessener Volumenstrom"
+            },
+            {
+              "language": "EN",
+              "text": "Measured volumetric air flow"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "ExtractAirHumidtiy",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Gemessene Abluftfeuchte"
+            },
+            {
+              "language": "EN",
+              "text": "Measured extract air humidity"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "ExtractAirTemperature",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Gemessene Ablufttemperatur"
+            },
+            {
+              "language": "EN",
+              "text": "Measured extract air temperature"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "OutdoorAirHumidity",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Gemessene Außenluftfeuchte"
+            },
+            {
+              "language": "EN",
+              "text": "Measured outdoor air humidity"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "OutdoorAirTemperature",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Gemessene Außenlufttemperatur"
+            },
+            {
+              "language": "EN",
+              "text": "Measured outdoor air temperature"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "MixedAirHumidity",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Gemessene Mischluftfeuchte"
+            },
+            {
+              "language": "EN",
+              "text": "Measured mixed air humidity"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "MixedAirTemperature",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Gemessene Mischlufttemperatur"
+            },
+            {
+              "language": "EN",
+              "text": "Measured mixed air temperature"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "SupplyAirHumidity",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Gemessene Zuluftfeuchte"
+            },
+            {
+              "language": "EN",
+              "text": "Measured supply air humidity"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "SupplyAirTemperature",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Gemessene Zulufttemperatur"
+            },
+            {
+              "language": "EN",
+              "text": "Measured supply air temperature"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "RelativeIndoorAirHumidtiy",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Gemessene relative Raumluftfeuchte"
+            },
+            {
+              "language": "EN",
+              "text": "Measured relative indoor air humidity"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "IndoorAirTemperature",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Gemessene Raumlufttemperatur"
+            },
+            {
+              "language": "EN",
+              "text": "Measured indoor air temperature"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "SpeedExtractAirFan",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Gemessene Anzahl der Umdrehungen je Zeiteinheit von Welle, Kupplung oder Laufrad"
+            },
+            {
+              "language": "EN",
+              "text": "Measured number of rotations or movements made by the shaft, coupling or impeller in a given time"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "SpeedSupplyAirFan",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Gemessene Anzahl der Umdrehungen je Zeiteinheit von Welle, Kupplung oder Laufrad"
+            },
+            {
+              "language": "EN",
+              "text": "Measured number of rotations or movements made by the shaft, coupling or impeller in a given time"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "DifferentialPressure",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Gemessener Durckverlust"
+            },
+            {
+              "language": "EN",
+              "text": "Measured differntial pressure"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "AmbientTemperature",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Gemessene Umgebungstemperatur"
+            },
+            {
+              "language": "EN",
+              "text": "Measured ambient temperature"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "MeasuredVolumetricAirFlow",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Gemessener Volumenstrom"
+            },
+            {
+              "language": "EN",
+              "text": "Measured volumetric air flow"
+            }
+          ]
+        }
+      ],
+      "descriptions": [
+        {
+          "language": "DE",
+          "text": "Messungen der physikalischen Größen"
+        },
+        {
+          "language": "EN",
+          "text": "Measurements of the physical quantities"
+        }
+      ]
+    },
+    {
+      "semanticId": {
+        "keys": []
+      },
+      "qualifiers": [],
+      "hasDataSpecification": [],
+      "identification": {
+        "idType": "IRI",
+        "id": "www.GAlab.th-koeln.de/ids/sm/10011"
+      },
+      "idShort": "ControlHumidityCooler",
+      "modelType": {
+        "name": "Submodel"
+      },
+      "kind": "Instance",
+      "submodelElements": [
+        {
+          "value": "",
+          "valueId": {
+            "keys": []
+          },
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "ReferenceVariable",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Aus der Zielgröße abgeleitete, den Sollwert der Regelgröße festlegende Eingangsgröße eines Vergleichsgliedes einer Regeleinrichtung"
+            },
+            {
+              "language": "EN",
+              "text": "Input variable to a comparing element in a controlling system, which sets the desired value of the controlled variable and is deducted from the command variable"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "valueId": {
+            "keys": []
+          },
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "FeedbackVariable",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "string"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Variable Größe, die die Regelgröße abbildet und zum Vergleichsglied zurückgeführt wird"
+            },
+            {
+              "language": "EN",
+              "text": "Variable quantity, which represents the controlled variable and is returned to the comparing element"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "valueId": {
+            "keys": []
+          },
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "ControlDifferenceVariable",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Differenz zwischen Führungsgröße und Rückführgröße"
+            },
+            {
+              "language": "EN",
+              "text": "Difference between the reference variable and the feedback variable "
+            }
+          ]
+        },
+        {
+          "value": "",
+          "valueId": {
+            "keys": []
+          },
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "ManipulatedVariable",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Ausgangsgröße der Regleinrichtung, die auch eine Eingangsgröße der Regelstrecke ist"
+            },
+            {
+              "language": "EN",
+              "text": "Output variable of the controlling system, which is also an input variable of the controlled system "
+            }
+          ]
+        },
+        {
+          "value": "",
+          "valueId": {
+            "keys": []
+          },
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "ProportionalActionCoefficient",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Für ein Proportionalglied der Quotient aus der Änderung der Ausgangsgröße und der zugehörigen Eingangsgröße"
+            },
+            {
+              "language": "EN",
+              "text": "For a proportional element, the quotient of the variation of the output variable to the corresponding variation of the input variable"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "valueId": {
+            "keys": []
+          },
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "IntegralActionCoefficient",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Für ein Integrierglied der Quotient aus der zeitlichen Ableitung der Ausgangsgröße und dem konstant gehaltenen Wert der Eingangsgröße"
+            },
+            {
+              "language": "EN",
+              "text": "For an integral element, the quotient of the time derivative of the output variable to the fixed value of the input variable"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "valueId": {
+            "keys": []
+          },
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "DerivativeActionCoefficient",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Für ein Differnzierglied der Quotient aus dem Wert der Ausgangsgröße und dem Wert der zeitlichen Ableitung der Eingangsgröße"
+            },
+            {
+              "language": "EN",
+              "text": "For a derivative element, the quotient of the value of the output variable to the value of the time derivative of the input variable"
+            }
+          ]
+        }
+      ],
+      "descriptions": [
+        {
+          "language": "DE",
+          "text": "Feuchteregelung des Kühlers"
+        },
+        {
+          "language": "EN",
+          "text": "Humidity control of cooler"
+        }
+      ]
+    },
+    {
+      "semanticId": {
+        "keys": []
+      },
+      "qualifiers": [],
+      "hasDataSpecification": [],
+      "identification": {
+        "idType": "IRI",
+        "id": "www.GAlab.th-koeln.de/ids/sm/10009"
+      },
+      "idShort": "Archiving",
+      "modelType": {
+        "name": "Submodel"
+      },
+      "kind": "Instance",
+      "submodelElements": [],
+      "descriptions": [
+        {
+          "language": "DE",
+          "text": "Properties referenzierter Objekte können nach vorgegebenen Kriterien überwacht und in einen internen Speicher abgelegt werden"
+        },
+        {
+          "language": "EN",
+          "text": "Properties of referenced objects can be monitored according to predefined criteria and stored in an internal archive"
+        }
+      ]
+    },
+    {
+      "semanticId": {
+        "keys": []
+      },
+      "qualifiers": [],
+      "hasDataSpecification": [],
+      "identification": {
+        "idType": "IRI",
+        "id": "www.GAlab.th-koeln.de/ids/sm/10010"
+      },
+      "idShort": "Event",
+      "modelType": {
+        "name": "Submodel"
+      },
+      "kind": "Instance",
+      "submodelElements": [],
+      "descriptions": [
+        {
+          "language": "DE",
+          "text": "Ereignisse können generiert werden und dienen der Überwachung des Assets"
+        },
+        {
+          "language": "EN",
+          "text": "Events can be generated and used to monitor the asset"
+        }
+      ]
+    },
+    {
+      "semanticId": {
+        "keys": []
+      },
+      "qualifiers": [],
+      "hasDataSpecification": [],
+      "identification": {
+        "idType": "IRI",
+        "id": "www.GAlab.th-koeln.de/ids/sm/10012"
+      },
+      "idShort": "ControlTemperatureCooler",
+      "modelType": {
+        "name": "Submodel"
+      },
+      "kind": "Instance",
+      "submodelElements": [
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "ReferenceVariable",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Aus der Zielgröße abgeleitete, den Sollwert der Regelgröße festlegende Eingangsgröße eines Vergleichsgliedes einer Regeleinrichtung"
+            },
+            {
+              "language": "EN",
+              "text": "Input variable to a comparing element in a controlling system, which sets the desired value of the controlled variable and is deducted from the command variable"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "FeedbackVariable",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "string"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Variable Größe, die die Regelgröße abbildet und zum Vergleichsglied zurückgeführt wird"
+            },
+            {
+              "language": "EN",
+              "text": "Variable quantity, which represents the controlled variable and is returned to the comparing element"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "ControlDifferenceVariable",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Differenz zwischen Führungsgröße und Rückführgröße"
+            },
+            {
+              "language": "EN",
+              "text": "Difference between the reference variable and the feedback variable "
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "ManipulatedVariable",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Ausgangsgröße der Regleinrichtung, die auch eine Eingangsgröße der Regelstrecke ist"
+            },
+            {
+              "language": "EN",
+              "text": "Output variable of the controlling system, which is also an input variable of the controlled system "
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "ProportionalActionCoefficient",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Für ein Proportionalglied der Quotient aus der Änderung der Ausgangsgröße und der zugehörigen Eingangsgröße"
+            },
+            {
+              "language": "EN",
+              "text": "For a proportional element, the quotient of the variation of the output variable to the corresponding variation of the input variable"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "IntegralActionCoefficient",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Für ein Integrierglied der Quotient aus der zeitlichen Ableitung der Ausgangsgröße und dem konstant gehaltenen Wert der Eingangsgröße"
+            },
+            {
+              "language": "EN",
+              "text": "For an integral element, the quotient of the time derivative of the output variable to the fixed value of the input variable"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "DerivativeActionCoefficient",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Für ein Differnzierglied der Quotient aus dem Wert der Ausgangsgröße und dem Wert der zeitlichen Ableitung der Eingangsgröße"
+            },
+            {
+              "language": "EN",
+              "text": "For a derivative element, the quotient of the value of the output variable to the value of the time derivative of the input variable"
+            }
+          ]
+        }
+      ],
+      "descriptions": [
+        {
+          "language": "DE",
+          "text": "Temperaturregelung des Kühlers"
+        },
+        {
+          "language": "EN",
+          "text": "Temperature control of cooler"
+        }
+      ]
+    },
+    {
+      "semanticId": {
+        "keys": []
+      },
+      "qualifiers": [],
+      "hasDataSpecification": [],
+      "identification": {
+        "idType": "IRI",
+        "id": "www.GAlab.th-koeln.de/ids/sm/10013"
+      },
+      "idShort": "ControlTemperaturePreheater",
+      "modelType": {
+        "name": "Submodel"
+      },
+      "kind": "Instance",
+      "submodelElements": [
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "ReferenceVariable",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Aus der Zielgröße abgeleitete, den Sollwert der Regelgröße festlegende Eingangsgröße eines Vergleichsgliedes einer Regeleinrichtung"
+            },
+            {
+              "language": "EN",
+              "text": "Input variable to a comparing element in a controlling system, which sets the desired value of the controlled variable and is deducted from the command variable"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "FeedbackVariable",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "string"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Variable Größe, die die Regelgröße abbildet und zum Vergleichsglied zurückgeführt wird"
+            },
+            {
+              "language": "EN",
+              "text": "Variable quantity, which represents the controlled variable and is returned to the comparing element"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "ControlDifferenceVariable",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Differenz zwischen Führungsgröße und Rückführgröße"
+            },
+            {
+              "language": "EN",
+              "text": "Difference between the reference variable and the feedback variable "
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "ManipulatedVariable",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Ausgangsgröße der Regleinrichtung, die auch eine Eingangsgröße der Regelstrecke ist"
+            },
+            {
+              "language": "EN",
+              "text": "Output variable of the controlling system, which is also an input variable of the controlled system "
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "ProportionalActionCoefficient",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Für ein Proportionalglied der Quotient aus der Änderung der Ausgangsgröße und der zugehörigen Eingangsgröße"
+            },
+            {
+              "language": "EN",
+              "text": "For a proportional element, the quotient of the variation of the output variable to the corresponding variation of the input variable"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "IntegralActionCoefficient",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Für ein Integrierglied der Quotient aus der zeitlichen Ableitung der Ausgangsgröße und dem konstant gehaltenen Wert der Eingangsgröße"
+            },
+            {
+              "language": "EN",
+              "text": "For an integral element, the quotient of the time derivative of the output variable to the fixed value of the input variable"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "DerivativeActionCoefficient",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Für ein Differnzierglied der Quotient aus dem Wert der Ausgangsgröße und dem Wert der zeitlichen Ableitung der Eingangsgröße"
+            },
+            {
+              "language": "EN",
+              "text": "For a derivative element, the quotient of the value of the output variable to the value of the time derivative of the input variable"
+            }
+          ]
+        }
+      ],
+      "descriptions": [
+        {
+          "language": "DE",
+          "text": "Temperaturregelung des Vorerhitzers"
+        },
+        {
+          "language": "EN",
+          "text": "Temperature control of preheater"
+        }
+      ]
+    },
+    {
+      "semanticId": {
+        "keys": []
+      },
+      "qualifiers": [],
+      "hasDataSpecification": [],
+      "identification": {
+        "idType": "IRI",
+        "id": "www.GAlab.th-koeln.de/ids/sm/10014"
+      },
+      "idShort": "ControlTemperatureReheater",
+      "modelType": {
+        "name": "Submodel"
+      },
+      "kind": "Instance",
+      "submodelElements": [
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "ReferenceVariable",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Aus der Zielgröße abgeleitete, den Sollwert der Regelgröße festlegende Eingangsgröße eines Vergleichsgliedes einer Regeleinrichtung"
+            },
+            {
+              "language": "EN",
+              "text": "Input variable to a comparing element in a controlling system, which sets the desired value of the controlled variable and is deducted from the command variable"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "FeedbackVariable",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "string"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Variable Größe, die die Regelgröße abbildet und zum Vergleichsglied zurückgeführt wird"
+            },
+            {
+              "language": "EN",
+              "text": "Variable quantity, which represents the controlled variable and is returned to the comparing element"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "ControlDifferenceVariable",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Differenz zwischen Führungsgröße und Rückführgröße"
+            },
+            {
+              "language": "EN",
+              "text": "Difference between the reference variable and the feedback variable "
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "ManipulatedVariable",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Ausgangsgröße der Regleinrichtung, die auch eine Eingangsgröße der Regelstrecke ist"
+            },
+            {
+              "language": "EN",
+              "text": "Output variable of the controlling system, which is also an input variable of the controlled system "
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "ProportionalActionCoefficient",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Für ein Proportionalglied der Quotient aus der Änderung der Ausgangsgröße und der zugehörigen Eingangsgröße"
+            },
+            {
+              "language": "EN",
+              "text": "For a proportional element, the quotient of the variation of the output variable to the corresponding variation of the input variable"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "IntegralActionCoefficient",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Für ein Integrierglied der Quotient aus der zeitlichen Ableitung der Ausgangsgröße und dem konstant gehaltenen Wert der Eingangsgröße"
+            },
+            {
+              "language": "EN",
+              "text": "For an integral element, the quotient of the time derivative of the output variable to the fixed value of the input variable"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "DerivativeActionCoefficient",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Für ein Differnzierglied der Quotient aus dem Wert der Ausgangsgröße und dem Wert der zeitlichen Ableitung der Eingangsgröße"
+            },
+            {
+              "language": "EN",
+              "text": "For a derivative element, the quotient of the value of the output variable to the value of the time derivative of the input variable"
+            }
+          ]
+        }
+      ],
+      "descriptions": [
+        {
+          "language": "DE",
+          "text": "Temperaturregelung des Nacherhitzers"
+        },
+        {
+          "language": "EN",
+          "text": "Temperature control of reheater"
+        }
+      ]
+    },
+    {
+      "semanticId": {
+        "keys": []
+      },
+      "qualifiers": [],
+      "hasDataSpecification": [],
+      "identification": {
+        "idType": "IRI",
+        "id": "www.GAlab.th-koeln.de/ids/sm/10015"
+      },
+      "idShort": "Supervision",
+      "modelType": {
+        "name": "Submodel"
+      },
+      "kind": "Instance",
+      "submodelElements": [
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "AlarmFreezeProtection",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "boolean"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Frostschutzüberwachung des Vorerhitzers"
+            },
+            {
+              "language": "EN",
+              "text": "Frost protection monitoring of the preheater"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "AlarmFireDetection",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "boolean"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Brandüberwachung des Assets"
+            },
+            {
+              "language": "EN",
+              "text": "Fire monitoring of the asset"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "AlarmDifferentialPressureSupplyAirFan",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "boolean"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Differenzdrucküberwachung des Zuluftventilators"
+            },
+            {
+              "language": "EN",
+              "text": "Differential pressure monitoring of the supply air fan"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "AlarmDifferentialPressureExtractAirFan",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "boolean"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Differenzdrucküberwachung des Abluftventilators"
+            },
+            {
+              "language": "EN",
+              "text": "Differential pressure monitoring of the extract air fan"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "AlarmCoolerPump",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "boolean"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Störungsmeldung der Kühlerpumpe"
+            },
+            {
+              "language": "EN",
+              "text": "Fault message of the cooler pump "
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "WarningCoolerPump",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "boolean"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Warnmeldung der Kühlerpumpe"
+            },
+            {
+              "language": "EN",
+              "text": "Warning message of the cooler pump"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "AlarmCodeCoolerPump",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "boolean"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Aktueller Störungscode der  Kühlerpumpe"
+            },
+            {
+              "language": "EN",
+              "text": "Actual fault code of the cooler pump"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "WarningCodeCoolerPump",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "boolean"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Aktueller Warncode der  Kühlerpumpe"
+            },
+            {
+              "language": "EN",
+              "text": "Actual warning code of the cooler pump"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "CoolingDemand",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "boolean"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Kältebedarf"
+            },
+            {
+              "language": "EN",
+              "text": "Cooling demand"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "HeatingDemandPreheater",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "boolean"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Wärmebedarf Vorerhitzer"
+            },
+            {
+              "language": "EN",
+              "text": "Heating demand preheater"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "HeatingDemandReheater",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "boolean"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Wärmebedarf Nacherhitzer"
+            },
+            {
+              "language": "EN",
+              "text": "Heating demand reheater"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "CoolingSetpoint",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Kühlsollwert"
+            },
+            {
+              "language": "EN",
+              "text": "Cooling setpoint"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "HeatingSetpoint",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Heizsollwert"
+            },
+            {
+              "language": "EN",
+              "text": "Heating setpoint"
+            }
+          ]
+        },
+        {
+          "value": "",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "SetpointCorrection",
+          "category": "VARIABLE",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Sollwertkorrektur"
+            },
+            {
+              "language": "EN",
+              "text": "Setpoint correction"
+            }
+          ]
+        }
+      ],
+      "descriptions": [
+        {
+          "language": "DE",
+          "text": "Generelle Informationen uber die Überwachung des Assets"
+        },
+        {
+          "language": "EN",
+          "text": "General information about the supervision of the asset"
+        }
+      ]
+    },
+    {
+      "semanticId": {
+        "keys": []
+      },
+      "qualifiers": [],
+      "hasDataSpecification": [],
+      "identification": {
+        "idType": "IRI",
+        "id": "www.GAlab.th-koeln.de/ids/sm/10016"
+      },
+      "idShort": "Implementation",
+      "modelType": {
+        "name": "Submodel"
+      },
+      "kind": "Instance",
+      "submodelElements": [
+        {
+          "value": "2.1",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "Length",
+          "category": "CONSTANT",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Länge der RLT-Anlage"
+            },
+            {
+              "language": "EN",
+              "text": "Length of the Air Handling Unit"
+            }
+          ]
+        },
+        {
+          "value": "0.72",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "Width",
+          "category": "CONSTANT",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Breite der RLT-Anlage"
+            },
+            {
+              "language": "EN",
+              "text": "Width of the Air Handling Unit"
+            }
+          ]
+        },
+        {
+          "value": "1.39",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "Height",
+          "category": "CONSTANT",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "Höhe der RLT-Anlage"
+            },
+            {
+              "language": "EN",
+              "text": "Height of the Air Handling Unit"
+            }
+          ]
+        },
+        {
+          "value": "2.56",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "xPosition",
+          "category": "CONSTANT",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "x-Koordinate der RLT-Anlage"
+            },
+            {
+              "language": "EN",
+              "text": "x-coordinate of the Air Handling Unit"
+            }
+          ]
+        },
+        {
+          "value": "1.36",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "yPosition",
+          "category": "CONSTANT",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "y-Koordinate der RLT-Anlage"
+            },
+            {
+              "language": "EN",
+              "text": "y-coordinate of the Air Handling Unit"
+            }
+          ]
+        },
+        {
+          "value": "0.48",
+          "semanticId": {
+            "keys": []
+          },
+          "constraints": [],
+          "hasDataSpecification": [],
+          "idShort": "zPosition",
+          "category": "CONSTANT",
+          "modelType": {
+            "name": "Property"
+          },
+          "valueType": {
+            "dataObjectType": {
+              "name": "double"
+            }
+          },
+          "kind": "Instance",
+          "descriptions": [
+            {
+              "language": "DE",
+              "text": "z-Koordinate der RLT-Anlage"
+            },
+            {
+              "language": "EN",
+              "text": "z-coordinate of the Air Handling Unit"
+            }
+          ]
+        }
+      ],
+      "descriptions": [
+        {
+          "language": "DE",
+          "text": "Implementierung der RLT-Anlage"
+        },
+        {
+          "language": "EN",
+          "text": "Implementation of the Air Handling Unit"
+        }
+      ]
+    }
+  ],
+  "conceptDescriptions": []
+}

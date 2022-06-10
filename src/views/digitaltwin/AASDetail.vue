@@ -40,7 +40,7 @@
                                 </b-row>
                                 <hr>
                             </div>
-                            <div v-else>
+                            <div v-else-if="submodelElement.seType === 'SubmodelElementCollection'">
                                 <b-button v-b-toggle="submodelElement.submodelElementCollectionInfo[0].seCollectionName" id = "submodel-element-collection-button" variant="outline-secondary" v-b-popover.hover="'Submodel Element Collection'">{{ submodelElement.submodelElementCollectionInfo[0].seCollectionName }}</b-button>
                                 <b-collapse v-bind:id="submodelElement.submodelElementCollectionInfo[0].seCollectionName">
                                     <div v-for="element in submodelElement.submodelElementCollectionInfo" :key="element.idShort">
@@ -149,34 +149,62 @@ export default {
         for (const element in submodels[item].submodelElements) {
           const seType = submodels[item].submodelElements[element].modelType.name
           if (seType === 'Property') {
-            const semanticId = submodels[item].submodelElements[element].semanticId.keys[0].value
+            // console.log(submodels[item].submodelElements[element].semanticId.keys.length)
+            let semanticId
+            if (submodels[item].submodelElements[element].semanticId.keys.length === 0) {
+              semanticId = ''
+            } else {
+              semanticId = submodels[item].submodelElements[element].semanticId.keys[0].value
+            }
             const rightSemanticId = this.getSemanticContent(semanticId, conceptIds)
-            console.log(typeof rightSemanticId)
+            // console.log(typeof rightSemanticId)
             if (typeof rightSemanticId === 'undefined') {
               // console.log('test')
               const submodelElementInfo = {
                 value: submodels[item].submodelElements[element].value,
                 idShort: submodels[item].submodelElements[element].idShort,
-                semanticId: submodels[item].submodelElements[element].semanticId.keys[0].value,
+                semanticId: semanticId,
                 seType: seType,
                 dataType: '',
                 unit: '',
                 definition: '',
                 name: ''
               }
+              // console.log(submodelElementInfo)
               submodelElements.push(submodelElementInfo)
+              // console.log(submodelElements)
             } else {
-              const submodelElementInfo = {
-                value: submodels[item].submodelElements[element].value,
-                idShort: submodels[item].submodelElements[element].idShort,
-                semanticId: submodels[item].submodelElements[element].semanticId.keys[0].value,
-                seType: seType,
-                dataType: conceptDescriptions[rightSemanticId].embeddedDataSpecifications[0].dataSpecificationContent.dataType,
-                unit: conceptDescriptions[rightSemanticId].embeddedDataSpecifications[0].dataSpecificationContent.unit,
-                definition: conceptDescriptions[rightSemanticId].embeddedDataSpecifications[0].dataSpecificationContent.definition,
-                name: conceptDescriptions[rightSemanticId].embeddedDataSpecifications[0].dataSpecificationContent.preferredName
+              // const dataContentObject = typeof conceptDescriptions[rightSemanticId].embeddedDataSpecifications
+              const dataContent = conceptDescriptions[rightSemanticId].embeddedDataSpecifications
+              // console.log(dataContentObject)
+              // console.log(dataContent.length)
+              if (dataContent.length === 0) {
+                console.log('test')
+                const submodelElementInfo = {
+                  value: submodels[item].submodelElements[element].value,
+                  idShort: submodels[item].submodelElements[element].idShort,
+                  semanticId: submodels[item].submodelElements[element].semanticId.keys[0].value,
+                  seType: seType,
+                  dataType: '',
+                  unit: '',
+                  definition: '',
+                  name: ''
+                }
+                submodelElements.push(submodelElementInfo)
+              } else {
+                const submodelElementInfo = {
+                  value: submodels[item].submodelElements[element].value,
+                  idShort: submodels[item].submodelElements[element].idShort,
+                  semanticId: submodels[item].submodelElements[element].semanticId.keys[0].value,
+                  seType: seType,
+                  dataType: conceptDescriptions[rightSemanticId].embeddedDataSpecifications[0].dataSpecificationContent.dataType,
+                  unit: conceptDescriptions[rightSemanticId].embeddedDataSpecifications[0].dataSpecificationContent.unit,
+                  definition: conceptDescriptions[rightSemanticId].embeddedDataSpecifications[0].dataSpecificationContent.definition,
+                  name: conceptDescriptions[rightSemanticId].embeddedDataSpecifications[0].dataSpecificationContent.preferredName
+                }
+                submodelElements.push(submodelElementInfo)
+                console.log(submodelElements)
               }
-              submodelElements.push(submodelElementInfo)
             }
             /*
             const submodelElementInfo = {
