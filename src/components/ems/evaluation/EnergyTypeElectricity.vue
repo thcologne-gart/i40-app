@@ -4,13 +4,13 @@
             <b-col :key="energyGroup.id" v-for="energyGroup in energyUseGroup">
                 <a href="#">
                     <div>{{ building }}</div>
-                    <div>{{ site }}</div>
+                    <div>{{ getEnpis }}</div>
                     <b-card id="energyUseGroup"
                         v-bind:title = energyGroup.name
                         class="shadow p-3 mb-5 bg-white rounded"
                     >
                         <div v-if="energyGroup.name === 'Heizung'">
-                                <b-card-img v-b-modal="energyType[0].key + 'heating'" href="#" style="max-width: 20%;" top fluid :src= energyGroup.pic></b-card-img>
+                            <b-card-img v-b-modal="energyType[0].key + 'heating'" href="#" style="max-width: 20%;" top fluid :src= energyGroup.pic></b-card-img>
                             <b-modal v-bind:id="energyType[0].key + 'heating'" hide-footer width="350px" persistent :title="energyGroup.name">
                                 <b-form-group
                                     id="input-group-1"
@@ -26,7 +26,7 @@
                                 </b-form-group>
 
                                 <hr>
-                                <b-button class="mt-3" variant="outline-secondary" block  @click="onSubmitEnergySourceGroup ([energyGroup, numberSystems, energyType])">Save</b-button>
+                                <b-button class="mt-3" variant="outline-secondary" block  @click="onSubmitEnergySourceGroup ([energyGroup, numberSystems, energyType, getEnpis])">Save</b-button>
                             </b-modal>
                         </div>
 
@@ -49,7 +49,7 @@
                                 </b-form-group>
 
                                 <hr>
-                                <b-button class="mt-3" variant="outline-secondary" block  @click="onSubmitEnergySourceGroup ([energyGroup, numberSystems, energyType])">Save</b-button>
+                                <b-button class="mt-3" variant="outline-secondary" block  @click="onSubmitEnergySourceGroup ([energyGroup, numberSystems, energyType, getEnpis])">Save</b-button>
                             </b-modal>
                         </div>
 
@@ -72,7 +72,7 @@
                                 </b-form-group>
 
                                 <hr>
-                                <b-button class="mt-3" variant="outline-secondary" block  @click="onSubmitEnergySourceGroup ([energyGroup, numberSystems, energyType])">Save</b-button>
+                                <b-button class="mt-3" variant="outline-secondary" block  @click="onSubmitEnergySourceGroup ([energyGroup, numberSystems, energyType, getEnpis])">Save</b-button>
                             </b-modal>
                         </div>
 
@@ -102,14 +102,34 @@ export default {
   },
   props: {
     energyType: Array,
-    enpis: Object,
+    enpis: Array,
     building: Number,
     site: Number
   },
+  computed: {
+    getEnpis () {
+      let enpi
+      let enpiInformations = {}
+      for (enpi in this.enpis) {
+        if (this.enpis[enpi][0].submodelSemanticId === 'submodel/enpiElectricity') {
+          // console.log('test')
+          enpiInformations = {
+            key: this.enpis[enpi][0].key,
+            id: this.enpis[enpi][0].submodelId,
+            submodelName: this.enpis[enpi][0].submodelName,
+            submodelSemanticId: this.enpis[enpi][0].submodelSemanticId
+          }
+        }
+        console.log(this.enpis[enpi])
+      }
+      return enpiInformations
+    }
+  },
   methods: {
-    onSubmitEnergySourceGroup ([energyGroup, numberSystems, energyType]) {
+    onSubmitEnergySourceGroup ([energyGroup, numberSystems, energyType, enpiInformations]) {
       // event.preventDefault()
       console.log(energyType)
+      console.log(enpiInformations)
       const numberSystemsArray = [0]
       this.$bvModal.hide(energyType[0].key + 'heating')
       this.$bvModal.hide(energyType[0].key + 'cooling')
@@ -333,7 +353,6 @@ export default {
 
         this.$store.dispatch('createConceptDescriptions', newConceptDescriptionEnergySourceGroup)
       }
-      /*
       // Add Submodel Element Collections für Enpis
       for (const system in numberSystemsArray) {
         const newEnpiGroup = [
@@ -360,11 +379,10 @@ export default {
           }
         ]
         // console.log(newEnergySourceGroup)
-        const submodelKey = this.energyType[0].key
+        const submodelKey = enpiInformations.key
         console.log(submodelKey)
-        this.$store.dispatch('addEnergyUseGroup', [newEnergySourceGroup, submodelKey])
+        this.$store.dispatch('addEnergyUseGroup', [newEnpiGroup, submodelKey])
       }
-      */
     }
   }
 }
