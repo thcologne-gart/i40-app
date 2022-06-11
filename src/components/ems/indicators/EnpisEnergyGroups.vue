@@ -6,6 +6,8 @@
                     <b-tab v-bind:title="enpi.id" v-for="enpi in getSubmodelCollections" :key="enpi.id" id="enpi-tab">
                         <slot name="enpi" v-bind:enpi="enpi">Platzhalter</slot>
                         <EnpisComponents :enpiComponent="getComponentSubmodelCollections" :enpiEnergyGroup="enpi"/>
+                        <div>{{ building }}</div>
+                        <div>{{ site }}</div>
                     </b-tab>
                 </b-tabs>
             </b-card>
@@ -19,17 +21,25 @@ import EnpisComponents from '@/components/ems/indicators/EnpisComponents.vue'
 export default {
   components: { EnpisComponents },
   props: {
-    enpiSubmodel: Array
+    enpiSubmodel: Array,
+    site: Number,
+    building: Number
   },
   computed: {
     getSubmodelCollections () {
       const seCollections = []
       for (const item in this.enpiSubmodel) {
         for (const element in this.enpiSubmodel[item]) {
-          console.log(this.enpiSubmodel[item][element])
+          // console.log(this.enpiSubmodel[item])
           const collection = this.enpiSubmodel[item][element]
           if (typeof collection.idShort !== 'undefined' && collection.idShort.includes('EnPis Energiegruppe')) {
-            console.log(this.enpiSubmodel[item][element])
+            // console.log(this.enpiSubmodel[item][element])
+            for (const value in collection) {
+              // console.log(collection[value])
+              if (typeof collection[value] === 'object') {
+                // console.log(collection[value])
+              }
+            }
             const enpiCollection = {
               id: collection.idShort
             }
@@ -37,25 +47,43 @@ export default {
           }
         }
       }
-      console.log(this.enpiSubmodel)
+      // console.log(this.enpiSubmodel)
       return seCollections
     },
     getComponentSubmodelCollections () {
-      const componentSeCollections = []
+      const test = []
       for (const item in this.enpiSubmodel) {
         for (const element in this.enpiSubmodel[item]) {
-          console.log(this.enpiSubmodel[item][element])
+          console.log(this.enpiSubmodel[item])
           const componentCollection = this.enpiSubmodel[item][element]
-          if (typeof componentCollection.idShort !== 'undefined' && componentCollection.idShort.includes('EnPis Energiegruppe') && componentCollection.value !== 0) {
+          if (typeof componentCollection.idShort !== 'undefined' && typeof componentCollection.value !== 'undefined' && componentCollection.idShort.includes('EnPis Energiegruppe') && componentCollection.value !== 0) {
+            const componentSeCollections = []
             const enpiCollectionComponent = {
               id: componentCollection.value
             }
             componentSeCollections.push(enpiCollectionComponent)
-            console.log(enpiCollectionComponent)
+            console.log(componentCollection.value)
+            // const collectionEnpiComponents = []
+            for (const component in componentSeCollections) {
+              console.log(componentSeCollections[component])
+              const id = componentSeCollections[component].id
+              for (const com in id) {
+                const enpiTest = {
+                  idComponent: id[com].idShort,
+                  idGroup: componentCollection.idShort
+                }
+                // enpiCollectionComponent.idComponent = id[com].idShort
+                // enpiCollectionComponent.idComponent = id[com].idShort
+                // console.log(enpiCollectionComponent)
+                // collectionEnpiComponents.push(enpiName)
+                test.push(enpiTest)
+              }
+            }
           }
+          /*
           const collectionEnpiComponents = []
           for (const component in componentSeCollections) {
-            console.log(componentSeCollections[component])
+            // console.log(componentSeCollections[component])
             const id = componentSeCollections[component].id
             for (const com in id) {
               const enpiName = {
@@ -65,10 +93,11 @@ export default {
               componentSeCollections.push(enpiName)
             }
           }
+          */
         }
       }
-      console.log(componentSeCollections)
-      return componentSeCollections
+      console.log(test)
+      return test
     }
   }
 }

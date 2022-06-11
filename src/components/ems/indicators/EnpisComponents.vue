@@ -2,8 +2,6 @@
     <div id = "header">
         <div>{{ enpiComponent }}
         </div>
-        <div>{{ enpiEnergyGroup }}
-        </div>
     </div>
 </template>
 
@@ -11,7 +9,7 @@
 export default {
   props: {
     enpiEnergyGroup: Object,
-    enpiComponent: Object
+    enpiComponent: Array
   },
   computed: {
     wassollderscheiß () {

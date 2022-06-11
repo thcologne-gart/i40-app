@@ -12,7 +12,7 @@
                                         <div v-if="site === enpi[1][0].value && building === enpi[2][1].value">
                                             <b-tab v-bind:title= enpi[0].submodelName >
                                                 <slot name="enpiSubmodel" v-bind:enpiSubmodel="enpi[0].submodelName"></slot>
-                                                <EnpisEnergyGroups :enpiSubmodel="enpi"/>
+                                                <EnpisEnergyGroups :enpiSubmodel="enpi" :site="site2" :building="building" />
                                             </b-tab>
                                         </div>
                                     </div>
