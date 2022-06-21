@@ -1,6 +1,7 @@
 <template>
   <div>
     <h4 id ="header">Verwaltungsschalen</h4>
+    <!--
     <b-card-group>
         <div v-for="aas in allAas" :key="aas.assetAdministrationShells">
         <b-card class="shadow p-3 mb-5 bg-white rounded" id="show-aas"
@@ -11,9 +12,11 @@
         </b-card>
         </div>
     </b-card-group>
+    -->
     <b-card-group>
         <div v-for="shell in aas" :key="shell[0]">
-        <b-card class="shadow p-3 mb-5 bg-white rounded" id="show-shell">
+        <b-card class="shadow p-3 mb-5 bg-white rounded" id="show-shell"
+        :sub-title= shell.assetAdministrationShells[0].idShort>
             <router-link :to = "{ name: 'AAS Detail', params: { aas: shell } }">
                 <b-card-img height="80px" top fluid :src= aasPic></b-card-img>
             </router-link>

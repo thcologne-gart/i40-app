@@ -18,13 +18,13 @@
                                         <b-button v-b-modal="submodelElement.idShort + submodel.submodelName" variant="light-white">{{ submodelElement.idShort }}</b-button>
                                             <b-modal v-bind:id="submodelElement.idShort + submodel.submodelName" hide-footer width="350px" persistent title="Semantic Information">
                                                 <p class="my-4">Semantic ID: {{ submodelElement.semanticId }}</p>
-                                                <div v-if="submodelElement.definition === '' || !submodelElement.definition.length">
+                                                <div v-if="typeof submodelElement.definition === 'undefined' || submodelElement.definition === '' || !submodelElement.definition.length">
                                                     <p class="my-4">Definition: </p>
                                                 </div>
                                                 <div v-else>
                                                     <p class="my-4">Definition: {{ submodelElement.definition[0].text }}</p>
                                                 </div>
-                                                <div v-if="submodelElement.name === '' || !submodelElement.name.length">
+                                                <div v-if="typeof submodelElement.name === 'undefined' || submodelElement.name === '' || !submodelElement.name.length">
                                                     <p class="my-4">Name: </p>
                                                 </div>
                                                 <div v-else>
@@ -50,7 +50,7 @@
                                                     <b-button v-b-modal="element.idShort + submodel.submodelName" variant="light-white">{{ element.idShort }}</b-button>
                                                         <b-modal v-bind:id="element.idShort + submodel.submodelName" hide-footer width="350px" persistent title="Semantic Information">
                                                             <p class="my-4">SemanticID: {{ element.semanticId }}</p>
-                                                            <div v-if="element.definition === '' || !element.definition.length">
+                                                            <div v-if="typeof element.definition === 'undefined' || element.definition === '' || !element.definition.length">
                                                                 <p class="my-4">Definition: </p>
                                                             </div>
                                                             <div v-else>
@@ -130,28 +130,33 @@ export default {
       // const aasInfo = this.aas.aas.assetAdministrationShells
       // const assetsInfo = this.aas.aas.assets
       const conceptDescriptions = this.aas.conceptDescriptions
-      console.log(conceptDescriptions)
+      // console.log(conceptDescriptions)
       const conceptIds = []
       let i
-      for (i = 0; i in conceptDescriptions; i++) {
-        const conceptId = {
-          id: conceptDescriptions[i].identification.id
+      if (typeof conceptDescriptions !== 'undefined') {
+        for (i = 0; i in conceptDescriptions; i++) {
+          const conceptId = {
+            id: conceptDescriptions[i].identification.id
+          }
+          conceptIds.push(conceptId)
         }
-        conceptIds.push(conceptId)
       }
-      // console.log(conceptIds)
+      console.log(conceptIds)
       const submodels = this.aas.submodels
       const allInfosSubmodels = []
+      console.log(submodels)
       for (const item in submodels) {
         // console.log(allInfosSubmodels)
         const submodelElements = []
         // const submodelElements = submodels[item].submodelElements
         for (const element in submodels[item].submodelElements) {
           const seType = submodels[item].submodelElements[element].modelType.name
+          console.log(seType)
           if (seType === 'Property') {
             // console.log(submodels[item].submodelElements[element].semanticId.keys.length)
             let semanticId
-            if (submodels[item].submodelElements[element].semanticId.keys.length === 0) {
+            console.log(submodels[item].submodelElements[element].semanticId)
+            if (typeof submodels[item].submodelElements[element].semanticId === 'undefined' || typeof submodels[item].submodelElements[element].semanticId.keys.length === 'undefined') {
               semanticId = ''
             } else {
               semanticId = submodels[item].submodelElements[element].semanticId.keys[0].value
@@ -178,7 +183,7 @@ export default {
               const dataContent = conceptDescriptions[rightSemanticId].embeddedDataSpecifications
               // console.log(dataContentObject)
               // console.log(dataContent.length)
-              if (dataContent.length === 0) {
+              if (typeof dataContent === 'undefined' || dataContent.length === 0) {
                 console.log('test')
                 const submodelElementInfo = {
                   value: submodels[item].submodelElements[element].value,
@@ -228,10 +233,18 @@ export default {
             submodelElements.push(submodelElementCollectionInfo)
           }
         }
+        let semanticId
+        console.log(submodels[item].semanticId)
+        if (typeof submodels[item].semanticId === 'undefined') {
+          semanticId = ''
+        } else {
+          semanticId = submodels[item].semanticId.keys
+        }
         // console.log(submodelElements)
         const submodelInfo = {
           submodelName: submodels[item].idShort,
-          submodelSemanticId: submodels[item].semanticId.keys,
+          // submodelSemanticId: submodels[item].semanticId.keys,
+          submodelSemanticId: semanticId,
           submodelElements: submodelElements
         }
         allInfosSubmodels.push(submodelInfo)
