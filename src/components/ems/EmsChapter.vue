@@ -1,7 +1,7 @@
 <template>
     <div id = "sticky-ems-chapter">
         <b-navbar id="navbar-chapter" toggleable="md">
-            <b-row>
+            <b-row id="ems-chapter">
                 <b-col md = "2">
                     <div class="d-none d-lg-block" id="chapterName">
                         <EmsChapterBrand :emsChapter="emsChapter" />
@@ -11,18 +11,18 @@
                     <b-navbar-toggle target="chapter-collapse" class="row"></b-navbar-toggle>
                     <b-collapse id="chapter-collapse" is-nav>
                         <b-navbar-nav class="mx-auto">
-                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="/contextstart">1</b-button></b-nav-item>
-                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="/management-start">2</b-button></b-nav-item>
-                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="/ressources-start">3</b-button></b-nav-item>
-                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="/evaluation-start">4</b-button></b-nav-item>
-                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="/indicators-start">5</b-button></b-nav-item>
-                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="/goals-start">6</b-button></b-nav-item>
-                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="/competence">7</b-button></b-nav-item>
-                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="/operation">8</b-button></b-nav-item>
-                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="/buying">9</b-button></b-nav-item>
-                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="/communication">10</b-button></b-nav-item>
-                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="/analysis">11</b-button></b-nav-item>
-                            <b-nav-item><b-button id="btn-ems-chapter" variant="outline-warning" to="/optimization">12</b-button></b-nav-item>
+                            <b-nav-item><b-button id="btn-ems-chapter" to="/contextstart">1</b-button></b-nav-item>
+                            <b-nav-item><b-button id="btn-ems-chapter" to="/management-start">2</b-button></b-nav-item>
+                            <b-nav-item><b-button id="btn-ems-chapter" to="/ressources-start">3</b-button></b-nav-item>
+                            <b-nav-item><b-button id="btn-ems-chapter" to="/evaluation-start">4</b-button></b-nav-item>
+                            <b-nav-item><b-button id="btn-ems-chapter" to="/indicators-start">5</b-button></b-nav-item>
+                            <b-nav-item><b-button id="btn-ems-chapter" to="/goals-start">6</b-button></b-nav-item>
+                            <b-nav-item><b-button id="btn-ems-chapter" to="/competence">7</b-button></b-nav-item>
+                            <b-nav-item><b-button id="btn-ems-chapter" to="/operation">8</b-button></b-nav-item>
+                            <b-nav-item><b-button id="btn-ems-chapter" to="/buying">9</b-button></b-nav-item>
+                            <b-nav-item><b-button id="btn-ems-chapter" to="/communication">10</b-button></b-nav-item>
+                            <b-nav-item><b-button id="btn-ems-chapter" to="/analysis">11</b-button></b-nav-item>
+                            <b-nav-item><b-button id="btn-ems-chapter" to="/optimization">12</b-button></b-nav-item>
                         </b-navbar-nav>
                     </b-collapse>
                 </b-col>

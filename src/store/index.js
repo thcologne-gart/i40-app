@@ -10,6 +10,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     loadedAas: null,
+    loadedAasJson: null,
     loadedAasDeletionEnergyTypes: null,
     loadedSubmodels: null,
     loadedConceptDescriptions: null,
@@ -29,6 +30,9 @@ export default new Vuex.Store({
   mutations: {
     createAas (state, payload) {
       state.loadedAas = payload
+    },
+    uploadAas (state, payload) {
+      state.loadedAasJson = payload
     },
     createSubmodelContext (state, payload) {
       state.loadedSubmodels = payload
@@ -738,6 +742,25 @@ export default new Vuex.Store({
         commit('setLoadedPdfs', pdfs)
       })
     },
+
+    uploadAAS ({ commit }, payload) {
+      const database = getDatabase()
+      push(ref(database, 'aas/'), {
+        payload
+      })
+        .then((data) => {
+          const key = data.key
+          console.log(data)
+          commit('uploadAas', {
+            ...payload,
+            id: key
+          })
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+
     updateEnpiData ({ commit }, payload) {
       const database = getDatabase()
       const updateObj = {}

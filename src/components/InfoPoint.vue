@@ -25,7 +25,7 @@ export default {
     max-width: 20%;
 }
 #point:hover {
-  background-color: #F2B705 !important;
+  background-color: #4d4e4e !important;
   color: #F2F2F2;
   transition: all 0.5s ease;
 }

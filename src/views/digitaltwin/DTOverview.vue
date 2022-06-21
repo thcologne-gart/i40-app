@@ -3,7 +3,7 @@
     <h4 id ="header">Verwaltungsschalen</h4>
     <b-card-group>
         <div v-for="aas in allAas" :key="aas.assetAdministrationShells">
-        <b-card class="shadow p-3 mb-5 bg-white rounded"
+        <b-card class="shadow p-3 mb-5 bg-white rounded" id="show-aas"
         :sub-title= aas.aas.assetAdministrationShells[0].idShort>
             <router-link :to = "{ name: 'AAS Detail', params: { aas: aas } }">
                 <b-card-img height="80px" top fluid :src= aas.pic></b-card-img>
@@ -11,11 +11,66 @@
         </b-card>
         </div>
     </b-card-group>
+    <div>
+        <b-card class="shadow p-3 mb-5 bg-white rounded" id="add-aas-card">
+            <h4 id ="header">Verwaltungsschalen hinzufügen</h4>
+            <b-col class="text-left" cols="4">
+                <b-form-file v-model="file" plain accept=".json" @change="onFileSelected"></b-form-file>
+            </b-col>
+                <div id="json" v-if="filename !== ''">
+                    <div>
+                        <button id="upload-button" @click="onUploadAAS()" v-on:click="isHidden = true" variant="outline-warning">Upload AAS</button>
+                    </div>
+                        <iframe
+                            :src= 'filename'
+                            width="85%"
+                            height="770"
+                            v-if="!isHidden"
+                        >
+                        </iframe>
+                </div>
+        </b-card>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+  data () {
+    return {
+      file: null,
+      filename: '',
+      isHidden: false
+    }
+  },
+  methods: {
+    onFileSelected (e) {
+      e.preventDefault()
+      // console.log(e)
+      const files = e.target.files
+      // this.file = e.target.files[0]
+      // let filename = files[0].name
+      const fileReader = new FileReader()
+      fileReader.addEventListener('load', () => {
+        this.filename = fileReader.result
+        // console.log(this.filename)
+      })
+      fileReader.readAsDataURL(files[0])
+      this.file = files[0]
+      console.log(this.file)
+    },
+    onUploadAAS () {
+      const aasData = {
+        aasContent: this.filename,
+        name: this.file.name,
+        type: this.file.type,
+        lastModifiedDate: this.file.lastModifiedDate
+      }
+      console.log(aasData)
+      this.$store.dispatch('uploadAAS', aasData)
+    }
+  },
+
   async created () {
     // this.allAas = []
     // let aas
@@ -42,13 +97,17 @@ export default {
 </script>
 
 <style scoped>
+#add-aas-card {
+    margin-inline: 30%;
+    margin-bottom: 30px;
+}
 .card-group {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     flex-direction: row;
 }
-.card {
+#show-aas {
     width: 260px;
     margin-right: 30px;
     margin-left: 30px;

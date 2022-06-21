@@ -64,7 +64,7 @@ body {
 }
 footer {
   height: 60px;
-  background: #025939;
+  background: #0a322b;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -72,6 +72,7 @@ footer {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color: rgba(151, 222, 185, 0.5);
 }
 
 .text-left {
@@ -93,7 +94,7 @@ footer {
 
   a {
   &.router-link-exact-active {
-    border: 2px solid #F2B705;
+    border: 2px solid #4d4e4e;
     color: #025939;
     border-radius: 4px;
     min-width: 9rem;
@@ -116,13 +117,13 @@ footer {
 
   a {
   &.router-link-active {
-    box-shadow: 2px 2px #F2B705;
+    box-shadow: 2px 2px #4d4e4e;
     }
   }
 }
 
 #nav-bar {
-  background: #F2B705;
+  background: white;
 }
 
 #nav-brand {
@@ -139,7 +140,7 @@ footer {
 
 .nav-pills .nav-link.active {
     background-color: white !important;
-    border: 2px solid #F2B705 !important;
+    border: 2px solid #4d4e4e !important;
     color: green !important;
 }
 
@@ -158,5 +159,10 @@ footer {
     margin-left: auto !important;
     margin-right: auto !important;
 }
-
+#navigation {
+    background-color: rgba(242,145,61, 0.6);
+}
+#ems-chapter {
+    background-color: rgba(242,145,61, 0.6);
+}
 </style>
