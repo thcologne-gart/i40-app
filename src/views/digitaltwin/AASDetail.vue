@@ -3,8 +3,8 @@
         <div>
             <b-card
             class="shadow p-3 mb-5 bg-white rounded"
-            :title= aas.aas.assetAdministrationShells[0].idShort
-            :sub-title = aas.aas.assets[0].idShort>
+            :title= aas.assetAdministrationShells[0].idShort
+            :sub-title = aas.assets[0].idShort>
                 <hr>
                 <h5>Submodels</h5>
                 <div v-for="submodel in aasInfo" :key="submodel.submodelName">
@@ -129,7 +129,7 @@ export default {
     aasInfo () {
       // const aasInfo = this.aas.aas.assetAdministrationShells
       // const assetsInfo = this.aas.aas.assets
-      const conceptDescriptions = this.aas.aas.conceptDescriptions
+      const conceptDescriptions = this.aas.conceptDescriptions
       console.log(conceptDescriptions)
       const conceptIds = []
       let i
@@ -140,7 +140,7 @@ export default {
         conceptIds.push(conceptId)
       }
       // console.log(conceptIds)
-      const submodels = this.aas.aas.submodels
+      const submodels = this.aas.submodels
       const allInfosSubmodels = []
       for (const item in submodels) {
         // console.log(allInfosSubmodels)
