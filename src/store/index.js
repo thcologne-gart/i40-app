@@ -10,7 +10,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     loadedAas: null,
-    loadedAasJson: null,
+    loadedAASJson: null,
     loadedAasDeletionEnergyTypes: null,
     loadedSubmodels: null,
     loadedConceptDescriptions: null,
@@ -32,7 +32,7 @@ export default new Vuex.Store({
       state.loadedAas = payload
     },
     uploadAas (state, payload) {
-      state.loadedAasJson = payload
+      state.loadedAASJson = payload
     },
     createSubmodelContext (state, payload) {
       state.loadedSubmodels = payload
@@ -57,6 +57,9 @@ export default new Vuex.Store({
     },
     setLoadedAas (state, payload) {
       state.loadedAas = payload
+    },
+    setLoadedAASJson (state, payload) {
+      state.loadedAASJson = payload
     },
     setLoadedAasDeletionEnergyTypes (state, payload) {
       state.loadedAasDeletionEnergyTypes = payload
@@ -259,6 +262,30 @@ export default new Vuex.Store({
         }
         // console.log(aas)
         commit('setLoadedAas', aas)
+      })
+    },
+
+    loadAASJson ({ commit }) {
+      const database = getDatabase()
+      onValue(ref(database, 'aas/'), (snapshot) => {
+        const data = snapshot.val()
+        console.log(data)
+        // let keyAas
+        // const aas = []
+        /*
+        for (const key in data) {
+          const submodelId = data[key].payload.submodels.keys[0].value
+          if (submodelId.includes('submodels/building-information/')) {
+            keyAas = key
+            aas.push({
+              key: keyAas,
+              submodelId: submodelId
+            })
+          }
+        }
+        */
+        // console.log(aas)
+        commit('setLoadedAASJson', data)
       })
     },
 
@@ -892,6 +919,9 @@ export default new Vuex.Store({
   getters: {
     loadedAas (state) {
       return state.loadedAas
+    },
+    loadedAASJson (state) {
+      return state.loadedAASJson
     },
     loadedAasDeletionEnergyTypes (state) {
       return state.loadedAasDeletionEnergyTypes

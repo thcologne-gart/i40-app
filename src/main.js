@@ -48,6 +48,7 @@ new Vue({
       }
     })
     this.$store.dispatch('loadAas')
+    this.$store.dispatch('loadAASJson')
     this.$store.dispatch('loadSubmodels')
     this.$store.dispatch('loadConceptDescriptions')
     this.$store.dispatch('loadOrganizationInformation')

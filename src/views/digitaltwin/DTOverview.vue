@@ -30,6 +30,7 @@
                         </iframe>
                 </div>
         </b-card>
+        <div>{{ aas }}</div>
     </div>
   </div>
 </template>
@@ -71,6 +72,12 @@ export default {
     }
   },
 
+  computed: {
+    aas () {
+      console.log(this.$store.getters.loadedAASJson)
+      return this.$store.getters.loadedAASJson
+    }
+  },
   async created () {
     // this.allAas = []
     // let aas
