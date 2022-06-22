@@ -41,6 +41,7 @@
                                 <hr>
                             </div>
                             <div v-else-if="submodelElement.seType === 'SubmodelElementCollection'">
+                                <div>{{ test }}</div>
                                 <b-button v-b-toggle="submodelElement.submodelElementCollectionInfo[0].seCollectionName" id = "submodel-element-collection-button" variant="outline-secondary" v-b-popover.hover="'Submodel Element Collection'">{{ submodelElement.submodelElementCollectionInfo[0].seCollectionName }}</b-button>
                                 <b-collapse v-bind:id="submodelElement.submodelElementCollectionInfo[0].seCollectionName">
                                     <div v-for="element in submodelElement.submodelElementCollectionInfo" :key="element.idShort">
@@ -228,6 +229,7 @@ export default {
             const seCollection = submodels[item].submodelElements[element]
             const callSeIter = this.iterateSeCollection(seCollection, conceptIds, conceptDescriptions)
             const submodelElementCollectionInfo = {
+              seType: seType,
               submodelElementCollectionInfo: callSeIter
             }
             submodelElements.push(submodelElementCollectionInfo)
