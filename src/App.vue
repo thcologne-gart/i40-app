@@ -81,21 +81,21 @@ footer {
 
 #nav {
   font-weight: bold;
-  color: #025939;
+  color: #0a322b;
 
   a {
   &.router-link-exact-active {
-    color: #025939;
+    color: #0a322b;
   }
   }
 }
 #submodel-item {
-  color: #025939;
+  color: #0a322b;
 
   a {
   &.router-link-exact-active {
     border: 2px solid #4d4e4e;
-    color: #025939;
+    color: #0a322b;
     border-radius: 4px;
     min-width: 9rem;
   }
@@ -103,11 +103,11 @@ footer {
 }
 
 #building-navbar {
-  color: #025939;
+  color: #0a322b;
 
   a {
   &.router-link-exact-active {
-    color: #025939;
+    color: #0a322b;
   }
   }
 }
@@ -127,7 +127,7 @@ footer {
 }
 
 #nav-brand {
-  color: #025939;
+  color: #0a322b;
 }
 #sticky-ems-chapter {
   position: sticky;
@@ -160,9 +160,9 @@ footer {
     margin-right: auto !important;
 }
 #navigation {
-    background-color: rgba(242,145,61, 0.6);
+    background-color: rgb(175,175,175);
 }
 #ems-chapter {
-    background-color: rgba(242,145,61, 0.6);
+    background-color: rgb(175, 175, 175);
 }
 </style>
