@@ -105,6 +105,7 @@ export default {
   },
   created () {
     // console.log(this.aas.length)
+
     const count = Object.keys(this.aas).length
     // console.log(count)
     // this.interval = setInterval(() => {
@@ -121,6 +122,7 @@ export default {
     for (var i = 0; i < array.length; i++) {
       delay(i, array)
     }
+
     /*
       this.interval = setInterval(() => {
         console.log(this.aas[item])
@@ -170,6 +172,7 @@ function delay (i, array) {
     console.log(array[i])
   }, 4000)
 }
+
 </script>
 
 <style scoped>
