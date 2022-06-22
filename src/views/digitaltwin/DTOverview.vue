@@ -14,10 +14,10 @@
     </b-card-group>
     -->
     <b-card-group>
-        <div v-for="shell in aas" :key="shell[0]">
+        <div v-for="(shell, aasId) in aas" :key="shell[0]">
         <b-card class="shadow p-3 mb-5 bg-white rounded" id="show-shell"
         :sub-title= shell.assetAdministrationShells[0].idShort>
-            <router-link :to = "{ name: 'AAS Detail', params: { aas: shell } }">
+            <router-link :to = "{ name: 'AAS Detail', params: { aas: shell, aasId: aasId } }">
                 <b-card-img height="80px" top fluid :src= aasPic></b-card-img>
             </router-link>
         </b-card>
@@ -52,7 +52,10 @@ export default {
     return {
       file: null,
       filename: '',
-      isHidden: false
+      isHidden: false,
+      interval: null,
+      loadAas: [],
+      showAas: []
     }
   },
   methods: {
@@ -90,6 +93,7 @@ export default {
       console.log(this.$store.getters.loadedAASJson)
       const loadedAas = this.$store.getters.loadedAASJson
       console.log(loadedAas.aas1)
+      // this.loadAas = loadedAas
       // for (const item in loadedAas) {
       // console.log(loadedAas[item].payload.aasContent)
       // const json = atob(loadedAas[item].payload.aasContent)
@@ -99,7 +103,39 @@ export default {
       return loadedAas
     }
   },
-  async created () {
+  created () {
+    // console.log(this.aas.length)
+    const count = Object.keys(this.aas).length
+    // console.log(count)
+    // this.interval = setInterval(() => {
+    for (const item in this.aas) {
+      // console.log(this.aas[item])
+      if (count > this.showAas.length) {
+        const thisAas = this.aas[item]
+        // console.log(thisAas)
+        setTimeout(addAas, 4000, thisAas)
+      }
+    }
+    var array = [1, 2, 3, 4, 5]
+
+    for (var i = 0; i < array.length; i++) {
+      delay(i, array)
+    }
+    /*
+      this.interval = setInterval(() => {
+        console.log(this.aas[item])
+        if (count > this.showAas.length) {
+          this.showAas.push(this.aas[item])
+          // console.log(this.showAas)
+        } else {
+          clearInterval(this.interval)
+        }
+      }, 8000)
+      console.log(this.showAas)
+    }
+    */
+    // console.log(this.interval)
+    // console.log(this.showAas)
     // this.allAas = []
     // let aas
     // const repo = require('../assets/aas')
@@ -123,6 +159,16 @@ export default {
     // this.submodelsInAas = test[0]
     // this.aasJson = test[1]
   }
+}
+
+function addAas (thisAas) {
+  console.log(thisAas)
+}
+
+function delay (i, array) {
+  setTimeout(() => {
+    console.log(array[i])
+  }, 4000)
 }
 </script>
 
