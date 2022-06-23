@@ -35,7 +35,6 @@
                                             </b-modal>
                                     </b-col>
                                     <b-col>
-                                        {{ typeof submodelElement.value }}
                                         {{ submodelElement.value }}
                                     </b-col>
                                 </b-row>
@@ -401,9 +400,16 @@ export default {
   },
   methods: {
     calculateValue () {
-      console.log(this.aasInfo)
-      const value = (Math.random() * (20 - 10) + 10)
-      console.log(value)
+      for (const submodels in this.aasInfo) {
+        // console.log(this.aasInfo[submodels].submodelName)
+        if (this.aasInfo[submodels].submodelName === 'Measurements') {
+          const value = (Math.random() * (20 - 10) + 10)
+          console.log(value)
+        }
+      }
+      // console.log(this.aasInfo)
+      // const value = (Math.random() * (20 - 10) + 10)
+      // console.log(value)
     },
     getSemanticContent (semanticId, conceptIds) {
       // console.log(semanticId)
