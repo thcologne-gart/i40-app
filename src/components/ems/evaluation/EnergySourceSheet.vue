@@ -297,7 +297,7 @@ a:hover {
     border-bottom-style: solid;
     border-color: #F2F2F2;
     font-size: 18px;
-    color: #025939;
+    color: #0a322b;
     padding-bottom: 5px;
 }
 #test {

@@ -563,7 +563,7 @@ export default {
     font-size: 20px;
 }
 #energyUseGroup:hover {
-  background-color: #025939 !important;
+  background-color: #0a322b !important;
   color: #F2F2F2;
   transition: all 0.5s ease;
 }
@@ -572,7 +572,7 @@ export default {
    filter: invert(1);
 }
 a {
-  color: #025939;
+  color: #0a322b;
   text-decoration: none;
 }
 </style>

@@ -88,7 +88,7 @@ export default {
 
 <style scoped>
 #ems-staring-site {
-    background-color: #025939;
+    background-color: #0a322b;
 }
 #ems-start {
   margin-top: 20px;
@@ -96,7 +96,7 @@ export default {
 }
 #header {
     margin-top: 15px;
-    color: #025939;
+    color: #0a322b;
 }
 #points {
     height: 100vh;
@@ -136,6 +136,6 @@ export default {
   font-size: 200%;
 }
 #lets-start {
-    background-color: #025939;
+    background-color: #0a322b;
 }
 </style>

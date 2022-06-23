@@ -270,7 +270,7 @@ export default {
     margin-right: 20px;
 }
 #header {
-    color: #025939;
+    color: #0a322b;
     font-size: 1em
 }
 #body {

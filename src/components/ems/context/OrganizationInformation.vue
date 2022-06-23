@@ -64,7 +64,7 @@ export default {
     margin-top: 30px;
 }
 #header {
-    color: #025939;
+    color: #0a322b;
     font-size: 1em
 }
 #body {

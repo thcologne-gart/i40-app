@@ -95,7 +95,7 @@ export default {
 }
 #header {
     margin-top: 15px;
-    color: #025939;
+    color: #0a322b;
 }
 
 </style>

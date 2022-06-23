@@ -55,7 +55,7 @@ export default {
     margin-inline: 10%;
 }
 #header {
-    color: #025939;
+    color: #0a322b;
     font-size: 1em
 }
 #body {

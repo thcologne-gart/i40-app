@@ -16,7 +16,7 @@ export default {
 <style scoped>
 #ems-chapter-brand {
     margin-right: -1rem;
-    color:#025939;
+    color:#0a322b;
 }
 
 </style>

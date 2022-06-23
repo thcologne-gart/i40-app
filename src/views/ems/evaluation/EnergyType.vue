@@ -232,7 +232,7 @@ export default {
 }
 #selected {
     margin-top: 20px;
-    color: #025939;
+    color: #0a322b;
     border-bottom-style: solid;
     border-color: #F2F2F2;
     margin-inline: 10%;

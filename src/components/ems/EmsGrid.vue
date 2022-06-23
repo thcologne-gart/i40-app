@@ -106,7 +106,7 @@ export default {
     padding-left: 0;
 }
 .nav-link {
-    color:#025939;
+    color:#0a322b;
 }
 .nav-tabs {
     margin-top: 5px;

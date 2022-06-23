@@ -225,7 +225,7 @@ export default {
 
 <style>
 #component-title {
-    color: #025939;
+    color: #0a322b;
     margin-top: 15px;
 }
 #component-info {

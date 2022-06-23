@@ -93,7 +93,7 @@ export default {
     margin-inline: 10%;
 }
 #header {
-    color: #025939;
+    color: #0a322b;
     font-size: 1em
 }
 #body {
@@ -106,7 +106,7 @@ export default {
     border-color: #F2F2F2;
 }
 #selected {
-    color: #025939;
+    color: #0a322b;
     border-bottom-style: solid;
     border-color: #F2F2F2;
     margin-inline: 10%;
