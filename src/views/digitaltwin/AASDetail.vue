@@ -197,6 +197,7 @@ export default {
       const timesteps = 30000
       for (var i = 0; i <= 60; i++) {
         let date = new Date()
+        date = new Date(date.getTime() + 1000 * 60 * 60 * 2)
         date = new Date(date.getTime() - timesteps * i)
         const aaaa = date.getUTCFullYear()
         let gg = date.getUTCDate()
@@ -517,10 +518,10 @@ export default {
           const submodelElements = this.aasInfo[submodels].submodelElements
           for (const element in submodelElements) {
             // console.log(submodelElements[element])
-            if (submodelElements[element].idShort === 'SpeedSupplyAirFan') {
+            if (submodelElements[element].idShort === 'SpeedSupplyAirFan' || submodelElements[element].idShort === 'IndoorAirTemperature') {
               // console.log(submodelElements[element])
               const submodelElement = submodelElements[element]
-              const value = (Math.random() * (20 - 15) + 10)
+              const value = (Math.random() * (20 - 10) + 5)
               // console.log(value)
               this.$store.dispatch('updateSubmodelElementValue', [submodelElement, value])
             }
@@ -691,7 +692,7 @@ function calculateValue () {
 }
 
 #submodel-button {
-    width: 200px;
+    width: 20rem;
     margin-block: 10px;
 }
 #submodel-element-collection-button {
