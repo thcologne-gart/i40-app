@@ -23,6 +23,7 @@
         </b-card>
         </div>
     </b-card-group>
+    <!--
     <div>
         <b-card class="shadow p-3 mb-5 bg-white rounded" id="add-aas-card">
             <h4 id ="header">Verwaltungsschalen hinzufügen</h4>
@@ -43,6 +44,7 @@
                 </div>
         </b-card>
     </div>
+    -->
   </div>
 </template>
 

@@ -216,6 +216,29 @@ export default new Vuex.Store({
       */
     },
 
+    updateSubmodelElementValue ({ commit }, payload) {
+      const database = getDatabase()
+      // const updateObj = {}
+      console.log(payload)
+      // updateObj['/value'] = payload[1]
+      const updateObj = payload[1]
+      console.log(updateObj)
+      // console.log('aas/' + payload[0].aasId + '/submodels/' + payload[0].submodelId + '/submodelElements/' + payload[0].submodelElementId)
+
+      // return update(ref(database, 'aas/' + payload[0].aasId + '/submodels/' + payload[0].submodelId + '/submodelElements/' + payload[0].submodelElementId), updateObj)
+      push(ref(database, 'aas/' + payload[0].aasId + '/submodels/' + payload[0].submodelId + '/submodelElements/' + payload[0].submodelElementId + '/value/'), {
+        updateObj
+      })
+      /*
+        .then(() => {
+          commit('updateComponentInformation', payload)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+      */
+    },
+
     createSubmodelContext ({ commit }, payload) {
       const database = getDatabase()
       console.log(payload)

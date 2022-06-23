@@ -368,7 +368,7 @@ export default {
                   definition: conceptDescriptions[rightSemanticId].embeddedDataSpecifications[0].dataSpecificationContent.definition,
                   name: conceptDescriptions[rightSemanticId].embeddedDataSpecifications[0].dataSpecificationContent.preferredName
                 }
-                console.log(submodelElementInfo)
+                // console.log(submodelElementInfo)
                 submodelElements.push(submodelElementInfo)
                 // console.log(submodelElements)
               }
@@ -376,7 +376,7 @@ export default {
           }
         }
         let semanticId
-        console.log(submodels[item].semanticId)
+        // console.log(submodels[item].semanticId)
         if (typeof submodels[item].semanticId === 'undefined') {
           semanticId = ''
         } else {
@@ -391,20 +391,29 @@ export default {
         }
         allInfosSubmodels.push(submodelInfo)
       }
-      console.log(allInfosSubmodels)
+      // console.log(allInfosSubmodels)
       return allInfosSubmodels
     }
   },
   created () {
-    setInterval(this.calculateValue, 10000)
+    setInterval(this.calculateValue, 60000)
   },
   methods: {
     calculateValue () {
       for (const submodels in this.aasInfo) {
         // console.log(this.aasInfo[submodels].submodelName)
         if (this.aasInfo[submodels].submodelName === 'Measurements') {
-          const value = (Math.random() * (20 - 10) + 10)
-          console.log(value)
+          const submodelElements = this.aasInfo[submodels].submodelElements
+          for (const element in submodelElements) {
+            // console.log(submodelElements[element])
+            if (submodelElements[element].idShort === 'SpeedSupplyAirFan') {
+              console.log(submodelElements[element])
+              const submodelElement = submodelElements[element]
+              const value = (Math.random() * (20 - 10) + 10)
+              console.log(value)
+              this.$store.dispatch('updateSubmodelElementValue', [submodelElement, value])
+            }
+          }
         }
       }
       // console.log(this.aasInfo)
