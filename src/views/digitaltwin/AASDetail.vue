@@ -224,7 +224,8 @@ export default {
         const now = curday + ' ' + hours + ':' + minutes + ':' + seconds
         xAxis.push(now)
       }
-      return xAxis
+      const xAxisReverse = xAxis.reverse()
+      return xAxisReverse
     },
     aasInfo () {
       // const aasInfo = this.aas.aas.assetAdministrationShells
