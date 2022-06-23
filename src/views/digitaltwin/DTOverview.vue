@@ -63,7 +63,7 @@ export default {
   methods: {
     onFileSelected (e) {
       e.preventDefault()
-      console.log(e)
+      // console.log(e)
       const files = e.target.files
       // this.file = e.target.files[0]
       // let filename = files[0].name
@@ -76,7 +76,7 @@ export default {
       // const file2 = fileReader.readAsText(files[0])
       // console.log(file2)
       this.file = files[0]
-      console.log(this.file)
+      // console.log(this.file)
     },
     onUploadAAS () {
       const aasData = {
@@ -85,16 +85,16 @@ export default {
         type: this.file.type,
         lastModifiedDate: this.file.lastModifiedDate
       }
-      console.log(aasData)
+      // console.log(aasData)
       this.$store.dispatch('uploadAAS', aasData)
     }
   },
 
   computed: {
     aas () {
-      console.log(this.$store.getters.loadedAASJson)
+      // console.log(this.$store.getters.loadedAASJson)
       const loadedAas = this.$store.getters.loadedAASJson
-      console.log(loadedAas.aas1)
+      // console.log(loadedAas.aas1)
       // this.loadAas = loadedAas
       // for (const item in loadedAas) {
       // console.log(loadedAas[item].payload.aasContent)
@@ -149,7 +149,7 @@ export default {
     // }
     // console.log(this.allAas)
     this.aasPic = require('@/assets/AAS.svg')
-    console.log(this.aasPic)
+    // console.log(this.aasPic)
     this.allAas = [
       { pic: require('@/assets/AAS.svg'), aas: require('@/assets/aas/example_aas.json') },
       { pic: require('@/assets/AAS.svg'), aas: require('@/assets/aas/Example_AAS_ServoDCMotor_21.json') },
@@ -157,7 +157,7 @@ export default {
       { pic: require('@/assets/AAS.svg'), aas: require('@/assets/aas/RLTGALab_mitProperties_rev10.json') },
       { pic: require('@/assets/AAS.svg'), aas: require('@/assets/aas/SupplyTemperature_20210201.json') }
     ]
-    console.log(this.allAas)
+    // console.log(this.allAas)
     // this.submodelsJson = await this.fetchTasks()
     // const test = await this.fetchAas()
     // this.submodelsInAas = test[0]
@@ -166,12 +166,12 @@ export default {
 }
 
 function addAas (thisAas) {
-  console.log(thisAas)
+  // console.log(thisAas)
 }
 
 function delay (i, array) {
   setTimeout(() => {
-    console.log(array[i])
+    // console.log(array[i])
   }, 4000)
 }
 

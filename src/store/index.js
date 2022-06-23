@@ -31,6 +31,9 @@ export default new Vuex.Store({
     createAas (state, payload) {
       state.loadedAas = payload
     },
+    updateSubmodelElementValue (state, payload) {
+      state.loadedAASJson = payload
+    },
     uploadAas (state, payload) {
       state.loadedAASJson = payload
     },
@@ -200,7 +203,7 @@ export default new Vuex.Store({
     updateComponentInformation ({ commit }, payload) {
       const database = getDatabase()
       const updateObj = {}
-      console.log(payload)
+      // console.log(payload)
       updateObj['/value'] = payload[0].value
       console.log(updateObj)
       console.log('submodels/' + payload[0].submodelKey + '/payload/submodelElements/' + payload[0].groupCollectionKey + '/value/' + payload[0].componentKey + '/value/' + payload[0].submodelElementId)
@@ -229,14 +232,17 @@ export default new Vuex.Store({
       push(ref(database, 'aas/' + payload[0].aasId + '/submodels/' + payload[0].submodelId + '/submodelElements/' + payload[0].submodelElementId + '/value/'), {
         updateObj
       })
-      /*
-        .then(() => {
-          commit('updateComponentInformation', payload)
+        .then((data) => {
+          const key = data.key
+          console.log(data)
+          commit('updateSubmodelElementValue', {
+            ...payload,
+            id: key
+          })
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error)
         })
-      */
     },
 
     createSubmodelContext ({ commit }, payload) {
