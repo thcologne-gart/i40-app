@@ -529,7 +529,7 @@ export default {
             submodelElements[element].idShort === 'ExtractAirTemperature' || submodelElements[element].idShort === 'OutdoorAirHumidity' ||
             submodelElements[element].idShort === 'OutdoorAirTemperature' || submodelElements[element].idShort === 'MixedAirHumidity' ||
             submodelElements[element].idShort === 'SupplyAirHumidtiy' || submodelElements[element].idShort === 'SupplyAirTemperature' ||
-            submodelElements[element].idShort === 'RelativeIndoorAirHumidity' || submodelElements[element].idShort === 'SpeedExtractAirFan' ||
+            submodelElements[element].idShort === 'RelativeIndoorAirHumidtiy' || submodelElements[element].idShort === 'SpeedExtractAirFan' ||
             submodelElements[element].idShort === 'DifferentialPressure' || submodelElements[element].idShort === 'AmbientTemperature' ||
             submodelElements[element].idShort === 'MeasuredVolumetricAirFlow' || submodelElements[element].idShort === 'MixedAirTemperature') {
               // console.log(submodelElements[element])
