@@ -2,9 +2,9 @@
     <div>
         <div>
             <b-card
-            class="shadow p-3 mb-5 bg-white rounded"
-            :title= aas.assetAdministrationShells[0].idShort
-            :sub-title = aas.assets[0].idShort>
+            class="shadow p-3 mb-5 bg-white rounded">
+                <b-link id="repo-link" :href="aas.submodels[0].submodelElements[0].value" target="_blank">{{ aas.assetAdministrationShells[0].idShort }}</b-link>
+                <h6>{{ aas.assets[0].idShort }}</h6>
                 <hr>
                 <h5>Submodels</h5>
                 <div v-for="submodel in aasInfo" :key="submodel.submodelName">
@@ -39,6 +39,9 @@
                                             <b-modal v-bind:id="submodelElement.idShort + submodel.submodelName + submodelElement.value" hide-footer size="xl" persistent title="Energiemonitoring">
                                                 <LineChart :allValues="submodelElement.allValues" :title="submodelElement.idShort" :xAchisCharts="xAxisCharts"/>
                                             </b-modal>
+                                    </b-col>
+                                    <b-col v-else-if="submodel.submodelName === 'Control' && submodelElement.idShort === 'Visualisation'">
+                                        <b-link id="visualisation-link" :href="submodelElement.value" target="_blank">{{ submodelElement.value }}</b-link>
                                     </b-col>
                                     <b-col v-else>
                                         {{ submodelElement.value }}
@@ -714,5 +717,15 @@ function calculateValue () {
 }
 #submodel-card {
     margin-inline: 5%;
+}
+#repo-link {
+    text-decoration: none;
+    color: #0a322b;
+    font-size: 22px;
+}
+#visualisation-link {
+    text-decoration: none;
+    color: #0a322b;
+    font-size: 16px;
 }
 </style>
