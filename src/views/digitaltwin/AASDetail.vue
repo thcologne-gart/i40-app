@@ -527,8 +527,9 @@ export default {
             if (submodelElements[element].idShort === 'SpeedSupplyAirFan' || submodelElements[element].idShort === 'IndoorAirTemperature') {
               // console.log(submodelElements[element])
               const submodelElement = submodelElements[element]
-              const value = (Math.random() * (20 - 10) + 5)
-              // console.log(value)
+              let value = (Math.random() * (20 - 10) + 5)
+              value = Math.round(value * 100) / 100
+              console.log(value)
               this.$store.dispatch('updateSubmodelElementValue', [submodelElement, value])
             }
           }
