@@ -514,7 +514,7 @@ export default {
     }
   },
   created () {
-    setInterval(this.calculateValue, 30000)
+    setInterval(this.calculateValue, 25000)
   },
   methods: {
     calculateValue () {
