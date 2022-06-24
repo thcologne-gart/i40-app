@@ -514,7 +514,7 @@ export default {
     }
   },
   created () {
-    setInterval(this.calculateValue, 8000)
+    setInterval(this.calculateValue, 30000)
   },
   methods: {
     calculateValue () {
@@ -524,7 +524,14 @@ export default {
           const submodelElements = this.aasInfo[submodels].submodelElements
           for (const element in submodelElements) {
             // console.log(submodelElements[element])
-            if (submodelElements[element].idShort === 'SpeedSupplyAirFan' || submodelElements[element].idShort === 'IndoorAirTemperature') {
+            if (submodelElements[element].idShort === 'SpeedSupplyAirFan' || submodelElements[element].idShort === 'IndoorAirTemperature' ||
+            submodelElements[element].idShort === 'MeasuredVolumetricAirFlow' || submodelElements[element].idShort === 'ExtractAirHumidtiy' ||
+            submodelElements[element].idShort === 'ExtractAirTemperature' || submodelElements[element].idShort === 'OutdoorAirHumidity' ||
+            submodelElements[element].idShort === 'OutdoorAirTemperature' || submodelElements[element].idShort === 'MixedAirHumidity' ||
+            submodelElements[element].idShort === 'SupplyAirHumidtiy' || submodelElements[element].idShort === 'SupplyAirTemperature' ||
+            submodelElements[element].idShort === 'RelativeIndoorAirHumidity' || submodelElements[element].idShort === 'SpeedExtractAirFan' ||
+            submodelElements[element].idShort === 'DifferentialPressure' || submodelElements[element].idShort === 'AmbientTemperature' ||
+            submodelElements[element].idShort === 'MeasuredVolumetricAirFlow' || submodelElements[element].idShort === 'MixedAirTemperature') {
               // console.log(submodelElements[element])
               const submodelElement = submodelElements[element]
               let value = (Math.random() * (20 - 10) + 5)
