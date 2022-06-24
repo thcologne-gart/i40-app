@@ -615,7 +615,14 @@ export default {
           // console.log(nextCollection)
           const nestedCollection = []
           for (const item in nextCollection) {
-            const semanticId = nextCollection[item].semanticId.keys[0].value
+            let semanticId
+            // console.log(seValues[element].semanticId)
+            if (typeof nextCollection[item].semanticId === 'undefined' || typeof nextCollection[item].semanticId.keys.length === 'undefined') {
+              semanticId = ''
+            } else {
+              semanticId = nextCollection[item].semanticId.keys[0].value
+            }
+            // const semanticId = nextCollection[item].semanticId.keys[0].value
             const rightSemanticId = this.getSemanticContent(semanticId, conceptIds)
             if (typeof rightSemanticId === 'undefined') {
               const submodelElementInfo = {
@@ -623,7 +630,7 @@ export default {
                 value: nextCollection[item].value,
                 idShort: nextCollection[item].idShort,
                 seType: nextCollection[item].modelType.name,
-                semanticId: seValues[element].semanticId.keys[0].value,
+                semanticId: semanticId,
                 dataType: '',
                 unit: '',
                 definition: '',
@@ -636,7 +643,7 @@ export default {
                 value: nextCollection[item].value,
                 idShort: nextCollection[item].idShort,
                 seType: nextCollection[item].modelType.name,
-                semanticId: seValues[element].semanticId.keys[0].value,
+                semanticId: semanticId,
                 dataType: conceptDescriptions[rightSemanticId].embeddedDataSpecifications[0].dataSpecificationContent.dataType,
                 unit: conceptDescriptions[rightSemanticId].embeddedDataSpecifications[0].dataSpecificationContent.unit,
                 definition: conceptDescriptions[rightSemanticId].embeddedDataSpecifications[0].dataSpecificationContent.definition,
@@ -658,7 +665,7 @@ export default {
               mimeType: seValues[element].mimeType,
               value: seValues[element].value,
               idShort: seValues[element].idShort,
-              semanticId: seValues[element].semanticId.keys[0].value,
+              semanticId: semanticId,
               seType: seValues[element].modelType.name,
               dataType: '',
               unit: '',
@@ -677,7 +684,7 @@ export default {
               value: seValues[element].value,
               idShort: seValues[element].idShort,
               seType: seValues[element].modelType.name,
-              semanticId: seValues[element].semanticId.keys[0].value,
+              semanticId: semanticId,
               dataType: conceptDescriptions[rightSemanticId].embeddedDataSpecifications[0].dataSpecificationContent.dataType,
               unit: conceptDescriptions[rightSemanticId].embeddedDataSpecifications[0].dataSpecificationContent.unit,
               definition: conceptDescriptions[rightSemanticId].embeddedDataSpecifications[0].dataSpecificationContent.definition,
@@ -709,7 +716,7 @@ function calculateValue () {
 }
 
 #submodel-button {
-    width: 20rem;
+    width: 24rem;
     margin-block: 10px;
 }
 #submodel-element-collection-button {
