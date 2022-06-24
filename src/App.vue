@@ -73,6 +73,7 @@ footer {
   text-align: center;
   color: #2c3e50;
   background-color: rgba(151, 222, 185, 0.5);
+  min-height: 100vh;
 }
 
 .text-left {
@@ -89,15 +90,17 @@ footer {
   }
   }
 }
+
 #submodel-item {
   color: #0a322b;
 
   a {
   &.router-link-exact-active {
-    border: 2px solid #4d4e4e;
+    // border: 2px solid #4d4e4e;
     color: #0a322b;
     border-radius: 4px;
     min-width: 9rem;
+    background-color: rgb(249, 175, 236);
   }
   }
 }
@@ -111,13 +114,17 @@ footer {
   }
   }
 }
-
+#grid-layout {
+  height: 100% !important;
+}
 #chapter {
   display: inline;
 
   a {
   &.router-link-active {
-    box-shadow: 2px 2px #4d4e4e;
+    box-shadow: 2px 2px #0a322b;
+    background-color: rgb(249, 175, 236);
+    color: #0a322b;
     }
   }
 }
@@ -161,8 +168,20 @@ footer {
 }
 #navigation {
     background-color: rgb(175,175,175);
+    min-height: calc(100vh - 180px);
 }
 #ems-chapter {
     background-color: rgb(175, 175, 175);
 }
+.card {
+  margin-inline:10%;
+}
+.card-header {
+  background-color: rgba(249, 175, 236, 0.6) !important;
+}
+/*
+.col-auto {
+  background-color: rgba(249, 175, 236, 0.8) !important;
+}
+*/
 </style>
