@@ -6,7 +6,7 @@
                 <div v-if="site === site2">
                     <SubmodelHeader :site ="site2" :submodelName="submodelName" :numberOfBuildings="numberOfBuildings">
                         <template v-slot:building="{ building }">
-                            <b-card class="shadow p-3 mb-5 bg-white rounded" style="width: 100%;" title="Energiearten">
+                            <b-card class="shadow p-3 mb-5 bg-white rounded" title="Energiearten">
                                 <hr>
                                 <b-row>
                                     <b-col :key="energyType.id" v-for="energyType in energyTypes">

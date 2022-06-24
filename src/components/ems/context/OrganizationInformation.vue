@@ -61,7 +61,7 @@ export default {
 .card {
     margin-inline: 20%;
     margin-bottom: 30px;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 #header {
     color: #0a322b;

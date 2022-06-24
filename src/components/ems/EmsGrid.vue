@@ -3,7 +3,7 @@
         <!--
         <GetSubmodels :submodelsJson ="submodelsJson"/>
         //-->
-        <b-row id ="row-chapter" style="min-height:500px">
+        <b-row id ="row-chapter">
             <b-col id ="navigation" md = "2">
                 <b-navbar toggleable="lg">
                     <b-navbar-toggle target="submodel-collapse" class="row"></b-navbar-toggle>
