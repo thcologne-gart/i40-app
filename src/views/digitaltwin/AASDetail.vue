@@ -75,102 +75,104 @@
                                 <hr>
                             </div>
                             <div v-else-if="submodelElement.seType === 'SubmodelElementCollection'">
-                                <b-button v-b-toggle="submodelElement.submodelElementCollectionInfo[0].seCollectionName" id = "submodel-element-collection-button" variant="outline-dark" v-b-popover.hover="'Submodel Element Collection'">{{ submodelElement.submodelElementCollectionInfo[0].seCollectionName }}</b-button>
-                                <b-collapse v-bind:id="submodelElement.submodelElementCollectionInfo[0].seCollectionName">
-                                    <div v-for="element in submodelElement.submodelElementCollectionInfo" :key="element.idShort">
-                                        <div v-if="element.seType === 'Property'">
-                                            <b-row>
-                                                <b-col>
-                                                    <b-button v-b-modal="element.idShort + submodel.submodelName" variant="light-white">{{ element.idShort }}</b-button>
-                                                        <b-modal v-bind:id="element.idShort + submodel.submodelName" hide-footer width="350px" persistent title="Semantic Information">
-                                                            <p class="my-4">SemanticID: {{ element.semanticId }}</p>
-                                                            <div v-if="typeof element.definition === 'undefined' || element.definition === '' || !element.definition.length">
-                                                                <p class="my-4">Definition: </p>
-                                                            </div>
-                                                            <div v-else>
-                                                                <p class="my-4">Definition: {{ element.definition[0].text }}</p>
-                                                            </div>
-                                                            <div v-if="element.name === '' || !element.name.length">
-                                                                <p class="my-4">Name: </p>
-                                                            </div>
-                                                            <div v-else>
-                                                                <p class="my-4">Name: {{ element.name[0].text }}</p>
-                                                            </div>
-                                                            <p class="my-4">Datentyp: {{ element.dataType }}</p>
-                                                            <hr>
-                                                        </b-modal>
-                                                </b-col>
-                                                <b-col>
-                                                    {{ element.value }}
-                                                </b-col>
-                                            </b-row>
-                                            <hr>
+                                <div v-if="submodelElement.submodelElementCollectionInfo.length !== 0">
+                                    <b-button v-b-toggle="submodelElement.submodelElementCollectionInfo[0].seCollectionName" id = "submodel-element-collection-button" variant="outline-dark" v-b-popover.hover="'Submodel Element Collection'">{{ submodelElement.submodelElementCollectionInfo[0].seCollectionName }}</b-button>
+                                    <b-collapse v-bind:id="submodelElement.submodelElementCollectionInfo[0].seCollectionName">
+                                        <div v-for="element in submodelElement.submodelElementCollectionInfo" :key="element.idShort">
+                                            <div v-if="element.seType === 'Property'">
+                                                <b-row>
+                                                    <b-col>
+                                                        <b-button v-b-modal="element.idShort + submodel.submodelName" variant="light-white">{{ element.idShort }}</b-button>
+                                                            <b-modal v-bind:id="element.idShort + submodel.submodelName" hide-footer width="350px" persistent title="Semantic Information">
+                                                                <p class="my-4">SemanticID: {{ element.semanticId }}</p>
+                                                                <div v-if="typeof element.definition === 'undefined' || element.definition === '' || !element.definition.length">
+                                                                    <p class="my-4">Definition: </p>
+                                                                </div>
+                                                                <div v-else>
+                                                                    <p class="my-4">Definition: {{ element.definition[0].text }}</p>
+                                                                </div>
+                                                                <div v-if="element.name === '' || !element.name.length">
+                                                                    <p class="my-4">Name: </p>
+                                                                </div>
+                                                                <div v-else>
+                                                                    <p class="my-4">Name: {{ element.name[0].text }}</p>
+                                                                </div>
+                                                                <p class="my-4">Datentyp: {{ element.dataType }}</p>
+                                                                <hr>
+                                                            </b-modal>
+                                                    </b-col>
+                                                    <b-col>
+                                                        {{ element.value }}
+                                                    </b-col>
+                                                </b-row>
+                                                <hr>
+                                            </div>
+                                            <div v-else-if="element.seType === 'File'">
+                                                <b-row>
+                                                    <b-col>
+                                                        <b-button v-b-modal="element.idShort + submodel.submodelName" variant="light-white">{{ element.idShort }}</b-button>
+                                                            <b-modal v-bind:id="element.idShort + submodel.submodelName" hide-footer width="350px" persistent title="Semantic Information">
+                                                                <p class="my-4">SemanticID: {{ element.semanticId }}</p>
+                                                                <div v-if="typeof element.definition === 'undefined' || element.definition === '' || !element.definition.length">
+                                                                    <p class="my-4">Definition: </p>
+                                                                </div>
+                                                                <div v-else>
+                                                                    <p class="my-4">Definition: {{ element.definition[0].text }}</p>
+                                                                </div>
+                                                                <div v-if="element.name === '' || !element.name.length">
+                                                                    <p class="my-4">Name: </p>
+                                                                </div>
+                                                                <div v-else>
+                                                                    <p class="my-4">Name: {{ element.name[0].text }}</p>
+                                                                </div>
+                                                                <p class="my-4">Datentyp: {{ element.dataType }}</p>
+                                                                <hr>
+                                                            </b-modal>
+                                                    </b-col>
+                                                    <b-col>
+                                                        {{ element.value }}
+                                                    </b-col>
+                                                </b-row>
+                                                <hr>
+                                            </div>
+                                            <!--
+                                            <div v-else>
+                                                <b-button v-b-toggle="element.submodelElementCollectionInfo[0].seCollectionName" id = "submodel-element-collection-button" variant="outline-secondary" v-b-popover.hover="'Submodel Element Collection'">{{ element.submodelElementCollectionInfo[0].seCollectionName }}</b-button>
+                                                <b-collapse v-bind:id="element.submodelElementCollectionInfo[0].seCollectionName">
+                                                    <div v-for="el in element.submodelElementCollectionInfo" :key="el.idShort">
+                                                        <b-row>
+                                                            <b-col>
+                                                                <b-button v-b-modal="el.idShort + submodel.submodelName" variant="light-white">{{ el.idShort }}</b-button>
+                                                                    <b-modal v-bind:id="el.idShort + submodel.submodelName" hide-footer width="350px" persistent title="Semantic Information">
+                                                                        <p class="my-4">SemanticID: {{ el.semanticId }}</p>
+                                                                        <div v-if="el.definition === '' || !el.definition.length">
+                                                                            <p class="my-4">Definition: </p>
+                                                                        </div>
+                                                                        <div v-else>
+                                                                            <p class="my-4">Definition: {{ el.definition[0].text }}</p>
+                                                                        </div>
+                                                                        <div v-if="el.name === '' || !el.name.length">
+                                                                            <p class="my-4">Name: </p>
+                                                                        </div>
+                                                                        <div v-else>
+                                                                            <p class="my-4">Name: {{ el.name[0].text }}</p>
+                                                                        </div>
+                                                                        <p class="my-4">Datentyp: {{ el.dataType }}</p>
+                                                                        <hr>
+                                                                    </b-modal>
+                                                            </b-col>
+                                                            <b-col>
+                                                                {{ element.value }}
+                                                            </b-col>
+                                                        </b-row>
+                                                        <hr>
+                                                    </div>
+                                                </b-collapse>
+                                            </div>
+                                            -->
                                         </div>
-                                        <div v-else-if="element.seType === 'File'">
-                                            <b-row>
-                                                <b-col>
-                                                    <b-button v-b-modal="element.idShort + submodel.submodelName" variant="light-white">{{ element.idShort }}</b-button>
-                                                        <b-modal v-bind:id="element.idShort + submodel.submodelName" hide-footer width="350px" persistent title="Semantic Information">
-                                                            <p class="my-4">SemanticID: {{ element.semanticId }}</p>
-                                                            <div v-if="typeof element.definition === 'undefined' || element.definition === '' || !element.definition.length">
-                                                                <p class="my-4">Definition: </p>
-                                                            </div>
-                                                            <div v-else>
-                                                                <p class="my-4">Definition: {{ element.definition[0].text }}</p>
-                                                            </div>
-                                                            <div v-if="element.name === '' || !element.name.length">
-                                                                <p class="my-4">Name: </p>
-                                                            </div>
-                                                            <div v-else>
-                                                                <p class="my-4">Name: {{ element.name[0].text }}</p>
-                                                            </div>
-                                                            <p class="my-4">Datentyp: {{ element.dataType }}</p>
-                                                            <hr>
-                                                        </b-modal>
-                                                </b-col>
-                                                <b-col>
-                                                    {{ element.value }}
-                                                </b-col>
-                                            </b-row>
-                                            <hr>
-                                        </div>
-                                        <!--
-                                        <div v-else>
-                                            <b-button v-b-toggle="element.submodelElementCollectionInfo[0].seCollectionName" id = "submodel-element-collection-button" variant="outline-secondary" v-b-popover.hover="'Submodel Element Collection'">{{ element.submodelElementCollectionInfo[0].seCollectionName }}</b-button>
-                                            <b-collapse v-bind:id="element.submodelElementCollectionInfo[0].seCollectionName">
-                                                <div v-for="el in element.submodelElementCollectionInfo" :key="el.idShort">
-                                                    <b-row>
-                                                        <b-col>
-                                                            <b-button v-b-modal="el.idShort + submodel.submodelName" variant="light-white">{{ el.idShort }}</b-button>
-                                                                <b-modal v-bind:id="el.idShort + submodel.submodelName" hide-footer width="350px" persistent title="Semantic Information">
-                                                                    <p class="my-4">SemanticID: {{ el.semanticId }}</p>
-                                                                    <div v-if="el.definition === '' || !el.definition.length">
-                                                                        <p class="my-4">Definition: </p>
-                                                                    </div>
-                                                                    <div v-else>
-                                                                        <p class="my-4">Definition: {{ el.definition[0].text }}</p>
-                                                                    </div>
-                                                                    <div v-if="el.name === '' || !el.name.length">
-                                                                        <p class="my-4">Name: </p>
-                                                                    </div>
-                                                                    <div v-else>
-                                                                        <p class="my-4">Name: {{ el.name[0].text }}</p>
-                                                                    </div>
-                                                                    <p class="my-4">Datentyp: {{ el.dataType }}</p>
-                                                                    <hr>
-                                                                </b-modal>
-                                                        </b-col>
-                                                        <b-col>
-                                                            {{ element.value }}
-                                                        </b-col>
-                                                    </b-row>
-                                                    <hr>
-                                                </div>
-                                            </b-collapse>
-                                        </div>
-                                        -->
-                                    </div>
-                                </b-collapse>
+                                    </b-collapse>
+                                  </div>
                                 <hr>
                             </div>
                         </div>
@@ -504,7 +506,7 @@ export default {
         }
         allInfosSubmodels.push(submodelInfo)
       }
-      // console.log(allInfosSubmodels)
+      console.log(allInfosSubmodels)
       return allInfosSubmodels
     }
   },
@@ -557,9 +559,17 @@ export default {
       // console.log(seCollection.value)
       const seCollectionInfo = []
       for (const element in seValues) {
-        const semanticId = seValues[element].semanticId.keys[0].value
+        let semanticId
+        // console.log(seValues[element].semanticId)
+        if (typeof seValues[element].semanticId === 'undefined' || typeof seValues[element].semanticId.keys.length === 'undefined') {
+          semanticId = ''
+        } else {
+          semanticId = seValues[element].semanticId.keys[0].value
+        }
+        // const semanticId = seValues[element].semanticId.keys[0].value
         const rightSemanticId = this.getSemanticContent(semanticId, conceptIds)
         // console.log(seValues[element].modelType.name)
+        console.log(seCollection.idShort)
         if (seValues[element].modelType.name === 'Property') {
           if (typeof rightSemanticId === 'undefined') {
             const submodelElementInfo = {
@@ -567,9 +577,10 @@ export default {
               submodelId: submodelId,
               submodelElementCollectionId: collectionId,
               submodelElementId: element,
+              seCollectionName: seCollection.idShort,
               value: seValues[element].value,
               idShort: seValues[element].idShort,
-              semanticId: seValues[element].semanticId.keys[0].value,
+              semanticId: semanticId,
               seType: seValues[element].modelType.name,
               dataType: '',
               unit: '',
@@ -639,6 +650,7 @@ export default {
               submodelId: submodelId,
               submodelElementCollectionId: collectionId,
               submodelElementId: element,
+              seCollectionName: seCollection.idShort,
               mimeType: seValues[element].mimeType,
               value: seValues[element].value,
               idShort: seValues[element].idShort,
@@ -656,8 +668,8 @@ export default {
               submodelId: submodelId,
               submodelElementCollectionId: collectionId,
               submodelElementId: element,
-              mimeType: seValues[element].mimeType,
               seCollectionName: seCollection.idShort,
+              mimeType: seValues[element].mimeType,
               value: seValues[element].value,
               idShort: seValues[element].idShort,
               seType: seValues[element].modelType.name,
