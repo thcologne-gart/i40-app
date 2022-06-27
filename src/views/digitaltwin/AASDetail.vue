@@ -550,11 +550,11 @@ export default {
               let value = (Math.random() * (20 - 10) + 5)
               value = Math.round(value * 100) / 100
               // console.log(value)
-              // console.log(submodelElement)
+              console.log(submodelElement)
 
               // Nächste Zeile auskommentiert, damit nichts in die Datenbank Firebase geschrieben wird
 
-              this.$store.dispatch('updateSubmodelElementValue', [submodelElement, value])
+              // this.$store.dispatch('updateSubmodelElementValue', [submodelElement, value])
             }
           }
         }
