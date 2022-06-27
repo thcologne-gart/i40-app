@@ -280,11 +280,13 @@ export default {
                 lastValue = lastObject[Object.keys(lastObject)[Object.keys(lastObject).length - 1]]
                 reallyLastValue = lastValue[Object.keys(lastValue)]
                 for (const item in lastObject) {
+                  // console.log(lastObject[item].updateObj)
                   allValuesArray.push(lastObject[item].updateObj)
                 }
               } else {
                 reallyLastValue = lastObject
               }
+              console.log(allValuesArray)
               if (typeof rightSemanticId === 'undefined') {
                 const submodelElementInfo = {
                   aasId: this.aasId,
@@ -308,7 +310,8 @@ export default {
                     aasId: this.aasId,
                     submodelId: item,
                     submodelElementId: element,
-                    allValues: submodels[item].submodelElements[element].value,
+                    // allValues: submodels[item].submodelElements[element].value,
+                    allValues: allValuesArray,
                     value: reallyLastValue,
                     idShort: submodels[item].submodelElements[element].idShort,
                     semanticId: submodels[item].submodelElements[element].semanticId.keys[0].value,
@@ -324,7 +327,8 @@ export default {
                     aasId: this.aasId,
                     submodelId: item,
                     submodelElementId: element,
-                    allValues: submodels[item].submodelElements[element].value,
+                    // allValues: submodels[item].submodelElements[element].value,
+                    allValues: allValuesArray,
                     value: reallyLastValue,
                     idShort: submodels[item].submodelElements[element].idShort,
                     semanticId: submodels[item].submodelElements[element].semanticId.keys[0].value,
