@@ -42,8 +42,7 @@
                                       </b-modal>
                                       </b-col>
                                     <b-col cols="2" v-if ="submodel.submodelName === 'Measurements'">
-                                      <!--{{ submodelElement.unit }} -->
-                                      Test
+                                      {{ submodelElement.unit }}
                                     </b-col>
                                     <b-col v-else-if="submodel.submodelName === 'Control' && submodelElement.idShort === 'Visualisation'">
                                         <b-link id="visualisation-link" :href="submodelElement.value" target="_blank">{{ submodelElement.value }}</b-link>
@@ -537,7 +536,8 @@ export default {
             submodelElements[element].idShort === 'SupplyAirHumidity' || submodelElements[element].idShort === 'SupplyAirTemperature' ||
             submodelElements[element].idShort === 'RelativeIndoorAirHumidtiy' || submodelElements[element].idShort === 'SpeedExtractAirFan' ||
             submodelElements[element].idShort === 'DifferentialPressure' || submodelElements[element].idShort === 'AmbientTemperature' ||
-            submodelElements[element].idShort === 'MeasuredVolumetricAirFlow' || submodelElements[element].idShort === 'MixedAirTemperature') {
+            submodelElements[element].idShort === 'MeasuredVolumetricAirFlow' || submodelElements[element].idShort === 'MixedAirTemperature' ||
+            submodelElements[element].idShort === 'MeasuredVolumetricAirFlowSupply' || submodelElements[element].idShort === 'MeasuredVolumetricAirFlowExtract') {
               // console.log(submodelElements[element])
               const submodelElement = submodelElements[element]
               let value = (Math.random() * (20 - 10) + 5)
