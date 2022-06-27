@@ -298,7 +298,7 @@ export default new Vuex.Store({
       const database = getDatabase()
       onValue(ref(database, 'aas/'), (snapshot) => {
         const data = snapshot.val()
-        console.log(data)
+        // console.log(data)
         // let keyAas
         // const aas = []
         /*

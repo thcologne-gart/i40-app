@@ -13,8 +13,9 @@
                       <b-card id="submodel-card" class="shadow p-3 mb-5 bg-white rounded">
                         <div v-for="submodelElement in submodel.submodelElements" :key="submodelElement.idShort">
                             <div v-if="submodelElement.seType === 'Property'">
+                              <div v-if ="submodel.submodelName === 'Measurements'"></div>
                                 <b-row>
-                                    <b-col>
+                                    <b-col cols="8">
                                         <b-button v-b-modal="submodelElement.idShort + submodel.submodelName" variant="light-white">{{ submodelElement.idShort }}</b-button>
                                             <b-modal v-bind:id="submodelElement.idShort + submodel.submodelName" hide-footer width="350px" persistent title="Semantic Information">
                                                 <p class="my-4">Semantic ID: {{ submodelElement.semanticId }}</p>
@@ -34,11 +35,15 @@
                                                 <hr>
                                             </b-modal>
                                     </b-col>
-                                    <b-col v-if ="submodel.submodelName === 'Measurements'">
-                                        <b-button v-b-modal="submodelElement.idShort + submodel.submodelName + submodelElement.value" variant="light-white">{{ submodelElement.value }}</b-button>
-                                            <b-modal v-bind:id="submodelElement.idShort + submodel.submodelName + submodelElement.value" hide-footer size="xl" persistent title="Energiemonitoring">
-                                                <LineChart :allValues="submodelElement.allValues" :title="submodelElement.idShort" :xAchisCharts="xAxisCharts"/>
-                                            </b-modal>
+                                    <b-col cols="2" v-if ="submodel.submodelName === 'Measurements'">
+                                      <b-button v-b-modal="submodelElement.idShort + submodel.submodelName + submodelElement.value" variant="light-white">{{ submodelElement.value }}</b-button>
+                                      <b-modal v-bind:id="submodelElement.idShort + submodel.submodelName + submodelElement.value" hide-footer size="xl" persistent title="Energiemonitoring">
+                                        <LineChart :allValues="submodelElement.allValues" :title="submodelElement.idShort" :xAchisCharts="xAxisCharts"/>
+                                      </b-modal>
+                                      </b-col>
+                                    <b-col cols="2" v-if ="submodel.submodelName === 'Measurements'">
+                                      <!--{{ submodelElement.unit }} -->
+                                      Test
                                     </b-col>
                                     <b-col v-else-if="submodel.submodelName === 'Control' && submodelElement.idShort === 'Visualisation'">
                                         <b-link id="visualisation-link" :href="submodelElement.value" target="_blank">{{ submodelElement.value }}</b-link>
@@ -255,9 +260,10 @@ export default {
       for (const item in submodels) {
         const submodelElements = []
         if (submodels[item].idShort === 'Measurements') {
-          // console.log(submodels[item].idShort)
+          // console.log(submodels[item])
           for (const element in submodels[item].submodelElements) {
             const seType = submodels[item].submodelElements[element].modelType.name
+            // console.log(submodels[item].submodelElements[element])
             if (seType === 'Property') {
               let semanticId
               if (typeof submodels[item].submodelElements[element].semanticId === 'undefined' || typeof submodels[item].submodelElements[element].semanticId.keys.length === 'undefined') {
@@ -514,7 +520,7 @@ export default {
     }
   },
   created () {
-    setInterval(this.calculateValue, 50000)
+    setInterval(this.calculateValue, 20000)
   },
   methods: {
     calculateValue () {
@@ -528,7 +534,7 @@ export default {
             submodelElements[element].idShort === 'MeasuredVolumetricAirFlow' || submodelElements[element].idShort === 'ExtractAirHumidtiy' ||
             submodelElements[element].idShort === 'ExtractAirTemperature' || submodelElements[element].idShort === 'OutdoorAirHumidity' ||
             submodelElements[element].idShort === 'OutdoorAirTemperature' || submodelElements[element].idShort === 'MixedAirHumidity' ||
-            submodelElements[element].idShort === 'SupplyAirHumidtiy' || submodelElements[element].idShort === 'SupplyAirTemperature' ||
+            submodelElements[element].idShort === 'SupplyAirHumidity' || submodelElements[element].idShort === 'SupplyAirTemperature' ||
             submodelElements[element].idShort === 'RelativeIndoorAirHumidtiy' || submodelElements[element].idShort === 'SpeedExtractAirFan' ||
             submodelElements[element].idShort === 'DifferentialPressure' || submodelElements[element].idShort === 'AmbientTemperature' ||
             submodelElements[element].idShort === 'MeasuredVolumetricAirFlow' || submodelElements[element].idShort === 'MixedAirTemperature') {
@@ -536,12 +542,12 @@ export default {
               const submodelElement = submodelElements[element]
               let value = (Math.random() * (20 - 10) + 5)
               value = Math.round(value * 100) / 100
-              console.log(value)
-              console.log(submodelElement)
+              // console.log(value)
+              // console.log(submodelElement)
 
               // Nächste Zeile auskommentiert, damit nichts in die Datenbank Firebase geschrieben wird
 
-              // this.$store.dispatch('updateSubmodelElementValue', [submodelElement, value])
+              this.$store.dispatch('updateSubmodelElementValue', [submodelElement, value])
             }
           }
         }
