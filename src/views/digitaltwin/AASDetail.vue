@@ -41,14 +41,14 @@
                                         <LineChart :allValues="submodelElement.allValues" :title="submodelElement.idShort" :xAchisCharts="xAxisCharts"/>
                                       </b-modal>
                                       </b-col>
-                                    <b-col cols="2" v-if ="submodel.submodelName === 'Measurements'">
-                                      {{ submodelElement.unit }}
-                                    </b-col>
-                                    <b-col v-else-if="submodel.submodelName === 'Control' && submodelElement.idShort === 'Visualisation'">
+                                    <b-col cols="2" v-else-if="submodel.submodelName === 'Control' && submodelElement.idShort === 'Visualisation'">
                                         <b-link id="visualisation-link" :href="submodelElement.value" target="_blank">{{ submodelElement.value }}</b-link>
                                     </b-col>
-                                    <b-col v-else>
+                                    <b-col cols="2" v-else>
                                         {{ submodelElement.value }}
+                                    </b-col>
+                                    <b-col cols="2">
+                                      {{ submodelElement.unit }}
                                     </b-col>
                                 </b-row>
                                 <hr>
@@ -88,7 +88,7 @@
                                         <div v-for="element in submodelElement.submodelElementCollectionInfo" :key="element.idShort">
                                             <div v-if="element.seType === 'Property'">
                                                 <b-row>
-                                                    <b-col>
+                                                    <b-col cols="8">
                                                         <b-button v-b-modal="element.idShort + submodel.submodelName" variant="light-white">{{ element.idShort }}</b-button>
                                                             <b-modal v-bind:id="element.idShort + submodel.submodelName" hide-footer width="350px" persistent title="Semantic Information">
                                                                 <p class="my-4">SemanticID: {{ element.semanticId }}</p>
@@ -108,8 +108,11 @@
                                                                 <hr>
                                                             </b-modal>
                                                     </b-col>
-                                                    <b-col>
+                                                    <b-col cols="2">
                                                         {{ element.value }}
+                                                    </b-col>
+                                                    <b-col cols="2">
+                                                      {{ element.unit }}
                                                     </b-col>
                                                 </b-row>
                                                 <hr>
@@ -547,11 +550,11 @@ export default {
               let value = (Math.random() * (20 - 10) + 5)
               value = Math.round(value * 100) / 100
               // console.log(value)
-              // console.log(submodelElement)
+              console.log(submodelElement)
 
               // Nächste Zeile auskommentiert, damit nichts in die Datenbank Firebase geschrieben wird
 
-              this.$store.dispatch('updateSubmodelElementValue', [submodelElement, value])
+              // this.$store.dispatch('updateSubmodelElementValue', [submodelElement, value])
             }
           }
         }
