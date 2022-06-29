@@ -17,13 +17,14 @@
                 </div>
                 <EditOrganizationInformationCaBo :organization = organization />
             </div>
-
         </b-card>
+         <SiteCards :organization = organization />
       </div>
     </div>
 </template>
 
 <script>
+import SiteCards from '@/components/cabo/SiteCards.vue'
 import AddOrganizationInformationCaBo from '@/components/cabo/AddOrganizationInformationCaBo.vue'
 import EditOrganizationInformationCaBo from '@/components/cabo/EditOrganizationInformationCaBo.vue'
 
@@ -32,7 +33,7 @@ export default {
   data () {
     return {}
   },
-  components: { EditOrganizationInformationCaBo, AddOrganizationInformationCaBo },
+  components: { SiteCards, EditOrganizationInformationCaBo, AddOrganizationInformationCaBo },
   computed: {
     organization () {
       // console.log(this.$store.getters.loadedOrganizationInformationCaBo)

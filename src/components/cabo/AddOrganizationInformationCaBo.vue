@@ -2,68 +2,116 @@
     <div>
         <b-card id ="cardOrganizationForm" class="shadow p-3 mb-5 bg-white rounded">
             <b-form @submit="onCreateOrganizationAas" @reset="onReset">
-            <b-form-group
-                id="organization-name"
-                label="Name der Organisation:"
-                label-for="organization-name"
-            >
-                <b-form-input
-                id="organization-name"
-                v-model="form.organizationName"
-                placeholder="Name der Organisation"
-                required
-                ></b-form-input>
-            </b-form-group>
-            <b-form-group
-                id="country"
-                label="Land:"
-                label-for="country"
-            >
-                <country-select class="form-select" v-model="form.country" placeholder= 'Sitz des Unternehmens (Land)' topCountry="DE" />
-            </b-form-group>
+                <b-form-group
+                    id="organization-name"
+                    label="Name der Organisation:"
+                    label-for="organization-name"
+                >
+                    <b-form-input
+                    id="organization-name"
+                    v-model="form.organizationName"
+                    placeholder="Name der Organisation"
+                    required
+                    ></b-form-input>
+                </b-form-group>
+                <b-form-group
+                    id="country"
+                    label="Land:"
+                    label-for="country"
+                >
+                    <country-select class="form-select" v-model="form.country" placeholder= 'Sitz des Unternehmens (Land)' topCountry="DE" />
+                </b-form-group>
 
-            <b-form-group
-                id="city"
-                label="Stadt:"
-                label-for="city"
-            >
-                <b-form-input
-                id="city"
-                v-model="form.city"
-                placeholder="Sitz des Unternehmens (Stadt)"
-                required
-                ></b-form-input>
-            </b-form-group>
+                <b-form-group
+                    id="city"
+                    label="Stadt:"
+                    label-for="city"
+                >
+                    <b-form-input
+                    id="city"
+                    v-model="form.city"
+                    placeholder="Sitz des Unternehmens (Stadt)"
+                    required
+                    ></b-form-input>
+                </b-form-group>
 
-            <b-form-group
-                id="zipcode"
-                label="Postleitzahl:"
-                label-for="zipcode"
-            >
-                <b-form-input
-                id="zipcode"
-                v-model.number="form.zipcode"
-                placeholder="Sitz des Unternehmens (Postleitzahl)"
-                required
-                ></b-form-input>
-            </b-form-group>
+                <b-form-group
+                    id="zipcode"
+                    label="Postleitzahl:"
+                    label-for="zipcode"
+                >
+                    <b-form-input
+                    id="zipcode"
+                    v-model.number="form.zipcode"
+                    placeholder="Sitz des Unternehmens (Postleitzahl)"
+                    required
+                    ></b-form-input>
+                </b-form-group>
 
-            <b-form-group
-                id="number-sites"
-                label="Anzahl Standorte:"
-                label-for="number-sites"
-            >
-                <b-form-input
-                id="number-sites"
-                v-model.number="form.numberOfSites"
-                placeholder="Anzahl der Standorte"
-                required
-                type = number
-                ></b-form-input>
-            </b-form-group>
+                <b-form-group
+                    id="number-sites"
+                    label="Anzahl Standorte:"
+                    label-for="number-sites"
+                >
+                    <b-form-input
+                    id="number-sites"
+                    v-model.number="form.numberOfSites"
+                    placeholder="Anzahl der Standorte"
+                    required
+                    type = number
+                    ></b-form-input>
+                </b-form-group>
 
-            <b-button type="submit" variant="outline-secondary">Submit</b-button>
-            <b-button type="reset" variant="outline-secondary">Reset</b-button>
+                <b-button v-b-modal.modal-1 type="submit" variant="outline-secondary">Submit</b-button>
+                    <div v-for="n in form.numberOfSites" :key="n">
+                        <b-modal hide-footer width="350px" id="modal-1" persistent :title="'Informationen Standort ' + n" ref="modal-one">
+                            <b-form-group
+                                id="name-site"
+                                label="Name des Standortes:"
+                                label-for="name-site"
+                            >
+                                <b-form-input
+                                id="name-site"
+                                placeholder="Name des Standortes"
+                                v-model="form.siteName"
+                                required
+                                ></b-form-input>
+                            </b-form-group>
+                            <b-form-group
+                                id="site-country"
+                                label="Land des Standortes:"
+                                label-for="site-country"
+                            >
+                                <country-select class="form-select" v-model="form.siteCountry" placeholder= 'Land des Standortes' topCountry="DE" />
+                            </b-form-group>
+                            <b-form-group
+                                id="site-city"
+                                label="Stadt des Standortes:"
+                                label-for="site-city"
+                            >
+                                <b-form-input
+                                id="site-city"
+                                placeholder="Stadt des Standortes"
+                                v-model="form.siteCity"
+                                required
+                                ></b-form-input>
+                            </b-form-group>
+                            <b-form-group
+                                id="site-zipcode"
+                                label="PLZ des Standortes:"
+                                label-for="site-city"
+                            >
+                                <b-form-input
+                                id="site-zipcode"
+                                placeholder="PLZ des Standortes"
+                                v-model="form.siteZipcode"
+                                required
+                                ></b-form-input>
+                            </b-form-group>
+                            <b-button class="mt-3" variant="outline-secondary" block @click="onEditOrgaInfo">Save</b-button>
+                        </b-modal>
+                    </div>
+                <b-button type="reset" variant="outline-secondary">Reset</b-button>
             </b-form>
         </b-card>
     </div>
@@ -78,7 +126,11 @@ export default {
         country: '',
         city: '',
         zipcode: null,
-        numberOfSites: null
+        numberOfSites: null,
+        siteName: '',
+        siteCountry: '',
+        siteCity: '',
+        siteZipcode: null
       }
     }
   },
@@ -1000,7 +1052,7 @@ export default {
       // this.form.country = null
       this.form.city = ''
       this.form.zipcode = ''
-      this.form.numberOfSites = ''
+      // this.form.numberOfSites = ''
     },
     onReset (event) {
       event.preventDefault()
