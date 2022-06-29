@@ -47,6 +47,8 @@ new Vue({
         // console.log(this.$store.dispatch('autoSignIn', user))
       }
     })
+    this.$store.dispatch('loadAasCaBo')
+    this.$store.dispatch('loadOrganizationInformationCaBo')
     this.$store.dispatch('loadAas')
     this.$store.dispatch('loadAASJson')
     this.$store.dispatch('loadSubmodels')

@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-card id ="cardOrganizationForm" class="shadow p-3 mb-5 bg-white rounded">
-            <b-form @submit="onCreateEmsAas" @reset="onReset">
+            <b-form @submit="onCreateOrganizationAas" @reset="onReset">
             <b-form-group
                 id="organization-name"
                 label="Name der Organisation:"
@@ -56,7 +56,7 @@
                 <b-form-input
                 id="number-sites"
                 v-model.number="form.numberOfSites"
-                placeholder="Anzahl der Standorte, die integriert werden"
+                placeholder="Anzahl der Standorte"
                 required
                 type = number
                 ></b-form-input>
@@ -85,7 +85,7 @@ export default {
   computed: {
     organization () {
       // console.log(this.$store.getters.loadedOrganizationInformation)
-      return this.$store.getters.loadedOrganizationInformation
+      return this.$store.getters.loadedOrganizationInformationCaBo
     }
   },
   mounted () {
@@ -103,7 +103,7 @@ export default {
         card.classList.add('d-none')
       }
     },
-    onCreateEmsAas (event) {
+    onCreateOrganizationAas (event) {
       const card = document.getElementById('cardOrganizationForm')
       card.classList.add('d-none')
       console.log(typeof this.form.numberOfSites)
@@ -112,7 +112,7 @@ export default {
       const assetKeys = {
         type: 'Asset',
         local: true,
-        value: `ems-asset/${this.form.organizationName}`,
+        value: `asset/${this.form.organizationName}`,
         index: 0,
         idType: 'IRI'
       }
@@ -123,7 +123,7 @@ export default {
       const submodelKeys = {
         type: 'Submodel',
         local: true,
-        value: 'submodels/context',
+        value: 'submodels/organization-information',
         index: 0,
         idType: 'IRI'
       }
@@ -133,9 +133,9 @@ export default {
 
       newAas.identification = {
         idType: 'IRI',
-        id: `ems-aas/${this.form.organizationName}`
+        id: `organization-aas/${this.form.organizationName}`
       }
-      newAas.idShort = 'EmsAas'
+      newAas.idShort = 'Digitaler Zwilling der Organisation'
       newAas.category = 'CONSTANT'
       newAas.modelType = {
         name: 'AssetAdministrationShell'
@@ -145,7 +145,7 @@ export default {
       const submodelKeySemanticId = {
         type: 'GlobalReference',
         local: true,
-        value: 'ems/context-semantics',
+        value: 'organization/information-semantics',
         index: 0,
         idType: 'IRI'
       }
@@ -156,9 +156,9 @@ export default {
 
       newSubmodel.identification = {
         idType: 'IRI',
-        id: 'submodels/context'
+        id: 'submodels/organization-information'
       }
-      newSubmodel.idShort = 'Context'
+      newSubmodel.idShort = 'Informationen über das Unternehmen'
       newSubmodel.category = 'CONSTANT'
       newSubmodel.modelType = {
         name: 'Submodel'
@@ -172,13 +172,13 @@ export default {
             keys: [{
               type: 'GlobalReference',
               local: true,
-              value: 'ems/context-semantics/organization-name',
+              value: 'organization-name',
               index: 0,
               idType: 'IRI'
             }]
           },
           constraints: [],
-          idShort: 'OrganizationName',
+          idShort: 'Unternehmensname',
           category: 'CONSTANT',
           modelType: {
             name: 'Property'
@@ -196,13 +196,13 @@ export default {
             keys: [{
               type: 'GlobalReference',
               local: true,
-              value: 'ems/context-semantics/country',
+              value: 'organization-country',
               index: 0,
               idType: 'IRI'
             }]
           },
           constraints: [],
-          idShort: 'Country',
+          idShort: 'Land',
           category: 'CONSTANT',
           modelType: {
             name: 'Property'
@@ -220,13 +220,13 @@ export default {
             keys: [{
               type: 'GlobalReference',
               local: true,
-              value: 'ems/context-semantics/city',
+              value: 'organization-city',
               index: 0,
               idType: 'IRI'
             }]
           },
           constraints: [],
-          idShort: 'City',
+          idShort: 'Stadt',
           category: 'CONSTANT',
           modelType: {
             name: 'Property'
@@ -244,13 +244,13 @@ export default {
             keys: [{
               type: 'GlobalReference',
               local: true,
-              value: 'ems/context-semantics/zipcode',
+              value: 'organization-zipcode',
               index: 0,
               idType: 'IRI'
             }]
           },
           constraints: [],
-          idShort: 'ZipCode',
+          idShort: 'Postleitzahl',
           category: 'CONSTANT',
           modelType: {
             name: 'Property'
@@ -268,13 +268,13 @@ export default {
             keys: [{
               type: 'GlobalReference',
               local: true,
-              value: 'ems/context-semantics/numberOfSites',
+              value: 'organization-numberOfSites',
               index: 0,
               idType: 'IRI'
             }]
           },
           constraints: [],
-          idShort: 'NumberOfSites',
+          idShort: 'Anzahl Standorte',
           category: 'PARAMETER',
           modelType: {
             name: 'Property'
@@ -290,7 +290,7 @@ export default {
       const newConceptDescriptionON = {}
       newConceptDescriptionON.identification = {
         idType: 'IRI',
-        id: 'ems/context-semantics/organization-name'
+        id: 'organization-name'
       }
       newConceptDescriptionON.idShort = 'OrganizationName'
       newConceptDescriptionON.modelType = {
@@ -343,7 +343,7 @@ export default {
       const newConceptDescriptionCountry = {}
       newConceptDescriptionCountry.identification = {
         idType: 'IRI',
-        id: 'ems/context-semantics/country'
+        id: 'organization-country'
       }
       newConceptDescriptionCountry.idShort = 'Country'
       newConceptDescriptionCountry.modelType = {
@@ -396,7 +396,7 @@ export default {
       const newConceptDescriptionCity = {}
       newConceptDescriptionCity.identification = {
         idType: 'IRI',
-        id: 'ems/context-semantics/city'
+        id: 'organization-city'
       }
       newConceptDescriptionCity.idShort = 'City'
       newConceptDescriptionCity.modelType = {
@@ -449,7 +449,7 @@ export default {
       const newConceptDescriptionZip = {}
       newConceptDescriptionZip.identification = {
         idType: 'IRI',
-        id: 'ems/context-semantics/zipcode'
+        id: 'organization-zipcode'
       }
       newConceptDescriptionZip.idShort = 'ZipCode'
       newConceptDescriptionZip.modelType = {
@@ -502,7 +502,7 @@ export default {
       const newConceptDescriptionNoS = {}
       newConceptDescriptionNoS.identification = {
         idType: 'IRI',
-        id: 'ems/context-semantics/numberOfSites'
+        id: 'organization-numberOfSites'
       }
       newConceptDescriptionNoS.idShort = 'NumberOfSites'
       newConceptDescriptionNoS.modelType = {
@@ -982,8 +982,8 @@ export default {
       this.$store.dispatch('createConceptDescriptions', newConceptDescriptionNoB)
       this.$store.dispatch('createConceptDescriptions', newConceptDescription)
 
-      this.$store.dispatch('createAas', newAas)
-      this.$store.dispatch('createSubmodelContext', newSubmodel)
+      this.$store.dispatch('createAasCaBo', newAas)
+      this.$store.dispatch('createSubmodelOrganizationInformation', newSubmodel)
       this.$store.dispatch('createConceptDescriptions', newConceptDescriptionON)
       this.$store.dispatch('createConceptDescriptions', newConceptDescriptionCountry)
       this.$store.dispatch('createConceptDescriptions', newConceptDescriptionCity)
