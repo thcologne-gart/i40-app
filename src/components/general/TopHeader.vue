@@ -60,8 +60,8 @@ export default {
         { icon: '', title: 'Energiemanagement', link: '/ems' },
         { icon: '', title: 'Performance Monitoring', link: '/performance' },
         { icon: '', title: 'Building Performance', link: '/buildingperformance' },
-        { icon: '', title: 'Digital Twins', link: '/digitaltwins' },
-        { icon: '', title: 'CaBo', link: '/cabo' }
+        { icon: '', title: 'Digital Twins', link: '/digitaltwins' }
+        // { icon: '', title: 'CaBo', link: '/cabo' }
       ]
       if (this.userIsAuthenticated) {
         solutions = [
@@ -80,8 +80,8 @@ export default {
           { icon: '', title: 'Performance Monitoring', link: '/performance' },
           { icon: '', title: 'Energiemanagement', link: '/emsstart' },
           { icon: '', title: 'Building Performance', link: '/buildingperformance' },
-          { icon: '', title: 'Digital Twins', link: '/digitaltwins' },
-          { icon: '', title: 'CaBo', link: '/cabo' }
+          { icon: '', title: 'Digital Twins', link: '/digitaltwins' }
+          // { icon: '', title: 'CaBo', link: '/cabo' }
         ]
       }
       return menuItems
