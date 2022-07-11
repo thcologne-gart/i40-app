@@ -100,7 +100,7 @@ footer {
     color: #0a322b;
     border-radius: 4px;
     min-width: 9rem;
-    background-color: rgb(249, 175, 236);
+    background-color: rgb(245, 184, 234);
   }
   }
 }
@@ -123,7 +123,7 @@ footer {
   a {
   &.router-link-active {
     box-shadow: 2px 2px #0a322b;
-    background-color: rgb(249, 175, 236);
+    background-color: rgb(245, 184, 234);
     color: #0a322b;
     }
   }
@@ -167,11 +167,11 @@ footer {
     margin-right: auto !important;
 }
 #navigation {
-    background-color: rgb(175,175,175);
+    background-color: rgb(211, 209, 209);
     min-height: calc(100vh - 180px);
 }
 #ems-chapter {
-    background-color: rgb(175, 175, 175);
+    background-color: rgb(211, 209, 209);
 }
 .card {
   margin-inline:10%;
