@@ -4,12 +4,13 @@
             <b-col :key="energyGroup.id" v-for="energyGroup in energyUseGroup">
                 <a href="#">
                     <b-card id="energyUseGroup"
+                        v-b-modal="energyGroup.name"
                         v-bind:title = energyGroup.name
                         class="shadow p-3 mb-5 bg-white rounded"
                     >
                         <div v-if="energyGroup.name === 'Heizung'">
-                            <b-card-img v-b-modal="energyType[0].key + 'heating'" href="#" style="max-width: 20%;" top fluid :src= energyGroup.pic></b-card-img>
-                            <b-modal v-bind:id="energyType[0].key + 'heating'" hide-footer width="350px" persistent :title="energyGroup.name">
+                            <b-card-img  href="#" style="max-width: 20%;" top fluid :src= energyGroup.pic></b-card-img>
+                            <b-modal v-bind:id="energyGroup.name" hide-footer width="350px" persistent :title="energyGroup.name">
                                 <b-form-group
                                     id="input-group-1"
                                     label="Anzahl getrennter Heizsysteme im Gebäude:"
@@ -30,9 +31,9 @@
 
                         <div v-else-if="energyGroup.name === 'Kühlung'">
                             <a href="#">
-                                <b-card-img v-b-modal="energyType[0].key + 'cooling'" href="#" style="max-width: 20%;" top fluid :src= energyGroup.pic></b-card-img>
+                                <b-card-img href="#" style="max-width: 20%;" top fluid :src= energyGroup.pic></b-card-img>
                             </a>
-                            <b-modal v-bind:id="energyType[0].key + 'cooling'" hide-footer width="350px" persistent :title="energyGroup.name">
+                            <b-modal v-bind:id="energyGroup.name" hide-footer width="350px" persistent :title="energyGroup.name">
                                 <b-form-group
                                     id="input-group-1"
                                     label="Anzahl getrennter Kühlsysteme im Gebäude:"
@@ -53,9 +54,9 @@
 
                         <div v-else-if="energyGroup.name === 'Lüftung'">
                             <a href="#">
-                                <b-card-img v-b-modal="energyType[0].key + 'air'" href="#" style="max-width: 20%;" top fluid :src= energyGroup.pic></b-card-img>
+                                <b-card-img href="#" style="max-width: 20%;" top fluid :src= energyGroup.pic></b-card-img>
                             </a>
-                            <b-modal v-bind:id="energyType[0].key + 'air'" hide-footer width="350px" persistent :title="energyGroup.name">
+                            <b-modal v-bind:id="energyGroup.name" hide-footer width="350px" persistent :title="energyGroup.name">
                                 <b-form-group
                                     id="input-group-1"
                                     label="Anzahl getrennter Lüftungssysteme im Gebäude:"
@@ -129,9 +130,7 @@ export default {
       console.log(energyType)
       console.log(enpiInformations)
       const numberSystemsArray = [0]
-      this.$bvModal.hide(energyType[0].key + 'heating')
-      this.$bvModal.hide(energyType[0].key + 'cooling')
-      this.$bvModal.hide(energyType[0].key + 'air')
+      this.$bvModal.hide(energyGroup.name)
       // this.$refs['modal-heating'].hide()
       let i
       for (i = 1; i < numberSystems; i++) {

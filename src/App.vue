@@ -95,7 +95,7 @@ footer {
   color: #0a322b;
 
   a {
-  &.router-link-exact-active {
+  &.router-link-active {
     // border: 2px solid #4d4e4e;
     color: #0a322b;
     border-radius: 4px;

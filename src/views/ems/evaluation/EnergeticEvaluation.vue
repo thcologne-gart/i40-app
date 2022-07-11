@@ -5,7 +5,7 @@
           <b-tabs content-class="mt-3" id ="nav-tabs">
             <div v-for="site in numberofSites" :key="site">
                 <b-tab v-bind:title=sites[site][1].value >
-                    <slot name="site" v-bind:site="site">Platzhalter</slot>
+                  <slot name="site" v-bind:site="site">Platzhalter</slot>
                 </b-tab>
             </div>
         </b-tabs>
