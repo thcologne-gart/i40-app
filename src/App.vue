@@ -174,7 +174,7 @@ footer {
     background-color: rgb(211, 209, 209);
 }
 .card {
-  margin-inline:10%;
+  margin-inline:5%;
 }
 .card-header {
   background-color: rgba(249, 175, 236, 0.6) !important;

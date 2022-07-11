@@ -18,7 +18,7 @@ import EmsChapter from '@/components/ems/EmsChapter.vue'
 import EmsGrid from '@/components/ems/EmsGrid.vue'
 
 export default {
-  name: 'EnergetyPerformanceIndicators',
+  name: 'EnergyPerformanceIndicators',
   components: { EmsChapter, EmsGrid },
   data () {
     return {
