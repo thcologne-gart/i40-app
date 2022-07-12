@@ -22,16 +22,16 @@
             </div>
 
             <v-menu left bottom>
-                <template v-slot:activator="{on, attrs}">
+                <template v-slot:activator="{ on, attrs }">
                     <v-btn icon v-bind="attrs" v-on="on">
                         <v-icon
                         >mdi-account</v-icon>
                     </v-btn>
                 </template>
                 <v-list>
-                    <v-list-item v-for="item in logItems" :key="item.title" @click="() => {}" :to="item.link">
+                    <!-- <v-list-item v-for="item in logItems" :key="item.title" @click="() => {}" :to="item.link">
                         {{ item.title }}
-                    </v-list-item>
+                    </v-list-item> -->
                     <v-list-item v-if= "userIsAuthenticated" @click="onLogout" to="/signin">Logout</v-list-item>
                 </v-list>
             </v-menu>
@@ -47,10 +47,12 @@ export default {
   }),
   methods: {
     onLogout () {
+      console.log('test')
       this.$store.dispatch('logout')
     }
   },
   computed: {
+    /*
     logItems () {
       let logItems = [
         { icon: '', title: 'Sign In', link: '/signin' },
@@ -62,6 +64,7 @@ export default {
       }
       return logItems
     },
+    */
     solutions () {
       const solutions = [
         { icon: '', title: 'Digital Twins', link: '/digitaltwins' },

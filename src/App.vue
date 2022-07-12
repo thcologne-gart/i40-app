@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <v-app>
     <div class="wrapper">
         <div id="nav">
         <top-header></top-header>
@@ -7,7 +7,7 @@
         <router-view />
     </div>
     <Footer />
-  </div>
+  </v-app>
 </template>
 
 <script>
