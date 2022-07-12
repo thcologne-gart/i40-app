@@ -16,7 +16,6 @@
 // @ is an alias to /src
 import TopHeader from '@/components/general/TopHeader.vue'
 import Footer from '@/components/general/Footer.vue'
-
 export default {
   name: 'App',
   components: { 'top-header': TopHeader, Footer },
@@ -37,13 +36,11 @@ export default {
   methods: {
     async fetchTasks () {
       const res = await fetch('http://localhost:5000/submodels')
-
       const data = await res.json()
       console.log(data)
       return data
     }
   },
-
   async created () {
     this.submodelsJson = await this.fetchTasks()
     console.log(this.chapterSections)
@@ -75,25 +72,20 @@ footer {
   background-color: rgba(151, 222, 185, 0.5);
   min-height: 100vh;
 }
-
 .text-left {
     text-align: left;
 }
-
 #nav {
   font-weight: bold;
   color: #0a322b;
-
   a {
   &.router-link-exact-active {
     color: #0a322b;
   }
   }
 }
-
 #submodel-item {
   color: #0a322b;
-
   a {
   &.router-link-active {
     // border: 2px solid #4d4e4e;
@@ -104,10 +96,8 @@ footer {
   }
   }
 }
-
 #building-navbar {
   color: #0a322b;
-
   a {
   &.router-link-exact-active {
     color: #0a322b;
@@ -119,7 +109,6 @@ footer {
 }
 #chapter {
   display: inline;
-
   a {
   &.router-link-active {
     box-shadow: 2px 2px #0a322b;
@@ -128,11 +117,9 @@ footer {
     }
   }
 }
-
 #nav-bar {
   background: white;
 }
-
 #nav-brand {
   color: #0a322b;
 }
@@ -144,22 +131,18 @@ footer {
   border-bottom-style: solid;
   border-color: #F2F2F2;
 }
-
 .nav-pills .nav-link.active {
     background-color: white !important;
     border: 2px solid #4d4e4e !important;
     color: green !important;
 }
-
 .carousel-control-prev, .carousel-control-next {
   opacity: 1 !important;
   background: rgba(247, 249, 252, .3) !important;
 }
-
 .carousel-caption {
     background: rgba(247, 249, 252, .3) !important;
 }
-
 #energy-source-card {
     max-inline-size: 50%;
     display: block !important;

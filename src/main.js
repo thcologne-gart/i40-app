@@ -10,6 +10,7 @@ import { getStorage } from 'firebase/storage'
 import './plugins/bootstrap-vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import vueCountryRegionSelect from 'vue-country-region-select'
+import vuetify from './plugins/vuetify'
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 // import Axios from 'axios'
 
@@ -38,6 +39,7 @@ Vue.use(vueCountryRegionSelect)
 new Vue({
   router,
   store,
+
   created () {
     // console.log(this.$store.dispatch('loadEnpis'))
     const auth = getAuth()
@@ -65,5 +67,7 @@ new Vue({
     this.$store.dispatch('loadPdfs')
     // this.$store.dispatch('loadOrganizationInformation')
   },
+
+  vuetify,
   render: h => h(App)
 }).$mount('#app')
