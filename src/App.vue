@@ -1,12 +1,8 @@
 <template>
   <v-app>
-    <div class="wrapper">
-        <div id="nav">
-        <top-header></top-header>
-        </div>
-        <router-view />
-    </div>
-    <Footer />
+    <TopHeader/>
+      <router-view />
+    <Footer/>
   </v-app>
 </template>
 
@@ -16,7 +12,7 @@ import TopHeader from '@/components/general/TopHeader.vue'
 import Footer from '@/components/general/Footer.vue'
 export default {
   name: 'App',
-  components: { 'top-header': TopHeader, Footer },
+  components: { TopHeader, Footer },
   data () {
     return {
       submodelsJson: []
@@ -48,15 +44,6 @@ export default {
 </script>
 
 <style lang="scss">
-body {
-  margin: 0;
-  height: 100vh;
-  overflow: scroll;
-  hyphens: auto;
-}
-.wrapper {
-  min-height: calc(100vh - 60px);
-}
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

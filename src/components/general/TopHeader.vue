@@ -1,10 +1,8 @@
 <template>
     <div>
         <v-app-bar
-            v-if= "userIsAuthenticated"
             id="top-header"
             color="grey lighten-5"
-            app
             >
             <v-app-bar-nav-icon></v-app-bar-nav-icon>
 

@@ -1,24 +1,28 @@
 <template>
   <div>
     <div>
-      <b-card
+      <v-card
         id="bp-start"
-        title="Building Performance"
-        tag="article"
         style="max-width: 40rem;"
         class="shadow p-3 mb-5 bg-white rounded mx-auto"
       >
-        <b-card-img :src="require('@/assets/bp-start.jpeg')"></b-card-img>
-        <b-card-text>
+        <v-card-title id="title">Building Performance</v-card-title>
+        <v-img :src="require('@/assets/bp-start.jpeg')"></v-img>
+        <v-card-text>
           Starten Sie mit der Konfiguration Ihrer Building Performance Applikation
-        </b-card-text>
-        <b-button to="/buildingperformance" variant="outline-secondary">Start</b-button>
-      </b-card>
+        </v-card-text>
+        <v-btn to="/buildingperformance" variant="outline-secondary">Start</v-btn>
+      </v-card>
     </div>
   </div>
 </template>
 
-<style>
+<style scoped>
+#title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 #bp-start {
   margin-top: 20px;
   margin-bottom: 20px;
