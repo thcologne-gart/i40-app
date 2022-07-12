@@ -10,7 +10,7 @@
 
             <v-toolbar-title
                 id="navbar-title"
-                >CaBo</v-toolbar-title>
+                >GART</v-toolbar-title>
             <v-btn id="home-icon" icon @click="$router.push('/home')">
                 <v-icon>mdi-home</v-icon>
             </v-btn>

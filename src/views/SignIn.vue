@@ -3,7 +3,7 @@
     <v-card class="mx-auto my-16"
       max-width="50%"
       id="sign-in-card">
-      <v-card-title id="signin-title">CaBo</v-card-title>
+      <v-card-title id="signin-title">GART</v-card-title>
       <v-card-subtitle id ="signin-subtitle" class="overline">Sign In</v-card-subtitle>
       <v-form @submit="onSignIn" v-if="show">
           <v-container>
