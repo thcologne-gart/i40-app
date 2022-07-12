@@ -1,22 +1,13 @@
 <template>
-  <v-footer padless
-  color="grey lighten-1">
+  <v-footer
+    v-bind="localAttrs"
+    :padless="padless"
+    color="grey lighten-1">
     >
-    <v-row
-      justify="center"
-      no-gutters
-    >
+    <v-row justify="center" no-gutters>
       <v-container>
-        <v-btn
-            v-for="link in links"
-            :key="link"
-            color="white"
-            text
-            class="my-2"
-            rounded
-            id="footer-button"
-        >
-            {{ link }}
+        <v-btn v-for="link in links" :key="link" color="white" text class="my-2" rounded id="footer-button">
+          {{ link }}
         </v-btn>
       </v-container>
     </v-row>
@@ -32,16 +23,31 @@ export default {
       'Services',
       'Blog',
       'Contact Us'
-    ]
-  })
+    ],
+    padless: false
+  }),
+  computed: {
+    localAttrs () {
+      const attrs = {}
+
+      if (this.variant === 'default') {
+        attrs.absolute = false
+        attrs.fixed = false
+      } else {
+        attrs[this.variant] = true
+      }
+      return attrs
+    }
+  }
 }
 </script>
 
 <style scoped>
 #footer-button {
-    width: 10%;
+  width: 10%;
 }
+
 .container {
-    padding: 0;
+  padding: 0;
 }
 </style>
