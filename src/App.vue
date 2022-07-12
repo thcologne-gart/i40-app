@@ -106,10 +106,9 @@ export default {
 #sticky-ems-chapter {
   position: sticky;
   top: 0;
-  background: white;
   z-index: 999;
   border-bottom-style: solid;
-  border-color: #F2F2F2;
+  border-color: #FFAC1C;
 }
 .nav-pills .nav-link.active {
     background-color: white !important;
@@ -132,9 +131,6 @@ export default {
 #navigation {
     background-color: rgb(211, 209, 209);
     min-height: calc(100vh - 180px);
-}
-#ems-chapter {
-    background-color: rgb(211, 209, 209);
 }
 .card {
   margin-inline:5%;
