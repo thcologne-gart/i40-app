@@ -11,7 +11,7 @@
         <v-card-text>
           Visualisieren Sie die digitalen Zwillinge ihrer technischen Komponenten
         </v-card-text>
-        <v-btn to="/digitaltwins" variant="outline-secondary" type="submit">Start</v-btn>
+        <v-btn to="/digitaltwinsoverview" variant="outline-secondary">Start</v-btn>
       </v-card>
     </div>
   </div>

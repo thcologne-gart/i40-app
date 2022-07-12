@@ -11,7 +11,9 @@
         <v-card-text>
           Starten Sie mit der Konfiguration Ihrer Building Performance Applikation
         </v-card-text>
-        <v-btn to="/buildingperformance" variant="outline-secondary">Start</v-btn>
+        <v-btn to="/home"
+          variant="outline-secondary"
+          >Start</v-btn>
       </v-card>
     </div>
   </div>
