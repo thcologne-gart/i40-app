@@ -1,7 +1,47 @@
 <template>
-    <b-navbar id="footer" type="dark">
-        <b-navbar-nav class="mx-auto">
-            <b-nav-text>Copyright &copy; 2022</b-nav-text>
-        </b-navbar-nav>
-    </b-navbar>
+  <v-footer padless
+  color="grey lighten-1">
+    >
+    <v-row
+      justify="center"
+      no-gutters
+    >
+      <v-container>
+        <v-btn
+            v-for="link in links"
+            :key="link"
+            color="white"
+            text
+            class="my-2"
+            rounded
+            id="footer-button"
+        >
+            {{ link }}
+        </v-btn>
+      </v-container>
+    </v-row>
+  </v-footer>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    links: [
+      'Home',
+      'About Us',
+      'Services',
+      'Blog',
+      'Contact Us'
+    ]
+  })
+}
+</script>
+
+<style scoped>
+#footer-button {
+    width: 10%;
+}
+.container {
+    padding: 0;
+}
+</style>

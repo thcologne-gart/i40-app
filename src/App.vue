@@ -6,9 +6,7 @@
         </div>
         <router-view />
     </div>
-    <footer>
-        <Footer />
-    </footer>
+    <Footer />
   </div>
 </template>
 
@@ -59,18 +57,14 @@ body {
 .wrapper {
   min-height: calc(100vh - 60px);
 }
-footer {
-  height: 60px;
-  background: #0a322b;
-}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-color: rgba(151, 222, 185, 0.5);
-  min-height: 100vh;
+  background: linear-gradient(45deg, #93c572, #5f8575);
 }
 .text-left {
     text-align: left;
