@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-nav-item id="submodel-item" v-bind:to="submodel.link" >{{ submodel.name }}</b-nav-item>
+    <v-list-item-title id="submodel-item">{{ submodel.name }}</v-list-item-title>
   </div>
 </template>
 

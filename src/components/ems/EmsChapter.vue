@@ -5,9 +5,9 @@
             >
             <v-row id="ems-chapter">
                 <v-col md = "2">
-                    <div class="d-none d-lg-block" id="chapterName">
+                    <v-toolbar-title id="navbar-title">
                         <EmsChapterBrand :emsChapter="emsChapter" />
-                    </div>
+                    </v-toolbar-title>
                 </v-col>
                 <v-col md = "10" id="chapter">
                             <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/contextstart">1</v-btn>
@@ -46,14 +46,16 @@ export default {
 .row {
     margin-left: -5px;
 }
+#navbar-title {
+  color: #301934;
+  font-weight: 500;
+}
 #navbar-chapter {
     display: inline;
 }
-#chapterName {
-    margin-top: 12px;
-}
 #btn-ems-chapter {
-    margin-right: 10px;
+    margin-right: 1%;
+    margin-left: 1%;
     background:white;
 }
 .active-chapter-button {

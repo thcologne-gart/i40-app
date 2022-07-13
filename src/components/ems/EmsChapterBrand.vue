@@ -15,8 +15,8 @@ export default {
 </script>
 <style scoped>
 #ems-chapter-brand {
-    margin-right: -1rem;
-    color:#0a322b;
+    color: #301934;
+    font-weight: 500;
 }
 
 </style>

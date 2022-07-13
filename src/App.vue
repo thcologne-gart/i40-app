@@ -100,6 +100,8 @@ body {
 }
 #grid-layout {
   height: 100% !important;
+  margin: 0;
+  padding:0;
 }
 #chapter {
   display: inline;
@@ -143,7 +145,7 @@ body {
     margin-right: auto !important;
 }
 #navigation {
-    background-color: rgb(211, 209, 209);
+    padding:0;
     min-height: calc(100vh - 180px);
 }
 .card {
