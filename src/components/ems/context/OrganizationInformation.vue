@@ -2,23 +2,26 @@
     <div>
       <AddOrganizationInformation />
       <div v-if="organization != null">
-        <b-card class = "shadow p-3 mb-5 bg-white rounded showOrgaInfo">
+        <v-card class="mx-auto my-12" elevation="4"
+                max-width="60%">
+            <v-card-title id="card-title">Unternehmensinformationen</v-card-title>
             <div id ="displayOrganizationInformation">
-                <b-row id="header">
-                    <b-col><h5>Name</h5></b-col>
-                    <b-col><h5>Value</h5></b-col>
-                    <!-- <b-col><h5>Löschen</h5></b-col>//-->
-                </b-row>
+                <v-row id="header">
+                    <v-col><h5>Name</h5></v-col>
+                    <v-col><h5>Value</h5></v-col>
+                    <!-- <v-col><h5>Löschen</h5></v-col>//-->
+                </v-row>
+                <v-divider></v-divider>
                 <div v-for="information in organization" :key="information.idShort">
-                    <b-row id = "body">
-                        <b-col>{{ information.idShort }}</b-col>
-                        <b-col>{{ information.value }}</b-col>
-                    </b-row>
+                    <v-row id = "body">
+                        <v-col>{{ information.idShort }}</v-col>
+                        <v-col>{{ information.value }}</v-col>
+                    </v-row>
                 </div>
                 <EditOrganizationInformation :organization = organization />
             </div>
 
-        </b-card>
+        </v-card>
       </div>
     </div>
 </template>
@@ -65,16 +68,12 @@ export default {
 }
 #header {
     color: #0a322b;
-    font-size: 1em
+    font-size: 1em;
 }
 #body {
     font-size: 18px;
     padding-top: 5px;
     padding-bottom: 5px
-}
-.row {
-    border-bottom-style: solid;
-    border-color: #F2F2F2;
 }
 
 </style>

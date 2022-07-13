@@ -159,4 +159,16 @@ body {
   background-color: rgba(249, 175, 236, 0.8) !important;
 }
 */
+#card-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0a322b;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+#edit-button {
+  margin-bottom: 10px;
+}
 </style>

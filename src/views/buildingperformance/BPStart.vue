@@ -6,7 +6,7 @@
         style="max-width: 40rem;"
         class="shadow p-3 mb-5 bg-white rounded mx-auto"
       >
-        <v-card-title id="title">Building Performance</v-card-title>
+        <v-card-title id="card-title">Building Performance</v-card-title>
         <v-img :src="require('@/assets/bp-start.jpeg')"></v-img>
         <v-card-text>
           Starten Sie mit der Konfiguration Ihrer Building Performance Applikation
@@ -20,11 +20,6 @@
 </template>
 
 <style scoped>
-#title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 #bp-start {
   margin-top: 20px;
   margin-bottom: 20px;
