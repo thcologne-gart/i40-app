@@ -44,6 +44,20 @@ export default {
 </script>
 
 <style lang="scss">
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1 0 auto;
+}
+#footer {
+  margin-top:auto;
+  padding: 0;
+}
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

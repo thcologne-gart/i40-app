@@ -1,7 +1,7 @@
 <template>
   <v-footer
-    v-bind="localAttrs"
-    :padless="padless"
+    id="footer"
+    paddless
     color="grey lighten-1">
     >
     <v-row justify="center" no-gutters>
@@ -43,6 +43,10 @@ export default {
 </script>
 
 <style scoped>
+#footer {
+  padding-top: 0;
+  padding-bottom: 10px;
+}
 #footer-button {
   width: 10%;
 }
