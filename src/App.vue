@@ -100,7 +100,7 @@ body {
 }
 #grid-layout {
   height: 100% !important;
-  margin: 0;
+  margin-left: 0;
   padding:0;
 }
 #chapter {
@@ -170,5 +170,11 @@ body {
 
 #edit-button {
   margin-bottom: 10px;
+}
+
+#buttons-card {
+    margin-bottom: 20px;
+    width: 20%;
+    margin-inline: 10%;
 }
 </style>
