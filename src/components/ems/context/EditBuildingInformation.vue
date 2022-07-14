@@ -1,36 +1,35 @@
 <template>
   <div>
-    <b-button v-b-modal="item[4].key" variant="outline-secondary" size="sm"><b-icon-pencil-square></b-icon-pencil-square></b-button>
+    <v-btn id="edit-button" v-b-modal="item[4].key" variant="outline-secondary" size="sm"><b-icon-pencil-square></b-icon-pencil-square></v-btn>
 
     <b-modal v-bind:id="item[4].key" hide-footer width="350px" persistent title="Edit Gebäudeangaben" ref="modal-one">
-        <b-form-group
+        <v-form
             id="input-group-2"
             label="Straße:"
             label-for="input-2"
         >
-            <b-form-input
+            <v-text-field
             id="input-2"
             placeholder="Edit Straße"
             v-model="editBuildingStreet"
             required
-            ></b-form-input>
-        </b-form-group>
+            ></v-text-field>
+        </v-form>
 
-        <b-form-group
+        <v-form
             id="input-group-3"
             label="Bezeichnung:"
             label-for="input-3"
         >
-            <b-form-input
+            <v-text-field
             id="input-3"
             placeholder="Edit Bezeichnung"
             v-model="editBuildingDesignation"
             required
-            ></b-form-input>
-        </b-form-group>
+            ></v-text-field>
+        </v-form>
 
-        <hr>
-        <b-button class="mt-3" variant="outline-secondary" block @click="onEditBuildingInfo">Save</b-button>
+        <v-btn class="mt-3" variant="outline-secondary" block @click="onEditBuildingInfo" size="sm">Save</v-btn>
     </b-modal>
   </div>
 </template>

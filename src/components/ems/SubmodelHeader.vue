@@ -12,22 +12,28 @@
         </b-navbar>
         -->
         <div v-if="buildings.length < numberOfBuildingsAsArray.length">
-            <b-card no-body class="shadow p-3 mb-5 bg-white rounded" id="overall-building-card">
-                <b-tabs card pills vertical id="buildings-tabs">
-                    <b-tab v-bind:title="'Gebäude ' + building" v-for="building in numberOfBuildingsAsArray" :key="building">
-                        <slot name="building" v-bind:building="building">Platzhalter</slot>
-                    </b-tab>
-                </b-tabs>
-            </b-card>
+          <v-card no-body class="mx-auto my-12" elevation="4" max-width="90%" id="overall-building-card">
+              <v-tabs v-model="tab" vertical id="buildings-tabs" background-color="grey lighten-2" slider-color="#FFAC1C" color="#0a322b">
+                  <v-tab v-for="building in numberOfBuildingsAsArray" :key="building">
+                    Gebäude {{ building }}
+                  </v-tab>
+                  <v-tab-item>
+                    <slot name="building" v-bind:building="building">Platzhalter</slot>
+                  </v-tab-item>
+              </v-tabs>
+          </v-card>
         </div>
         <div v-else-if="buildings.length === numberOfBuildingsAsArray.length">
-            <b-card no-body class="shadow p-3 mb-5 bg-white rounded" id="overall-building-card">
-                <b-tabs card pills vertical id="buildings-tabs">
-                    <b-tab v-bind:title="building.buildingNames" v-for="building in buildings" :key="building.buildingNames">
-                        <slot name="building" v-bind:building="building.buildingNumber">Platzhalter</slot>
-                    </b-tab>
-                </b-tabs>
-            </b-card>
+            <v-card no-body class="mx-auto my-12" elevation="4" max-width="90%" id="overall-building-card">
+                <v-tabs v-model="tab" vertical id="buildings-tabs" background-color="grey lighten-2" slider-color="#FFAC1C" color="#0a322b">
+                    <v-tab v-for="building in buildings" :key="building.buildingNames">
+                      {{ building.buildingNames }}
+                    </v-tab>
+                    <v-tab-item v-for="building in buildings" :key="building.buildingNames">
+                      <slot name="building" v-bind:building="building.buildingNumber">Platzhalter</slot>
+                    </v-tab-item>
+                </v-tabs>
+            </v-card>
         </div>
     </div>
 </template>
@@ -36,6 +42,11 @@
 
 export default {
   name: 'SubmodelHeader',
+  data () {
+    return {
+      tab: null
+    }
+  },
   props: {
     submodelName: String,
     numberOfBuildings: Array,

@@ -45,7 +45,7 @@ export default {
 <style scoped>
 #footer {
   padding-top: 0;
-  padding-bottom: 10px;
+  padding-bottom: 0;
 }
 #footer-button {
   width: 10%;

@@ -3,35 +3,37 @@
       <EmsChapter :emsChapter="emsChapter" />
       <EmsGrid :submodels="submodels">
         <div v-if="sites === null">
-          <v-tabs center-active v-model="tab" background-color="#5f8575" dark slider-color="#FFAC1C">
+          <v-tabs center-active v-model="tab" background-color="grey lighten-2" slider-color="#FFAC1C" color="#0a322b">
             <v-tab v-for="site in numberofSites" :key="site">Standort
             </v-tab>
           </v-tabs>
           <v-tabs-items>
-            <v-tab-item v-for="site in numberofSites" :key="site" background-color="primary">
+            <v-tab-item v-for="site in numberofSites" :key="site">
               <slot name="site" v-bind:site="site">Platzhalter</slot>
             </v-tab-item>
           </v-tabs-items>
         </div>
 
         <div v-else-if="sites.length != numberofSites.length">
-          <v-tabs center-active v-model="tab" background-color="#5f8575" dark slider-color="#FFAC1C">
+          <v-tabs center-active v-model="tab" background-color="grey lighten-2" slider-color="#FFAC1C" color="#0a322b">
             <v-tab v-for="site in numberofSites" :key="site">Standort
             </v-tab>
           </v-tabs>
           <v-tabs-items>
-            <v-tab-item v-for="site in numberofSites" :key="site" background-color="primary">
+            <v-tab-item v-for="site in numberofSites" :key="site">
               <slot name="site" v-bind:site="site">Platzhalter</slot>
             </v-tab-item>
           </v-tabs-items>
         </div>
 
         <div v-else>
-          <v-tabs center-active v-model="tab" background-color="#5f8575" slider-color="#FFAC1C" dark>
-            <v-tab v-for="site in numberofSites" :key="site">{{ sites[site][1].value }}</v-tab>
-          </v-tabs>
+          <v-sheet elevation="2">
+            <v-tabs center-active v-model="tab" background-color="grey lighten-2" slider-color="#FFAC1C" color="#0a322b">
+              <v-tab v-for="site in numberofSites" :key="site">{{ sites[site][1].value }}</v-tab>
+            </v-tabs>
+          </v-sheet>
           <v-tabs-items v-model="tab" id="custom-tab-items">
-            <v-tab-item v-for="site in numberofSites" :key="site" background-color="primary">
+            <v-tab-item v-for="site in numberofSites" :key="site">
               <slot name="site" v-bind:site="site">Platzhalter</slot>
             </v-tab-item>
           </v-tabs-items>

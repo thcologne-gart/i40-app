@@ -1,25 +1,25 @@
 <template>
     <div v-if="buildings != null">
-        <b-card class = "shadow p-3 mb-5 bg-white rounded showBuildingInfo">
+        <v-card class ="mx-auto my-16" max-width="75%" elevation="4">
         <div id ="displayBuildingInformation">
-            <b-row id="header">
-                <b-col><h5>Name</h5></b-col>
-                <b-col><h5>Value</h5></b-col>
-                <!-- <b-col><h5>Löschen</h5></b-col>//-->
-            </b-row>
+            <v-row id="header">
+                <v-col><h5>Name</h5></v-col>
+                <v-col><h5>Value</h5></v-col>
+                <!-- <v-col><h5>Löschen</h5></v-col>//-->
+            </v-row>
             <div v-for="item in buildings" :key="item[1].value">
                 <div v-if="item[2].value === site[4].value && item[3].value === building " >
                     <div v-for="information in item" :key="information.idShort">
-                        <b-row id = "body">
-                            <b-col>{{ information.idShort }}</b-col>
-                            <b-col>{{ information.value }}</b-col>
-                        </b-row>
+                        <v-row id = "body">
+                            <v-col>{{ information.idShort }}</v-col>
+                            <v-col>{{ information.value }}</v-col>
+                        </v-row>
                     </div>
                     <EditBuildingInformation :site = site :item= item />
                 </div>
             </div>
         </div>
-      </b-card>
+      </v-card>
     </div>
 </template>
 
