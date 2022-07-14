@@ -110,6 +110,7 @@ export default {
 #content {
     border-left-style: solid;
     border-color: #FFAC1C;
+    padding-top:0;
 }
 .col {
     padding-left: 0;

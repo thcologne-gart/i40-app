@@ -2,25 +2,40 @@
     <div>
       <EmsChapter :emsChapter="emsChapter" />
       <EmsGrid :submodels="submodels">
-        <b-tabs content-class="mt-3" id ="nav-tabs">
-            <div v-if="sites === null">
-                <b-tab title= "Standort" v-for="site in numberofSites" :key="site">
-                    <slot name="site" v-bind:site="site">Platzhalter</slot>
-                </b-tab>
-            </div>
-            <div v-else-if="sites.length != numberofSites.length">
-                <b-tab title= "Standort" v-for="site in numberofSites" :key="site">
-                    <slot name="site" v-bind:site="site">Platzhalter</slot>
-                </b-tab>
-            </div>
-            <div v-else>
-                <div v-for="site in numberofSites" :key="site">
-                    <b-tab v-bind:title=sites[site][1].value >
-                        <slot name="site" v-bind:site="site">Platzhalter</slot>
-                    </b-tab>
-                </div>
-            </div>
-        </b-tabs>
+        <div v-if="sites === null">
+          <v-tabs center-active v-model="tab" background-color="#5f8575" dark slider-color="#FFAC1C">
+            <v-tab v-for="site in numberofSites" :key="site">Standort
+            </v-tab>
+          </v-tabs>
+          <v-tabs-items>
+            <v-tab-item v-for="site in numberofSites" :key="site">
+              <slot name="site" v-bind:site="site">Platzhalter</slot>
+            </v-tab-item>
+          </v-tabs-items>
+        </div>
+
+        <div v-else-if="sites.length != numberofSites.length">
+          <v-tabs center-active v-model="tab" background-color="#5f8575" dark slider-color="#FFAC1C">
+            <v-tab v-for="site in numberofSites" :key="site">Standort
+            </v-tab>
+          </v-tabs>
+          <v-tabs-items>
+            <v-tab-item v-for="site in numberofSites" :key="site">
+              <slot name="site" v-bind:site="site">Platzhalter</slot>
+            </v-tab-item>
+          </v-tabs-items>
+        </div>
+
+        <div v-else>
+          <v-tabs center-active v-model="tab" background-color="#5f8575" dark slider-color="#FFAC1C">
+            <v-tab v-for="site in numberofSites" :key="site">{{ sites[site][1].value }}</v-tab>
+          </v-tabs>
+          <v-tabs-items v-model="tab">
+            <v-tab-item v-for="site in numberofSites" :key="site">
+              <slot name="site" v-bind:site="site">Platzhalter</slot>
+            </v-tab-item>
+          </v-tabs-items>
+        </div>
       </EmsGrid>
     </div>
 </template>
@@ -33,6 +48,7 @@ export default {
   components: { EmsChapter, EmsGrid },
   data () {
     return {
+      tab: null,
       submodels: []
     }
   },
