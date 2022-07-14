@@ -1,14 +1,15 @@
 <template>
     <div>
         <a href="#">
-            <b-card
-                v-bind:title = energyType.name
-                style="max-width: 20rem;"
-                class="mx-auto"
-                id="energy-types"
+            <v-card
+              class="pt-2 mx-auto"
+              id="energy-types"
+              max-width="120px"
             >
-                <b-card-img @click="onSubmitEnergyType" href="#" style="max-width: 40%;" top fluid :src= energyType.pic></b-card-img>
-            </b-card>
+              <v-img @click="onSubmitEnergyType" href="#" style="max-width: 40%;" class="mx-auto" :src= energyType.pic id="energy-type-img"></v-img>
+              <v-card-subtitle>{{ energyType.name }}</v-card-subtitle>
+                  <!-- <b-card-img @click="onSubmitEnergyType" href="#" style="max-width: 40%;" top fluid :src= energyType.pic></b-card-img> -->
+            </v-card>
         </a>
     </div>
 </template>
@@ -1055,9 +1056,10 @@ export default {
 </script>
 
 <style scoped>
+
 #energy-types:hover {
   background-color: #0a322b !important;
-  color: #F2F2F2;
+  color: #F2F2F2 !important;
   transition: all 0.5s ease;
 }
 #energy-types:hover img{

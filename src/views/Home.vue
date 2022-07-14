@@ -3,7 +3,6 @@
     <div>
       <v-card
         id="home"
-        title="Nachhaltigere und effizientere Gebäude durch smarte Automatisierung und künstliche Intelligenz"
         style="max-width: 40rem;"
         class="shadow p-3 mb-5 bg-white rounded mx-auto"
       >

@@ -2,13 +2,23 @@
     <div>
       <EmsChapter :emsChapter="emsChapter" />
       <EmsGrid :submodels="submodels">
-          <b-tabs content-class="mt-3" id ="nav-tabs">
-            <div v-for="site in numberofSites" :key="site">
+        <v-sheet elevation="2">
+            <v-tabs center-active v-model="tab" background-color="grey lighten-2" slider-color="#FFAC1C" color="#0a322b">
+              <v-tab v-for="site in numberofSites" :key="site">{{ sites[site][1].value }}</v-tab>
+            </v-tabs>
+          </v-sheet>
+          <v-tabs-items v-model="tab" id="custom-tab-items">
+            <v-tab-item v-for="site in numberofSites" :key="site">
+              <slot name="site" v-bind:site="site">Platzhalter</slot>
+            </v-tab-item>
+          </v-tabs-items>
+          <!-- <b-tabs content-class="mt-3" id ="nav-tabs">
+             <div v-for="site in numberofSites" :key="site">
                 <b-tab v-bind:title=sites[site][1].value >
                   <slot name="site" v-bind:site="site">Platzhalter</slot>
                 </b-tab>
             </div>
-        </b-tabs>
+          </b-tabs> -->
       </EmsGrid>
     </div>
 </template>
@@ -22,6 +32,7 @@ export default {
   components: { EmsChapter, EmsGrid },
   data () {
     return {
+      tab: null,
       submodels: []
     }
   },

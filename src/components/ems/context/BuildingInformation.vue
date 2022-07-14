@@ -1,7 +1,8 @@
 <template>
     <div v-if="buildings != null">
-        <v-card class ="mx-auto my-16" max-width="75%" elevation="4">
+        <v-card class ="mx-auto my-10" max-width="75%" elevation="2">
         <v-card-title id="card-title">Gebäudeinformationen</v-card-title>
+        <hr>
         <div id ="displayBuildingInformation">
             <v-row id="header">
                 <v-col><h5>Name</h5></v-col>

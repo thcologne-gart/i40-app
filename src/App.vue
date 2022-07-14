@@ -165,7 +165,8 @@ body {
   justify-content: center;
   color: #0a322b;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 22px;
+  padding-bottom: 0px;
 }
 
 #edit-button {
@@ -176,5 +177,9 @@ body {
     margin-bottom: 20px;
     width: 20%;
     margin-inline: 10%;
+}
+
+#custom-tab-items {
+    background-color: transparent !important;
 }
 </style>

@@ -88,9 +88,3 @@ export default {
   }
 }
 </script>
-
-<style>
-#custom-tab-items {
-    background-color: transparent !important;
-}
-</style>

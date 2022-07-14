@@ -4,9 +4,10 @@
         <AddOrganizationInformation />
       </div>
       <div v-else-if="organization != null">
-        <v-card class="mx-auto my-16" elevation="4"
+        <v-card class="mx-auto my-16" elevation="2"
                 max-width="60%">
             <v-card-title id="card-title">Unternehmensinformationen</v-card-title>
+            <hr>
             <div id ="displayOrganizationInformation">
                 <v-row id="header">
                     <v-col><h5>Name</h5></v-col>

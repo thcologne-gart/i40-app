@@ -6,15 +6,18 @@
                 <div v-if="site === site2">
                     <SubmodelHeader :site ="site2" :submodelName="submodelName" :numberOfBuildings="numberOfBuildings">
                         <template v-slot:building="{ building }">
-                            <b-card class="shadow p-3 mb-5 bg-white rounded" title="Energiearten">
-                                <hr>
-                                <b-row>
-                                    <b-col :key="energyType.id" v-for="energyType in energyTypes">
+                            <v-card class ="mx-auto my-8" max-width="90%" elevation="4">
+                            <v-card-title id="card-title">Energiearten</v-card-title>
+                            <hr>
+                              <v-container>
+                                <v-row>
+                                    <v-col :key="energyType.id" v-for="energyType in energyTypes">
                                         <!--<EnergyTypeCard :energyType="energyType" @add-new-energy-type=addEnergyType @add-submodel-ref-aas=addAasRef />//-->
                                         <EnergyTypeCard :energyType="energyType" :site ="site" :numberOfBuildings="numberOfBuildings" :buildingNumber="building" :buildings="buildings" />
-                                    </b-col>
-                                </b-row>
-                            </b-card>
+                                    </v-col>
+                                </v-row>
+                              </v-container>
+                            </v-card>
                             <div v-for="site in sites" :key="site.value">
                             <!--<div v-for="site in sites" :key="site[2].value">-->
                                 <div v-if="site[4].value === site2">

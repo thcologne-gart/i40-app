@@ -1,7 +1,8 @@
 <template>
     <div>
-        <v-card class ="mx-auto my-16" max-width="60%" elevation="4">
+        <v-card class ="mx-auto my-16" max-width="60%" elevation="2">
             <v-card-title id="card-title">Standortinformationen</v-card-title>
+            <hr>
             <div id ="displayOrganizationInformation">
                 <v-row id="header">
                     <v-col><h5>Name</h5></v-col>
