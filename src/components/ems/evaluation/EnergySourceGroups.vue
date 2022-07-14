@@ -1,6 +1,7 @@
 <template>
     <div>
-        <b-card class = "shadow p-3 mb-5 bg-white rounded showBuildingInfo" title="Energieeinsatzgruppen">
+        <!-- <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
+          <v-card-title id="card-title">Energieeinsatzgruppen</v-card-title>
             <hr>
             <div id ="displayBuildingInformation">
                 <b-carousel
@@ -47,11 +48,77 @@
                     </div>
                 </b-carousel>
             </div>
-        </b-card>
-        <!--
-        <div>{{ item.elementCollection }}</div>
-        <div>{{ item }}</div>
-        -->
+        </v-card> -->
+
+        <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
+          <v-card-title id="card-title">Energieeinsatzgruppen</v-card-title>
+            <hr>
+            <div id ="displayBuildingInformation">
+                <v-carousel
+                  id="carousel-energy-source-groups"
+                  v-model="model"
+                  :interval="4000"
+                  background="#ababab"
+                  style="text-shadow: 1px 1px 2px #333;"
+                  controls
+                  indicators
+                  @sliding-start="onSlideStart"
+                  @sliding-end="onSlideEnd"
+                >
+                    <div v-for="item in energyTypes" :key="item.elementCollectionId">
+                        <div v-if="item.site === site[4].value && item.building === building " >
+                            <div v-if="item.elementCollectionSemanticId === 'energyUseGroupHeating'">
+                                <router-link :to = "{ name: energySourceGroups[0].name, params: { site: site, building: building, buildings: buildings, energySourceGroup: item, energySources: energySources, energyTypes: energyTypes, allEnergyTypesWithGroup: allEnergyTypesWithGroup, heatingComponents: heatingComponents, airComponents: airComponents } }">
+                                    <v-carousel-item
+                                    v-bind:caption = energySourceGroups[0].groupName
+                                    v-bind:text = item.elementCollection
+                                    :src= energySourceGroups[0].pic
+                                    ></v-carousel-item>
+                                </router-link>
+                            </div>
+                            <div v-if="item.elementCollectionSemanticId === 'energyUseGroupCooling'">
+                                 <router-link :to = "{ name: energySourceGroups[1].name, params: { site: site, building: building, buildings: buildings, energySourceGroup: item, energySources: energySources, energyTypes: energyTypes, allEnergyTypesWithGroup: allEnergyTypesWithGroup, heatingComponents: heatingComponents, airComponents: airComponents } }">
+                                    <v-carousel-item
+                                    v-bind:caption = energySourceGroups[1].groupName
+                                    v-bind:text = item.elementCollection
+                                    :src= energySourceGroups[1].pic
+                                    >
+                                      <v-sheet>
+                                        <v-row
+                                          class="fill-height"
+                                          align="center"
+                                          justify="center"
+                                        >
+                                          <div class="text-h2">
+                                            {{ item.elementCollection }}
+                                          </div>
+                                        </v-row>
+                                      </v-sheet>
+                                    </v-carousel-item>
+                                </router-link>
+                            </div>
+                            <div v-if="item.elementCollectionSemanticId === 'energyUseGroupAirHandling'">
+                                 <router-link :to = "{ name: energySourceGroups[2].name, params: { site: site, building: building, buildings: buildings, energySourceGroup: item, energySources: energySources, energyTypes: energyTypes, allEnergyTypesWithGroup: allEnergyTypesWithGroup } }">
+                                    <v-carousel-item
+                                    :src= energySourceGroups[2].pic
+                                    >
+                                        <v-row
+                                          class="fill-height title"
+                                          align="center"
+                                          justify="center"
+                                        >
+                                          <div>
+                                            {{ item.elementCollection }}
+                                          </div>
+                                        </v-row>
+                                    </v-carousel-item>
+                                </router-link>
+                            </div>
+                        </div>
+                    </div>
+                </v-carousel>
+            </div>
+        </v-card>
     </div>
 </template>
 
@@ -60,6 +127,7 @@
 export default {
   data () {
     return {
+      model: 0,
       slide: 0,
       sliding: null,
       // numberOfGroupsArray: '',
@@ -212,5 +280,10 @@ export default {
 .card-title {
     margin-top: -10px;
     font-size: 20px;
+}
+.title {
+    color: white;
+    position: relative;
+    z-index: 2;
 }
 </style>

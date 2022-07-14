@@ -6,7 +6,7 @@
                     <v-card v-show="expand" id="energyUseGroup"
                         v-b-modal="energyGroup.name"
                         v-bind:title = energyGroup.name
-                        class ="mx-auto my-4 pt-4" min-height="75px" elevation="2"
+                        class ="mx-auto my-4 p-4" min-height="75px" elevation="2"
                     >
                         <div v-if="energyGroup.name === 'Heizung'">
                             <v-img  class="mx-auto" href="#" style="max-width: 20%;" :src= energyGroup.pic></v-img>
