@@ -20,7 +20,7 @@
               ></v-text-field>
           </v-container>
           <v-row align="center" justify="space-around">
-            <v-btn id="buttons-signin" type="submit" variant="outline-secondary" >Sign In</v-btn>
+            <v-btn id="buttons-card" type="submit" variant="outline-secondary" >Sign In</v-btn>
         </v-row>
       </v-form>
     </v-card>
@@ -85,10 +85,7 @@ export default {
   align-items: center;
   justify-content: center;
 }
-#buttons-signin {
-    margin-bottom: 20px;
-    width: 20%;
-}
+
 #sign-in-card {
   margin-top: 10% !important;
 }

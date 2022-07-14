@@ -2,7 +2,7 @@
     <div>
       <AddOrganizationInformation />
       <div v-if="organization != null">
-        <v-card class="mx-auto my-12" elevation="4"
+        <v-card class="mx-auto my-16" elevation="4"
                 max-width="60%">
             <v-card-title id="card-title">Unternehmensinformationen</v-card-title>
             <div id ="displayOrganizationInformation">

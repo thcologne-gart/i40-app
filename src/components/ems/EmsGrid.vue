@@ -1,40 +1,38 @@
 <template>
-    <v-container fluid id="grid-layout">
-        <!--
-        <GetSubmodels :submodelsJson ="submodelsJson"/>
-        //-->
-        <v-row id ="row-chapter">
-            <v-col id ="navigation" md = "2">
-              <v-card class="mx-auto" height="100%" tile>
-                <v-navigation-drawer>
-                  <v-list>
-                    <v-list-item link :to="submodel.link" :key="submodel.id" v-for="submodel in submodels">
-                      <v-list-item-content>
-                        <SubmodelsNameLeft :submodel="submodel" />
-                      </v-list-item-content>
-                    </v-list-item>
-                  </v-list>
-                </v-navigation-drawer>
-              </v-card>
-                <!-- <b-navbar toggleable="lg">
-                    <b-navbar-toggle target="submodel-collapse" class="row"></b-navbar-toggle>
-                    <b-collapse id="submodel-collapse" is-nav>
-                        <b-navbar-nav>
-                            <div>
-                                <b-nav-item :key="submodel.id" v-for="submodel in submodels">
-                                    <SubmodelsNameLeft :submodel="submodel" />
-                                </b-nav-item>
-                            </div>
-                        </b-navbar-nav>
-                    </b-collapse>
-                </b-navbar> -->
-            </v-col>
-            <v-col id = "content" md = "10">
-                <slot>
-                </slot>
-            </v-col>
-        </v-row>
-    </v-container>
+    <!--
+    <GetSubmodels :submodelsJson ="submodelsJson"/>
+    //-->
+    <v-row id ="row-chapter">
+        <v-col id ="navigation" md = "2">
+          <v-card class="mx-auto" height="100%" tile>
+            <v-navigation-drawer>
+              <v-list>
+                <v-list-item link :to="submodel.link" :key="submodel.id" v-for="submodel in submodels">
+                  <v-list-item-content>
+                    <SubmodelsNameLeft :submodel="submodel" />
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+            </v-navigation-drawer>
+          </v-card>
+            <!-- <b-navbar toggleable="lg">
+                <b-navbar-toggle target="submodel-collapse" class="row"></b-navbar-toggle>
+                <b-collapse id="submodel-collapse" is-nav>
+                    <b-navbar-nav>
+                        <div>
+                            <b-nav-item :key="submodel.id" v-for="submodel in submodels">
+                                <SubmodelsNameLeft :submodel="submodel" />
+                            </b-nav-item>
+                        </div>
+                    </b-navbar-nav>
+                </b-collapse>
+            </b-navbar> -->
+        </v-col>
+        <v-col id = "content" md = "10">
+            <slot>
+            </slot>
+        </v-col>
+    </v-row>
 </template>
 
 <script>
