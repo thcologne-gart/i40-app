@@ -1,60 +1,67 @@
 <template>
     <div>
-        <b-card class = "shadow p-3 mb-5 bg-white rounded showBuildingInfo" title="Ausgewählte Energiearten">
+        <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
+            <v-card-title id="card-title">Ausgewählte Energiearten</v-card-title>
             <hr>
             <div id ="displayBuildingInformation">
                 <div v-for="energyType in energyTypes" :key="energyType[0].key">
                     <div v-if="energyType[1][0].modelType.name === 'Property'">
                         <div v-if="energyType[1][0].value === site[4].value && energyType[2][1].value === building" >
-                            <b-row id="ausgewählteEnergieart">
-                                <b-col>
+                            <v-row id="ausgewählteEnergieart">
+                                <v-col>
                                     <div class="mb-3">
-                                        <b-button v-b-toggle="energyType[0].submodelId" variant="outline-secondary" id="energy-type-button">
-                                        {{ energyType[0].submodelName }}
-                                        </b-button>
+                                        <v-btn variant="outline-secondary" class="mx-auto" @click="expand = !expand">
+                                            {{ energyType[0].submodelName }}
+                                        </v-btn>
                                     </div>
                                     <div v-if="energyType[0].submodelSemanticId === 'submodel/energyTypeElectricity'">
-                                        <b-collapse v-bind:id="energyType[0].submodelId">
-                                            <EnergyTypeElectricity :energyType="energyType" :enpis="enpis" :site="site[4].value" :building="building"/>
-                                        </b-collapse>
+                                        <v-expand-transition>
+                                            <EnergyTypeElectricity :energyType="energyType" :enpis="enpis" :site="site[4].value" :building="building" :expand="expand"/>
+                                        </v-expand-transition>
                                     </div>
+
                                     <div v-if="energyType[0].submodelSemanticId === 'submodel/energyTypeHeat'">
-                                        <b-collapse v-bind:id="energyType[0].submodelId">
-                                            <EnergyTypeHeat :energyType="energyType" />
-                                        </b-collapse>
+                                        <v-expand-transition>
+                                            <EnergyTypeHeat :energyType="energyType" :enpis="enpis" :site="site[4].value" :building="building" :expand="expand"/>
+                                        </v-expand-transition>
                                     </div>
+
                                     <div v-if="energyType[0].submodelSemanticId === 'submodel/energyTypeGas'">
-                                        <b-collapse v-bind:id="energyType[0].submodelId">
-                                            <EnergyTypeGas :energyType="energyType" />
-                                        </b-collapse>
+                                        <v-expand-transition>
+                                            <EnergyTypeGas :energyType="energyType" :enpis="enpis" :site="site[4].value" :building="building" :expand="expand"/>
+                                        </v-expand-transition>
                                     </div>
+
                                     <div v-if="energyType[0].submodelSemanticId === 'submodel/energyTypeOil'">
-                                        <b-collapse v-bind:id="energyType[0].submodelId">
-                                            <EnergyTypeOil :energyType="energyType" />
-                                        </b-collapse>
+                                        <v-expand-transition>
+                                            <EnergyTypeOil :energyType="energyType" :enpis="enpis" :site="site[4].value" :building="building" :expand="expand"/>
+                                        </v-expand-transition>
                                     </div>
+
                                     <div v-if="energyType[0].submodelSemanticId === 'submodel/energyTypeBiomass'">
-                                        <b-collapse v-bind:id="energyType[0].submodelId">
-                                            <EnergyTypeBiomass :energyType="energyType" />
-                                        </b-collapse>
+                                        <v-expand-transition>
+                                            <EnergyTypeBiomass :energyType="energyType" :enpis="enpis" :site="site[4].value" :building="building" :expand="expand"/>
+                                        </v-expand-transition>
                                     </div>
+
                                     <div v-if="energyType[0].submodelSemanticId === 'submodel/energyTypePellets'">
-                                        <b-collapse v-bind:id="energyType[0].submodelId">
-                                            <EnergyTypePellets :energyType="energyType" />
-                                        </b-collapse>
+                                        <v-expand-transition>
+                                            <EnergyTypePellets :energyType="energyType" :enpis="enpis" :site="site[4].value" :building="building" :expand="expand"/>
+                                        </v-expand-transition>
                                     </div>
+
                                     <div v-if="energyType[0].submodelSemanticId === 'submodel/energyTypeSteam'">
-                                        <b-collapse v-bind:id="energyType[0].submodelId">
-                                            <EnergyTypeSteam :energyType="energyType" />
-                                        </b-collapse>
+                                        <v-expand-transition>
+                                            <EnergyTypeSteam :energyType="energyType" :enpis="enpis" :site="site[4].value" :building="building" :expand="expand"/>
+                                        </v-expand-transition>
                                     </div>
-                                </b-col>
-                            </b-row>
+                                </v-col>
+                            </v-row>
                         </div>
                     </div>
                 </div>
             </div>
-        </b-card>
+        </v-card>
     </div>
 </template>
 
@@ -68,6 +75,9 @@ import EnergyTypePellets from '@/components/ems/evaluation/EnergyTypePellets.vue
 import EnergyTypeSteam from '@/components/ems/evaluation/EnergyTypeSteam.vue'
 
 export default {
+  data: () => ({
+    expand: false
+  }),
   props: {
     site: Array,
     building: Number,

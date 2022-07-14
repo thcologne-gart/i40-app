@@ -1,89 +1,59 @@
 <template>
     <div>
-        <b-row>
-            <b-col :key="energyGroup.id" v-for="energyGroup in energyUseGroup">
+        <v-row>
+            <v-col :key="energyGroup.id" v-for="energyGroup in energyUseGroup">
                 <a href="#">
-                    <b-card id="energyUseGroup"
+                    <v-card v-show="expand" id="energyUseGroup"
                         v-b-modal="energyGroup.name"
                         v-bind:title = energyGroup.name
-                        class="shadow p-3 mb-5 bg-white rounded"
+                        class ="mx-auto my-4 pt-4" min-height="75px" elevation="2"
                     >
                         <div v-if="energyGroup.name === 'Heizung'">
-                            <b-card-img  href="#" style="max-width: 20%;" top fluid :src= energyGroup.pic></b-card-img>
+                            <v-img  class="mx-auto" href="#" style="max-width: 20%;" :src= energyGroup.pic></v-img>
                             <b-modal v-bind:id="energyGroup.name" hide-footer width="350px" persistent :title="energyGroup.name">
-                                <b-form-group
-                                    id="input-group-1"
-                                    label="Anzahl getrennter Heizsysteme im Gebäude:"
-                                    label-for="input-1"
-                                >
-                                    <b-form-input
+                                    <v-text-field
                                     id="input-1"
-                                    placeholder="Anzahl Heizsysteme"
+                                    label="Anzahl getrennter Heizsysteme im Gebäude:"
                                     v-model.number="numberSystems"
                                     required
-                                    ></b-form-input>
-                                </b-form-group>
-
-                                <hr>
-                                <b-button class="mt-3" variant="outline-secondary" block  @click="onSubmitEnergySourceGroup ([energyGroup, numberSystems, energyType, getEnpis])">Save</b-button>
+                                    ></v-text-field>
+                                <v-btn class="mt-3" variant="outline-secondary" @click="onSubmitEnergySourceGroup ([energyGroup, numberSystems, energyType, getEnpis])">Save</v-btn>
                             </b-modal>
                         </div>
 
                         <div v-else-if="energyGroup.name === 'Kühlung'">
                             <a href="#">
-                                <b-card-img href="#" style="max-width: 20%;" top fluid :src= energyGroup.pic></b-card-img>
+                              <v-img  class="mx-auto" href="#" style="max-width: 20%;" :src= energyGroup.pic></v-img>
                             </a>
                             <b-modal v-bind:id="energyGroup.name" hide-footer width="350px" persistent :title="energyGroup.name">
-                                <b-form-group
-                                    id="input-group-1"
-                                    label="Anzahl getrennter Kühlsysteme im Gebäude:"
-                                    label-for="input-1"
-                                >
-                                    <b-form-input
-                                    id="input-1"
-                                    placeholder="Anzahl Kühlsysteme"
-                                    v-model.number="numberSystems"
-                                    required
-                                    ></b-form-input>
-                                </b-form-group>
-
-                                <hr>
-                                <b-button class="mt-3" variant="outline-secondary" block  @click="onSubmitEnergySourceGroup ([energyGroup, numberSystems, energyType, getEnpis])">Save</b-button>
+                              <v-text-field
+                                id="input-1"
+                                label="Anzahl getrennter Kühlsysteme im Gebäude:"
+                                v-model.number="numberSystems"
+                                required
+                              ></v-text-field>
+                              <v-btn class="mt-3" variant="outline-secondary" @click="onSubmitEnergySourceGroup ([energyGroup, numberSystems, energyType, getEnpis])">Save</v-btn>
                             </b-modal>
                         </div>
 
                         <div v-else-if="energyGroup.name === 'Lüftung'">
                             <a href="#">
-                                <b-card-img href="#" style="max-width: 20%;" top fluid :src= energyGroup.pic></b-card-img>
+                              <v-img  class="mx-auto" href="#" style="max-width: 20%;" :src= energyGroup.pic></v-img>
                             </a>
                             <b-modal v-bind:id="energyGroup.name" hide-footer width="350px" persistent :title="energyGroup.name">
-                                <b-form-group
-                                    id="input-group-1"
-                                    label="Anzahl getrennter Lüftungssysteme im Gebäude:"
-                                    label-for="input-1"
-                                >
-                                    <b-form-input
-                                    id="input-1"
-                                    placeholder="Anzahl Lüftungssysteme"
-                                    v-model.number="numberSystems"
-                                    required
-                                    ></b-form-input>
-                                </b-form-group>
-
-                                <hr>
-                                <b-button class="mt-3" variant="outline-secondary" block  @click="onSubmitEnergySourceGroup ([energyGroup, numberSystems, energyType, getEnpis])">Save</b-button>
+                                <v-text-field
+                                id="input-1"
+                                label="Anzahl getrennter Lüftungssysteme im Gebäude:"
+                                v-model.number="numberSystems"
+                                required
+                              ></v-text-field>
+                                <v-btn class="mt-3" variant="outline-secondary" @click="onSubmitEnergySourceGroup ([energyGroup, numberSystems, energyType, getEnpis])">Save</v-btn>
                             </b-modal>
                         </div>
-
-                        <!--
-                        <a href="#">
-                            <b-card-img v-b-modal="energyGroup.name" @click="onSubmitEnergySourceGroup (energyGroup)" href="#" style="max-width: 20%;" top fluid :src= energyGroup.pic></b-card-img>
-                        </a>
-                        -->
-                    </b-card>
+                    </v-card>
                 </a>
-            </b-col>
-        </b-row>
+            </v-col>
+        </v-row>
     </div>
 </template>
 
@@ -103,7 +73,8 @@ export default {
     energyType: Array,
     enpis: Array,
     building: Number,
-    site: Number
+    site: Number,
+    expand: Boolean
   },
   computed: {
     getEnpis () {

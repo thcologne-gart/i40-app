@@ -6,7 +6,7 @@
                 <div v-if="site === site2">
                     <SubmodelHeader :site ="site2" :submodelName="submodelName" :numberOfBuildings="numberOfBuildings">
                         <template v-slot:building="{ building }">
-                            <v-card class ="mx-auto my-8" max-width="90%" elevation="4">
+                            <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
                             <v-card-title id="card-title">Energiearten</v-card-title>
                             <hr>
                               <v-container>
