@@ -9,25 +9,19 @@
             <v-container>
               <v-text-field
               id="designation"
-              v-model.number="form.designation"
+              v-model="form.designation"
               label="Bezeichnung des Gebäudes"
               required
               ></v-text-field>
               <v-text-field
               id="street"
-              v-model.number="form.street"
+              v-model="form.street"
               label="Straße und Hausnummer"
               required
               ></v-text-field>
             </v-container>
-          <v-row>
-            <v-col>
-              <v-btn type="submit" variant="outline-secondary">Submit</v-btn>
-            </v-col>
-            <v-col>
-              <v-btn type="reset" variant="outline-secondary">Reset</v-btn>
-            </v-col>
-          </v-row>
+            <v-btn id="buttons-card" type="submit" variant="outline-secondary">Submit</v-btn>
+            <v-btn id="buttons-card" type="reset" variant="outline-secondary">Reset</v-btn>
           </v-form>
         </v-card>
       </b-collapse>
@@ -47,7 +41,7 @@ export default {
   props: {
     site: Number,
     numberOfBuildings: Array,
-    buildingNumber: Number,
+    building: Number,
     buildings: Array
   },
   // mounted () {
@@ -96,9 +90,9 @@ export default {
 
       newAas.identification = {
         idType: 'IRI',
-        id: `site-aas/${this.form.designation}`
+        id: `building-aas/${this.form.designation}`
       }
-      newAas.idShort = `SiteAas/${this.form.designation}`
+      newAas.idShort = `BuildingAas/${this.form.designation}`
       newAas.category = 'CONSTANT'
       newAas.modelType = {
         name: 'AssetAdministrationShell'
@@ -202,7 +196,7 @@ export default {
           kind: 'Instance'
         },
         {
-          value: this.buildingNumber,
+          value: this.building,
           semanticId: {
             keys: [{
               type: 'GlobalReference',
@@ -226,6 +220,9 @@ export default {
           kind: 'Instance'
         }
       ]
+
+      console.log(newAas)
+      console.log(newSubmodel)
 
       this.$store.dispatch('createAas', newAas)
       this.$store.dispatch('createSubmodelContext', newSubmodel)

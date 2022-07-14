@@ -1,32 +1,35 @@
 <template>
     <div>
       <v-card id ="cardSiteForm" class="mx-auto my-12" elevation="4" max-width="60%">
-            <v-form @submit="onCreateSiteAas" @reset="onReset">
+        <v-card-title id="card-title">Standortinformationen</v-card-title>
+        <v-container>
+          <v-form @submit="onCreateSiteAas" @reset="onReset">
 
-              <country-select class="form-select" v-model="form.country" placeholder= 'Standort (Land)' topCountry="DE" />
-              <v-text-field
-              id="city"
-              v-model="form.city"
-              label="Standort (Stadt)"
-              required
-              ></v-text-field>
+            <v-select :items="countries" v-model="form.country" label= 'Standort(Land)' />
+            <v-text-field
+            id="city"
+            v-model="form.city"
+            label="Standort (Stadt)"
+            required
+            ></v-text-field>
 
-              <v-text-field
-              id="zipcode"
-              v-model.number="form.zipcode"
-              label="Standort (Postleitzahl)"
-              required
-              ></v-text-field>
-              <v-text-field
-              id="number-buildings"
-              v-model.number="form.numberBuildings"
-              label="Standort (Anzahl der Gebäude)"
-              required
-              ></v-text-field>
+            <v-text-field
+            id="zipcode"
+            v-model.number="form.zipcode"
+            label="Standort (Postleitzahl)"
+            required
+            ></v-text-field>
+            <v-text-field
+            id="number-buildings"
+            v-model.number="form.numberBuildings"
+            label="Standort (Anzahl der Gebäude)"
+            required
+            ></v-text-field>
 
-            <v-btn type="submit" variant="outline-secondary">Submit</v-btn>
-            <v-btn type="reset" variant="outline-secondary">Reset</v-btn>
-            </v-form>
+          <v-btn id="buttons-card" type="submit" variant="outline-secondary">Submit</v-btn>
+          <v-btn id="buttons-card" type="reset" variant="outline-secondary">Reset</v-btn>
+          </v-form>
+        </v-container>
         </v-card>
     </div>
 </template>
@@ -41,7 +44,8 @@ export default {
         city: '',
         zipcode: null,
         numberBuildings: null
-      }
+      },
+      countries: ['Deutschland', 'Österreich', 'Schweiz', 'Frankreich', 'Italien', 'England']
     }
   },
   props: {

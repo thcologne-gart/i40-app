@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-card class="mx-auto my-12" elevation="4"
+        <v-card id="cardOrganizationForm" class="mx-auto my-12" elevation="4"
                 max-width="60%">
             <v-card-title id="card-title">Unternehmensinformationen</v-card-title>
             <v-form @submit="onCreateEmsAas" @reset="onReset">

@@ -6,7 +6,7 @@
                 <div v-if="site === site2">
                     <SubmodelHeader :site ="site2" :submodelName="submodelName" :numberOfBuildings="numberOfBuildings">
                         <template v-slot:building="{ building }">
-                            <AddBuildingInformation :site ="site" :numberOfBuildings="numberOfBuildings" :buildingNumber="building" :buildings="buildings" />
+                            <AddBuildingInformation :site ="site" :numberOfBuildings="numberOfBuildings" :building="building" :buildings="buildings" />
                             <!--
                             <div v-for="item in buildings" :key="item.buildingNumber">
                                 <div v-if="site === item.numberOfSite && building != item.buildingNumber">

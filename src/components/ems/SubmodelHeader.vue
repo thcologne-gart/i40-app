@@ -17,7 +17,7 @@
                   <v-tab v-for="building in numberOfBuildingsAsArray" :key="building">
                     Gebäude {{ building }}
                   </v-tab>
-                  <v-tab-item>
+                  <v-tab-item v-for="building in numberOfBuildingsAsArray" :key="building">
                     <slot name="building" v-bind:building="building">Platzhalter</slot>
                   </v-tab-item>
               </v-tabs>

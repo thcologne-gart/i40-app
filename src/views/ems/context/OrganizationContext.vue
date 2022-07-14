@@ -7,7 +7,7 @@
             <v-tab v-for="site in numberofSites" :key="site">Standort
             </v-tab>
           </v-tabs>
-          <v-tabs-items>
+          <v-tabs-items v-model="tab" id="custom-tab-items">
             <v-tab-item v-for="site in numberofSites" :key="site">
               <slot name="site" v-bind:site="site">Platzhalter</slot>
             </v-tab-item>
@@ -19,7 +19,7 @@
             <v-tab v-for="site in numberofSites" :key="site">Standort
             </v-tab>
           </v-tabs>
-          <v-tabs-items>
+          <v-tabs-items v-model="tab" id="custom-tab-items">
             <v-tab-item v-for="site in numberofSites" :key="site">
               <slot name="site" v-bind:site="site">Platzhalter</slot>
             </v-tab-item>

@@ -1,7 +1,9 @@
 <template>
     <div>
-      <AddOrganizationInformation />
-      <div v-if="organization != null">
+      <div v-if="organization == null">
+        <AddOrganizationInformation />
+      </div>
+      <div v-else-if="organization != null">
         <v-card class="mx-auto my-16" elevation="4"
                 max-width="60%">
             <v-card-title id="card-title">Unternehmensinformationen</v-card-title>
