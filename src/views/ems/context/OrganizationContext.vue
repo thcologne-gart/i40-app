@@ -8,7 +8,7 @@
             </v-tab>
           </v-tabs>
           <v-tabs-items>
-            <v-tab-item v-for="site in numberofSites" :key="site">
+            <v-tab-item v-for="site in numberofSites" :key="site" background-color="primary">
               <slot name="site" v-bind:site="site">Platzhalter</slot>
             </v-tab-item>
           </v-tabs-items>
@@ -20,18 +20,18 @@
             </v-tab>
           </v-tabs>
           <v-tabs-items>
-            <v-tab-item v-for="site in numberofSites" :key="site">
+            <v-tab-item v-for="site in numberofSites" :key="site" background-color="primary">
               <slot name="site" v-bind:site="site">Platzhalter</slot>
             </v-tab-item>
           </v-tabs-items>
         </div>
 
         <div v-else>
-          <v-tabs center-active v-model="tab" background-color="#5f8575" dark slider-color="#FFAC1C">
+          <v-tabs center-active v-model="tab" background-color="#5f8575" slider-color="#FFAC1C" dark>
             <v-tab v-for="site in numberofSites" :key="site">{{ sites[site][1].value }}</v-tab>
           </v-tabs>
-          <v-tabs-items v-model="tab">
-            <v-tab-item v-for="site in numberofSites" :key="site">
+          <v-tabs-items v-model="tab" id="custom-tab-items">
+            <v-tab-item v-for="site in numberofSites" :key="site" background-color="primary">
               <slot name="site" v-bind:site="site">Platzhalter</slot>
             </v-tab-item>
           </v-tabs-items>
@@ -86,3 +86,9 @@ export default {
   }
 }
 </script>
+
+<style>
+#custom-tab-items {
+    background-color: transparent !important;
+}
+</style>

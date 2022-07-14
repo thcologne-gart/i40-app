@@ -11,7 +11,6 @@
                     <v-col><h5>Value</h5></v-col>
                     <!-- <v-col><h5>Löschen</h5></v-col>//-->
                 </v-row>
-                <v-divider></v-divider>
                 <div v-for="information in organization" :key="information.idShort">
                     <v-row id = "body">
                         <v-col>{{ information.idShort }}</v-col>
@@ -61,6 +60,9 @@ export default {
 </script>
 
 <style scoped>
+#displayOrganizationInformation {
+    margin-inline: 10%;
+}
 .card {
     margin-inline: 20%;
     margin-bottom: 30px;
@@ -75,5 +77,8 @@ export default {
     padding-top: 5px;
     padding-bottom: 5px
 }
-
+.row {
+    border-bottom-style: solid;
+    border-color: #F2F2F2;
+}
 </style>

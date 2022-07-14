@@ -5,7 +5,7 @@
     <v-row id ="row-chapter">
         <v-col id ="navigation" md = "2">
           <v-card class="mx-auto" height="100%" tile>
-            <v-navigation-drawer>
+            <v-navigation-drawer width="100%">
               <v-list>
                 <v-list-item link :to="submodel.link" :key="submodel.id" v-for="submodel in submodels">
                   <v-list-item-content>

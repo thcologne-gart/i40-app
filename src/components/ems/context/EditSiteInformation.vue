@@ -1,61 +1,60 @@
 <template>
   <div>
-    <b-button v-b-modal="site[5].key" variant="outline-secondary" size="sm"><b-icon-pencil-square></b-icon-pencil-square></b-button>
+    <v-btn id="edit-button" v-b-modal="site[5].key" variant="outline-secondary" size="sm"><b-icon-pencil-square></b-icon-pencil-square></v-btn>
 
     <b-modal v-bind:id="site[5].key" hide-footer width="350px" persistent title="Edit Standortangaben" ref="modal-one">
-        <b-form-group
+        <v-form
             id="input-group-2"
             label="Land:"
             label-for="input-2"
         >
-            <b-form-input
+            <v-text-field
             id="input-2"
             placeholder="Edit Land"
             v-model="editSiteCountry"
             required
-            ></b-form-input>
-        </b-form-group>
+            ></v-text-field>
+        </v-form>
 
-        <b-form-group
+        <v-form
             id="input-group-3"
             label="Stadt:"
             label-for="input-3"
         >
-            <b-form-input
+            <v-text-field
             id="input-3"
             placeholder="Edit Stadt"
             v-model="editSiteCity"
             required
-            ></b-form-input>
-        </b-form-group>
+            ></v-text-field>
+        </v-form>
 
-        <b-form-group
+        <v-form
             id="input-group-4"
             label="Postleitzahl:"
             label-for="input-4"
         >
-            <b-form-input
+            <v-text-field
             id="input-4"
             placeholder="Edit Postleitzahl"
             v-model="editSiteZip"
             required
-            ></b-form-input>
-        </b-form-group>
+            ></v-text-field>
+        </v-form>
 
-        <b-form-group
+        <v-form
             id="input-group-5"
             label="Anzahl Gebäude:"
             label-for="input-5"
         >
-            <b-form-input
+            <v-text-field
             id="input-5"
             placeholder="Edit Anzahl der Gebäude"
             v-model="editSiteNumberBuildings"
             required
-            ></b-form-input>
-        </b-form-group>
-        <hr>
-        <b-button class="mt-3" variant="outline-secondary" block @click="onEditSiteInfo">Save</b-button>
+            ></v-text-field>
+        </v-form>
+        <v-btn variant="outline-secondary" block @click="onEditSiteInfo" size="sm">Save</v-btn>
     </b-modal>
   </div>
 </template>
