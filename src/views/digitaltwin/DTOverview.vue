@@ -1,50 +1,21 @@
 <template>
   <div>
     <h4 id ="header">Verwaltungsschalen</h4>
-    <!--
-    <b-card-group>
-        <div v-for="aas in allAas" :key="aas.assetAdministrationShells">
-        <b-card class="shadow p-3 mb-5 bg-white rounded" id="show-aas"
-        :sub-title= aas.aas.assetAdministrationShells[0].idShort>
-            <router-link :to = "{ name: 'AAS Detail', params: { aas: aas.aas } }">
-                <b-card-img height="80px" top fluid :src= aasPic></b-card-img>
-            </router-link>
-        </b-card>
-        </div>
-    </b-card-group>
-    -->
-    <b-card-group>
-        <div v-for="(shell, aasId) in aas" :key="shell[0]">
-        <b-card class="shadow p-3 mb-5 bg-white rounded" id="show-shell"
-        :sub-title= shell.assetAdministrationShells[0].idShort>
-            <router-link :to = "{ name: 'AAS Detail', params: { aas: shell, aasId: aasId } }">
-                <b-card-img height="80px" top fluid :src= aasPic></b-card-img>
-            </router-link>
-        </b-card>
-        </div>
-    </b-card-group>
-    <!--
-    <div>
-        <b-card class="shadow p-3 mb-5 bg-white rounded" id="add-aas-card">
-            <h4 id ="header">Verwaltungsschalen hinzufügen</h4>
-            <b-col class="text-left" cols="4">
-                <b-form-file v-model="file" plain accept=".json" @change="onFileSelected"></b-form-file>
-            </b-col>
-                <div id="json" v-if="filename !== ''">
-                    <div>
-                        <button id="upload-button" @click="onUploadAAS()" v-on:click="isHidden = true" variant="outline-warning">Upload AAS</button>
-                    </div>
-                        <iframe
-                            :src= 'filename'
-                            width="85%"
-                            height="770"
-                            v-if="!isHidden"
-                        >
-                        </iframe>
-                </div>
-        </b-card>
-    </div>
-    -->
+      <v-container fluid>
+        <v-row dense>
+          <v-col
+            v-for="(shell, aasId) in aas" :key="shell[0]"
+            cols=4
+          >
+            <v-card class="shadow p-3 mb-5 bg-white rounded" id="show-shell" height="250px">
+                <v-card-subtitle>{{ shell.assetAdministrationShells[0].idShort }}</v-card-subtitle>
+                  <router-link :to = "{ name: 'AAS Detail', params: { aas: shell, aasId: aasId } }">
+                      <v-img aspect-ratio="2.0" contain top fluid :src= aasPic></v-img>
+                  </router-link>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
   </div>
 </template>
 
@@ -178,6 +149,9 @@ function delay (i, array) {
 </script>
 
 <style scoped>
+#aas-row {
+  width: fit-content;
+}
 #add-aas-card {
     margin-inline: 30%;
     margin-bottom: 30px;

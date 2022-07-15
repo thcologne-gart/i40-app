@@ -1,81 +1,69 @@
 <template>
-    <div>
-      <b-card class="shadow p-3 mb-5 bg-white rounded">
-            <b-row v-if="error" >
-                <Alert @dismissed="onDismissed" :text="error.message" />
-            </b-row>
-            <b-form @submit="onSignUp" @reset="onReset" v-if="show">
-            <b-form-group
-                id="input-group-1"
-                label="E-Mail"
-                label-for="email"
-            >
-                <b-form-input
-                id="email"
+  <v-card class="mx-auto my-15"
+    max-width="35%"
+    id="signup-card">
+    <v-card-title id="signup-title">GART</v-card-title>
+    <v-card-subtitle id ="signup-subtitle" class="overline">Sign In</v-card-subtitle>
+    <v-form @submit="onSignUp" @reset="onReset" v-if="show">
+        <v-container>
+            <v-text-field
+                v-model="form.firstname"
+                label="First name"
+                required
+            ></v-text-field>
+            <v-text-field
+                v-model="form.lastname"
+                label="Last name"
+                required
+            ></v-text-field>
+            <v-text-field
                 v-model="form.email"
-                type="email"
-                placeholder="Eingabe E-Mail"
+                label="E-Mail"
                 required
-                ></b-form-input>
-            </b-form-group>
-
-            <b-form-group
-                id="input-group-2"
-                label="Password"
-                label-for="passowrd"
-            >
-                <b-form-input
-                id="password"
+            ></v-text-field>
+            <v-text-field
                 v-model="form.password"
-                type="password"
-                placeholder="Eingabe Password"
+                :type="'password'"
+                label="Passwort"
                 required
-                ></b-form-input>
-            </b-form-group>
-
-            <b-form-group
-                id="input-group-3"
-                label="Confirm Password"
-                label-for="confirmpassowrd"
-            >
-                <b-form-input
-                id="confirmpassword"
-                v-model="form.confirmPassword"
-                type="password"
-                placeholder="Bestätigung Password"
-                :state="validation"
-                ></b-form-input>
-                <b-form-invalid-feedback :state="validation">
-                Passwörter stimmen nicht überein.
-                </b-form-invalid-feedback>
-            </b-form-group>
-            <b-button type="submit" variant="outline-secondary">
-                Sign up
-            </b-button>
-            <b-button type="reset" variant="outline-secondary">Reset</b-button>
-            </b-form>
-        </b-card>
-    </div>
+            ></v-text-field>
+            <v-text-field
+                :type="'password'"
+                v-model="form.passwordconfirm"
+                label="Passwort bestätigen"
+                required
+            ></v-text-field>
+        </v-container>
+        <v-row align="center" justify="space-around" id="buttons-signup">
+            <v-col>
+              <v-btn type="submit" id="buttons-signup">Sign Up</v-btn>
+            </v-col>
+            <v-col>
+              <v-btn type="reset" id="buttons-reset">Reset</v-btn>
+            </v-col>
+      </v-row>
+    </v-form>
+  </v-card>
 </template>
 
 <script>
-import Alert from '@/components/general/Alert.vue'
 
 export default {
-  components: { Alert },
   data () {
     return {
       form: {
+        firstname: '',
+        lastname: '',
         email: '',
         password: '',
-        confirmPassword: ''
+        passwordconfirm: ''
       },
       show: true
     }
   },
   computed: {
     validation () {
-      return this.form.password === this.form.confirmPassword
+      return this.form.password === this.form.passwordconfirm
     },
     user () {
       return this.$store.getters.user
@@ -109,7 +97,7 @@ export default {
       // Reset our form values
       this.form.email = ''
       this.form.password = ''
-      this.form.confirmPassword = ''
+      this.form.passwordconfirm = ''
       // Trick to reset/clear native browser form validation state
       this.show = false
       this.$nextTick(() => {
@@ -122,22 +110,27 @@ export default {
     }
   }
 }
+
 </script>
 
-<style scoped>
-.card {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    margin-inline: 30%;
-}
-.form-group {
-    text-align: left;
+<style>
+#buttons-signup {
     margin-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
 }
-.btn {
-    margin-left: 20px;
-    margin-right: 20px;
+#buttons-reset {
+    margin-bottom: 20px;
+}
+
+#signup-subtitle {
+  font-size: 0.9rem !important;
+}
+#signup-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#signup-card {
+  margin-top: 10% !important;
 }
 </style>

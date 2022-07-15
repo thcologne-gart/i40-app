@@ -1,49 +1,56 @@
 <template>
     <div>
-        <b-navbar id ="nav-bar" toggleable="lg" type="light" class="shadow-sm p-3">
-            <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+        <v-app-bar
+            id="top-header"
+            color="grey lighten-5"
+            >
+            <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-            <b-collapse id="nav-collapse" is-nav>
-                <!--
-                <b-navbar-nav>
-                    <b-nav-item variant="primary" to="/">Home</b-nav-item>
-                    <b-nav-item to="/performance">Performance Monitoring</b-nav-item>
-                    <b-nav-item to="/ems">Energiemanagement</b-nav-item>
-                </b-navbar-nav>
-                //-->
-                <b-navbar-nav v-for="item in menuItems" :key="item.title">
-                    <b-nav-item-dropdown text="Solutions" v-if ="item.title === 'Solutions'">
-                            <div v-for="solution in solutions" :key="solution.title">
-                                <b-dropdown-item v-bind:to = solution.link>{{ solution.title }}</b-dropdown-item>
-                            </div>
-                        </b-nav-item-dropdown>
-                    <b-nav-item v-else v-bind:to = item.link>{{ item.title }}</b-nav-item>
-                </b-navbar-nav>
-            </b-collapse>
-            <b-navbar-nav>
-                <b-nav-item-dropdown right>
-                    <template #button-content>
-                        <b-icon icon="people-fill" scale="1.2"></b-icon>
-                    </template>
-                    <div v-for="logItem in logItems" :key="logItem.title">
-                        <b-dropdown-item v-bind:to = logItem.link>{{ logItem.title }}</b-dropdown-item>
-                    </div>
-                    <b-dropdown-item v-if= "userIsAuthenticated" @click="onLogout" to="/">Logout</b-dropdown-item>
-                </b-nav-item-dropdown>
-            </b-navbar-nav>
-            <b-navbar-brand id="nav-brand" class="d-none d-sm-block" to="/">AI for Buildings</b-navbar-brand>
-        </b-navbar>
+            <v-toolbar-title
+                id="navbar-title"
+                >GART</v-toolbar-title>
+            <v-btn id="home-icon" icon @click="$router.push('/home')">
+                <v-icon>mdi-home</v-icon>
+            </v-btn>
+            <v-spacer></v-spacer>
+            <div v-for="solution in solutions" :key="solution.title">
+              <v-btn plain @click="() => {}" :to="solution.link">
+                {{ solution.title }}
+              </v-btn>
+            </div>
+
+            <v-menu left bottom>
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn icon v-bind="attrs" v-on="on">
+                        <v-icon
+                        >mdi-account</v-icon>
+                    </v-btn>
+                </template>
+                <v-list>
+                    <!-- <v-list-item v-for="item in logItems" :key="item.title" @click="() => {}" :to="item.link">
+                        {{ item.title }}
+                    </v-list-item> -->
+                    <v-list-item v-if= "userIsAuthenticated" @click="onLogout" to="/signin">Logout</v-list-item>
+                </v-list>
+            </v-menu>
+            </v-app-bar>
     </div>
 </template>
 
 <script>
+
 export default {
+  data: () => ({
+    home: '/'
+  }),
   methods: {
     onLogout () {
+      console.log('test')
       this.$store.dispatch('logout')
     }
   },
   computed: {
+    /*
     logItems () {
       let logItems = [
         { icon: '', title: 'Sign In', link: '/signin' },
@@ -55,17 +62,14 @@ export default {
       }
       return logItems
     },
+    */
     solutions () {
-      let solutions = [
-        { icon: '', title: 'Energiemanagement', link: '/ems' },
-        { icon: '', title: 'Performance Monitoring', link: '/performance' },
+      const solutions = [
+        { icon: '', title: 'Digital Twins', link: '/digitaltwins' },
         { icon: '', title: 'Building Performance', link: '/buildingperformance' },
-        { icon: '', title: 'Digital Twins', link: '/digitaltwins' }
+        { icon: '', title: 'Energiemanagement', link: '/emsstart' },
+        { icon: '', title: 'Performance Monitoring', link: '/performance' }
       ]
-      if (this.userIsAuthenticated) {
-        solutions = [
-        ]
-      }
       return solutions
     },
     menuItems () {
@@ -80,6 +84,7 @@ export default {
           { icon: '', title: 'Energiemanagement', link: '/emsstart' },
           { icon: '', title: 'Building Performance', link: '/buildingperformance' },
           { icon: '', title: 'Digital Twins', link: '/digitaltwins' }
+          // { icon: '', title: 'CaBo', link: '/cabo' }
         ]
       }
       return menuItems
@@ -92,11 +97,11 @@ export default {
 </script>
 
 <style scoped>
-#nav-brand {
-    margin-left: 15px;
+#navbar-title {
+  color: #301934;
+  font-weight: 500;
 }
-.nav-item-dropdown {
-    color: green;
-    background-color: black;;
+#home-icon {
+  margin-left: 20px;
 }
 </style>

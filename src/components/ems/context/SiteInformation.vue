@@ -1,21 +1,23 @@
 <template>
     <div>
-        <b-card class = "shadow p-3 mb-5 bg-white rounded showOrgaInfo">
-        <div id ="displayOrganizationInformation">
-            <b-row id="header">
-                <b-col><h5>Name</h5></b-col>
-                <b-col><h5>Value</h5></b-col>
-                <!-- <b-col><h5>Löschen</h5></b-col>//-->
-            </b-row>
-            <div v-for="information in site" :key="information.idShort">
-                <b-row id = "body">
-                    <b-col>{{ information.idShort }}</b-col>
-                    <b-col>{{ information.value }}</b-col>
-                </b-row>
+        <v-card class ="mx-auto my-16" max-width="60%" elevation="2">
+            <v-card-title id="card-title">Standortinformationen</v-card-title>
+            <hr>
+            <div id ="displayOrganizationInformation">
+                <v-row id="header">
+                    <v-col><h5>Name</h5></v-col>
+                    <v-col><h5>Value</h5></v-col>
+                    <!-- <v-col><h5>Löschen</h5></v-col>//-->
+                </v-row>
+                <div v-for="information in site" :key="information.idShort">
+                    <v-row id = "body">
+                        <v-col>{{ information.idShort }}</v-col>
+                        <v-col>{{ information.value }}</v-col>
+                    </v-row>
+                </div>
+                <EditSiteInformation :site = site />
             </div>
-            <EditSiteInformation :site = site />
-        </div>
-      </b-card>
+      </v-card>
     </div>
 </template>
 

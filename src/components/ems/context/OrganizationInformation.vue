@@ -1,24 +1,29 @@
 <template>
     <div>
-      <AddOrganizationInformation />
-      <div v-if="organization != null">
-        <b-card class = "shadow p-3 mb-5 bg-white rounded showOrgaInfo">
+      <div v-if="organization == null">
+        <AddOrganizationInformation />
+      </div>
+      <div v-else-if="organization != null">
+        <v-card class="mx-auto my-16" elevation="2"
+                max-width="60%">
+            <v-card-title id="card-title">Unternehmensinformationen</v-card-title>
+            <hr>
             <div id ="displayOrganizationInformation">
-                <b-row id="header">
-                    <b-col><h5>Name</h5></b-col>
-                    <b-col><h5>Value</h5></b-col>
-                    <!-- <b-col><h5>Löschen</h5></b-col>//-->
-                </b-row>
+                <v-row id="header">
+                    <v-col><h5>Name</h5></v-col>
+                    <v-col><h5>Value</h5></v-col>
+                    <!-- <v-col><h5>Löschen</h5></v-col>//-->
+                </v-row>
                 <div v-for="information in organization" :key="information.idShort">
-                    <b-row id = "body">
-                        <b-col>{{ information.idShort }}</b-col>
-                        <b-col>{{ information.value }}</b-col>
-                    </b-row>
+                    <v-row id = "body">
+                        <v-col>{{ information.idShort }}</v-col>
+                        <v-col>{{ information.value }}</v-col>
+                    </v-row>
                 </div>
                 <EditOrganizationInformation :organization = organization />
             </div>
 
-        </b-card>
+        </v-card>
       </div>
     </div>
 </template>
@@ -58,6 +63,9 @@ export default {
 </script>
 
 <style scoped>
+#displayOrganizationInformation {
+    margin-inline: 10%;
+}
 .card {
     margin-inline: 20%;
     margin-bottom: 30px;
@@ -65,7 +73,7 @@ export default {
 }
 #header {
     color: #0a322b;
-    font-size: 1em
+    font-size: 1em;
 }
 #body {
     font-size: 18px;
@@ -76,5 +84,4 @@ export default {
     border-bottom-style: solid;
     border-color: #F2F2F2;
 }
-
 </style>

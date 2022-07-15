@@ -9,6 +9,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    loadedOrganizationInformationCaBo: null,
+    loadedSubmodelsCaBo: null,
     loadedAas: null,
     loadedAASJson: null,
     loadedAasDeletionEnergyTypes: null,
@@ -28,6 +30,18 @@ export default new Vuex.Store({
     error: null
   },
   mutations: {
+    createAasCaBo (state, payload) {
+      state.loadedAas = payload
+    },
+    createSubmodelOrganizationInformation (state, payload) {
+      state.loadedSubmodelsCaBo = payload
+    },
+    setLoadedOrganizationInformationCaBo (state, payload) {
+      state.loadedOrganizationInformationCaBo = payload
+    },
+    updateOrganizationInformationCaBo (state, payload) {
+      state.loadedOrganizationInformationCaBo = payload
+    },
     createAas (state, payload) {
       state.loadedAas = payload
     },
@@ -130,6 +144,89 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    createAasCaBo ({ commit }, payload) {
+      // const enpi = { payload }
+      // console.log(enpi)
+      const database = getDatabase()
+      // push(child(ref(database, 'enpis')))
+      // ref(database, 'enpis').push(enpi)
+      push(ref(database, 'cabo/assetAdministrationShells/'), {
+        payload
+      })
+        .then((data) => {
+          const key = data.key
+          console.log(data)
+          commit('createAasCaBo', {
+            ...payload,
+            id: key
+          })
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    createSubmodelOrganizationInformation ({ commit }, payload) {
+      const database = getDatabase()
+      console.log(payload)
+      push(ref(database, 'cabo/submodels/'), {
+        payload
+      })
+        .then((data) => {
+          const key = data.key
+          console.log(data)
+          commit('createSubmodelOrganizationInformation', {
+            ...payload,
+            id: key
+          })
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    loadOrganizationInformationCaBo ({ commit }) {
+      const database = getDatabase()
+      // let keySubmodelContext
+      onValue(ref(database, 'cabo/submodels/'), (snapshot) => {
+        const data = snapshot.val()
+        let keySubmodelContext2
+        const submodelElements2 = []
+        for (const key in data) {
+          if (data[key].payload.semanticId.keys[0].value === 'organization/information-semantics') {
+            keySubmodelContext2 = key
+            const dataSubmodelElements2 = data[key].payload.submodelElements
+
+            for (const keyElements in dataSubmodelElements2) {
+              submodelElements2.push({
+                key: keySubmodelContext2,
+                id: keyElements,
+                idShort: dataSubmodelElements2[keyElements].idShort,
+                value: dataSubmodelElements2[keyElements].value
+              })
+            }
+            commit('setLoadedOrganizationInformationCaBo', submodelElements2)
+          }
+        }
+      })
+    },
+
+    updateOrganizationInformationCaBo ({ commit }, payload) {
+      const database = getDatabase()
+      const updateObj = {}
+      // updateObj.value = payload.organizationName
+      updateObj['/0/value'] = payload.organizationName
+      updateObj['/1/value'] = payload.organizationCountry
+      updateObj['/2/value'] = payload.organizationCity
+      updateObj['/3/value'] = payload.organizationZip
+
+      return update(ref(database, 'cabo/submodels/' + payload.id + '/payload/submodelElements'), updateObj)
+        .then(() => {
+          commit('updateOrganizationInformationCaBo', payload)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+
     createAas ({ commit }, payload) {
       // const enpi = { payload }
       // console.log(enpi)
@@ -946,6 +1043,12 @@ export default new Vuex.Store({
   modules: {
   },
   getters: {
+    loadedAasCaBo (state) {
+      return state.loadedAas
+    },
+    loadedOrganizationInformationCaBo (state) {
+      return state.loadedOrganizationInformationCaBo
+    },
     loadedAas (state) {
       return state.loadedAas
     },

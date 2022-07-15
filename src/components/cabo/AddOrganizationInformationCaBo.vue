@@ -1,46 +1,119 @@
 <template>
     <div>
-        <v-card id="cardOrganizationForm" class="mx-auto my-12" elevation="4"
-                max-width="60%">
-            <v-card-title id="card-title">Unternehmensinformationen</v-card-title>
-            <v-form @submit="onCreateEmsAas" @reset="onReset">
-              <v-container>
-                  <v-text-field
-                  id="organization-name"
-                  v-model="form.organizationName"
-                  label="Name der Organisation"
-                  required
-                  ></v-text-field>
+        <b-card id ="cardOrganizationForm" class="shadow p-3 mb-5 bg-white rounded">
+            <b-form @submit="onCreateOrganizationAas" @reset="onReset">
+                <b-form-group
+                    id="organization-name"
+                    label="Name der Organisation:"
+                    label-for="organization-name"
+                >
+                    <b-form-input
+                    id="organization-name"
+                    v-model="form.organizationName"
+                    placeholder="Name der Organisation"
+                    required
+                    ></b-form-input>
+                </b-form-group>
+                <b-form-group
+                    id="country"
+                    label="Land:"
+                    label-for="country"
+                >
+                    <country-select class="form-select" v-model="form.country" placeholder= 'Sitz des Unternehmens (Land)' topCountry="DE" />
+                </b-form-group>
 
-                  <v-select :items="countries" v-model="form.country" label= 'Sitz des Unternehmens (Land)' />
+                <b-form-group
+                    id="city"
+                    label="Stadt:"
+                    label-for="city"
+                >
+                    <b-form-input
+                    id="city"
+                    v-model="form.city"
+                    placeholder="Sitz des Unternehmens (Stadt)"
+                    required
+                    ></b-form-input>
+                </b-form-group>
 
-                  <v-text-field
-                  id="city"
-                  v-model="form.city"
-                  label="Sitz des Unternehmens (Stadt)"
-                  required
-                  ></v-text-field>
+                <b-form-group
+                    id="zipcode"
+                    label="Postleitzahl:"
+                    label-for="zipcode"
+                >
+                    <b-form-input
+                    id="zipcode"
+                    v-model.number="form.zipcode"
+                    placeholder="Sitz des Unternehmens (Postleitzahl)"
+                    required
+                    ></b-form-input>
+                </b-form-group>
 
-                  <v-text-field
-                  id="zipcode"
-                  v-model.number="form.zipcode"
-                  label="Sitz des Unternehmens (Postleitzahl)"
-                  required
-                  ></v-text-field>
+                <b-form-group
+                    id="number-sites"
+                    label="Anzahl Standorte:"
+                    label-for="number-sites"
+                >
+                    <b-form-input
+                    id="number-sites"
+                    v-model.number="form.numberOfSites"
+                    placeholder="Anzahl der Standorte"
+                    required
+                    type = number
+                    ></b-form-input>
+                </b-form-group>
 
-                  <v-text-field
-                  id="number-sites"
-                  v-model.number="form.numberOfSites"
-                  label="Anzahl der Standorte, die integriert werden"
-                  required
-                  type = number
-                  ></v-text-field>
-              </v-container>
-
-            <v-btn id="buttons-card" type="submit" variant="outline-secondary">Submit</v-btn>
-            <v-btn id="buttons-card" type="reset" variant="outline-secondary">Reset</v-btn>
-            </v-form>
-        </v-card>
+                <b-button v-b-modal.modal-1 type="submit" variant="outline-secondary">Submit</b-button>
+                    <div v-for="n in form.numberOfSites" :key="n">
+                        <b-modal hide-footer width="350px" id="modal-1" persistent :title="'Informationen Standort ' + n" ref="modal-one">
+                            <b-form-group
+                                id="name-site"
+                                label="Name des Standortes:"
+                                label-for="name-site"
+                            >
+                                <b-form-input
+                                id="name-site"
+                                placeholder="Name des Standortes"
+                                v-model="form.siteName"
+                                required
+                                ></b-form-input>
+                            </b-form-group>
+                            <b-form-group
+                                id="site-country"
+                                label="Land des Standortes:"
+                                label-for="site-country"
+                            >
+                                <country-select class="form-select" v-model="form.siteCountry" placeholder= 'Land des Standortes' topCountry="DE" />
+                            </b-form-group>
+                            <b-form-group
+                                id="site-city"
+                                label="Stadt des Standortes:"
+                                label-for="site-city"
+                            >
+                                <b-form-input
+                                id="site-city"
+                                placeholder="Stadt des Standortes"
+                                v-model="form.siteCity"
+                                required
+                                ></b-form-input>
+                            </b-form-group>
+                            <b-form-group
+                                id="site-zipcode"
+                                label="PLZ des Standortes:"
+                                label-for="site-city"
+                            >
+                                <b-form-input
+                                id="site-zipcode"
+                                placeholder="PLZ des Standortes"
+                                v-model="form.siteZipcode"
+                                required
+                                ></b-form-input>
+                            </b-form-group>
+                            <b-button class="mt-3" variant="outline-secondary" block @click="onEditOrgaInfo">Save</b-button>
+                        </b-modal>
+                    </div>
+                <b-button type="reset" variant="outline-secondary">Reset</b-button>
+            </b-form>
+        </b-card>
     </div>
 </template>
 
@@ -53,15 +126,18 @@ export default {
         country: '',
         city: '',
         zipcode: null,
-        numberOfSites: null
-      },
-      countries: ['Deutschland', 'Österreich', 'Schweiz', 'Frankreich', 'Italien', 'England']
+        numberOfSites: null,
+        siteName: '',
+        siteCountry: '',
+        siteCity: '',
+        siteZipcode: null
+      }
     }
   },
   computed: {
     organization () {
       // console.log(this.$store.getters.loadedOrganizationInformation)
-      return this.$store.getters.loadedOrganizationInformation
+      return this.$store.getters.loadedOrganizationInformationCaBo
     }
   },
   mounted () {
@@ -79,7 +155,7 @@ export default {
         card.classList.add('d-none')
       }
     },
-    onCreateEmsAas (event) {
+    onCreateOrganizationAas (event) {
       const card = document.getElementById('cardOrganizationForm')
       card.classList.add('d-none')
       console.log(typeof this.form.numberOfSites)
@@ -88,7 +164,7 @@ export default {
       const assetKeys = {
         type: 'Asset',
         local: true,
-        value: `ems-asset/${this.form.organizationName}`,
+        value: `asset/${this.form.organizationName}`,
         index: 0,
         idType: 'IRI'
       }
@@ -99,7 +175,7 @@ export default {
       const submodelKeys = {
         type: 'Submodel',
         local: true,
-        value: 'submodels/context',
+        value: 'submodels/organization-information',
         index: 0,
         idType: 'IRI'
       }
@@ -109,9 +185,9 @@ export default {
 
       newAas.identification = {
         idType: 'IRI',
-        id: `ems-aas/${this.form.organizationName}`
+        id: `organization-aas/${this.form.organizationName}`
       }
-      newAas.idShort = 'EmsAas'
+      newAas.idShort = 'Digitaler Zwilling der Organisation'
       newAas.category = 'CONSTANT'
       newAas.modelType = {
         name: 'AssetAdministrationShell'
@@ -121,7 +197,7 @@ export default {
       const submodelKeySemanticId = {
         type: 'GlobalReference',
         local: true,
-        value: 'ems/context-semantics',
+        value: 'organization/information-semantics',
         index: 0,
         idType: 'IRI'
       }
@@ -132,9 +208,9 @@ export default {
 
       newSubmodel.identification = {
         idType: 'IRI',
-        id: 'submodels/context'
+        id: 'submodels/organization-information'
       }
-      newSubmodel.idShort = 'Context'
+      newSubmodel.idShort = 'Informationen über das Unternehmen'
       newSubmodel.category = 'CONSTANT'
       newSubmodel.modelType = {
         name: 'Submodel'
@@ -148,13 +224,13 @@ export default {
             keys: [{
               type: 'GlobalReference',
               local: true,
-              value: 'ems/context-semantics/organization-name',
+              value: 'organization-name',
               index: 0,
               idType: 'IRI'
             }]
           },
           constraints: [],
-          idShort: 'OrganizationName',
+          idShort: 'Unternehmensname',
           category: 'CONSTANT',
           modelType: {
             name: 'Property'
@@ -172,13 +248,13 @@ export default {
             keys: [{
               type: 'GlobalReference',
               local: true,
-              value: 'ems/context-semantics/country',
+              value: 'organization-country',
               index: 0,
               idType: 'IRI'
             }]
           },
           constraints: [],
-          idShort: 'Country',
+          idShort: 'Land',
           category: 'CONSTANT',
           modelType: {
             name: 'Property'
@@ -196,13 +272,13 @@ export default {
             keys: [{
               type: 'GlobalReference',
               local: true,
-              value: 'ems/context-semantics/city',
+              value: 'organization-city',
               index: 0,
               idType: 'IRI'
             }]
           },
           constraints: [],
-          idShort: 'City',
+          idShort: 'Stadt',
           category: 'CONSTANT',
           modelType: {
             name: 'Property'
@@ -220,13 +296,13 @@ export default {
             keys: [{
               type: 'GlobalReference',
               local: true,
-              value: 'ems/context-semantics/zipcode',
+              value: 'organization-zipcode',
               index: 0,
               idType: 'IRI'
             }]
           },
           constraints: [],
-          idShort: 'ZipCode',
+          idShort: 'Postleitzahl',
           category: 'CONSTANT',
           modelType: {
             name: 'Property'
@@ -244,13 +320,13 @@ export default {
             keys: [{
               type: 'GlobalReference',
               local: true,
-              value: 'ems/context-semantics/numberOfSites',
+              value: 'organization-numberOfSites',
               index: 0,
               idType: 'IRI'
             }]
           },
           constraints: [],
-          idShort: 'NumberOfSites',
+          idShort: 'Anzahl Standorte',
           category: 'PARAMETER',
           modelType: {
             name: 'Property'
@@ -266,7 +342,7 @@ export default {
       const newConceptDescriptionON = {}
       newConceptDescriptionON.identification = {
         idType: 'IRI',
-        id: 'ems/context-semantics/organization-name'
+        id: 'organization-name'
       }
       newConceptDescriptionON.idShort = 'OrganizationName'
       newConceptDescriptionON.modelType = {
@@ -319,7 +395,7 @@ export default {
       const newConceptDescriptionCountry = {}
       newConceptDescriptionCountry.identification = {
         idType: 'IRI',
-        id: 'ems/context-semantics/country'
+        id: 'organization-country'
       }
       newConceptDescriptionCountry.idShort = 'Country'
       newConceptDescriptionCountry.modelType = {
@@ -372,7 +448,7 @@ export default {
       const newConceptDescriptionCity = {}
       newConceptDescriptionCity.identification = {
         idType: 'IRI',
-        id: 'ems/context-semantics/city'
+        id: 'organization-city'
       }
       newConceptDescriptionCity.idShort = 'City'
       newConceptDescriptionCity.modelType = {
@@ -425,7 +501,7 @@ export default {
       const newConceptDescriptionZip = {}
       newConceptDescriptionZip.identification = {
         idType: 'IRI',
-        id: 'ems/context-semantics/zipcode'
+        id: 'organization-zipcode'
       }
       newConceptDescriptionZip.idShort = 'ZipCode'
       newConceptDescriptionZip.modelType = {
@@ -478,7 +554,7 @@ export default {
       const newConceptDescriptionNoS = {}
       newConceptDescriptionNoS.identification = {
         idType: 'IRI',
-        id: 'ems/context-semantics/numberOfSites'
+        id: 'organization-numberOfSites'
       }
       newConceptDescriptionNoS.idShort = 'NumberOfSites'
       newConceptDescriptionNoS.modelType = {
@@ -958,8 +1034,8 @@ export default {
       this.$store.dispatch('createConceptDescriptions', newConceptDescriptionNoB)
       this.$store.dispatch('createConceptDescriptions', newConceptDescription)
 
-      this.$store.dispatch('createAas', newAas)
-      this.$store.dispatch('createSubmodelContext', newSubmodel)
+      this.$store.dispatch('createAasCaBo', newAas)
+      this.$store.dispatch('createSubmodelOrganizationInformation', newSubmodel)
       this.$store.dispatch('createConceptDescriptions', newConceptDescriptionON)
       this.$store.dispatch('createConceptDescriptions', newConceptDescriptionCountry)
       this.$store.dispatch('createConceptDescriptions', newConceptDescriptionCity)
@@ -976,7 +1052,7 @@ export default {
       // this.form.country = null
       this.form.city = ''
       this.form.zipcode = ''
-      this.form.numberOfSites = ''
+      // this.form.numberOfSites = ''
     },
     onReset (event) {
       event.preventDefault()

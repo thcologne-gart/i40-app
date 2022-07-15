@@ -1,59 +1,36 @@
 <template>
     <div>
-      <b-card id ="cardSiteForm" class="shadow p-3 mb-5 bg-white rounded">
-            <b-form @submit="onCreateSiteAas" @reset="onReset">
+      <v-card id ="cardSiteForm" class="mx-auto my-12" elevation="4" max-width="60%">
+        <v-card-title id="card-title">Standortinformationen</v-card-title>
+        <v-container>
+          <v-form @submit="onCreateSiteAas" @reset="onReset">
 
-            <b-form-group
-                id="country"
-                label="Land:"
-                label-for="country"
-            >
-                <country-select class="form-select" v-model="form.country" placeholder= 'Standort (Land)' topCountry="DE" />
-            </b-form-group>
+            <v-select :items="countries" v-model="form.country" label= 'Standort(Land)' />
+            <v-text-field
+            id="city"
+            v-model="form.city"
+            label="Standort (Stadt)"
+            required
+            ></v-text-field>
 
-            <b-form-group
-                id="city"
-                label="Stadt:"
-                label-for="city"
-            >
-                <b-form-input
-                id="city"
-                v-model="form.city"
-                placeholder="Standort (Stadt)"
-                required
-                ></b-form-input>
-            </b-form-group>
+            <v-text-field
+            id="zipcode"
+            v-model.number="form.zipcode"
+            label="Standort (Postleitzahl)"
+            required
+            ></v-text-field>
+            <v-text-field
+            id="number-buildings"
+            v-model.number="form.numberBuildings"
+            label="Standort (Anzahl der Gebäude)"
+            required
+            ></v-text-field>
 
-            <b-form-group
-                id="zipcode"
-                label="Postleitzahl:"
-                label-for="zipcode"
-            >
-                <b-form-input
-                id="zipcode"
-                v-model.number="form.zipcode"
-                placeholder="Standort (Postleitzahl)"
-                required
-                ></b-form-input>
-            </b-form-group>
-
-            <b-form-group
-                id="number-buildings"
-                label="Anzahl Gebäude:"
-                label-for="number-buildings"
-            >
-                <b-form-input
-                id="number-buildings"
-                v-model.number="form.numberBuildings"
-                placeholder="Standort (Anzahl der Gebäude)"
-                required
-                ></b-form-input>
-            </b-form-group>
-
-            <b-button type="submit" variant="outline-secondary">Submit</b-button>
-            <b-button type="reset" variant="outline-secondary">Reset</b-button>
-            </b-form>
-        </b-card>
+          <v-btn id="buttons-card" type="submit" variant="outline-secondary">Submit</v-btn>
+          <v-btn id="buttons-card" type="reset" variant="outline-secondary">Reset</v-btn>
+          </v-form>
+        </v-container>
+        </v-card>
     </div>
 </template>
 
@@ -67,7 +44,8 @@ export default {
         city: '',
         zipcode: null,
         numberBuildings: null
-      }
+      },
+      countries: ['Deutschland', 'Österreich', 'Schweiz', 'Frankreich', 'Italien', 'England']
     }
   },
   props: {

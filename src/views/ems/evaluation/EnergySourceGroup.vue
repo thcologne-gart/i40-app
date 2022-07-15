@@ -1,6 +1,6 @@
 <template>
     <div>
-        <EnergeticEvaluation>
+        <EnergeticEvaluation >
             <template v-slot:site="{ site }" >
                 <div v-for="site2 in numberofSites" :key="site2">
                     <div v-if="site === site2">

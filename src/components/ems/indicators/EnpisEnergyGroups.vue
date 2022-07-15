@@ -1,7 +1,7 @@
 <template>
     <div id = "header">
         <div v-if="getSubmodelCollections.length != 0">
-            <b-card no-body>
+            <b-card id="enpi-energy-group-card" no-body>
                 <b-tabs card pills vertical nav-wrapper-class="col-2" id="energy-group-enpis">
                     <b-tab v-bind:title="enpi.id" v-for="enpi in getSubmodelCollections" :key="enpi.id" id="enpi-tab">
                         <slot name="enpi" v-bind:enpi="enpi">Platzhalter</slot>
@@ -54,7 +54,7 @@ export default {
       const test = []
       for (const item in this.enpiSubmodel) {
         for (const element in this.enpiSubmodel[item]) {
-          console.log(this.enpiSubmodel[item])
+          // console.log(this.enpiSubmodel[item])
           const componentCollection = this.enpiSubmodel[item][element]
           if (typeof componentCollection.idShort !== 'undefined' && typeof componentCollection.value !== 'undefined' && componentCollection.idShort.includes('EnPis Energiegruppe') && componentCollection.value !== 0) {
             const componentSeCollections = []
@@ -62,10 +62,10 @@ export default {
               id: componentCollection.value
             }
             componentSeCollections.push(enpiCollectionComponent)
-            console.log(componentCollection.value)
+            // console.log(componentCollection.value)
             // const collectionEnpiComponents = []
             for (const component in componentSeCollections) {
-              console.log(componentSeCollections[component])
+              // console.log(componentSeCollections[component])
               const id = componentSeCollections[component].id
               for (const com in id) {
                 const enpiTest = {
@@ -96,7 +96,7 @@ export default {
           */
         }
       }
-      console.log(test)
+      // console.log(test)
       return test
     }
   }
@@ -106,5 +106,8 @@ export default {
 <style scoped>
 .col-auto {
     max-width: 20px;
+}
+#enpi-energy-group-card {
+  margin-inline: 0%;
 }
 </style>
