@@ -65,7 +65,7 @@ export default {
     */
     solutions () {
       const solutions = [
-        { icon: '', title: 'Digital Twins', link: '/digitaltwins' },
+        { icon: 'Mathis', title: 'Digital Twins', link: '/digitaltwins' },
         { icon: '', title: 'Building Performance', link: '/buildingperformance' },
         { icon: '', title: 'Energiemanagement', link: '/emsstart' },
         { icon: '', title: 'Performance Monitoring', link: '/performance' }

@@ -10,6 +10,7 @@
 // @ is an alias to /src
 import TopHeader from '@/components/general/TopHeader.vue'
 import Footer from '@/components/general/Footer.vue'
+
 export default {
   name: 'App',
   components: { TopHeader, Footer },
