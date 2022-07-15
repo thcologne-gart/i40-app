@@ -68,6 +68,12 @@ const routes = [
     props: true
   },
   {
+    path: '/digitaltwinsoverview/kpioverview',
+    name: 'KPI overview',
+    component: () => import('../views/digitaltwin/KPIOverview.vue'),
+    props: true
+  },
+  {
     path: '/signin',
     name: 'Sign In',
     component: () => import('../views/SignIn.vue')
@@ -155,7 +161,7 @@ const routes = [
     component: () => import('../views/ems/evaluation/GasBoiler.vue')
   },
   {
-    path: '/indicators-start/heating',
+    path: '/indicators-start/enpis',
     name: 'EnPi Heating',
     component: () => import('../views/ems/indicators/EnPiHeating.vue')
   },
