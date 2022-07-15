@@ -1,22 +1,23 @@
 <template>
     <div>
         <div>
-            <b-card
-            class="shadow p-3 mb-5 bg-white rounded">
+            <v-card
+            class="shadow p-3 mb-5 bg-white rounded mx-auto my-16"
+            max-width="60%">
                 <b-link id="repo-link" :href="aas.submodels[0].submodelElements[0].value" target="_blank">{{ aas.assetAdministrationShells[0].idShort }}</b-link>
                 <h6>{{ aas.assets[0].idShort }}</h6>
                 <hr>
                 <h5>Submodels</h5>
                 <div v-for="submodel in aasInfo" :key="submodel.submodelName">
-                    <b-button v-b-toggle="submodel.submodelName" id = "submodel-button" variant="outline-secondary">{{ submodel.submodelName }}</b-button>
+                    <v-btn v-b-toggle="submodel.submodelName" id = "submodel-button" variant="outline-secondary">{{ submodel.submodelName }}</v-btn>
                     <b-collapse v-bind:id="submodel.submodelName">
-                      <b-card id="submodel-card" class="shadow p-3 mb-5 bg-white rounded">
+                      <v-card id="submodel-card" class="shadow p-3 mb-5 bg-white rounded">
                         <div v-for="submodelElement in submodel.submodelElements" :key="submodelElement.idShort">
                             <div v-if="submodelElement.seType === 'Property'">
                               <div v-if ="submodel.submodelName === 'Measurements'"></div>
-                                <b-row>
-                                    <b-col cols="8">
-                                        <b-button v-b-modal="submodelElement.idShort + submodel.submodelName" variant="light-white">{{ submodelElement.idShort }}</b-button>
+                                <v-row>
+                                    <v-col cols="8">
+                                        <v-btn v-b-modal="submodelElement.idShort + submodel.submodelName" text min-width="70%">{{ submodelElement.idShort }}</v-btn>
                                             <b-modal v-bind:id="submodelElement.idShort + submodel.submodelName" hide-footer width="350px" persistent title="Semantic Information">
                                                 <p class="my-4">Semantic ID: {{ submodelElement.semanticId }}</p>
                                                 <div v-if="typeof submodelElement.definition === 'undefined' || submodelElement.definition === '' || !submodelElement.definition.length">
@@ -34,29 +35,29 @@
                                                 <p class="my-4">Datentyp: {{ submodelElement.dataType }}</p>
                                                 <hr>
                                             </b-modal>
-                                    </b-col>
-                                    <b-col cols="2" v-if ="submodel.submodelName === 'Measurements'">
-                                      <b-button v-b-modal="submodelElement.idShort + submodel.submodelName + submodelElement.value" variant="light-white">{{ submodelElement.value }}</b-button>
+                                    </v-col>
+                                    <v-col cols="2" v-if ="submodel.submodelName === 'Measurements'">
+                                      <v-btn v-b-modal="submodelElement.idShort + submodel.submodelName + submodelElement.value" variant="light-white">{{ submodelElement.value }}</v-btn>
                                       <b-modal v-bind:id="submodelElement.idShort + submodel.submodelName + submodelElement.value" hide-footer size="xl" persistent title="Energiemonitoring">
                                         <LineChart :allValues="submodelElement.allValues" :title="submodelElement.idShort" :xAchisCharts="xAxisCharts"/>
                                       </b-modal>
-                                      </b-col>
-                                    <b-col cols="2" v-else-if="submodel.submodelName === 'Control' && submodelElement.idShort === 'Visualisation'">
+                                    </v-col>
+                                    <v-col cols="2" v-else-if="submodel.submodelName === 'Control' && submodelElement.idShort === 'Visualisation'">
                                         <b-link id="visualisation-link" :href="submodelElement.value" target="_blank">{{ submodelElement.value }}</b-link>
-                                    </b-col>
-                                    <b-col cols="2" v-else>
+                                    </v-col>
+                                    <v-col cols="2" v-else>
                                         {{ submodelElement.value }}
-                                    </b-col>
-                                    <b-col cols="2">
+                                    </v-col>
+                                    <v-col cols="2">
                                       {{ submodelElement.unit }}
-                                    </b-col>
-                                </b-row>
+                                    </v-col>
+                                </v-row>
                                 <hr>
                             </div>
                             <div v-else-if="submodelElement.seType === 'File'">
-                                <b-row>
-                                    <b-col>
-                                        <b-button v-b-modal="submodelElement.idShort + submodel.submodelName" variant="light-white">{{ submodelElement.idShort }}</b-button>
+                                <v-row>
+                                    <v-col>
+                                        <v-btn v-b-modal="submodelElement.idShort + submodel.submodelName" variant="light-white">{{ submodelElement.idShort }}</v-btn>
                                             <b-modal v-bind:id="submodelElement.idShort + submodel.submodelName" hide-footer width="350px" persistent title="Semantic Information">
                                                 <p class="my-4">Semantic ID: {{ submodelElement.semanticId }}</p>
                                                 <div v-if="typeof submodelElement.definition === 'undefined' || submodelElement.definition === '' || !submodelElement.definition.length">
@@ -74,11 +75,11 @@
                                                 <p class="my-4">Datentyp: {{ submodelElement.dataType }}</p>
                                                 <hr>
                                             </b-modal>
-                                    </b-col>
-                                    <b-col>
+                                    </v-col>
+                                    <v-col>
                                         {{ submodelElement.value }}
-                                    </b-col>
-                                </b-row>
+                                    </v-col>
+                                </v-row>
                                 <hr>
                             </div>
                             <div v-else-if="submodelElement.seType === 'SubmodelElementCollection'">
@@ -87,8 +88,8 @@
                                     <b-collapse v-bind:id="submodelElement.submodelElementCollectionInfo[0].seCollectionName">
                                         <div v-for="element in submodelElement.submodelElementCollectionInfo" :key="element.idShort">
                                             <div v-if="element.seType === 'Property'">
-                                                <b-row>
-                                                    <b-col cols="8">
+                                                <v-row>
+                                                    <v-col cols="8">
                                                         <b-button v-b-modal="element.idShort + submodel.submodelName" variant="light-white">{{ element.idShort }}</b-button>
                                                             <b-modal v-bind:id="element.idShort + submodel.submodelName" hide-footer width="350px" persistent title="Semantic Information">
                                                                 <p class="my-4">SemanticID: {{ element.semanticId }}</p>
@@ -107,19 +108,19 @@
                                                                 <p class="my-4">Datentyp: {{ element.dataType }}</p>
                                                                 <hr>
                                                             </b-modal>
-                                                    </b-col>
-                                                    <b-col cols="2">
+                                                    </v-col>
+                                                    <v-col cols="2">
                                                         {{ element.value }}
-                                                    </b-col>
-                                                    <b-col cols="2">
+                                                    </v-col>
+                                                    <v-col cols="2">
                                                       {{ element.unit }}
-                                                    </b-col>
-                                                </b-row>
+                                                    </v-col>
+                                                </v-row>
                                                 <hr>
                                             </div>
                                             <div v-else-if="element.seType === 'File'">
-                                                <b-row>
-                                                    <b-col>
+                                                <v-row>
+                                                    <v-col>
                                                         <b-button v-b-modal="element.idShort + submodel.submodelName" variant="light-white">{{ element.idShort }}</b-button>
                                                             <b-modal v-bind:id="element.idShort + submodel.submodelName" hide-footer width="350px" persistent title="Semantic Information">
                                                                 <p class="my-4">SemanticID: {{ element.semanticId }}</p>
@@ -138,58 +139,23 @@
                                                                 <p class="my-4">Datentyp: {{ element.dataType }}</p>
                                                                 <hr>
                                                             </b-modal>
-                                                    </b-col>
-                                                    <b-col>
+                                                    </v-col>
+                                                    <v-col>
                                                         {{ element.value }}
-                                                    </b-col>
-                                                </b-row>
+                                                    </v-col>
+                                                </v-row>
                                                 <hr>
                                             </div>
-                                            <!--
-                                            <div v-else>
-                                                <b-button v-b-toggle="element.submodelElementCollectionInfo[0].seCollectionName" id = "submodel-element-collection-button" variant="outline-secondary" v-b-popover.hover="'Submodel Element Collection'">{{ element.submodelElementCollectionInfo[0].seCollectionName }}</b-button>
-                                                <b-collapse v-bind:id="element.submodelElementCollectionInfo[0].seCollectionName">
-                                                    <div v-for="el in element.submodelElementCollectionInfo" :key="el.idShort">
-                                                        <b-row>
-                                                            <b-col>
-                                                                <b-button v-b-modal="el.idShort + submodel.submodelName" variant="light-white">{{ el.idShort }}</b-button>
-                                                                    <b-modal v-bind:id="el.idShort + submodel.submodelName" hide-footer width="350px" persistent title="Semantic Information">
-                                                                        <p class="my-4">SemanticID: {{ el.semanticId }}</p>
-                                                                        <div v-if="el.definition === '' || !el.definition.length">
-                                                                            <p class="my-4">Definition: </p>
-                                                                        </div>
-                                                                        <div v-else>
-                                                                            <p class="my-4">Definition: {{ el.definition[0].text }}</p>
-                                                                        </div>
-                                                                        <div v-if="el.name === '' || !el.name.length">
-                                                                            <p class="my-4">Name: </p>
-                                                                        </div>
-                                                                        <div v-else>
-                                                                            <p class="my-4">Name: {{ el.name[0].text }}</p>
-                                                                        </div>
-                                                                        <p class="my-4">Datentyp: {{ el.dataType }}</p>
-                                                                        <hr>
-                                                                    </b-modal>
-                                                            </b-col>
-                                                            <b-col>
-                                                                {{ element.value }}
-                                                            </b-col>
-                                                        </b-row>
-                                                        <hr>
-                                                    </div>
-                                                </b-collapse>
-                                            </div>
-                                            -->
                                         </div>
                                     </b-collapse>
                                   </div>
                                 <hr>
                             </div>
                         </div>
-                      </b-card>
+                      </v-card>
                     </b-collapse>
                 </div>
-            </b-card>
+            </v-card>
         </div>
     </div>
 </template>
@@ -733,11 +699,6 @@ function calculateValue () {
 </script>
 
 <style scoped>
-.card {
-    margin-inline: 20%;
-    margin-bottom: 30px;
-    margin-top: 30px;
-}
 
 #submodel-button {
     width: 24rem;

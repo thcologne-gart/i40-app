@@ -1,71 +1,46 @@
 <template>
     <div>
-        <b-card id ="cardOrganizationForm" class="shadow p-3 mb-5 bg-white rounded">
-            <b-form @submit="onCreateEmsAas" @reset="onReset">
-            <b-form-group
-                id="organization-name"
-                label="Name der Organisation:"
-                label-for="organization-name"
-            >
-                <b-form-input
-                id="organization-name"
-                v-model="form.organizationName"
-                placeholder="Name der Organisation"
-                required
-                ></b-form-input>
-            </b-form-group>
-            <b-form-group
-                id="country"
-                label="Land:"
-                label-for="country"
-            >
-                <country-select class="form-select" v-model="form.country" placeholder= 'Sitz des Unternehmens (Land)' topCountry="DE" />
-            </b-form-group>
+        <v-card id="cardOrganizationForm" class="mx-auto my-12" elevation="4"
+                max-width="60%">
+            <v-card-title id="card-title">Unternehmensinformationen</v-card-title>
+            <v-form @submit="onCreateEmsAas" @reset="onReset">
+              <v-container>
+                  <v-text-field
+                  id="organization-name"
+                  v-model="form.organizationName"
+                  label="Name der Organisation"
+                  required
+                  ></v-text-field>
 
-            <b-form-group
-                id="city"
-                label="Stadt:"
-                label-for="city"
-            >
-                <b-form-input
-                id="city"
-                v-model="form.city"
-                placeholder="Sitz des Unternehmens (Stadt)"
-                required
-                ></b-form-input>
-            </b-form-group>
+                  <v-select :items="countries" v-model="form.country" label= 'Sitz des Unternehmens (Land)' />
 
-            <b-form-group
-                id="zipcode"
-                label="Postleitzahl:"
-                label-for="zipcode"
-            >
-                <b-form-input
-                id="zipcode"
-                v-model.number="form.zipcode"
-                placeholder="Sitz des Unternehmens (Postleitzahl)"
-                required
-                ></b-form-input>
-            </b-form-group>
+                  <v-text-field
+                  id="city"
+                  v-model="form.city"
+                  label="Sitz des Unternehmens (Stadt)"
+                  required
+                  ></v-text-field>
 
-            <b-form-group
-                id="number-sites"
-                label="Anzahl Standorte:"
-                label-for="number-sites"
-            >
-                <b-form-input
-                id="number-sites"
-                v-model.number="form.numberOfSites"
-                placeholder="Anzahl der Standorte, die integriert werden"
-                required
-                type = number
-                ></b-form-input>
-            </b-form-group>
+                  <v-text-field
+                  id="zipcode"
+                  v-model.number="form.zipcode"
+                  label="Sitz des Unternehmens (Postleitzahl)"
+                  required
+                  ></v-text-field>
 
-            <b-button type="submit" variant="outline-secondary">Submit</b-button>
-            <b-button type="reset" variant="outline-secondary">Reset</b-button>
-            </b-form>
-        </b-card>
+                  <v-text-field
+                  id="number-sites"
+                  v-model.number="form.numberOfSites"
+                  label="Anzahl der Standorte, die integriert werden"
+                  required
+                  type = number
+                  ></v-text-field>
+              </v-container>
+
+            <v-btn id="buttons-card" type="submit" variant="outline-secondary">Submit</v-btn>
+            <v-btn id="buttons-card" type="reset" variant="outline-secondary">Reset</v-btn>
+            </v-form>
+        </v-card>
     </div>
 </template>
 
@@ -79,7 +54,8 @@ export default {
         city: '',
         zipcode: null,
         numberOfSites: null
-      }
+      },
+      countries: ['Deutschland', 'Österreich', 'Schweiz', 'Frankreich', 'Italien', 'England']
     }
   },
   computed: {

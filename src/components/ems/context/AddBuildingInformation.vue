@@ -1,43 +1,30 @@
 <template>
     <div>
       <div class="mb-3">
-        <b-button v-b-toggle.my-collapse variant="outline-secondary">Gebäude hinzufügen</b-button>
+        <v-btn id="button-add-buidling" v-b-toggle.my-collapse variant="outline-secondary">Gebäude hinzufügen</v-btn>
       </div>
       <b-collapse id="my-collapse">
-        <b-card id ="cardBuildingForm" class="shadow p-3 mb-5 bg-white rounded">
-                <b-form @submit="onCreateBuildingAas" @reset="onReset">
-
-                <b-form-group
-                    id="designation"
-                    label="Bezeichnung:"
-                    label-for="designation"
-                >
-                    <b-form-input
-                    id="designation"
-                    v-model.number="form.designation"
-                    placeholder="Bezeichnung des Gebäudes"
-                    required
-                    ></b-form-input>
-                </b-form-group>
-
-                <b-form-group
-                    id="street"
-                    label="Straße und Hausnummer:"
-                    label-for="street"
-                >
-                    <b-form-input
-                    id="street"
-                    v-model.number="form.street"
-                    placeholder="Straße und Hausnummer"
-                    required
-                    ></b-form-input>
-                </b-form-group>
-
-                <b-button type="submit" variant="outline-secondary">Submit</b-button>
-                <b-button type="reset" variant="outline-secondary">Reset</b-button>
-                </b-form>
-            </b-card>
-        </b-collapse>
+        <v-card id ="cardBuildingForm" class="mx-auto my-12" elevation="4" max-width="75%">
+          <v-form @submit="onCreateBuildingAas" @reset="onReset">
+            <v-container>
+              <v-text-field
+              id="designation"
+              v-model="form.designation"
+              label="Bezeichnung des Gebäudes"
+              required
+              ></v-text-field>
+              <v-text-field
+              id="street"
+              v-model="form.street"
+              label="Straße und Hausnummer"
+              required
+              ></v-text-field>
+            </v-container>
+            <v-btn id="buttons-card" type="submit" variant="outline-secondary">Submit</v-btn>
+            <v-btn id="buttons-card" type="reset" variant="outline-secondary">Reset</v-btn>
+          </v-form>
+        </v-card>
+      </b-collapse>
     </div>
 </template>
 
@@ -54,7 +41,7 @@ export default {
   props: {
     site: Number,
     numberOfBuildings: Array,
-    buildingNumber: Number,
+    building: Number,
     buildings: Array
   },
   // mounted () {
@@ -103,9 +90,9 @@ export default {
 
       newAas.identification = {
         idType: 'IRI',
-        id: `site-aas/${this.form.designation}`
+        id: `building-aas/${this.form.designation}`
       }
-      newAas.idShort = `SiteAas/${this.form.designation}`
+      newAas.idShort = `BuildingAas/${this.form.designation}`
       newAas.category = 'CONSTANT'
       newAas.modelType = {
         name: 'AssetAdministrationShell'
@@ -209,7 +196,7 @@ export default {
           kind: 'Instance'
         },
         {
-          value: this.buildingNumber,
+          value: this.building,
           semanticId: {
             keys: [{
               type: 'GlobalReference',
@@ -234,6 +221,9 @@ export default {
         }
       ]
 
+      console.log(newAas)
+      console.log(newSubmodel)
+
       this.$store.dispatch('createAas', newAas)
       this.$store.dispatch('createSubmodelContext', newSubmodel)
 
@@ -255,6 +245,9 @@ export default {
 }
 </script>
 <style scoped>
+#button-add-buidling {
+  margin-top:20px;
+}
 .card {
     margin-inline: 20%;
     margin-bottom: 30px;

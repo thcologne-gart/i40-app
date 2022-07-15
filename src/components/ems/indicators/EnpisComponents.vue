@@ -13,7 +13,7 @@ export default {
   },
   computed: {
     wassollderscheiß () {
-      console.log(this.enpiComponent)
+      // console.log(this.enpiComponent)
       return this.enpiComponent
     }
   }

@@ -1,24 +1,28 @@
 <template>
   <div>
     <div>
-      <b-card
+      <v-card
         id="performance-start"
-        title="Performance Monitoring"
-        tag="article"
         style="max-width: 40rem;"
         class="shadow p-3 mb-5 bg-white rounded mx-auto"
       >
-        <b-card-img :src="require('@/assets/performance-start.jpeg')"></b-card-img>
-        <b-card-text>
+        <v-card-title id="title">Digital Twins</v-card-title>
+        <v-img :src="require('@/assets/performance-start.jpeg')"></v-img>
+        <v-card-text>
           Starten Sie mit der Konfiguration Ihres Performance Monitorings
-        </b-card-text>
-        <b-button to="/performance" variant="outline-secondary">Start</b-button>
-      </b-card>
+        </v-card-text>
+        <v-btn to="/home" variant="outline-secondary">Start</v-btn>
+      </v-card>
     </div>
   </div>
 </template>
 
-<style>
+<style scoped>
+#title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 #performance-start {
   margin-top: 20px;
   margin-bottom: 20px;

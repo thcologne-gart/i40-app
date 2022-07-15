@@ -1,29 +1,38 @@
 <template>
-    <b-container fluid id="grid-layout">
-        <!--
-        <GetSubmodels :submodelsJson ="submodelsJson"/>
-        //-->
-        <b-row id ="row-chapter">
-            <b-col id ="navigation" md = "2">
-                <b-navbar toggleable="lg">
-                    <b-navbar-toggle target="submodel-collapse" class="row"></b-navbar-toggle>
-                    <b-collapse id="submodel-collapse" is-nav>
-                        <b-navbar-nav>
-                            <div>
-                                <b-nav-item :key="submodel.id" v-for="submodel in submodels">
-                                    <SubmodelsNameLeft :submodel="submodel" />
-                                </b-nav-item>
-                            </div>
-                        </b-navbar-nav>
-                    </b-collapse>
-                </b-navbar>
-            </b-col>
-            <b-col id = "content" md = "10">
-                <slot>
-                </slot>
-            </b-col>
-        </b-row>
-    </b-container>
+    <!--
+    <GetSubmodels :submodelsJson ="submodelsJson"/>
+    //-->
+    <v-row id ="row-chapter">
+        <v-col id ="navigation" md = "2">
+          <v-card class="mx-auto" height="100%" tile>
+            <v-navigation-drawer width="100%">
+              <v-list>
+                <v-list-item link :to="submodel.link" :key="submodel.id" v-for="submodel in submodels">
+                  <v-list-item-content>
+                    <SubmodelsNameLeft :submodel="submodel" />
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+            </v-navigation-drawer>
+          </v-card>
+            <!-- <b-navbar toggleable="lg">
+                <b-navbar-toggle target="submodel-collapse" class="row"></b-navbar-toggle>
+                <b-collapse id="submodel-collapse" is-nav>
+                    <b-navbar-nav>
+                        <div>
+                            <b-nav-item :key="submodel.id" v-for="submodel in submodels">
+                                <SubmodelsNameLeft :submodel="submodel" />
+                            </b-nav-item>
+                        </div>
+                    </b-navbar-nav>
+                </b-collapse>
+            </b-navbar> -->
+        </v-col>
+        <v-col id = "content" md = "10">
+            <slot>
+            </slot>
+        </v-col>
+    </v-row>
 </template>
 
 <script>
@@ -100,7 +109,8 @@ export default {
 }
 #content {
     border-left-style: solid;
-    border-color: #F2F2F2;
+    border-color: #FFAC1C;
+    padding-top:0;
 }
 .col {
     padding-left: 0;

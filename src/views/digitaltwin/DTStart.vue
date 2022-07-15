@@ -1,25 +1,29 @@
 <template>
   <div>
     <div>
-      <b-card
-        id="digital-twins-start"
-        title="Digital Twins"
-        tag="article"
+      <v-card
+        id="bp-start"
         style="max-width: 40rem;"
         class="shadow p-3 mb-5 bg-white rounded mx-auto"
       >
-        <b-card-img :src="require('@/assets/dt-start.jpeg')"></b-card-img>
-        <b-card-text>
+        <v-card-title id="title">Digital Twins</v-card-title>
+        <v-img :src="require('@/assets/dt-start.jpeg')"></v-img>
+        <v-card-text>
           Visualisieren Sie die digitalen Zwillinge ihrer technischen Komponenten
-        </b-card-text>
-        <b-button to="/digitaltwinsoverview" variant="outline-secondary">Start</b-button>
-      </b-card>
+        </v-card-text>
+        <v-btn to="/digitaltwinsoverview" variant="outline-secondary">Start</v-btn>
+      </v-card>
     </div>
   </div>
 </template>
 
-<style>
-#digital-twins-start {
+<style scoped>
+#title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#bp-start {
   margin-top: 20px;
   margin-bottom: 20px;
 }

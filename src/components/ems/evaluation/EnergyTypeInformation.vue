@@ -1,23 +1,24 @@
 <template>
     <div>
-        <b-card class = "shadow p-3 mb-5 bg-white rounded showBuildingInfo" title="Ausgewählte Energiearten">
-            <hr>
-            <div id ="displayBuildingInformation">
-                <div v-for="item in energyTypes" :key="item[0].key">
-                    <div v-if="item[1][0].modelType.name === 'Property'">
-                        <div v-if="item[1][0].value === site[4].value && item[2][1].value === building " >
-                            <b-row id="ausgewählteEnergieart">
-                                <b-col>{{ item[0].submodelName }}</b-col>
-                                <b-col>
-                                    <b-button id="button-delete" variant = "outline-secondary"><b-icon @click="onDeleteEnergyType(item)" icon="x-circle" scale="1" variant="danger"></b-icon></b-button>
-                                </b-col>
-                                <b-tooltip target="button-delete" title="Delete"></b-tooltip>
-                            </b-row>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </b-card>
+      <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
+        <v-card-title id="card-title">Ausgewählte Energiearten</v-card-title>
+          <hr>
+          <div id ="displayBuildingInformation">
+              <div v-for="item in energyTypes" :key="item[0].key">
+                  <div v-if="item[1][0].modelType.name === 'Property'">
+                      <div v-if="item[1][0].value === site[4].value && item[2][1].value === building " >
+                          <v-row id="ausgewählteEnergieart">
+                              <v-col>{{ item[0].submodelName }}</v-col>
+                              <v-col>
+                                <v-btn id="button-delete" variant = "outline-secondary"><b-icon @click="onDeleteEnergyType(item)" icon="x-circle" scale="1" variant="danger"></b-icon></v-btn>
+                              </v-col>
+                              <b-tooltip target="button-delete" title="Delete"></b-tooltip>
+                          </v-row>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </v-card>
     </div>
 </template>
 

@@ -223,11 +223,6 @@ const routes = [
     path: '/optimization',
     name: 'Optimization',
     component: () => import('../views/ems/optimization/Optimization.vue')
-  },
-  {
-    path: '/cabo',
-    name: 'CaBo',
-    component: () => import('../views/cabo/Start.vue')
   }
 ]
 
