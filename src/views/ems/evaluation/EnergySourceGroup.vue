@@ -6,17 +6,31 @@
                     <div v-if="site === site2">
                         <SubmodelHeader :site ="site2" :submodelName="submodelName" :numberOfBuildings="numberOfBuildings">
                             <template v-slot:building="{ building }">
-                                <b-card id="energy-source-card" class="shadow p-3 mb-5 bg-white rounded">
-                                    <b-tabs content-class="mt-3" id ="source-groups-tabs">
-                                        <div v-for="element in allEnergyTypesWithGroup" :key="element.elementCollectionId">
-                                            <div v-if="element.site === site2 && building === element.building">
-                                                <b-tab v-bind:title="element.group.toString()">
-                                                    <EnergySourceGroupBuilding :energySources="energySources" :building="building" :energySourceGroup="element" :heatingComponents="heatingComponents" :airComponents="airComponents" :enpiSubmodels="enpiSubmodels" />
-                                                </b-tab>
-                                            </div>
-                                        </div>
-                                    </b-tabs>
-                                </b-card>
+                                <v-sheet>
+                                  <v-tabs center-active v-model="tab" background-color="grey lighten-2" slider-color="#FFAC1C" color="#0a322b">
+                                        <v-tab v-for="element in allEnergyTypesWithGroup" :key="element.elementCollectionId">
+                                          <div v-if="element.site === site2 && building === element.building">
+                                          {{ element.group.toString() }}
+                                          </div>
+                                        </v-tab>
+                                  </v-tabs>
+                                  <v-tabs-items v-model="tab" id="custom-tab-items">
+                                    <div v-for="element in allEnergyTypesWithGroup" :key="element.elementCollectionId">
+                                        <v-tab-item v-if="element.site === site2 && building === element.building">
+                                          <EnergySourceGroupBuilding :energySources="energySources" :building="building" :energySourceGroup="element" :heatingComponents="heatingComponents" :airComponents="airComponents" :enpiSubmodels="enpiSubmodels" />
+                                        </v-tab-item>
+                                    </div>
+                                  </v-tabs-items>
+                                  <!-- <b-tabs content-class="mt-3" id ="source-groups-tabs">
+                                      <div v-for="element in allEnergyTypesWithGroup" :key="element.elementCollectionId">
+                                          <div v-if="element.site === site2 && building === element.building">
+                                              <b-tab v-bind:title="element.group.toString()">
+                                                  <EnergySourceGroupBuilding :energySources="energySources" :building="building" :energySourceGroup="element" :heatingComponents="heatingComponents" :airComponents="airComponents" :enpiSubmodels="enpiSubmodels" />
+                                              </b-tab>
+                                          </div>
+                                      </div>
+                                  </b-tabs> -->
+                                </v-sheet>
                             </template>
                         </SubmodelHeader>
                     </div>
@@ -32,6 +46,11 @@ import EnergySourceGroupBuilding from '@/components/ems/evaluation/EnergySourceG
 import SubmodelHeader from '@/components/ems/SubmodelHeader.vue'
 
 export default {
+  data () {
+    return {
+      tab: null
+    }
+  },
   props: {
     site: Array,
     building: Number,
@@ -186,4 +205,5 @@ export default {
 #source-groups-tabs {
     margin-top: -10px;
 }
+
 </style>
