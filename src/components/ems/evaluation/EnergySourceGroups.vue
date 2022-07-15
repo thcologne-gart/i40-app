@@ -70,30 +70,34 @@
                             <div v-if="item.elementCollectionSemanticId === 'energyUseGroupHeating'">
                                 <router-link :to = "{ name: energySourceGroups[0].name, params: { site: site, building: building, buildings: buildings, energySourceGroup: item, energySources: energySources, energyTypes: energyTypes, allEnergyTypesWithGroup: allEnergyTypesWithGroup, heatingComponents: heatingComponents, airComponents: airComponents } }">
                                     <v-carousel-item
-                                    v-bind:caption = energySourceGroups[0].groupName
-                                    v-bind:text = item.elementCollection
                                     :src= energySourceGroups[0].pic
-                                    ></v-carousel-item>
+                                    >
+                                        <v-row
+                                          class="fill-height title"
+                                          align="center"
+                                          justify="center"
+                                        >
+                                          <div>
+                                            {{ item.elementCollection }}
+                                          </div>
+                                        </v-row>
+                                    </v-carousel-item>
                                 </router-link>
                             </div>
                             <div v-if="item.elementCollectionSemanticId === 'energyUseGroupCooling'">
                                  <router-link :to = "{ name: energySourceGroups[1].name, params: { site: site, building: building, buildings: buildings, energySourceGroup: item, energySources: energySources, energyTypes: energyTypes, allEnergyTypesWithGroup: allEnergyTypesWithGroup, heatingComponents: heatingComponents, airComponents: airComponents } }">
                                     <v-carousel-item
-                                    v-bind:caption = energySourceGroups[1].groupName
-                                    v-bind:text = item.elementCollection
                                     :src= energySourceGroups[1].pic
                                     >
-                                      <v-sheet>
                                         <v-row
-                                          class="fill-height"
+                                          class="fill-height title"
                                           align="center"
                                           justify="center"
                                         >
-                                          <div class="text-h2">
+                                          <div>
                                             {{ item.elementCollection }}
                                           </div>
                                         </v-row>
-                                      </v-sheet>
                                     </v-carousel-item>
                                 </router-link>
                             </div>
@@ -285,5 +289,7 @@ export default {
     color: white;
     position: relative;
     z-index: 2;
+    font-size: 200% !important;
+    font-family: Helvetica, Arial, sans-serif !important;
 }
 </style>

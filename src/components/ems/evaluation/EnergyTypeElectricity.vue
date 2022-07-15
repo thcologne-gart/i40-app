@@ -3,10 +3,11 @@
         <v-row>
             <v-col :key="energyGroup.id" v-for="energyGroup in energyUseGroup">
                 <a href="#">
-                    <v-card v-show="expand" id="energyUseGroup"
+                    <v-card v-show="expandE" id="energyUseGroup"
                         v-b-modal="energyGroup.name"
                         v-bind:title = energyGroup.name
-                        class ="mx-auto my-4 p-4" min-height="75px" elevation="2"
+                        class ="mx-auto my-4 p
+                        -4" min-height="75px" elevation="2"
                     >
                         <div v-if="energyGroup.name === 'Heizung'">
                             <v-img  class="mx-auto" href="#" style="max-width: 20%;" :src= energyGroup.pic></v-img>
@@ -74,7 +75,7 @@ export default {
     enpis: Array,
     building: Number,
     site: Number,
-    expand: Boolean
+    expandE: Boolean
   },
   computed: {
     getEnpis () {
