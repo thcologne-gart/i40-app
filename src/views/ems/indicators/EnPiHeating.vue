@@ -6,36 +6,23 @@
                 <div v-if="site === site2">
                     <SubmodelHeader :site ="site2" :submodelName="submodelName" :numberOfBuildings="numberOfBuildings">
                         <template v-slot:building="{ building }">
-                          <v-sheet elevation="2">
+                          <v-sheet>
                             <v-tabs center-active v-model="tab" background-color="grey lighten-2" slider-color="#FFAC1C" color="#0a322b">
-                              <div v-for="enpi in enpiSubmodels" :key="enpi.submodelKey">
-                                <v-tab v-if="site === enpi.numberOfSite && building === enpi.numberOfBuilding">{{ enpi.submodelName }}</v-tab>
-                              </div>
-                            </v-tabs>
-                          </v-sheet>
-                          <v-tabs-items v-model="tab" id="custom-tab-items">
-                            <div v-for="enpi in enpiSubmodels" :key="enpi.submodelKey">
-                              <v-tab-item v-if="site === enpi.numberOfSite && building === enpi.numberOfBuilding">
-                                <slot name="enpiSubmodel" v-bind:enpiSubmodel="enpi.submodelName">Platzhalter</slot>
-                                <EnpisEnergyGroups :enpiSubmodel="enpi" :site="site2" :building="building" />
-                              </v-tab-item>
-                            </div>
-                          </v-tabs-items>
-                            <!-- <v-card class ="mx-auto" max-width="90%" elevation="2">
-                              <v-tabs v-model="tab" id="buildings-tabs" background-color="grey lighten-2" slider-color="#FFAC1C" color="#0a322b">
-                                <div v-for="enpi in enpiSubmodels" :key="enpi.submodelKey">
-                                  <div>
-                                    <v-tab v-if="site === enpi.numberOfSite && building === enpi.numberOfBuilding">
-                                      {{ enpi.submodelName }}
-                                    </v-tab>
-                                    <v-tab-item>
-                                      <slot name="enpiSubmodel" v-bind:enpiSubmodel="enpi.submodelName"></slot>
-                                      <EnpisEnergyGroups :enpiSubmodel="enpi" :site="site2" :building="building" />
-                                    </v-tab-item>
-                                  </div>
+                              <v-tab v-for="enpi in enpiSubmodels" :key="enpi.submodelKey">
+                                <div v-if="site === enpi.numberOfSite && building === enpi.numberOfBuilding">
+                                {{ enpi.submodelName }}
                                 </div>
-                              </v-tabs>
-                            </v-card> -->
+                              </v-tab>
+                            </v-tabs>
+                            <v-tabs-items v-model="tab" id="custom-tab-items">
+                              <div v-for="enpi in enpiSubmodels" :key="enpi.submodelKey">
+                                  <v-tab-item v-if="site === enpi.numberOfSite && building === enpi.numberOfBuilding">
+                                    <slot name="enpiSubmodel" v-bind:enpiSubmodel="enpi.submodelName">Platzhalter</slot>
+                                    <EnpisEnergyGroups :enpiSubmodel="enpi" :site="site2" :building="building" />
+                                  </v-tab-item>
+                              </div>
+                            </v-tabs-items>
+                          </v-sheet>
                         </template>
                     </SubmodelHeader>
                 </div>

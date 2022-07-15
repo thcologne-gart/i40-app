@@ -1,11 +1,8 @@
 <template>
     <div>
-        <b-card
-        id="heating-systems"
-        :title= energySourceGroup.elementCollection
-        sub-title= "Energieeinsatz Gruppe"
-        class="mb-2"
-        >
+        <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
+          <v-card-title id="card-title">{{ energySourceGroup.elementCollection }}</v-card-title>
+          <v-card-subtitle>Energieeinsatz Gruppe</v-card-subtitle>
             <h5 class="text-left">Komponenten des Systems</h5>
             <hr>
             <h5 class="text-left">Lüftungsgerät</h5>
@@ -55,7 +52,7 @@
                     </div>
                     <SelectedEnergySourceComponents :energySources="energySources" :energySourceGroup="energySourceGroup" :energySourceComponents="energySourceComponents" />
                 </div>
-        </b-card>
+        </v-card>
     </div>
 </template>
 

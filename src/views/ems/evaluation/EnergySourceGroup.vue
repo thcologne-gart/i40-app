@@ -21,15 +21,6 @@
                                         </v-tab-item>
                                     </div>
                                   </v-tabs-items>
-                                  <!-- <b-tabs content-class="mt-3" id ="source-groups-tabs">
-                                      <div v-for="element in allEnergyTypesWithGroup" :key="element.elementCollectionId">
-                                          <div v-if="element.site === site2 && building === element.building">
-                                              <b-tab v-bind:title="element.group.toString()">
-                                                  <EnergySourceGroupBuilding :energySources="energySources" :building="building" :energySourceGroup="element" :heatingComponents="heatingComponents" :airComponents="airComponents" :enpiSubmodels="enpiSubmodels" />
-                                              </b-tab>
-                                          </div>
-                                      </div>
-                                  </b-tabs> -->
                                 </v-sheet>
                             </template>
                         </SubmodelHeader>
