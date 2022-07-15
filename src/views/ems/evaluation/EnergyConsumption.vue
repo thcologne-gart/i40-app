@@ -6,13 +6,11 @@
                 <div v-if="site === site2">
                     <SubmodelHeader :site ="site2" :submodelName="submodelName" :numberOfBuildings="numberOfBuildings">
                         <template v-slot:building="{ building }">
-                            <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
-                                <div v-for="site in sites" :key="site[2].value">
-                                    <div v-if="site[4].value === site2">
-                                        <EnergyConsumptionGroups :site="site2" :building="building" :buildings="buildings" />
-                                    </div>
-                                </div>
-                            </v-card>
+                          <div v-for="site in sites" :key="site[2].value">
+                              <div v-if="site[4].value === site2">
+                                  <EnergyConsumptionGroups :site="site2" :building="building" :buildings="buildings" />
+                              </div>
+                          </div>
                         </template>
                     </SubmodelHeader>
                 </div>

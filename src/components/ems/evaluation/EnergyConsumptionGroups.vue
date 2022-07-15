@@ -1,6 +1,23 @@
 <template>
     <div>
-      <v-sheet elevation="2">
+      <v-sheet>
+        <v-tabs center-active v-model="tab" background-color="grey lighten-2" slider-color="#FFAC1C" color="#0a322b">
+          <v-tab v-for="element in allEnergyTypesWithGroup" :key="element.elementCollectionId">
+            <div v-if="element.site === site && building === element.building">
+            {{ element.group.toString() }}
+            </div>
+          </v-tab>
+        </v-tabs>
+        <v-tabs-items v-model="tab" id="custom-tab-items">
+          <div v-for="element in allEnergyTypesWithGroup" :key="element.elementCollectionId">
+              <v-tab-item v-if="element.site === site && building === element.building">
+                <EnergyConsumptionBuilding :energySources="energySources" :building="building" :energySourceGroup="element" :heatingComponents="heatingComponents" :airComponents="airComponents"/>
+              </v-tab-item>
+          </div>
+        </v-tabs-items>
+      </v-sheet>
+
+      <!-- <v-sheet elevation="2">
         <v-tabs center-active v-model="tab" background-color="grey lighten-2" slider-color="#FFAC1C" color="#0a322b">
           <div v-for="element in allEnergyTypesWithGroup" :key="element.elementCollectionId">
             <v-tab v-if="element.site === site && building === element.building">{{ element.group.toString() }}</v-tab>
@@ -13,7 +30,7 @@
             <EnergyConsumptionBuilding :energySources="energySources" :building="building" :energySourceGroup="element" :heatingComponents="heatingComponents" :airComponents="airComponents" />
           </v-tab-item>
         </div>
-      </v-tabs-items>
+      </v-tabs-items> -->
         <!-- <b-tabs content-class="mt-3" id ="source-groups-tabs">
             <div v-for="element in allEnergyTypesWithGroup" :key="element.elementCollectionId">
                 <div v-if="element.site === site && building === element.building">
