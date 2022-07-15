@@ -1,24 +1,26 @@
 <template>
     <div>
-      <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
-        <v-card-title id="card-title">Ausgewählte Energiearten</v-card-title>
-          <hr>
-          <div id ="displayBuildingInformation">
-              <div v-for="item in energyTypes" :key="item[0].key">
-                  <div v-if="item[1][0].modelType.name === 'Property'">
-                      <div v-if="item[1][0].value === site[4].value && item[2][1].value === building " >
-                          <v-row id="ausgewählteEnergieart">
-                              <v-col>{{ item[0].submodelName }}</v-col>
-                              <v-col>
-                                <v-btn id="button-delete" variant = "outline-secondary"><b-icon @click="onDeleteEnergyType(item)" icon="x-circle" scale="1" variant="danger"></b-icon></v-btn>
-                              </v-col>
-                              <b-tooltip target="button-delete" title="Delete"></b-tooltip>
-                          </v-row>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </v-card>
+      <div v-if="showSelectedEnergyTypes != 0">
+        <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
+          <v-card-title id="card-title">Ausgewählte Energiearten</v-card-title>
+            <hr>
+            <div id ="displayBuildingInformation">
+                <div v-for="item in energyTypes" :key="item[0].key">
+                    <div v-if="item[1][0].modelType.name === 'Property'">
+                        <div v-if="item[1][0].value === site[4].value && item[2][1].value === building " >
+                            <v-row id="ausgewählteEnergieart">
+                                <v-col>{{ item[0].submodelName }}</v-col>
+                                <v-col>
+                                  <v-btn id="button-delete" variant = "outline-secondary"><b-icon @click="onDeleteEnergyType(item)" icon="x-circle" scale="1" variant="danger"></b-icon></v-btn>
+                                </v-col>
+                                <b-tooltip target="button-delete" title="Delete"></b-tooltip>
+                            </v-row>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </v-card>
+      </div>
     </div>
 </template>
 
@@ -30,8 +32,24 @@ export default {
     buildings: Array
   },
   computed: {
+    showSelectedEnergyTypes () {
+      const energyTypes = this.$store.getters.loadedEnergyTypeInformation
+      let selectedEnergyTypes = 0
+      for (const item in energyTypes) {
+        if (energyTypes[item][1][0].value === this.site[4].value && energyTypes[item][2][1].value === this.building) {
+          selectedEnergyTypes = 1
+        }
+      }
+      console.log(selectedEnergyTypes)
+      return selectedEnergyTypes
+    },
     energyTypes () {
-      console.log(this.$store.getters.loadedEnergyTypeInformation)
+      const energyTypes = this.$store.getters.loadedEnergyTypeInformation
+      for (const item in energyTypes) {
+        if (energyTypes[item][1][0].value === this.site[4].value && energyTypes[item][2][1].value === this.building) {
+          console.log('yeah')
+        }
+      }
       return this.$store.getters.loadedEnergyTypeInformation
     },
     aas () {

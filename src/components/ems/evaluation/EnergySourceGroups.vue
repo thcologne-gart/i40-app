@@ -1,5 +1,6 @@
 <template>
     <div>
+      <div v-if="showSelectedEnergyTypes != 0">
         <!-- <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
           <v-card-title id="card-title">Energieeinsatzgruppen</v-card-title>
             <hr>
@@ -123,6 +124,7 @@
                 </v-carousel>
             </div>
         </v-card>
+      </div>
     </div>
 </template>
 
@@ -144,6 +146,21 @@ export default {
     buildings: Array
   },
   computed: {
+    showSelectedEnergyTypes () {
+      const loadedEnergyInformation = this.$store.getters.loadedEnergyTypeInformation
+      let selectedEnergyGroups = 0
+      for (const item in loadedEnergyInformation) {
+        let i
+        for (i = 1; i < loadedEnergyInformation[item].length; i++) {
+          for (const key in loadedEnergyInformation[item][i]) {
+            if (loadedEnergyInformation[item][i][key].modelType.name === 'SubmodelElementCollection' && loadedEnergyInformation[item][1][0].value === this.site[4].value && loadedEnergyInformation[item][2][1].value === this.building) {
+              selectedEnergyGroups = 1
+            }
+          }
+        }
+      }
+      return selectedEnergyGroups
+    },
     energyTypes () {
       const energySourceGroups = []
       const loadedEnergyInformation = this.$store.getters.loadedEnergyTypeInformation
@@ -176,7 +193,7 @@ export default {
           // }
         }
       }
-      // console.log(energySourceGroups)
+      console.log(typeof energySourceGroups)
       // console.log(this.$store.getters.loadedEnergyTypeInformation)
       return energySourceGroups
     }
