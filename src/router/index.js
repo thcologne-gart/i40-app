@@ -163,7 +163,7 @@ const routes = [
   {
     path: '/indicators-start/enpis',
     name: 'EnPi Heating',
-    component: () => import('../views/ems/indicators/EnPiHeating.vue')
+    component: () => import('../views/ems/indicators/EnPiOverview.vue')
   },
   {
     path: '/indicators-start/air',

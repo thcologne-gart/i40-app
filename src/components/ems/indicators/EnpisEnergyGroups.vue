@@ -1,5 +1,6 @@
 <template>
     <div id = "header">
+      <div>{{ getSubmodelCollections }}</div>
         <div v-if="getSubmodelCollections.length != 0">
             <b-card id="enpi-energy-group-card" no-body>
                 <b-tabs card pills vertical nav-wrapper-class="col-2" id="energy-group-enpis">
@@ -30,7 +31,7 @@ export default {
       const seCollections = []
       for (const item in this.enpiSubmodel) {
         for (const element in this.enpiSubmodel[item]) {
-          // console.log(this.enpiSubmodel[item])
+          console.log(this.enpiSubmodel[item])
           const collection = this.enpiSubmodel[item][element]
           if (typeof collection.idShort !== 'undefined' && collection.idShort.includes('EnPis Energiegruppe')) {
             // console.log(this.enpiSubmodel[item][element])
