@@ -1,5 +1,7 @@
 <template>
-    <div>{{ test }}</div>
+  <div>
+    <v-btn to="/digitaltwinsoverview" variant="outline-secondary">Start</v-btn>
+  </div>
 </template>
 
 <script>
