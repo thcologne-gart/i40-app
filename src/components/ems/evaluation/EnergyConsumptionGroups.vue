@@ -3,7 +3,7 @@
       <v-sheet>
         <v-tabs center-active v-model="tab" background-color="grey lighten-2" slider-color="#FFAC1C" color="#0a322b">
           <div v-for="element in allEnergyTypesWithGroup" :key="element.elementCollectionId">
-            <v-tab v-if="element.site === site && building === element.building">
+            <v-tab class ="pa-4" v-if="element.site === site && building === element.building">
               {{ element.group.toString() }}
             </v-tab>
           </div>
