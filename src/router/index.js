@@ -94,9 +94,24 @@ const routes = [
     component: () => import('../views/ems/management/ManagementStart.vue')
   },
   {
-    path: '/ressources',
+    path: '/management-start/operation',
+    name: 'Management Operation',
+    component: () => import('../views/ems/management/Operation.vue')
+  },
+  {
+    path: '/management-start/management',
+    name: 'Management Management',
+    component: () => import('../views/ems/management/ManagementSubmodel.vue')
+  },
+  {
+    path: '/ressources-start/agents',
     name: 'Ressourcen',
-    component: () => import('../views/ems/ressources/Ressources.vue')
+    component: () => import('../views/ems/ressources/Agents.vue')
+  },
+  {
+    path: '/ressources-start',
+    name: 'Ressourcen',
+    component: () => import('../views/ems/ressources/RessourcesStart.vue')
   },
   {
     path: '/ressources-start',

@@ -1,16 +1,5 @@
 <template>
     <div id = "header">
-        <!--
-        <b-navbar id = "building-navbar" type="light">
-        <b-navbar-nav>
-            <b-nav-item-dropdown text="Gebäude">
-                <div v-for="building in numberOfBuildingsAsArray" :key="building">
-                    <b-dropdown-item>{{ building }}</b-dropdown-item>
-                </div>
-            </b-nav-item-dropdown>
-        </b-navbar-nav>
-        </b-navbar>
-        -->
         <div v-if="buildings.length < numberOfBuildingsAsArray.length">
           <v-card no-body class="mx-auto my-12" elevation="4" max-width="90%" id="overall-building-card">
               <v-tabs v-model="tab" vertical id="buildings-tabs" background-color="grey lighten-5" slider-color="#FFAC1C" color="#0a322b">
