@@ -5,13 +5,13 @@
             <div v-for="site2 in numberofSites" :key="site2">
                 <div v-if="site === site2">
                     <SubmodelHeader :site ="site2" :submodelName="submodelName" :numberOfBuildings="numberOfBuildings">
-                        <template v-slot:building="{ building }">
-                          <div v-for="site in sites" :key="site[2].value">
-                              <div v-if="site[4].value === site2">
-                                  <EnergyConsumptionGroups :site="site2" :building="building" :buildings="buildings" />
-                              </div>
-                          </div>
-                        </template>
+                      <template v-slot:building="{ building }">
+                        <div v-for="site in sites" :key="site[2].value">
+                            <div v-if="site[4].value === site2">
+                                <EnergyConsumptionGroups :site="site2" :building="building" :buildings="buildings" />
+                            </div>
+                        </div>
+                      </template>
                     </SubmodelHeader>
                 </div>
             </div>

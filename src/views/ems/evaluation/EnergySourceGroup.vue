@@ -17,7 +17,7 @@
                                   <v-tabs-items v-model="tab" id="custom-tab-items">
                                     <div v-for="element in allEnergyTypesWithGroup" :key="element.elementCollectionId">
                                         <v-tab-item v-if="element.site === site2 && building === element.building">
-                                          <EnergySourceGroupBuilding :energySources="energySources" :building="building" :energySourceGroup="element" :heatingComponents="heatingComponents" :airComponents="airComponents" :enpiSubmodels="enpiSubmodels" />
+                                          <EnergySourceGroupBuilding :site ="site2" :energySources="energySources" :building="building" :energySourceGroup="element" :heatingComponents="heatingComponents" :airComponents="airComponents" :enpiSubmodels="enpiSubmodels" />
                                         </v-tab-item>
                                     </div>
                                   </v-tabs-items>

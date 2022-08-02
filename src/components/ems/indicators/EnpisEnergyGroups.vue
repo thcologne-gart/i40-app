@@ -1,5 +1,6 @@
 <template>
     <div id = "header">
+      <div>{{ enpiSubmodel }}</div>
       <div>{{ getSubmodelCollections }}</div>
         <div v-if="getSubmodelCollections.length != 0">
             <b-card id="enpi-energy-group-card" no-body>

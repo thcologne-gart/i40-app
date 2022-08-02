@@ -37,6 +37,8 @@ export default {
   name: 'EnergySourceCard',
   // components: { EnergySourceSheet },
   props: {
+    building: Number,
+    site: Number,
     energySourceGroup: Object,
     energySource: Object,
     enpiSubmodels: Array
@@ -48,6 +50,7 @@ export default {
   },
   computed: {
     aas () {
+      console.log(this.enpiSubmodels)
       const aas = this.$store.getters.loadedAas
       return aas
     }
@@ -481,9 +484,12 @@ export default {
       }
       // Add Enpi for Component
       const energySourceGroupName = this.energySourceGroup.elementCollection
-      console.log(energySourceGroupName)
+      // console.log(energySourceGroupName)
+      // console.log(this.enpiSubmodels)
       for (const item in this.enpiSubmodels) {
-        if (this.enpiSubmodels[item].elementCollection.includes(energySourceGroupName)) {
+        const actualSite = this.enpiSubmodels[item].site
+        const actualBuilding = this.enpiSubmodels[item].building
+        if (this.enpiSubmodels[item].elementCollection.includes(energySourceGroupName) && actualSite === this.site && actualBuilding === this.building) {
           console.log(this.enpiSubmodels[item])
           const newSecComponent = [
             {

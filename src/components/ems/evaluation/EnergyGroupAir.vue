@@ -13,7 +13,7 @@
                     <div v-for="energySource in energySources" :key="energySource.id">
                         <div v-if="energySource.groupType ==='Lüftung'">
                             <v-row>
-                                <EnergySourceCard :energySource="energySource" :energySourceGroup="energySourceGroup" />
+                                <EnergySourceCard :building="building" :site="site" :energySource="energySource" :energySourceGroup="energySourceGroup" />
                             </v-row>
                         </div>
                     </div>
@@ -63,6 +63,8 @@ import SelectedEnergySourceComponents from '@/components/ems/evaluation/Selected
 export default {
   components: { EnergySourceCard, SelectedEnergySourceComponents },
   props: {
+    building: Number,
+    site: Number,
     energySources: Array,
     energySourceGroup: Object,
     airComponents: Array

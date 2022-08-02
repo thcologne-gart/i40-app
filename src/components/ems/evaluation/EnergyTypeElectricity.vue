@@ -80,9 +80,14 @@ export default {
   computed: {
     getEnpis () {
       let enpi
+      console.log(this.enpis)
       let enpiInformations = {}
       for (enpi in this.enpis) {
-        if (this.enpis[enpi][0].submodelSemanticId === 'submodel/enpiElectricity') {
+        const actualSite = this.enpis[enpi][1][0].value
+        const actualBuilding = this.enpis[enpi][2][1].value
+        const submodelSemanticId = this.enpis[enpi][0].submodelSemanticId
+        // console.log(actualSite)
+        if (submodelSemanticId === 'submodel/enpiElectricity' && actualSite === this.site && actualBuilding === this.building) {
           // console.log('test')
           enpiInformations = {
             key: this.enpis[enpi][0].key,
@@ -91,16 +96,17 @@ export default {
             submodelSemanticId: this.enpis[enpi][0].submodelSemanticId
           }
         }
-        console.log(this.enpis[enpi])
+        // console.log(this.enpis[enpi])
       }
+      console.log(enpiInformations)
       return enpiInformations
     }
   },
   methods: {
     onSubmitEnergySourceGroup ([energyGroup, numberSystems, energyType, enpiInformations]) {
       // event.preventDefault()
-      console.log(energyType)
-      console.log(enpiInformations)
+      // console.log(energyType)
+      // console.log(enpiInformations)
       const numberSystemsArray = [0]
       this.$bvModal.hide(energyGroup.name)
       // this.$refs['modal-heating'].hide()
