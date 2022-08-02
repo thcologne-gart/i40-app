@@ -1,17 +1,17 @@
 <template>
     <div>
-        <b-row>
-            <b-col class="text-left" cols="4">
-                <router-link :to = "{ name: 'Component', params: { energySource: energySource, energySourceGroup: energySourceGroup, component: component, energySourceComponents: energySourceComponents }}">
+        <v-row>
+            <v-col cols="6">
+                <router-link :to = "{ name: 'Component', params: { energySource: energySource, energySourceGroup: energySourceGroup, component: component, energySourceComponents: energySourceComponents, energySourceComponentsDataSheets: energySourceComponentsDataSheets }}">
                     <h6>{{ component.idShort }}</h6>
                 </router-link>
-            </b-col>
-            <b-col class="text-left" cols="4">
-                <b-form-file v-model="file" plain accept=".pdf" @change="onFileSelected"></b-form-file>
-            </b-col>
+            </v-col>
+            <v-col cols="6">
+                <v-file-input v-model="file" dense accept=".pdf" @change="onFileSelected"></v-file-input>
+            </v-col>
                 <div id="pdf" v-if="filename !== ''">
                     <div>
-                        <button id="upload-button" @click="onUploadPdf([component, energySourceGroup])" v-on:click="isHidden = true" variant="outline-warning">Upload PDF</button>
+                        <v-btn id="upload-button" @click="onUploadPdf([component, energySourceGroup])" v-on:click="isHidden = true" variant="outline-warning">Upload PDF</v-btn>
                     </div>
                         <iframe
                             :src= 'filename'
@@ -21,20 +21,7 @@
                         >
                         </iframe>
                 </div>
-            <b-col class="text-left" cols="4">
-                <div v-for="pdf in energySourceComponentsDataSheets" :key="pdf.pdfUrl">
-                    <div v-if="pdf.componentName === component.idShort">
-                        <b-row id ="loaded-pdf">
-                            <b-col><b-link v-bind:href = pdf.pdfUrl target="_blank">{{ pdf.pdfContent[0].idShort }}</b-link></b-col>
-                            <b-col>
-                                <b-button id="button-delete" variant = "outline-secondary"><b-icon @click="onDeletePdf([pdf.pdfId, pdf.componentId, pdf.sourceGroupId, pdf.submodelId])" icon="x-circle" scale="1" variant="danger"></b-icon></b-button>
-                            </b-col>
-                            <b-tooltip target="button-delete" title="Delete"></b-tooltip>
-                        </b-row>
-                    </div>
-                </div>
-            </b-col>
-        </b-row>
+        </v-row>
         <hr>
     </div>
 </template>
@@ -123,18 +110,18 @@ export default {
 
   methods: {
     onFileSelected (e) {
-      e.preventDefault()
-      // console.log(e)
-      const files = e.target.files
-      // this.file = e.target.files[0]
+      // e.preventDefault()
+      console.log(e)
+      // const files = e.target.files
+      this.file = e
       // let filename = files[0].name
       const fileReader = new FileReader()
       fileReader.addEventListener('load', () => {
         this.filename = fileReader.result
         // console.log(this.filename)
       })
-      fileReader.readAsDataURL(files[0])
-      this.file = files[0]
+      fileReader.readAsDataURL(e)
+      this.file = e
       // console.log(this.file)
     },
     onUploadPdf ([component, energySourceGroup]) {

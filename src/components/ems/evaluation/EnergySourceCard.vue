@@ -1,11 +1,11 @@
 <template>
     <div>
         <a href="#">
-            <b-card
-                v-bind:title = energySource.sourceName
-                class="shadow p-3 mb-5 bg-white rounded mx-4"
+            <v-card
+                class ="mx-auto my-4" max-width="90%" elevation="2"
                 id="card-source"
             >
+            <v-card-title class="justify-center">{{ energySource.sourceName }}</v-card-title>
             <!--
             <router-link  :to = "{ name: energySource.name, params: { energySource: energySource, energySourceGroup: energySourceGroup }}">
                 <b-card-img @click="addComponentEnergySource([energySource, energySourceGroup])" style="max-width: 70px;" top fluid :src= energySource.pic></b-card-img>
@@ -19,13 +19,13 @@
                     <EnergySourceSheet :energySource="energySource" :energySourceGroup="energySourceGroup" />
                 </b-collapse>
             -->
-                    <b-card-img v-b-modal="energySourceGroup.elementCollectionId + energySource.sourceName" height="80px" top fluid :src= energySource.pic></b-card-img>
+                    <v-img v-b-modal="energySourceGroup.elementCollectionId + energySource.sourceName" max-height="80" contain top fluid :src= energySource.pic></v-img>
                     <b-modal v-bind:id="energySourceGroup.elementCollectionId + energySource.sourceName" hide-footer width="350px" persistent :title="energySource.sourceName">
                         <p>Möchten Sie eine {{ energySource.sourceName }} zu der Energieeinsatz Gruppe {{ energySourceGroup.elementCollection }} hinzufügen?</p>
                         <hr>
-                        <b-button class="mt-3" variant="outline-secondary" block  @click="addComponentEnergySource([energySource, energySourceGroup])">Ja</b-button>
+                        <v-btn class="mt-3" variant="outline-secondary" size="sm" @click="addComponentEnergySource([energySource, energySourceGroup])">Ja</v-btn>
                     </b-modal>
-            </b-card>
+            </v-card>
         </a>
     </div>
 </template>
