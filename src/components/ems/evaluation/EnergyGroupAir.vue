@@ -1,51 +1,51 @@
 <template>
     <div>
         <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
-          <v-card-title id="card-title">{{ energySourceGroup.elementCollection }}</v-card-title>
+          <v-card-title id="source-group-title">{{ energySourceGroup.elementCollection }}</v-card-title>
           <v-card-subtitle>Energieeinsatz Gruppe</v-card-subtitle>
-            <h5 class="text-left">Komponenten des Systems</h5>
+            <h5>Komponenten des Systems</h5>
             <hr>
-            <h5 class="text-left">Lüftungsgerät</h5>
-                <b-button v-b-toggle="energySources[2].groupType" variant="outline-secondary">
-                    Lüftungsgerät hinzufügen
-                </b-button>
+            <h5>Lüftungsgerät</h5>
+                <v-btn id="buttons-card" v-b-toggle="energySources[2].groupType" variant="outline-secondary">
+                    Hinzufügen
+                </v-btn>
                 <b-collapse v-bind:id="energySources[2].groupType">
                     <div v-for="energySource in energySources" :key="energySource.id">
                         <div v-if="energySource.groupType ==='Lüftung'">
-                            <b-row>
+                            <v-row>
                                 <EnergySourceCard :energySource="energySource" :energySourceGroup="energySourceGroup" />
-                            </b-row>
+                            </v-row>
                         </div>
                     </div>
                 </b-collapse>
                 <hr>
                 <div v-if="energySourceComponents.length != 0">
                     <div v-if="energySourceComponents[0].idShort === 'Klimaanlage'">
-                        <h5 class="text-left">Komponenten Klimaanlage</h5>
-                        <b-button v-b-toggle="airComponents[0].groupType" variant="outline-secondary">
-                            Komponente hinzufügen
-                        </b-button>
+                        <h5>Komponenten Klimaanlage</h5>
+                        <v-btn id="buttons-card" v-b-toggle="airComponents[0].groupType" variant="outline-secondary">
+                          Hinzufügen
+                        </v-btn>
                         <b-collapse v-bind:id="airComponents[0].groupType">
                             <div v-for="energySource in airComponents" :key="energySource.id">
                                 <div v-if="energySource.groupType ==='Klimaanlage' || energySource.groupType ==='Lüftung'">
-                                    <b-row>
+                                    <v-row>
                                         <EnergySourceCard :energySource="energySource" :energySourceGroup="energySourceGroup" />
-                                    </b-row>
+                                    </v-row>
                                 </div>
                             </div>
                         </b-collapse>
                     </div>
                     <div v-else-if="energySourceComponents[0].idShort === 'Lüftungsanlage'">
-                        <h5 class="text-left">Komponenten Lüftungsanlage</h5>
-                        <b-button v-b-toggle="airComponents[0].groupType" variant="outline-secondary">
-                            Komponente hinzufügen
-                        </b-button>
+                        <h5>Komponenten Lüftungsanlage</h5>
+                        <v-btn id="buttons-card" v-b-toggle="airComponents[0].groupType" variant="outline-secondary">
+                            Hinzufügen
+                        </v-btn>
                         <b-collapse v-bind:id="airComponents[0].groupType">
                             <div v-for="energySource in airComponents" :key="energySource.id">
                                 <div v-if="energySource.groupType ==='Lüftung'">
-                                    <b-row>
+                                    <v-row>
                                         <EnergySourceCard :energySource="energySource" :energySourceGroup="energySourceGroup" />
-                                    </b-row>
+                                    </v-row>
                                 </div>
                             </div>
                         </b-collapse>

@@ -1,34 +1,34 @@
 <template>
     <div>
         <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
-          <v-card-title id="card-title">{{ energySourceGroup.elementCollection }}</v-card-title>
+          <v-card-title id="source-group-title">{{ energySourceGroup.elementCollection }}</v-card-title>
           <v-card-subtitle>Energieeinsatz Gruppe</v-card-subtitle>
             <h5>Komponenten des Systems</h5>
             <hr>
             <h5>Wärmeerzeuger</h5>
-            <b-button v-b-toggle="energySources[0].groupType" variant="outline-secondary">
-                Wärmeerzeuger hinzufügen
-            </b-button>
+            <v-btn id="buttons-card" v-b-toggle="energySources[0].groupType" variant="outline-secondary">
+                Hinzufügen
+            </v-btn>
             <b-collapse v-bind:id="energySources[0].groupType">
                 <div v-for="energySource in energySources" :key="energySource.id">
                     <div v-if="energySource.groupType ==='Heizung'">
-                        <b-row>
+                        <v-row>
                             <EnergySourceCard :energySource="energySource" :energySourceGroup="energySourceGroup" :enpiSubmodels="enpiSubmodels" />
-                        </b-row>
+                        </v-row>
                     </div>
                 </div>
             </b-collapse>
             <hr>
-            <h5 class="text-left">Pumpen</h5>
-            <b-button v-b-toggle="heatingComponents[0].groupType" variant="outline-secondary">
-                Pumpe hinzufügen
-            </b-button>
+            <h5>Pumpen</h5>
+            <v-btn id="buttons-card" v-b-toggle="heatingComponents[0].groupType" variant="outline-secondary">
+                Hinzufügen
+            </v-btn>
             <b-collapse v-bind:id="heatingComponents[0].groupType">
                 <div v-for="energySource in heatingComponents" :key="energySource.id">
                     <div v-if="energySource.groupType ==='Pumpe'">
-                        <b-row>
+                        <v-row>
                             <EnergySourceCard :energySource="energySource" :energySourceGroup="energySourceGroup" :enpiSubmodels="enpiSubmodels" />
-                        </b-row>
+                        </v-row>
                     </div>
                 </div>
             </b-collapse>

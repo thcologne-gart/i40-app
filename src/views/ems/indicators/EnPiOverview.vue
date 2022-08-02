@@ -9,7 +9,7 @@
                           <v-sheet>
                             <v-tabs center-active v-model="tab" background-color="grey lighten-2" slider-color="#FFAC1C" color="#0a322b">
                               <div v-for="enpi in enpisBuilding" :key="enpi.submodelKey">
-                                <v-tab v-if="site === enpi.numberOfSite && building === enpi.numberOfBuilding">
+                                <v-tab class ="pa-4" v-if="site === enpi.numberOfSite && building === enpi.numberOfBuilding">
                                   {{ enpi.submodelName }}
                                 </v-tab>
                               </div>
