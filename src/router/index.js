@@ -206,7 +206,7 @@ const routes = [
     component: () => import('../views/ems/context/Buildings.vue')
   },
   {
-    path: '/energy-goals',
+    path: '/goals-start/energy-goals',
     name: 'Energieziele',
     component: () => import('../views/ems/goals/EnergyGoals.vue')
   },
@@ -219,6 +219,11 @@ const routes = [
     path: '/competence',
     name: 'Kompetenz',
     component: () => import('../views/ems/competence/Competence.vue')
+  },
+  {
+    path: '/competence/competence',
+    name: 'Kompetenz Kompetenz',
+    component: () => import('../views/ems/competence/CompetenceSubmodel.vue')
   },
   {
     path: '/operation',
