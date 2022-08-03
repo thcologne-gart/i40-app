@@ -261,9 +261,19 @@ const routes = [
     component: () => import('../views/ems/analysis/Analysis.vue')
   },
   {
+    path: '/analysis/measurement',
+    name: 'Messung',
+    component: () => import('../views/ems/analysis/Measurement.vue')
+  },
+  {
     path: '/optimization',
     name: 'Optimization',
     component: () => import('../views/ems/optimization/Optimization.vue')
+  },
+  {
+    path: '/optimization/optimization',
+    name: 'Optimization Optimization',
+    component: () => import('../views/ems/optimization/OptimizationSubmodel.vue')
   }
 ]
 
