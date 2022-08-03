@@ -231,14 +231,29 @@ const routes = [
     component: () => import('../views/ems/operation/Operation.vue')
   },
   {
+    path: '/operation/operation',
+    name: 'Operation Operation',
+    component: () => import('../views/ems/operation/OperationSubmodel.vue')
+  },
+  {
     path: '/buying',
     name: 'Buying',
     component: () => import('../views/ems/buying/Buying.vue')
   },
   {
+    path: '/buying/buying',
+    name: 'Buying Buying',
+    component: () => import('../views/ems/buying/BuyingSubmodel.vue')
+  },
+  {
     path: '/communication',
     name: 'Communication',
     component: () => import('../views/ems/communication/Communication.vue')
+  },
+  {
+    path: '/communication/communication',
+    name: 'Communication Communication',
+    component: () => import('../views/ems/communication/CommunicationSubmodel.vue')
   },
   {
     path: '/analysis',
