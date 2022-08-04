@@ -4,15 +4,14 @@
       <EmsGrid :submodels="submodels">
         <h4 id = "component-title">{{ component.idShort }}</h4>
         <hr>
-        <b-card id="component-info" class="shadow p-3 mb-5 bg-white rounded">
-            <b-row>
-                <b-col class="text-left" cols="4">
-                    <p id = "property-header">Properties</p>
-                </b-col>
-            </b-row>
+        <v-card
+                class ="mx-auto my-4" max-width="70%" elevation="2"
+                id="component-info"
+            >
+            <v-card-title class="justify-center">Properties</v-card-title>
             <hr>
-            <b-row id ="property" v-for="property in semanticMatchingInformation" :key="property.semanticId">
-                <b-col class="text-left" cols= "8">
+            <v-row id ="property" v-for="property in semanticMatchingInformation" :key="property.semanticId">
+                <v-col>
                     <div v-for="propertyValue in properties" :key="propertyValue.name">
                         <div v-if="propertyValue.name === property.name">
                             <div v-if="property.semantic_id.includes('component/device-information' ) === true || property.semantic_id.includes('0173-1#02-AAO677#002' ) === true">
@@ -20,12 +19,12 @@
                             </div>
                         </div>
                     </div>
-                </b-col>
-                <b-col>
+                </v-col>
+                <v-col>
                     <div v-for="propertyValue in properties" :key="propertyValue.name">
                         <div v-if="propertyValue.name === property.name">
                             <div v-if="property.semantic_id.includes('component/device-information' ) === true || property.semantic_id.includes('0173-1#02-AAO677#002') === true">
-                                <b-button v-b-modal="component.componenElementCollectionId + property.name" variant="outline-secondary">Suche nach Property</b-button>
+                                <v-btn class="mr-3" variant="outline-secondary"  v-b-modal="component.componenElementCollectionId + property.name">Suche nach Property</v-btn>
                                 <b-modal v-bind:id="component.componenElementCollectionId + property.name" hide-footer width="350px" persistent :title="property.name" >
                                     <p class="my-4">Would you like to search for the property {{ property.name }}?</p>
                                     <!--<p class="my-4">Möchten Sie nach dem Property {{ property.name }} suchen?</p>-->
@@ -36,7 +35,7 @@
                                     <p class="my-4">Type: {{ property.submodel_element_sub }}</p>
                                     <p class="my-4">Category: {{ property.category }}</p>
                                     <hr>
-                                    <b-button v-b-modal="property.name" class="mt-3" variant="outline-secondary" block  @click="onSearchProperty (property, component)">Search</b-button>
+                                    <v-btn class="mt-3" v-b-modal="property.name" variant="outline-secondary" @click="onSearchProperty (property, component)">Search</v-btn>
                                 </b-modal>
 
                                 <b-modal v-bind:id="property.name" hide-footer width="350px" persistent title="Matching Ergebnis" >
@@ -46,16 +45,31 @@
                                         <p>Value: {{ matchedProperty[2] }}</p>
                                         <p>Similarity: {{ matchedProperty[3] }}</p>
                                         <hr>
-                                        <b-button id = "abo-button" class="mt-3" variant="outline-secondary" block @click="yesAbo (property, component, matchedProperty)">Hinzufügen</b-button>
-                                        <b-button class="mt-3" variant="outline-danger" block @click="noAbo (property)">Nicht hinzufügen</b-button>
+                                        <v-btn id = "abo-button" class="mt-3" variant="outline-secondary" @click="yesAbo (property, component, matchedProperty)">Hinzufügen</v-btn>
+                                        <v-btn class="mt-3" variant="outline-danger" block @click="noAbo (property)">Nicht hinzufügen</v-btn>
                                     </div>
                                 </b-modal>
                             </div>
                         </div>
                     </div>
-                </b-col>
-            </b-row>
-        </b-card>
+                </v-col>
+            </v-row>
+            <div v-for="pdf in energySourceComponentsDataSheets" :key="pdf.pdfUrl">
+              <div v-if="pdf.componentName === component.idShort">
+                  <v-row id ="loaded-pdf">
+                      <v-col><b-link v-bind:href = pdf.pdfUrl target="_blank">{{ pdf.pdfContent[0].idShort }}</b-link></v-col>
+                      <v-col>
+                        <v-tooltip bottom>
+                          <template v-slot:activator="{ on, attrs }">
+                            <v-btn v-bind="attrs" v-on ="on" id="button-delete" variant = "outline-secondary"><v-icon @click="onDeletePdf([pdf.pdfId, pdf.componentId, pdf.sourceGroupId, pdf.submodelId])" scale="1" variant="danger">mdi-close-circle-outline</v-icon></v-btn>
+                          </template>
+                          <span>Delete</span>
+                        </v-tooltip>
+                      </v-col>
+                  </v-row>
+              </div>
+            </div>
+        </v-card>
       </EmsGrid>
     </div>
 </template>
@@ -77,7 +91,8 @@ export default {
   props: {
     energySource: Object,
     energySourceGroup: Object,
-    component: Object
+    component: Object,
+    energySourceComponentsDataSheets: Object
   },
   mounted () {
     this.getProperties()
@@ -223,7 +238,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #component-title {
     color: #0a322b;
     margin-top: 15px;
@@ -240,4 +255,14 @@ export default {
 #property {
     margin-bottom: 10px;
 }
+
+a {
+    color: #2c3e50;
+    font-size: 16px;
+    text-decoration: none;
+}
+a:hover {
+  color: green;
+}
+
 </style>

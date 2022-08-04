@@ -22,7 +22,7 @@ export default {
   components: { EmsChapter, EmsGrid },
   created () {
     this.submodels = [
-      { id: 1, name: 'Platzhalter', link: '' }
+      { id: 1, name: 'Ziele', link: '/goals-start/energy-goals' }
     ]
     this.emsChapter = { name: 'Energieziele', link: '/goals-start' }
   }

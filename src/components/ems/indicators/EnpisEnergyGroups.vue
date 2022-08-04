@@ -1,25 +1,16 @@
 <template>
     <div id = "header">
-        <div v-if="getSubmodelCollections.length != 0">
-            <b-card id="enpi-energy-group-card" no-body>
-                <b-tabs card pills vertical nav-wrapper-class="col-2" id="energy-group-enpis">
-                    <b-tab v-bind:title="enpi.id" v-for="enpi in getSubmodelCollections" :key="enpi.id" id="enpi-tab">
-                        <slot name="enpi" v-bind:enpi="enpi">Platzhalter</slot>
-                        <EnpisComponents :enpiComponent="getComponentSubmodelCollections" :enpiEnergyGroup="enpi"/>
-                        <div>{{ building }}</div>
-                        <div>{{ site }}</div>
-                    </b-tab>
-                </b-tabs>
-            </b-card>
+        <div v-if="enpiSubmodel.length != 0">
+            <v-card id="enpi-energy-group-card" class ="mx-auto my-4" max-width="90%" elevation="2">
+              Platzhalter
+            </v-card>
         </div>
     </div>
 </template>
 
 <script>
-import EnpisComponents from '@/components/ems/indicators/EnpisComponents.vue'
 
 export default {
-  components: { EnpisComponents },
   props: {
     enpiSubmodel: Array,
     site: Number,
@@ -30,7 +21,7 @@ export default {
       const seCollections = []
       for (const item in this.enpiSubmodel) {
         for (const element in this.enpiSubmodel[item]) {
-          // console.log(this.enpiSubmodel[item])
+          console.log(this.enpiSubmodel[item])
           const collection = this.enpiSubmodel[item][element]
           if (typeof collection.idShort !== 'undefined' && collection.idShort.includes('EnPis Energiegruppe')) {
             // console.log(this.enpiSubmodel[item][element])

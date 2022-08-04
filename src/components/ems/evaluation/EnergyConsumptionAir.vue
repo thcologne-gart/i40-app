@@ -1,13 +1,10 @@
 <template>
     <div>
-        <b-card
-        id="heating-systems"
-        title= 'Energieverbrauch'
-        :sub-title= energySourceGroup.elementCollection
-        class="mb-2"
-        >
-            <ConsumptionComponents :energySources="energySources" :energySourceGroup="energySourceGroup" :energySourceComponents="energySourceComponents" />
-        </b-card>
+      <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
+        <v-card-title id="source-group-title">Energieverbrauch</v-card-title>
+        <v-card-subtitle>{{ energySourceGroup.elementCollection }}</v-card-subtitle>
+        <ConsumptionComponents :energySources="energySources" :energySourceGroup="energySourceGroup" :energySourceComponents="energySourceComponents" />
+      </v-card>
     </div>
 </template>
 

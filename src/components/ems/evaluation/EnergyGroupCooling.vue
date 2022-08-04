@@ -1,28 +1,25 @@
 <template>
     <div>
-        <b-card
-        id="heating-systems"
-        :title= energySourceGroup.elementCollection
-        sub-title= "Energieeinsatz Gruppe"
-        class="mb-2"
-        >
-            <h5 class="text-left">Komponenten des Systems</h5>
-            <hr>
-            <h5 class="text-left">Kälteerzeuger</h5>
-            <b-button v-b-toggle="energySources[1].groupType" variant="outline-secondary">
-                Kälteerzeuger hinzufügen
-            </b-button>
-            <b-collapse v-bind:id="energySources[1].groupType">
-                <div v-for="energySource in energySources" :key="energySource.id">
-                    <div v-if="energySource.groupType ==='Kühlung'">
-                        <b-row>
-                            <EnergySourceCard :energySource="energySource" :energySourceGroup="energySourceGroup" />
-                        </b-row>
-                    </div>
-                </div>
-            </b-collapse>
-            <SelectedEnergySourceComponents :energySources="energySources" :energySourceGroup="energySourceGroup" :energySourceComponents="energySourceComponents" />
-        </b-card>
+      <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
+        <v-card-title id="source-group-title">{{ energySourceGroup.elementCollection }}</v-card-title>
+        <v-card-subtitle>Energieeinsatz Gruppe</v-card-subtitle>
+          <h5>Komponenten des Systems</h5>
+          <hr>
+          <h5>Kälteerzeuger</h5>
+          <v-btn id="buttons-card" v-b-toggle="energySources[1].groupType" variant="outline-secondary">
+              Hinzufügen
+          </v-btn>
+          <b-collapse v-bind:id="energySources[1].groupType">
+              <div v-for="energySource in energySources" :key="energySource.id">
+                  <div v-if="energySource.groupType ==='Kühlung'">
+                      <v-row>
+                          <EnergySourceCard :building="building" :site="site" :energySource="energySource" :energySourceGroup="energySourceGroup" :enpiSubmodels="enpiSubmodels" />
+                      </v-row>
+                  </div>
+              </div>
+          </b-collapse>
+          <SelectedEnergySourceComponents :energySources="energySources" :energySourceGroup="energySourceGroup" :energySourceComponents="energySourceComponents" />
+      </v-card>
     </div>
 </template>
 
@@ -33,6 +30,8 @@ import SelectedEnergySourceComponents from '@/components/ems/evaluation/Selected
 export default {
   components: { EnergySourceCard, SelectedEnergySourceComponents },
   props: {
+    building: Number,
+    site: Number,
     energySources: Array,
     energySourceGroup: Object
   },

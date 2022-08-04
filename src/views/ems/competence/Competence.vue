@@ -2,17 +2,11 @@
     <div>
       <EmsChapter :emsChapter="emsChapter" />
       <EmsGrid :submodels="submodels">
-          <b-tabs content-class="mt-3" id ="nav-tabs">
-            <div v-for="site in numberofSites" :key="site">
-                <b-tab v-bind:title=sites[site][1].value >
-                    <slot name="site" v-bind:site="site">Platzhalter</slot>
-                </b-tab>
-            </div>
-        </b-tabs>
+          <div>Platzhalter
+          </div>
       </EmsGrid>
     </div>
 </template>
-
 <script>
 import EmsChapter from '@/components/ems/EmsChapter.vue'
 import EmsGrid from '@/components/ems/EmsGrid.vue'
@@ -52,7 +46,7 @@ export default {
   },
   created () {
     this.submodels = [
-      { id: 1, name: 'Platzhalter', link: '' }
+      { id: 1, name: 'Kompetenz', link: '/competence/competence' }
     ]
     this.emsChapter = { name: 'Kompetenz und Bewusstsein', link: '/competence' }
   }

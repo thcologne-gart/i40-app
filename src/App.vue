@@ -10,6 +10,7 @@
 // @ is an alias to /src
 import TopHeader from '@/components/general/TopHeader.vue'
 import Footer from '@/components/general/Footer.vue'
+
 export default {
   name: 'App',
   components: { TopHeader, Footer },
@@ -169,6 +170,15 @@ body {
   padding-bottom: 0px;
 }
 
+#source-group-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0a322b;
+  font-weight: 500;
+  font-size: 22px;
+}
+
 #edit-button {
   margin-bottom: 10px;
 }
@@ -182,4 +192,5 @@ body {
 #custom-tab-items {
     background-color: transparent !important;
 }
+
 </style>

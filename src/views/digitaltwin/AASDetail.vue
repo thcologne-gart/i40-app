@@ -7,6 +7,11 @@
                 <b-link id="repo-link" :href="aas.submodels[0].submodelElements[0].value" target="_blank">{{ aas.assetAdministrationShells[0].idShort }}</b-link>
                 <h6>{{ aas.assets[0].idShort }}</h6>
                 <hr>
+                <h5>KPIs</h5>
+                  <router-link :to = "{ name: 'KPI overview' , params: { aas: aas, aasId: aasId, aasInfo: aasInfo }}">
+                    <v-btn variant="outline-secondary"></v-btn>
+                  </router-link>
+                <hr>
                 <h5>Submodels</h5>
                 <div v-for="submodel in aasInfo" :key="submodel.submodelName">
                     <v-btn v-b-toggle="submodel.submodelName" id = "submodel-button" variant="outline-secondary">{{ submodel.submodelName }}</v-btn>

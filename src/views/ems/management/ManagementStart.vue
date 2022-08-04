@@ -22,8 +22,8 @@ export default {
   components: { EmsChapter, EmsGrid },
   created () {
     this.submodels = [
-      { id: 1, name: 'Operation', link: '' },
-      { id: 2, name: 'Management', link: '' }
+      { id: 1, name: 'Operation', link: 'management-start/operation' },
+      { id: 2, name: 'Management', link: '/management-start/management' }
     ]
     this.emsChapter = { name: 'Management', link: '/management-start' }
   }

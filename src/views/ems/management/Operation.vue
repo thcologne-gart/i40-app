@@ -26,6 +26,7 @@ import EmsChapter from '@/components/ems/EmsChapter.vue'
 import EmsGrid from '@/components/ems/EmsGrid.vue'
 
 export default {
+  name: 'EnergeticEvaluation',
   components: { SubmodelHeader, EmsChapter, EmsGrid },
   data () {
     return {
@@ -77,9 +78,10 @@ export default {
   },
   created () {
     this.submodels = [
-      { id: 1, name: 'Ziele', link: '/goals-start/energy-goals' }
+      { id: 1, name: 'Operation', link: '/management-start/operation' },
+      { id: 2, name: 'Management', link: '/management-start/management' }
     ]
-    this.emsChapter = { name: 'Energieziele', link: '/goals-start' }
+    this.emsChapter = { name: 'Management', link: '/management-start' }
   }
 }
 </script>

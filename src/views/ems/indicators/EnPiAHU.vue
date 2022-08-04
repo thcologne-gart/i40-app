@@ -6,12 +6,18 @@
                 <div v-if="site === site2">
                     <SubmodelHeader :site ="site2" :submodelName="submodelName" :numberOfBuildings="numberOfBuildings">
                         <template v-slot:building="{ building }">
-                            <b-card class="shadow p-3 mb-5 bg-white rounded" style="width: 100%;" :title="submodelName">
+                          <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
+                            <v-card-title id="card-title">{{ submodelName }}</v-card-title>
+                            <v-row>
+                              <EnPis :submodelId ="submodelId" :site="site" :building="building" :buildings="buildings" />
+                            </v-row>
+                            <!-- <b-card class="shadow p-3 mb-5 bg-white rounded" style="width: 100%;" :title="submodelName">
                                 <hr>
                                 <b-row>
                                     <EnPis :submodelId ="submodelId" :site="site" :building="building" :buildings="buildings" />
                                 </b-row>
-                            </b-card>
+                            </b-card> -->
+                          </v-card>
                         </template>
                     </SubmodelHeader>
                 </div>

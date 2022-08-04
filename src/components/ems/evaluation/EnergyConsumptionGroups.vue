@@ -1,6 +1,37 @@
 <template>
     <div>
-        <b-tabs content-class="mt-3" id ="source-groups-tabs">
+      <v-sheet>
+        <v-tabs center-active v-model="tab" background-color="grey lighten-2" slider-color="#FFAC1C" color="#0a322b">
+          <div v-for="element in allEnergyTypesWithGroup" :key="element.elementCollectionId">
+            <v-tab class ="pa-4" v-if="element.site === site && building === element.building">
+              {{ element.group.toString() }}
+            </v-tab>
+          </div>
+        </v-tabs>
+        <v-tabs-items v-model="tab" id="custom-tab-items">
+          <div v-for="element in allEnergyTypesWithGroup" :key="element.elementCollectionId">
+              <v-tab-item v-if="element.site === site && building === element.building">
+                <EnergyConsumptionBuilding :energySources="energySources" :building="building" :energySourceGroup="element" :heatingComponents="heatingComponents" :airComponents="airComponents"/>
+              </v-tab-item>
+          </div>
+        </v-tabs-items>
+      </v-sheet>
+
+      <!-- <v-sheet elevation="2">
+        <v-tabs center-active v-model="tab" background-color="grey lighten-2" slider-color="#FFAC1C" color="#0a322b">
+          <div v-for="element in allEnergyTypesWithGroup" :key="element.elementCollectionId">
+            <v-tab v-if="element.site === site && building === element.building">{{ element.group.toString() }}</v-tab>
+          </div>
+        </v-tabs>
+      </v-sheet>
+      <v-tabs-items v-model="tab" id="custom-tab-items">
+        <div v-for="element in allEnergyTypesWithGroup" :key="element.elementCollectionId">
+          <v-tab-item v-if="element.site === site && building === element.building">
+            <EnergyConsumptionBuilding :energySources="energySources" :building="building" :energySourceGroup="element" :heatingComponents="heatingComponents" :airComponents="airComponents" />
+          </v-tab-item>
+        </div>
+      </v-tabs-items> -->
+        <!-- <b-tabs content-class="mt-3" id ="source-groups-tabs">
             <div v-for="element in allEnergyTypesWithGroup" :key="element.elementCollectionId">
                 <div v-if="element.site === site && building === element.building">
                     <b-tab v-bind:title="element.group.toString()">
@@ -8,7 +39,7 @@
                     </b-tab>
                 </div>
             </div>
-        </b-tabs>
+        </b-tabs> -->
     </div>
 </template>
 
@@ -18,7 +49,8 @@ import EnergyConsumptionBuilding from '@/components/ems/evaluation/EnergyConsump
 export default {
   data () {
     return {
-      allEnergyTypesWithGroup: ''
+      allEnergyTypesWithGroup: '',
+      tab: null
     }
   },
   components: { EnergyConsumptionBuilding },

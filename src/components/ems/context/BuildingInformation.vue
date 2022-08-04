@@ -10,7 +10,7 @@
                 <!-- <v-col><h5>Löschen</h5></v-col>//-->
             </v-row>
             <div v-for="item in buildings" :key="item[1].value">
-                <div v-if="item[2].value === site[4].value && item[3].value === building " >
+                <div v-if="item[2].value === site && item[3].value === building " >
                     <div v-for="information in item" :key="information.idShort">
                         <v-row id = "body">
                             <v-col>{{ information.idShort }}</v-col>
@@ -29,7 +29,7 @@
 import EditBuildingInformation from '@/components/ems/context/EditBuildingInformation.vue'
 export default {
   props: {
-    site: Array,
+    site: Number,
     building: Number
   },
   components: { EditBuildingInformation },

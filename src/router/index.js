@@ -68,6 +68,12 @@ const routes = [
     props: true
   },
   {
+    path: '/digitaltwinsoverview/kpioverview',
+    name: 'KPI overview',
+    component: () => import('../views/digitaltwin/KPIOverview.vue'),
+    props: true
+  },
+  {
     path: '/signin',
     name: 'Sign In',
     component: () => import('../views/SignIn.vue')
@@ -88,9 +94,24 @@ const routes = [
     component: () => import('../views/ems/management/ManagementStart.vue')
   },
   {
-    path: '/ressources',
+    path: '/management-start/operation',
+    name: 'Management Operation',
+    component: () => import('../views/ems/management/Operation.vue')
+  },
+  {
+    path: '/management-start/management',
+    name: 'Management Management',
+    component: () => import('../views/ems/management/ManagementSubmodel.vue')
+  },
+  {
+    path: '/ressources-start/agents',
     name: 'Ressourcen',
-    component: () => import('../views/ems/ressources/Ressources.vue')
+    component: () => import('../views/ems/ressources/Agents.vue')
+  },
+  {
+    path: '/ressources-start',
+    name: 'Ressourcen',
+    component: () => import('../views/ems/ressources/RessourcesStart.vue')
   },
   {
     path: '/ressources-start',
@@ -155,9 +176,9 @@ const routes = [
     component: () => import('../views/ems/evaluation/GasBoiler.vue')
   },
   {
-    path: '/indicators-start/heating',
+    path: '/indicators-start/enpis',
     name: 'EnPi Heating',
-    component: () => import('../views/ems/indicators/EnPiHeating.vue')
+    component: () => import('../views/ems/indicators/EnPiOverview.vue')
   },
   {
     path: '/indicators-start/air',
@@ -185,7 +206,7 @@ const routes = [
     component: () => import('../views/ems/context/Buildings.vue')
   },
   {
-    path: '/energy-goals',
+    path: '/goals-start/energy-goals',
     name: 'Energieziele',
     component: () => import('../views/ems/goals/EnergyGoals.vue')
   },
@@ -200,9 +221,19 @@ const routes = [
     component: () => import('../views/ems/competence/Competence.vue')
   },
   {
+    path: '/competence/competence',
+    name: 'Kompetenz Kompetenz',
+    component: () => import('../views/ems/competence/CompetenceSubmodel.vue')
+  },
+  {
     path: '/operation',
     name: 'Operation',
     component: () => import('../views/ems/operation/Operation.vue')
+  },
+  {
+    path: '/operation/operation',
+    name: 'Operation Operation',
+    component: () => import('../views/ems/operation/OperationSubmodel.vue')
   },
   {
     path: '/buying',
@@ -210,9 +241,19 @@ const routes = [
     component: () => import('../views/ems/buying/Buying.vue')
   },
   {
+    path: '/buying/buying',
+    name: 'Buying Buying',
+    component: () => import('../views/ems/buying/BuyingSubmodel.vue')
+  },
+  {
     path: '/communication',
     name: 'Communication',
     component: () => import('../views/ems/communication/Communication.vue')
+  },
+  {
+    path: '/communication/communication',
+    name: 'Communication Communication',
+    component: () => import('../views/ems/communication/CommunicationSubmodel.vue')
   },
   {
     path: '/analysis',
@@ -220,9 +261,19 @@ const routes = [
     component: () => import('../views/ems/analysis/Analysis.vue')
   },
   {
+    path: '/analysis/measurement',
+    name: 'Messung',
+    component: () => import('../views/ems/analysis/Measurement.vue')
+  },
+  {
     path: '/optimization',
     name: 'Optimization',
     component: () => import('../views/ems/optimization/Optimization.vue')
+  },
+  {
+    path: '/optimization/optimization',
+    name: 'Optimization Optimization',
+    component: () => import('../views/ems/optimization/OptimizationSubmodel.vue')
   }
 ]
 

@@ -77,9 +77,9 @@ export default {
   },
   created () {
     this.submodels = [
-      { id: 1, name: 'Ziele', link: '/goals-start/energy-goals' }
+      { id: 1, name: 'Optimierung', link: '/optimization/optimization' }
     ]
-    this.emsChapter = { name: 'Energieziele', link: '/goals-start' }
+    this.emsChapter = { name: 'Optimierung', link: '/optimization' }
   }
 }
 </script>

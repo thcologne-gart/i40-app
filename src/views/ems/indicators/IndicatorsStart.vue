@@ -22,7 +22,7 @@ export default {
   components: { EmsChapter, EmsGrid },
   created () {
     this.submodels = [
-      { id: 1, name: 'EnPis', link: '/indicators-start/heating' }
+      { id: 1, name: 'EnPis', link: '/indicators-start/enpis' }
     ]
     this.emsChapter = { name: 'Energieleistungskennzahlen', link: '/indicators-start' }
   }
