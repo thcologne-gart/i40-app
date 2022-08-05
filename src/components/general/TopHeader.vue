@@ -31,6 +31,7 @@
                         {{ item.title }}
                     </v-list-item> -->
                     <v-list-item v-if= "userIsAuthenticated" @click="onLogout" to="/signin">Logout</v-list-item>
+                    <v-list-item v-else  to="/signin">Sign In</v-list-item>
                 </v-list>
             </v-menu>
             </v-app-bar>

@@ -1,7 +1,12 @@
 <template>
   <v-app>
-    <TopHeader/>
+    <div v-if="isSignUp">
       <router-view />
+    </div>
+    <div v-else>
+      <TopHeader/>
+        <router-view />
+    </div>
     <Footer/>
   </v-app>
 </template>
@@ -25,6 +30,9 @@ export default {
         console.log(i)
       }
       return this.submodels
+    },
+    isSignUp () {
+      return this.$route.name === 'Sign Up'
     }
   }
   /*

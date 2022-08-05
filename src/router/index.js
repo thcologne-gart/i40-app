@@ -14,7 +14,8 @@ const routes = [
   {
     path: '/home',
     name: 'Start',
-    component: () => import('../views/Home.vue')
+    component: () => import('../views/Home.vue'),
+    beforeEnter: AuthGuard
   },
   {
     path: '/performance',
@@ -59,7 +60,8 @@ const routes = [
   {
     path: '/digitaltwins',
     name: 'Digital Twins',
-    component: () => import('../views/digitaltwin/DTStart.vue')
+    component: () => import('../views/digitaltwin/DTStart.vue'),
+    beforeEnter: AuthGuard
   },
   {
     path: '/digitaltwinsoverview',
