@@ -41,6 +41,12 @@ const routes = [
     beforeEnter: AuthGuard
   },
   {
+    path: '/general',
+    name: 'General Infos Start',
+    component: () => import('../views/general/GeneralInfosStart.vue'),
+    beforeEnter: AuthGuard
+  },
+  {
     path: '/ems',
     name: 'Energiemanagement',
     component: () => import('../views/ems/EmsStart.vue')

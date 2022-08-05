@@ -65,10 +65,11 @@ export default {
     */
     solutions () {
       const solutions = [
-        { icon: 'Mathis', title: 'Digital Twins', link: '/digitaltwins' },
-        { icon: '', title: 'Building Performance', link: '/buildingperformance' },
-        { icon: '', title: 'Energiemanagement', link: '/emsstart' },
-        { icon: '', title: 'Performance Monitoring', link: '/performance' }
+        { icon: '', title: 'Allgemeine Infos', link: '/general' },
+        { icon: '', title: 'Digital Twins', link: '/digitaltwins' },
+        // { icon: '', title: 'Building Performance', link: '/buildingperformance' },
+        { icon: '', title: 'Energiemanagement', link: '/emsstart' }
+        // { icon: '', title: 'Performance Monitoring', link: '/performance' }
       ]
       return solutions
     },
@@ -80,9 +81,10 @@ export default {
       if (this.userIsAuthenticated) {
         menuItems = [
           { icon: '', title: 'Home', link: '/home' },
-          { icon: '', title: 'Performance Monitoring', link: '/performance' },
+          { icon: '', title: 'Allgemeine Infos', link: '/general' },
+          // { icon: '', title: 'Performance Monitoring', link: '/performance' },
           { icon: '', title: 'Energiemanagement', link: '/emsstart' },
-          { icon: '', title: 'Building Performance', link: '/buildingperformance' },
+          // { icon: '', title: 'Building Performance', link: '/buildingperformance' },
           { icon: '', title: 'Digital Twins', link: '/digitaltwins' }
           // { icon: '', title: 'CaBo', link: '/cabo' }
         ]
