@@ -155,7 +155,7 @@ body {
 }
 #navigation {
     padding:0;
-    min-height: calc(100vh - 180px);
+    min-height: calc(100vh - 110px);
 }
 .card {
   margin-inline:5%;
@@ -199,6 +199,9 @@ body {
 
 #custom-tab-items {
     background-color: transparent !important;
+}
+.border {
+  border: 2px dashed orange;
 }
 
 </style>

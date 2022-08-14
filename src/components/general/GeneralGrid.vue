@@ -1,59 +1,31 @@
 <template>
-    <!--
-    <GetSubmodels :submodelsJson ="submodelsJson"/>
-    //-->
     <v-row id ="row-chapter">
         <v-col id ="navigation" md = "2">
           <v-card class="mx-auto" height="100%" tile>
-            <!-- <v-navigation-drawer width="100%">
-              <v-list>
-                <v-list-item link :key="site[1].value" v-for="site in sites">
-                  <template v-slot:activator>
-                    <v-list-item-content>
-                        <SitesLeftGrid :site="site" />
-                    </v-list-item-content>
-                  </template>
-                </v-list-item>
-              </v-list>
-            </v-navigation-drawer> -->
-            <v-navigation-drawer>
+            <v-navigation-drawer color="grey lighten-5">
+                <!-- Change active class, siehe border -->
                 <v-list-group
                 v-for="site in sites"
                 :key="site[1].value"
                 :prepend-icon="pin"
                 no-action
+                active-class="border"
                 >
                 <template v-slot:activator>
                     <v-list-item-content>
                     <v-list-item-title v-text="site[1].value"></v-list-item-title>
                     </v-list-item-content>
                 </template>
-                    <v-list-item
-                        v-for="building in buildings"
-                        :key="building.submodelId"
-                    >
-                        <div v-if="building.numberOfSite === site[4].value">
+                    <div v-for="building in buildings" :key="building.submodelId">
+                        <v-list-item link v-if="building.numberOfSite === site[4].value">
                             <v-list-item-content>
                                 <v-list-item-title v-text="building.buildingDesignation"></v-list-item-title>
                             </v-list-item-content>
-                        </div>
-                    </v-list-item>
+                        </v-list-item>
+                    </div>
                 </v-list-group>
             </v-navigation-drawer>
-
           </v-card>
-            <!-- <b-navbar toggleable="lg">
-                <b-navbar-toggle target="submodel-collapse" class="row"></b-navbar-toggle>
-                <b-collapse id="submodel-collapse" is-nav>
-                    <b-navbar-nav>
-                        <div>
-                            <b-nav-item :key="submodel.id" v-for="submodel in submodels">
-                                <SubmodelsNameLeft :submodel="submodel" />
-                            </b-nav-item>
-                        </div>
-                    </b-navbar-nav>
-                </b-collapse>
-            </b-navbar> -->
         </v-col>
         <v-col id = "content" md = "10">
             <slot>
