@@ -1,6 +1,6 @@
 <template>
     <div>
-      <GeneralGrid :sites="sites">
+      <GeneralGrid :sites="sites" :buildings="buildings">
         <div v-if="sites === null">
           <v-tabs center-active v-model="tab" background-color="grey lighten-2" slider-color="#FFAC1C" color="#0a322b">
             <v-tab v-for="site in numberofSites" :key="site">Standort
@@ -33,7 +33,8 @@
           </v-sheet>
           <v-tabs-items v-model="tab" id="custom-tab-items">
             <v-tab-item v-for="site in numberofSites" :key="site">
-              <slot name="site" v-bind:site="site">Platzhalter</slot>
+              <!-- <slot name="site" v-bind:site="site">Platzhalter</slot> -->
+              <slot name="site" v-bind:site="site">{{ buildings }}</slot>
             </v-tab-item>
           </v-tabs-items>
         </div>
@@ -53,6 +54,24 @@ export default {
     }
   },
   computed: {
+    buildings () {
+      // console.log(this.sites)
+      // console.log(this.$store.getters.loadedBuildingInformation)
+      const buildings = this.$store.getters.loadedBuildingInformation
+      console.log(buildings)
+      const buildingsArray = []
+      for (const item in buildings) {
+        buildingsArray.push({
+          numberOfSite: buildings[item][2].value,
+          buildingNumber: buildings[item][3].value,
+          submodelId: buildings[item][4].submodelId,
+          buildingDesignation: buildings[item][1].value
+        })
+      }
+      console.log(buildingsArray)
+      return buildingsArray
+    },
+
     numberofSites () {
       const loadInfos = this.$store.getters.loadedOrganizationInformation
       // console.log(loadInfos)

@@ -28,15 +28,16 @@
                     <v-list-item-title v-text="site[1].value"></v-list-item-title>
                     </v-list-item-content>
                 </template>
-
-                <v-list-item
-                    v-for="building in sites"
-                    :key="building[0].value"
-                >
-                    <v-list-item-content>
-                    <v-list-item-title v-text="building[0].value"></v-list-item-title>
-                    </v-list-item-content>
-                </v-list-item>
+                    <v-list-item
+                        v-for="building in buildings"
+                        :key="building.submodelId"
+                    >
+                        <div v-if="building.numberOfSite === site[4].value">
+                            <v-list-item-content>
+                                <v-list-item-title v-text="building.buildingDesignation"></v-list-item-title>
+                            </v-list-item-content>
+                        </div>
+                    </v-list-item>
                 </v-list-group>
             </v-navigation-drawer>
 
@@ -69,12 +70,13 @@ export default {
   // components: { SubmodelsNameLeft, GetSubmodels },
   // components: { SitesLeftGrid },
   props: {
-    sites: Array
+    sites: Array,
+    buildings: Array
   },
   data () {
     return {
       submodelsJson: [],
-      pin: 'mdi-pin',
+      pin: 'mdi-pin'
       // chapterSections: []
       // submodels: ['Identification', 'TechnicalData', 'Documentation', 'OperationalData'],
       // submodels: [
