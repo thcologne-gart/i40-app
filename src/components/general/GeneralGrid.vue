@@ -14,7 +14,7 @@
                 <template v-slot:activator>
                     <v-list-item @click="chooseSite(site)">
                     <!-- <v-list-item link :to= "{ name: 'General Infos', params: { site: site } }"></v-list-item> -->
-                      <v-list-item-content>
+                      <v-list-item-content @click="chooseSite(site)">
                       <v-list-item-title v-text="site[1].value"></v-list-item-title>
                       </v-list-item-content>
                     </v-list-item>
