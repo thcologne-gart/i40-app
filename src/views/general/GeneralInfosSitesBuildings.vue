@@ -11,17 +11,26 @@
               <slot name="site" v-bind:site="site">Platzhalter</slot>
             </v-tab-item>
           </v-tabs-items> -->
-        <!-- <slot name="site" v-bind:site="site">Platzhalter</slot> -->
-        <!-- <slot>Platzhalter</slot> -->
+        <!-- <div>
+          <slot>
+            Test
+            <InfosCard :site="site"/>
+          </slot>
+        </div> -->
       </GeneralGrid>
     </div>
 </template>
 
 <script>
 import GeneralGrid from '@/components/general/GeneralGrid.vue'
+// import InfosCard from '@/components/general/InfosCard.vue'
 
 export default {
+  // components: { GeneralGrid, InfosCard },
   components: { GeneralGrid },
+  // props: {
+  //   site: Array
+  // },
   data () {
     return {
       linkToInfos: '/generalinfos',

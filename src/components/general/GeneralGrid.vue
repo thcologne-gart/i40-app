@@ -12,12 +12,15 @@
                 active-class="border"
                 >
                 <template v-slot:activator>
-                    <v-list-item-content>
-                    <v-list-item-title v-text="site[1].value"></v-list-item-title>
-                    </v-list-item-content>
+                    <v-list-item @click="chooseSite(site)">
+                    <!-- <v-list-item link :to= "{ name: 'General Infos', params: { site: site } }"></v-list-item> -->
+                      <v-list-item-content>
+                      <v-list-item-title v-text="site[1].value"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
                 </template>
                     <div v-for="building in buildings" :key="building.submodelId">
-                        <v-list-item link v-if="building.numberOfSite === site[4].value">
+                        <v-list-item v-if="building.numberOfSite === site[4].value">
                             <v-list-item-content>
                                 <v-list-item-title v-text="building.buildingDesignation"></v-list-item-title>
                             </v-list-item-content>
@@ -28,27 +31,30 @@
           </v-card>
         </v-col>
         <v-col id = "content" md = "10">
-            <slot>
-            </slot>
+          <div v-if="choosedSite === ''">
+          </div>
+          <div v-else>
+            <InfosCard :site="choosedSite" />
+          </div>
         </v-col>
     </v-row>
 </template>
 
 <script>
-// import SitesLeftGrid from '@/components/general/SitesLeftGrid.vue'
-// import GetSubmodels from '@/components/getSubmodels.vue'
+import InfosCard from '@/components/general/InfosCard.vue'
 
 export default {
-  // components: { SubmodelsNameLeft, GetSubmodels },
-  // components: { SitesLeftGrid },
+  components: { InfosCard },
   props: {
     sites: Array,
-    buildings: Array
+    buildings: Array,
+    linkToInfos: String
   },
   data () {
     return {
       submodelsJson: [],
-      pin: 'mdi-pin'
+      pin: 'mdi-pin',
+      choosedSite: ''
       // chapterSections: []
       // submodels: ['Identification', 'TechnicalData', 'Documentation', 'OperationalData'],
       // submodels: [
@@ -81,6 +87,13 @@ export default {
         console.log(i)
       }
       return this.submodels
+    }
+  },
+  methods: {
+    chooseSite (site) {
+      console.log(this.choosedSite)
+      this.choosedSite = site
+      console.log(this.choosedSite)
     }
   }
   /*

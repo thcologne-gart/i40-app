@@ -66,7 +66,7 @@ export default {
     */
     solutions () {
       const solutions = [
-        { icon: '', title: 'Allgemeine Infos', link: '/general' },
+        { icon: '', title: 'Allgemeine Infos', link: '/generalstart' },
         { icon: '', title: 'Digital Twins', link: '/digitaltwins' },
         // { icon: '', title: 'Building Performance', link: '/buildingperformance' },
         { icon: '', title: 'Energiemanagement', link: '/emsstart' }
@@ -82,7 +82,7 @@ export default {
       if (this.userIsAuthenticated) {
         menuItems = [
           { icon: '', title: 'Home', link: '/home' },
-          { icon: '', title: 'Allgemeine Infos', link: '/general' },
+          { icon: '', title: 'Allgemeine Infos', link: '/generalstart' },
           // { icon: '', title: 'Performance Monitoring', link: '/performance' },
           { icon: '', title: 'Energiemanagement', link: '/emsstart' },
           // { icon: '', title: 'Building Performance', link: '/buildingperformance' },

@@ -201,7 +201,7 @@ body {
     background-color: transparent !important;
 }
 .border {
-  border: 2px dashed orange;
+  color: #5D3FD3;
 }
 
 </style>
