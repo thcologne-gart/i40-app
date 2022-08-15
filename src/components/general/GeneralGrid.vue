@@ -20,7 +20,7 @@
                     </v-list-item>
                 </template>
                     <div v-for="building in buildings" :key="building.submodelId">
-                        <v-list-item v-if="building.numberOfSite === site[4].value">
+                        <v-list-item v-if="building.numberOfSite === site[4].value" @click="chooseBuilding(building)">
                             <v-list-item-content>
                                 <v-list-item-title v-text="building.buildingDesignation"></v-list-item-title>
                             </v-list-item-content>
@@ -31,20 +31,24 @@
           </v-card>
         </v-col>
         <v-col id = "content" md = "10">
-          <div v-if="choosedSite === ''">
+          <div v-if="choosedSite === '' & choosedBuilding === ''">
           </div>
-          <div v-else>
-            <InfosCard :site="choosedSite" />
+          <div v-else-if="choosedSite !== '' & choosedBuilding === ''">
+            <InfosCardSite :site="choosedSite" />
+          </div>
+          <div v-else-if="choosedBuilding !== '' & choosedSite === ''">
+            <InfosCardBuilding :building="choosedBuilding" />
           </div>
         </v-col>
     </v-row>
 </template>
 
 <script>
-import InfosCard from '@/components/general/InfosCard.vue'
+import InfosCardSite from '@/components/general/InfosCardSite.vue'
+import InfosCardBuilding from '@/components/general/InfosCardBuilding.vue'
 
 export default {
-  components: { InfosCard },
+  components: { InfosCardSite, InfosCardBuilding },
   props: {
     sites: Array,
     buildings: Array,
@@ -54,7 +58,8 @@ export default {
     return {
       submodelsJson: [],
       pin: 'mdi-pin',
-      choosedSite: ''
+      choosedSite: '',
+      choosedBuilding: ''
       // chapterSections: []
       // submodels: ['Identification', 'TechnicalData', 'Documentation', 'OperationalData'],
       // submodels: [
@@ -93,7 +98,14 @@ export default {
     chooseSite (site) {
       console.log(this.choosedSite)
       this.choosedSite = site
+      this.choosedBuilding = ''
       console.log(this.choosedSite)
+    },
+    chooseBuilding (building) {
+      // console.log(this.choosedSite)
+      this.choosedBuilding = building
+      this.choosedSite = ''
+      // console.log(this.choosedSite)
     }
   }
   /*
