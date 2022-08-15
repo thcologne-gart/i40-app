@@ -18,6 +18,11 @@ const routes = [
     beforeEnter: AuthGuard
   },
   {
+    path: '/register',
+    name: 'Register',
+    component: () => import('../views/RegisterSites.vue')
+  },
+  {
     path: '/performance',
     name: 'Performance',
     // route level code-splitting
