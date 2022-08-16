@@ -695,6 +695,18 @@ export default new Vuex.Store({
       return update(ref(database, 'submodels/' + payload.id + '/payload/submodelElements'), updateObj)
     },
 
+    updateNumberOfBuildingsInSite ({ commit }, payload) {
+      const database = getDatabase()
+      // const updateObj = payload.numberOfSites
+      // console.log(updateObj)
+      // updateObj.value = payload.organizationName
+      const updateObj = {}
+      updateObj['/3/value'] = payload.numberOfBuildings
+      console.log(updateObj)
+      console.log('submodels/' + payload.id + '/payload/submodelElements' + updateObj)
+      return update(ref(database, 'submodels/' + payload.id + '/payload/submodelElements'), updateObj)
+    },
+
     updateSiteInformation ({ commit }, payload) {
       const database = getDatabase()
       const updateObj = {}

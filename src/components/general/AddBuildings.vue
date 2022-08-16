@@ -8,62 +8,16 @@
         <v-card id ="cardSiteForm" color="grey lighten-3" max-width="90%" class="mx-auto my-6" min-height="200px">
             <div v-if="numberOfSites >= 1">
                 <div v-for="site in sites" :key="site[2].value">
-                    <ShowSiteInformation :site="site" />
+                    <AddBuildingAndShowInformation :site="site" />
                 </div>
             </div>
-            <v-dialog transition="dialog-bottom-transition" max-width="600">
-                <template v-slot:activator="{ on, attrs }">
-                    <v-btn class="mx-auto my-6" v-bind="attrs" v-on="on" color="outline-secondary" id= "buttons-card">
-                        <v-icon>
-                            mdi-plus
-                        </v-icon>
-                    </v-btn>
-                </template>
-                <template v-slot:default="dialog">
-                    <v-card>
-                        <v-toolbar
-                        color="#5D3FD3"
-                        dark
-                        >Standort hinzufügen</v-toolbar>
-                        <v-container>
-                            <v-form>
-
-                                <v-select :items="countries" v-model="form.country" label= 'Standort(Land)' />
-                                <v-text-field
-                                id="city"
-                                v-model="form.city"
-                                label="Standort (Stadt)"
-                                required
-                                ></v-text-field>
-
-                                <v-text-field
-                                id="zipcode"
-                                v-model.number="form.zipcode"
-                                label="Standort (Postleitzahl)"
-                                required
-                                ></v-text-field>
-                                <!-- <v-text-field
-                                id="number-buildings"
-                                v-model.number="form.numberBuildings"
-                                label="Standort (Anzahl der Gebäude)"
-                                required
-                                ></v-text-field> -->
-                            </v-form>
-                        </v-container>
-                        <v-card-actions class="justify-end">
-                        <v-btn id="buttons-card" variant="outline-secondary" @click="dialog.value = false; onCreateSiteAas()">Submit</v-btn>
-                        <v-btn id="buttons-card" variant="outline-secondary" @click="dialog.value = false; onReset()">Reset</v-btn>
-                        </v-card-actions>
-                    </v-card>
-                </template>
-            </v-dialog>
         </v-card>
     </v-col>
   </v-row>
 </template>
 
 <script>
-import ShowSiteInformation from '@/components/general/ShowSiteInformation.vue'
+import AddBuildingAndShowInformation from '@/components/general/AddBuildingAndShowInformation.vue'
 
 export default {
   data () {
@@ -78,7 +32,7 @@ export default {
       countries: ['Deutschland', 'Österreich', 'Schweiz', 'Frankreich', 'Italien', 'England']
     }
   },
-  components: { ShowSiteInformation },
+  components: { AddBuildingAndShowInformation },
   // props: {
   // site: Number
   // },
@@ -89,6 +43,11 @@ export default {
     organization () {
       // console.log(this.$store.getters.loadedOrganizationInformation)
       return this.$store.getters.loadedOrganizationInformation
+    },
+    buildings () {
+      // console.log(this.building)
+      console.log(this.$store.getters.loadedBuildingInformation)
+      return this.$store.getters.loadedBuildingInformation
     },
     sites () {
       // console.log(this.$store.getters.loadedSiteInformation)
@@ -274,30 +233,30 @@ export default {
           },
           kind: 'Instance'
         },
-        {
-          value: 0,
-          semanticId: {
-            keys: [{
-              type: 'GlobalReference',
-              local: true,
-              value: 'ems/site/context-semantics/numberBuildings',
-              index: 0,
-              idType: 'IRI'
-            }]
-          },
-          constraints: [],
-          idShort: 'NumberOfBuildings',
-          category: 'PARAMETER',
-          modelType: {
-            name: 'Property'
-          },
-          valuetype: {
-            dataObjectType: {
-              name: 'INTEGER'
-            }
-          },
-          kind: 'Instance'
-        },
+        // {
+        //   value: this.form.numberBuildings,
+        //   semanticId: {
+        //     keys: [{
+        //       type: 'GlobalReference',
+        //       local: true,
+        //       value: 'ems/site/context-semantics/numberBuildings',
+        //       index: 0,
+        //       idType: 'IRI'
+        //     }]
+        //   },
+        //   constraints: [],
+        //   idShort: 'NumberOfBuildings',
+        //   category: 'PARAMETER',
+        //   modelType: {
+        //     name: 'Property'
+        //   },
+        //   valuetype: {
+        //     dataObjectType: {
+        //       name: 'INTEGER'
+        //     }
+        //   },
+        //   kind: 'Instance'
+        // },
         {
           value: thisSiteNumber,
           semanticId: {

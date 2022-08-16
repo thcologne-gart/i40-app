@@ -75,6 +75,9 @@
 
         <v-stepper-content step="2">
             <AddSites />
+            <v-btn @click="e1 = 1" color="outline-secondary" id= "buttons-card">
+            Back
+            </v-btn>
               <v-btn v-if="sites != null"
               color="outline-secondary"
               @click="e1 = 3"
@@ -83,26 +86,21 @@
               Continue
               </v-btn>
 
-            <v-btn @click="e1 = 1" color="outline-secondary" id= "buttons-card">
-            Back
-            </v-btn>
         </v-stepper-content>
 
         <v-stepper-content step="3">
-            <v-card
-            color="grey lighten-3" class="mx-auto my-6" max-width="75%" height="200px"
-            ></v-card>
-            <v-btn
-            color="outline-secondary"
-            @click="e1 = 1"
-            id= "buttons-card"
-            >
-            Continue
-            </v-btn>
-
+            <AddBuildings />
             <v-btn id= "buttons-card" color="outline-secondary" @click="e1 = 2">
             Back
             </v-btn>
+              <v-btn v-if="sites != null"
+              color="outline-secondary"
+              @click="e1 = 1"
+              id= "buttons-card"
+              >
+              Continue
+              </v-btn>
+
         </v-stepper-content>
         </v-stepper-items>
     </v-stepper>
@@ -112,6 +110,7 @@
 <script>
 import AddOrgaInformation from '@/components/general/AddOrgaInformation.vue'
 import AddSites from '@/components/general/AddSites.vue'
+import AddBuildings from '@/components/general/AddBuildings.vue'
 import EditOrganizationInformation from '@/components/ems/context/EditOrganizationInformation.vue'
 
 export default {
@@ -120,7 +119,7 @@ export default {
       e1: 1
     }
   },
-  components: { AddOrgaInformation, EditOrganizationInformation, AddSites },
+  components: { AddOrgaInformation, EditOrganizationInformation, AddSites, AddBuildings },
   computed: {
     organization () {
       // console.log(this.$store.getters.loadedOrganizationInformation)
