@@ -1,6 +1,50 @@
 <template>
     <div>
-        <v-card-actions>
+        <v-card-title id="building-register-card-title">{{ site[1].value }}</v-card-title>
+        <div v-for="building in buildings" :key="building[1].value">
+            <div v-if="building[2].value == site[4].value">
+                <InformationFromBuildings :site="site" :building="building"/>
+            </div>
+        </div>
+        <v-dialog transition="dialog-bottom-transition" max-width="600">
+            <template v-slot:activator="{ on, attrs }">
+                <v-btn class="mx-auto my-6" v-bind="attrs" v-on="on" color="outline-secondary" id= "buttons-card">
+                    <v-icon>
+                        mdi-plus
+                    </v-icon>
+                </v-btn>
+            </template>
+            <template v-slot:default="dialog">
+                <v-card>
+                    <v-toolbar
+                    color="#5D3FD3"
+                    dark
+                    >Gebäude hinzufügen</v-toolbar>
+                    <v-container>
+                        <v-form>
+                            <v-text-field
+                            id="designation"
+                            v-model="form.designation"
+                            label="Bezeichnung des Gebäudes"
+                            required
+                            ></v-text-field>
+                            <v-text-field
+                            id="street"
+                            v-model="form.street"
+                            label="Straße und Hausnummer"
+                            required
+                            ></v-text-field>
+                        </v-form>
+                    </v-container>
+                    <v-card-actions class="justify-end">
+                    <v-btn id="buttons-card" variant="outline-secondary" @click="dialog.value = false; onCreateBuildingAas()">Submit</v-btn>
+                    <v-btn id="buttons-card" variant="outline-secondary" @click="dialog.value = false; onReset()">Reset</v-btn>
+                    </v-card-actions>
+                </v-card>
+            </template>
+        </v-dialog>
+        <v-divider></v-divider>
+        <!-- <v-card-actions>
             <v-btn
                 color="#5D3FD3"
                 text
@@ -22,7 +66,7 @@
         <v-expand-transition>
             <div v-show="show">
                 <v-divider></v-divider>
-                <InformationFromSites :site="site"/>
+                <InformationFromBuildings :site="site"/>
                 <v-dialog transition="dialog-bottom-transition" max-width="600">
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn class="mx-auto my-6" v-bind="attrs" v-on="on" color="outline-secondary" id= "buttons-card">
@@ -61,12 +105,12 @@
                     </template>
                 </v-dialog>
             </div>
-        </v-expand-transition>
+        </v-expand-transition> -->
     </div>
 </template>
 
 <script>
-import InformationFromSites from '@/components/general/InformationFromSites.vue'
+import InformationFromBuildings from '@/components/general/InformationFromBuildings.vue'
 
 export default {
   data: () => ({
@@ -80,7 +124,15 @@ export default {
     site: Array
   },
   components: {
-    InformationFromSites
+    InformationFromBuildings
+  },
+  computed: {
+    buildings () {
+      // console.log(this.building)
+      console.log(this.$store.getters.loadedBuildingInformation)
+      console.log(this.site)
+      return this.$store.getters.loadedBuildingInformation
+    }
   },
   methods: {
     onCreateBuildingAas (event) {
@@ -270,3 +322,11 @@ export default {
   }
 }
 </script>
+
+<style>
+#building-register-card-title {
+    color: #5D3FD3;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+</style>
