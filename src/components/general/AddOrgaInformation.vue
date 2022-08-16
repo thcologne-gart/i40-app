@@ -236,31 +236,31 @@ export default {
             }
           },
           kind: 'Instance'
+        },
+        {
+          value: 0,
+          semanticId: {
+            keys: [{
+              type: 'GlobalReference',
+              local: true,
+              value: 'ems/context-semantics/numberOfSites',
+              index: 0,
+              idType: 'IRI'
+            }]
+          },
+          constraints: [],
+          idShort: 'NumberOfSites',
+          category: 'PARAMETER',
+          modelType: {
+            name: 'Property'
+          },
+          valuetype: {
+            dataObjectType: {
+              name: 'INTEGER'
+            }
+          },
+          kind: 'Instance'
         }
-        // {
-        //   value: this.form.numberOfSites,
-        //   semanticId: {
-        //     keys: [{
-        //       type: 'GlobalReference',
-        //       local: true,
-        //       value: 'ems/context-semantics/numberOfSites',
-        //       index: 0,
-        //       idType: 'IRI'
-        //     }]
-        //   },
-        //   constraints: [],
-        //   idShort: 'NumberOfSites',
-        //   category: 'PARAMETER',
-        //   modelType: {
-        //     name: 'Property'
-        //   },
-        //   valuetype: {
-        //     dataObjectType: {
-        //       name: 'INTEGER'
-        //     }
-        //   },
-        //   kind: 'Instance'
-        // }
       ]
       const newConceptDescriptionON = {}
       newConceptDescriptionON.identification = {

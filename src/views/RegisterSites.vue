@@ -68,9 +68,7 @@
         </v-stepper-content>
 
         <v-stepper-content step="2">
-            <v-card
-            color="grey lighten-3" class="mx-auto my-6" max-width="75%" height="200px"
-            ></v-card>
+            <AddSites />
             <v-btn
             color="outline-secondary"
             @click="e1 = 3"
@@ -107,6 +105,7 @@
 
 <script>
 import AddOrgaInformation from '@/components/general/AddOrgaInformation.vue'
+import AddSites from '@/components/general/AddSites.vue'
 import EditOrganizationInformation from '@/components/ems/context/EditOrganizationInformation.vue'
 
 export default {
@@ -115,7 +114,7 @@ export default {
       e1: 1
     }
   },
-  components: { AddOrgaInformation, EditOrganizationInformation },
+  components: { AddOrgaInformation, EditOrganizationInformation, AddSites },
   computed: {
     organization () {
       // console.log(this.$store.getters.loadedOrganizationInformation)

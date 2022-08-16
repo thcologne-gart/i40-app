@@ -457,7 +457,7 @@ export default new Vuex.Store({
         const data = snapshot.val()
         let keySubmodelContext2
         const submodelElements2 = []
-        // console.log(data)
+        console.log(data)
         for (const key in data) {
           if (data[key].payload.semanticId.keys[0].value === 'site/information-semantics') {
             // console.log(data)
@@ -484,7 +484,7 @@ export default new Vuex.Store({
               })
             }
             */
-            // console.log(submodelElements2)
+            console.log(submodelElements2)
             commit('setLoadedSiteInformation', submodelElements2)
           }
         }
@@ -682,6 +682,19 @@ export default new Vuex.Store({
           console.log(error)
         })
     },
+
+    updateNumberOfSites ({ commit }, payload) {
+      const database = getDatabase()
+      // const updateObj = payload.numberOfSites
+      // console.log(updateObj)
+      // updateObj.value = payload.organizationName
+      const updateObj = {}
+      updateObj['/4/value'] = payload.numberOfSites
+      console.log(updateObj)
+      console.log('submodels/' + payload.id + '/payload/submodelElements' + updateObj)
+      return update(ref(database, 'submodels/' + payload.id + '/payload/submodelElements'), updateObj)
+    },
+
     updateSiteInformation ({ commit }, payload) {
       const database = getDatabase()
       const updateObj = {}
