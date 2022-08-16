@@ -34,25 +34,31 @@
               <AddOrgaInformation />
             </div>
             <div v-else-if="organization != null">
+              <v-card-title id="card-title">Unternehmensinformationen</v-card-title>
               <v-card id="cardOrganizationForm" color="grey lighten-3" class="mx-auto my-6" max-width="75%">
-                  <v-card-title id="card-title">Unternehmensinformationen</v-card-title>
-                  <hr>
-                  <div id ="displayOrganizationInformation">
-                      <v-row id="header">
-                          <v-col><h5>Name</h5></v-col>
-                          <v-col><h5>Value</h5></v-col>
-                          <!-- <v-col><h5>Löschen</h5></v-col>//-->
-                      </v-row>
-                      <div v-for="information in organization" :key="information.idShort">
-                          <v-row id = "body">
-                              <v-col>{{ information.idShort }}</v-col>
-                              <v-col>{{ information.value }}</v-col>
-                          </v-row>
-                      </div>
-                      <hr>
-                      <EditOrganizationInformation :organization = organization />
-                  </div>
-
+                  <v-simple-table class="grey lighten-3">
+                    <template v-slot:default>
+                      <thead>
+                        <tr>
+                          <th class="text-left">
+                            Name
+                          </th>
+                          <th class="text-left">
+                            Wert
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr
+                          v-for="information in organization" :key="information.idShort"
+                        >
+                          <td class="text-left">{{ information.idShort }}</td>
+                          <td class="text-left">{{ information.value }}</td>
+                        </tr>
+                      </tbody>
+                    </template>
+                  </v-simple-table>
+                  <EditOrganizationInformation :organization = organization />
               </v-card>
             </div>
             <div v-if="organization != null">
@@ -69,13 +75,13 @@
 
         <v-stepper-content step="2">
             <AddSites />
-            <v-btn
-            color="outline-secondary"
-            @click="e1 = 3"
-            id= "buttons-card"
-            >
-            Continue
-            </v-btn>
+              <v-btn v-if="sites != null"
+              color="outline-secondary"
+              @click="e1 = 3"
+              id= "buttons-card"
+              >
+              Continue
+              </v-btn>
 
             <v-btn @click="e1 = 1" color="outline-secondary" id= "buttons-card">
             Back
@@ -119,6 +125,10 @@ export default {
     organization () {
       // console.log(this.$store.getters.loadedOrganizationInformation)
       return this.$store.getters.loadedOrganizationInformation
+    },
+    sites () {
+      // console.log(this.$store.getters.loadedSiteInformation)
+      return this.$store.getters.loadedSiteInformation
     }
   }
 }

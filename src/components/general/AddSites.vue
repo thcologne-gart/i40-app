@@ -6,6 +6,11 @@
     </v-col>
     <v-col md = "8">
         <v-card id ="cardSiteForm" color="grey lighten-3" max-width="90%" class="mx-auto my-6" min-height="200px">
+            <div v-if="numberOfSites >= 1">
+                <div v-for="site in sites" :key="site[2].value">
+                    <ShowSiteInformation :site="site" />
+                </div>
+            </div>
             <v-dialog transition="dialog-bottom-transition" max-width="600">
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn class="mx-auto my-6" v-bind="attrs" v-on="on" color="outline-secondary" id= "buttons-card">
@@ -17,7 +22,7 @@
                 <template v-slot:default="dialog">
                     <v-card>
                         <v-toolbar
-                        color=#93c572
+                        color="#5D3FD3"
                         dark
                         >Standort hinzufügen</v-toolbar>
                         <v-container>
@@ -52,15 +57,14 @@
                     </v-card>
                 </template>
             </v-dialog>
-            <div v-if="numberOfSites != null">
-            {{ numberOfSites }}
-            </div>
         </v-card>
     </v-col>
   </v-row>
 </template>
 
 <script>
+import ShowSiteInformation from '@/components/general/ShowSiteInformation.vue'
+
 export default {
   data () {
     return {
@@ -74,6 +78,7 @@ export default {
       countries: ['Deutschland', 'Österreich', 'Schweiz', 'Frankreich', 'Italien', 'England']
     }
   },
+  components: { ShowSiteInformation },
   // props: {
   // site: Number
   // },
@@ -84,6 +89,10 @@ export default {
     organization () {
       // console.log(this.$store.getters.loadedOrganizationInformation)
       return this.$store.getters.loadedOrganizationInformation
+    },
+    sites () {
+      // console.log(this.$store.getters.loadedSiteInformation)
+      return this.$store.getters.loadedSiteInformation
     },
     numberOfSites () {
       // let loadInfos = 0
