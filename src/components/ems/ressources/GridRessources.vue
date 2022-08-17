@@ -7,7 +7,6 @@
                 <v-list-group
                 v-for="site in sites"
                 :key="site[1].value"
-                :prepend-icon="pin"
                 no-action
                 active-class="border"
                 >
@@ -20,9 +19,9 @@
                     </v-list-item>
                 </template>
                     <div v-for="building in buildings" :key="building.submodelId">
-                        <v-list-item id="building-grid-title" v-if="building.numberOfSite === site[4].value" @click="chooseBuilding(building)">
-                            <v-list-item-content id="building-grid-title">
-                                <v-list-item-title id="building-grid-title" v-text="building.buildingDesignation"></v-list-item-title>
+                        <v-list-item v-if="building.numberOfSite === site[4].value" @click="chooseBuilding(building)">
+                            <v-list-item-content>
+                                <v-list-item-title v-text="building.buildingDesignation"></v-list-item-title>
                             </v-list-item-content>
                         </v-list-item>
                     </div>
@@ -31,24 +30,25 @@
           </v-card>
         </v-col>
         <v-col id = "content" md = "10">
-          <div v-if="choosedSite === '' & choosedBuilding === ''">
+          <slot></slot>
+          <div v-if="choosedSite === '' & choosedBuilding === ''">Platzhalter
           </div>
           <div v-else-if="choosedSite !== '' & choosedBuilding === ''">
-            <InfosCardSite :site="choosedSite" />
+            <RessourcesSite :site="choosedSite" :submodels="submodels" />
           </div>
           <div v-else-if="choosedBuilding !== '' & choosedSite === ''">
-            <InfosCardBuilding :building="choosedBuilding" />
+            <RessourcesBuilding :building="choosedBuilding" :submodels="submodels" />
           </div>
         </v-col>
     </v-row>
 </template>
 
 <script>
-import InfosCardSite from '@/components/general/InfosCardSite.vue'
-import InfosCardBuilding from '@/components/general/InfosCardBuilding.vue'
+import RessourcesSite from '@/components/ems/ressources/RessourcesSite.vue'
+import RessourcesBuilding from '@/components/ems/ressources/RessourcesBuilding.vue'
 
 export default {
-  components: { InfosCardSite, InfosCardBuilding },
+  components: { RessourcesSite, RessourcesBuilding },
   props: {
     sites: Array,
     buildings: Array,
@@ -57,7 +57,7 @@ export default {
   data () {
     return {
       submodelsJson: [],
-      pin: 'mdi-pin',
+      // pin: 'mdi-pin',
       choosedSite: '',
       choosedBuilding: ''
       // chapterSections: []
@@ -107,6 +107,12 @@ export default {
       this.choosedSite = ''
       // console.log(this.choosedSite)
     }
+  },
+  created () {
+    this.submodels = [
+      { id: 1, name: 'Beauftragte', link: '/ressources-start/agents' }
+    ]
+    this.emsChapter = { name: 'Ressourcen', link: '/ressources-start' }
   }
   /*
   methods: {
@@ -145,8 +151,5 @@ export default {
 }
 .nav-tabs {
     margin-top: 5px;
-}
-#building-grid-title {
-  color: blue !important;
 }
 </style>
