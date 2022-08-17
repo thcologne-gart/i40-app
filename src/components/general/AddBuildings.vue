@@ -361,8 +361,4 @@ export default {
     padding-top: 5px;
     padding-bottom: 5px
 }
-.row {
-    border-bottom-style: solid;
-    border-color: #F2F2F2;
-}
 </style>

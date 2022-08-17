@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-card id="cardOrganizationForm" color="grey lighten-3" class="mx-auto my-6" max-width="75%">
-            <v-card-title id="card-title">Unternehmensinformationen</v-card-title>
+            <!-- <v-card-title id="card-title">Unternehmensinformationen</v-card-title> -->
             <v-form @submit="onCreateEmsAas" @reset="onReset">
               <v-container>
                   <v-text-field
