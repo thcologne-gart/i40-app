@@ -2,7 +2,7 @@
     <v-row id ="row-chapter">
         <v-col id ="navigation" md = "2">
           <v-card class="mx-auto" height="100%" tile>
-            <v-navigation-drawer color="grey lighten-5">
+            <v-navigation-drawer color="grey lighten-5" width="100%">
                 <!-- Change active class, siehe border -->
                 <v-list-group
                 v-for="site in sites"

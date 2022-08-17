@@ -44,28 +44,32 @@ export default {
   computed: {
     numberOfBuildingsAsArray () {
       let i
-      const numberOfBuildings = [0]
-      // console.log(this.numberOfBuildings)
+      const numberOfBuildings = [1]
+      const site = this.site + 1
+      console.log(this.site)
+      console.log(this.numberOfBuildings)
       for (const item in this.numberOfBuildings) {
-        if (this.numberOfBuildings[item].numberOfSite === this.site) {
+        if (this.numberOfBuildings[item].numberOfSite === site) {
           // console.log(this.numberOfBuildings[item].numberOfBuildings)
-          for (i = 1; i < this.numberOfBuildings[item].numberOfBuildings; i++) {
+          for (i = 2; i <= this.numberOfBuildings[item].numberOfBuildings; i++) {
             numberOfBuildings.push(i)
           }
         }
       }
-      // console.log(numberOfBuildings)
+      console.log(numberOfBuildings)
       return numberOfBuildings
     },
     buildings () {
       const buildings = this.$store.getters.loadedBuildingInformation
-      // console.log(buildings)
+      console.log(buildings)
       // console.log(this.site)
       const buildingsArray = []
+      const site = this.site + 1
+      console.log(site)
       for (const item in buildings) {
         for (const test in this.numberOfBuildingsAsArray) {
-          // console.log(buildings[item][1].value)
-          if (buildings[item][3].value === this.numberOfBuildingsAsArray[test] && buildings[item][2].value === this.site) {
+          if (buildings[item][3].value === this.numberOfBuildingsAsArray[test] && buildings[item][2].value === site) {
+            console.log('yay')
             buildingsArray.push({
               // numberOfSite: buildings[item][2].value,
               buildingNumber: buildings[item][3].value,
@@ -75,7 +79,7 @@ export default {
           }
         }
       }
-      // console.log(buildingsArray)
+      console.log(buildingsArray)
       return buildingsArray
     }
   }
