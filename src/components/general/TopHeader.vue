@@ -4,8 +4,7 @@
             id="top-header"
             color="grey lighten-5"
             >
-            <v-app-bar-nav-icon></v-app-bar-nav-icon>
-
+            <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
             <v-toolbar-title
                 id="navbar-title"
                 >GART</v-toolbar-title>
@@ -35,6 +34,31 @@
                 </v-list>
             </v-menu>
             </v-app-bar>
+            <v-navigation-drawer
+              v-model="drawer"
+              absolute
+              temporary
+            >
+              <v-list
+                nav
+                dense
+              >
+                <v-list-item-group
+                  v-model="group"
+                  class="text-left"
+                  active-class="deep-purple--text text--accent-4"
+                >
+                <div v-for="item in appBarItems" :key="item.title">
+                  <v-list-item :to="item.link">
+                    <!-- <v-list-item-icon>
+                      <v-icon>mdi-home</v-icon>
+                    </v-list-item-icon> -->
+                    <v-list-item-title>{{ item.title }}</v-list-item-title>
+                  </v-list-item>
+                </div>
+                </v-list-item-group>
+              </v-list>
+            </v-navigation-drawer>
     </div>
 </template>
 
@@ -42,7 +66,9 @@
 
 export default {
   data: () => ({
-    home: '/'
+    home: '/',
+    drawer: false,
+    group: null
   }),
   methods: {
     onLogout () {
@@ -73,6 +99,18 @@ export default {
         // { icon: '', title: 'Performance Monitoring', link: '/performance' }
       ]
       return solutions
+    },
+    appBarItems () {
+      const appBar = [
+        { icon: '', title: 'Home', link: '/home' },
+        { icon: '', title: 'Allgemeine Infos', link: '/generalstart' },
+        { icon: '', title: 'Digital Twins', link: '/digitaltwins' },
+        // { icon: '', title: 'Building Performance', link: '/buildingperformance' },
+        { icon: '', title: 'Energiemanagement', link: '/emsstart' },
+        { icon: '', title: 'Hinzufügen Standorte & Gebäude', link: '/register' }
+        // { icon: '', title: 'Performance Monitoring', link: '/performance' }
+      ]
+      return appBar
     },
     menuItems () {
       let menuItems = [
