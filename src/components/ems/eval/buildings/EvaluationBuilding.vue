@@ -8,7 +8,7 @@
     <v-tabs-items v-model="tab" id="custom-tab-items">
     <v-tab-item v-for="submodel in submodels" :key="submodel.id">
         <div v-if="submodel.name == 'Energieart'">
-            <EnergyTypeBuildings />
+            <EnergyTypeBuildings :building="building" :buildings="buildings"/>
         </div>
         <div v-else-if="submodel.name == 'Energieeinsatz'">
             <EnergySourceBuildings />
@@ -38,8 +38,9 @@ export default {
   },
   components: { EnergyTypeBuildings, EnergySourceBuildings, EnergyConsumptionBuildings, SEUBuildings },
   props: {
-    site: Array,
-    submodels: Array
+    building: Object,
+    submodels: Array,
+    buildings: Array
   }
 }
 </script>

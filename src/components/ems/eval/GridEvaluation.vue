@@ -37,7 +37,7 @@
             <EvaluationSite :site="choosedSite" :submodels="submodels" />
           </div>
           <div v-else-if="choosedBuilding !== '' & choosedSite === ''">
-            <EvaluationBuilding :building="choosedBuilding" :submodels="submodels" />
+            <EvaluationBuilding :building="choosedBuilding" :submodels="submodels" :buildings="buildings" />
           </div>
         </v-col>
     </v-row>
