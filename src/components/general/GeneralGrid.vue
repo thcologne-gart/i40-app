@@ -7,7 +7,6 @@
                 <v-list-group
                 v-for="site in sites"
                 :key="site[1].value"
-                :prepend-icon="pin"
                 no-action
                 active-class="border"
                 >
@@ -20,9 +19,9 @@
                     </v-list-item>
                 </template>
                     <div v-for="building in buildings" :key="building.submodelId">
-                        <v-list-item id="building-grid-title" v-if="building.numberOfSite === site[4].value" @click="chooseBuilding(building)">
-                            <v-list-item-content id="building-grid-title">
-                                <v-list-item-title id="building-grid-title" v-text="building.buildingDesignation"></v-list-item-title>
+                        <v-list-item v-if="building.numberOfSite === site[4].value" @click="chooseBuilding(building)">
+                            <v-list-item-content >
+                                <v-list-item-title v-text="building.buildingDesignation"></v-list-item-title>
                             </v-list-item-content>
                         </v-list-item>
                     </div>

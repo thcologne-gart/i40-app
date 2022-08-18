@@ -27,7 +27,8 @@ export default {
         { link: '/emsstart', title: 'Energiemanagement' },
         // { link: '/performance', title: 'Performance Monitoring' },
         // { link: '/register', title: 'Registrierung' },
-        { link: '/digitaltwins', title: 'Digital Twins' }
+        { link: '/digitaltwins', title: 'Digital Twins' },
+        { link: '/generalstart', title: 'Allgemeine Infos' }
       ]
     }
   }
