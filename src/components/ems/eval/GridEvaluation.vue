@@ -34,21 +34,21 @@
           <div v-if="choosedSite === '' & choosedBuilding === ''">Platzhalter
           </div>
           <div v-else-if="choosedSite !== '' & choosedBuilding === ''">
-            <RessourcesSite :site="choosedSite" :submodels="submodels" />
+            <EvaluationSite :site="choosedSite" :submodels="submodels" />
           </div>
           <div v-else-if="choosedBuilding !== '' & choosedSite === ''">
-            <RessourcesBuilding :building="choosedBuilding" :submodels="submodels" />
+            <EvaluationBuilding :building="choosedBuilding" :submodels="submodels" />
           </div>
         </v-col>
     </v-row>
 </template>
 
 <script>
-import RessourcesSite from '@/components/ems/ressources/sites/RessourcesSite.vue'
-import RessourcesBuilding from '@/components/ems/ressources/buildings/RessourcesBuilding.vue'
+import EvaluationSite from '@/components/ems/eval/sites/EvaluationSite.vue'
+import EvaluationBuilding from '@/components/ems/eval/buildings/EvaluationBuilding.vue'
 
 export default {
-  components: { RessourcesSite, RessourcesBuilding },
+  components: { EvaluationSite, EvaluationBuilding },
   props: {
     sites: Array,
     buildings: Array,
@@ -110,9 +110,12 @@ export default {
   },
   created () {
     this.submodels = [
-      { id: 1, name: 'Beauftragte', link: '/ressources-start/agents' }
+      { id: 1, name: 'Energieart', link: '/evaluation-start/energy-type' },
+      { id: 2, name: 'Energieeinsatz', link: '/evaluation-start/energy-source' },
+      { id: 3, name: 'Energieverbrauch', link: '/evaluation-start/energy-consumption' },
+      { id: 4, name: 'SEU', link: '/evaluation-start/seu' }
     ]
-    this.emsChapter = { name: 'Ressourcen', link: '/ressources-start' }
+    this.emsChapter = { name: 'Energetische Bewertung', link: '/evaluation-start' }
   }
   /*
   methods: {

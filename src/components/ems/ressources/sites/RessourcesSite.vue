@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import AgentsSites from '@/components/ems/ressources/AgentsSites.vue'
+import AgentsSites from '@/components/ems/ressources/sites/AgentsSites.vue'
 
 export default {
   data () {
