@@ -131,7 +131,6 @@ body {
 #sticky-ems-chapter {
   position: sticky;
   top: 0;
-  z-index: 999;
   border-bottom-style: solid;
   border-color: #FFAC1C;
 }
