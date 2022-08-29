@@ -2,8 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+// "import" referenziert zu Firebase. "InitializeApp" initialisiert die Firebase App und die Firebase Einstellungen für das Projekt
 import { initializeApp } from 'firebase/app'
+// getAuth Funktion Firebase mit derBenutzerkonten und Anmeldinformationen verwaltet werden können
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
+// Instanz für die Realtime Database
 import { getDatabase } from 'firebase/database'
 import { getStorage } from 'firebase/storage'
 // import { getFirestore, collection, getDocs } from 'firebase/firestore/lite'
@@ -13,7 +16,8 @@ import vueCountryRegionSelect from 'vue-country-region-select'
 import vuetify from './plugins/vuetify'
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 // import Axios from 'axios'
-
+// "firebaseConfig" ist eine Funktion in der die Konfiguartions-Datei die Firebase erstellt hat eingefügt wird. Die Funktion gibt eine Instanz zurück, durch die Firebase SDK weiß wie sie auf dieses Firebase Backend zugreifen kann
+// "firebaseConfig" ist also wie die Schlüsselfunktion zu Firebase zu verstehen
 const firebaseConfig = {
   apiKey: 'AIzaSyA0yIFiZY5K7_eSAuuJqs3ChzXFxGGzNWg',
   authDomain: 'energiemanagement-system.firebaseapp.com',
