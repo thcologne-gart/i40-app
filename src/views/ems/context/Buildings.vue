@@ -6,24 +6,27 @@
                 <div v-if="site === site2">
                     <SubmodelHeader :site ="site2" :submodelName="submodelName" :numberOfBuildings="numberOfBuildings">
                         <template v-slot:building="{ building }">
-                            <AddBuildingInformation :site ="site" :numberOfBuildings="numberOfBuildings" :building="building" :buildings="buildings" />
-                            <!--
-                            <div v-for="item in buildings" :key="item.buildingNumber">
-                                <div v-if="site === item.numberOfSite && building != item.buildingNumber">
-                                    <AddBuildingInformation :site ="site2" :numberOfBuildings="numberOfBuildings" :buildingNumber="building" />
-                                </div>
-                            </div>
+                          <AddBuildingInformation :site ="site" :numberOfBuildings="numberOfBuildings" :building="building" :buildings="buildings" />
+                              <!--
+                              <div v-for="item in buildings" :key="item.buildingNumber">
+                                  <div v-if="site === item.numberOfSite && building != item.buildingNumber">
+                                      <AddBuildingInformation :site ="site2" :numberOfBuildings="numberOfBuildings" :buildingNumber="building" />
+                                  </div>
+                              </div>
 
-                            <div v-for ="item in buildings" :key="item[0].value">
-                                <div v-if="building >= buildings.length">
-                                    <AddBuildingInformation :site ="site2" :numberOfBuildings="numberOfBuildings" :buildingNumber="building" />
-                                </div>
-                            </div>
-                            -->
-                            <div v-for="site in sites" :key="site[2].value">
-                                <div v-if="site[4].value === site2">
-                                    <BuildingInformation :site="site" :building="building" />
-                                </div>
+                              <div v-for ="item in buildings" :key="item[0].value">
+                                  <div v-if="building >= buildings.length">
+                                      <AddBuildingInformation :site ="site2" :numberOfBuildings="numberOfBuildings" :buildingNumber="building" />
+                                  </div>
+                              </div>
+                              -->
+                            <!-- <div v-for="site in sites" :key="site[2].value">
+                              <div v-if="site[4].value === site2"> -->
+                            <div v-for="item in buildings" :key="item.buildingNumber">
+                              <div v-if="item.numberOfSite === site2 && item.buildingNumber === building">
+                                <!-- <div>{{ numberOfBuildingsAsArray }}</div> -->
+                                <BuildingInformation :site="site2" :building="building" />
+                              </div>
                             </div>
                             <div>
                                 <!-- <UploadBuildingModel /> -->

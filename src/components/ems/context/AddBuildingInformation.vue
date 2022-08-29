@@ -1,30 +1,30 @@
 <template>
     <div>
-      <div class="mb-3">
-        <v-btn id="button-add-buidling" v-b-toggle.my-collapse variant="outline-secondary">Gebäude hinzufügen</v-btn>
-      </div>
-      <b-collapse id="my-collapse">
-        <v-card id ="cardBuildingForm" class="mx-auto my-12" elevation="4" max-width="75%">
-          <v-form @submit="onCreateBuildingAas" @reset="onReset">
-            <v-container>
-              <v-text-field
-              id="designation"
-              v-model="form.designation"
-              label="Bezeichnung des Gebäudes"
-              required
-              ></v-text-field>
-              <v-text-field
-              id="street"
-              v-model="form.street"
-              label="Straße und Hausnummer"
-              required
-              ></v-text-field>
-            </v-container>
-            <v-btn id="buttons-card" type="submit" variant="outline-secondary">Submit</v-btn>
-            <v-btn id="buttons-card" type="reset" variant="outline-secondary">Reset</v-btn>
-          </v-form>
-        </v-card>
-      </b-collapse>
+          <div class="mb-3">
+            <v-btn id="button-add-buidling" v-b-toggle.my-collapse variant="outline-secondary">Gebäude hinzufügen</v-btn>
+          </div>
+          <b-collapse id="my-collapse">
+            <v-card id ="cardBuildingForm" class="mx-auto my-12" elevation="4" max-width="75%">
+              <v-form @submit="onCreateBuildingAas" @reset="onReset">
+                <v-container>
+                  <v-text-field
+                  id="designation"
+                  v-model="form.designation"
+                  label="Bezeichnung des Gebäudes"
+                  required
+                  ></v-text-field>
+                  <v-text-field
+                  id="street"
+                  v-model="form.street"
+                  label="Straße und Hausnummer"
+                  required
+                  ></v-text-field>
+                </v-container>
+                <v-btn id="buttons-card" type="submit" variant="outline-secondary">Submit</v-btn>
+                <v-btn id="buttons-card" type="reset" variant="outline-secondary">Reset</v-btn>
+              </v-form>
+            </v-card>
+          </b-collapse>
     </div>
 </template>
 
@@ -43,6 +43,13 @@ export default {
     numberOfBuildings: Array,
     building: Number,
     buildings: Array
+  },
+  computed: {
+    buildingsForButton () {
+      // console.log(this.building)
+      console.log(this.$store.getters.loadedBuildingInformation)
+      return this.$store.getters.loadedBuildingInformation
+    }
   },
   // mounted () {
   // this.showForm()

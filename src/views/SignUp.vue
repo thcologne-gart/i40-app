@@ -1,49 +1,51 @@
 <template>
-  <v-card class="mx-auto my-15"
-    max-width="35%"
-    id="signup-card">
-    <v-card-title id="signup-title">GART</v-card-title>
-    <v-card-subtitle id ="signup-subtitle" class="overline">Sign In</v-card-subtitle>
-    <v-form @submit="onSignUp" @reset="onReset" v-if="show">
-        <v-container>
-            <v-text-field
-                v-model="form.firstname"
-                label="First name"
-                required
-            ></v-text-field>
-            <v-text-field
-                v-model="form.lastname"
-                label="Last name"
-                required
-            ></v-text-field>
-            <v-text-field
-                v-model="form.email"
-                label="E-Mail"
-                required
-            ></v-text-field>
-            <v-text-field
-                v-model="form.password"
-                :type="'password'"
-                label="Passwort"
-                required
-            ></v-text-field>
-            <v-text-field
-                :type="'password'"
-                v-model="form.passwordconfirm"
-                label="Passwort bestätigen"
-                required
-            ></v-text-field>
-        </v-container>
-        <v-row align="center" justify="space-around" id="buttons-signup">
-            <v-col>
-              <v-btn type="submit" id="buttons-signup">Sign Up</v-btn>
-            </v-col>
-            <v-col>
-              <v-btn type="reset" id="buttons-reset">Reset</v-btn>
-            </v-col>
-      </v-row>
-    </v-form>
-  </v-card>
+  <v-container>
+    <v-card class="mx-auto my-16"
+      max-width="65%"
+      id="signup-card">
+      <v-card-title id="signup-title">GART</v-card-title>
+      <v-card-subtitle id ="signup-subtitle" class="overline">Sign Up</v-card-subtitle>
+      <v-form @submit="onSignUp" @reset="onReset" v-if="show">
+          <v-container>
+              <v-text-field
+                  v-model="form.firstname"
+                  label="First name"
+                  required
+              ></v-text-field>
+              <v-text-field
+                  v-model="form.lastname"
+                  label="Last name"
+                  required
+              ></v-text-field>
+              <v-text-field
+                  v-model="form.email"
+                  label="E-Mail"
+                  required
+              ></v-text-field>
+              <v-text-field
+                  v-model="form.password"
+                  :type="'password'"
+                  label="Passwort"
+                  required
+              ></v-text-field>
+              <v-text-field
+                  :type="'password'"
+                  v-model="form.passwordconfirm"
+                  label="Passwort bestätigen"
+                  required
+              ></v-text-field>
+          </v-container>
+          <v-row align="center" justify="space-around" id="buttons-signup">
+              <v-col>
+                <v-btn type="submit" id="buttons-signup">Sign Up</v-btn>
+              </v-col>
+              <v-col>
+                <v-btn type="reset" id="buttons-reset">Reset</v-btn>
+              </v-col>
+        </v-row>
+      </v-form>
+    </v-card>
+  </v-container>
 </template>
 
 <script>

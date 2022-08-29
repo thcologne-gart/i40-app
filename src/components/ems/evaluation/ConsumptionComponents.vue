@@ -2,48 +2,38 @@
     <div v-if="energySourceComponents.length != 0">
         <hr>
         <div v-for="component in energySourceComponents" :key="component.componentElementCollectionId">
-            <b-row>
-                <b-col class="text-left" cols="4">
+            <v-row>
+                <v-col>
                     <h5>{{ component.idShort }}</h5>
-                </b-col>
-            </b-row>
+                </v-col>
+            </v-row>
             <hr>
-            <b-row>
-                <b-col class="text-left" cols="4">
-                    <p id = "property-header">Properties</p>
-                </b-col>
-            </b-row>
-            <hr>
-            <b-row v-for="property in semanticMatchingInformation" :key="property.semanticId">
-                <b-col class="text-left" cols= "8">
-                    <div v-for="propertyValue in properties" :key="propertyValue.name">
-                        <div v-if="propertyValue.name === property.name">
-                            <div v-if="property.semantic_id.includes('component/energy-information') === true">
-                                <p id = "property">{{ property.name }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </b-col>
-                <b-col>
-                    <div v-for="propertyValue in properties" :key="propertyValue.name">
-                        <div v-if="propertyValue.name === property.name">
-                            <div v-if="property.semantic_id.includes('component/energy-information') === true">
-                                <b-button v-b-modal="component.componenElementCollectionId + property.name" variant="outline-secondary">Suche nach Property</b-button>
-                                <b-modal v-bind:id="component.componenElementCollectionId + property.name" hide-footer width="350px" persistent :title="property.name" >
-                                    <p class="my-4">Möchten Sie nach dem Property {{ property.name }} suchen?</p>
-                                    <p class="my-4">Definition: {{ property.definition }}</p>
-                                    <p class="my-4">Unit: {{ property.unit }}</p>
-                                    <p class="my-4">Data Type: {{ property.datatype }}</p>
-                                    <p class="my-4">Type: {{ property.submodel_element_sub }}</p>
-                                    <p class="my-4">Category: {{ property.category }}</p>
-                                    <hr>
-                                    <b-button class="mt-3" variant="outline-secondary" block  @click="onSearchProperty (property, component)">Suchen</b-button>
-                                </b-modal>
-                            </div>
-                        </div>
-                    </div>
-                </b-col>
-            </b-row>
+            <div v-for="property in semanticMatchingInformation" :key="property.semanticId">
+              <div v-for="propertyValue in properties" :key="propertyValue.name">
+                  <div v-if="propertyValue.name === property.name">
+                      <div v-if="property.semantic_id.includes('component/energy-information') === true">
+                        <v-row>
+                          <v-col>
+                            <p id = "property">{{ property.name }}</p>
+                          </v-col>
+                          <v-col>
+                            <v-btn id="edit-button" variant="outline-secondary" size="sm" v-b-modal="component.componenElementCollectionId + property.name">Suche nach Property</v-btn>
+                            <b-modal v-bind:id="component.componenElementCollectionId + property.name" hide-footer width="350px" persistent :title="property.name" >
+                                <p class="my-4">Möchten Sie nach dem Property {{ property.name }} suchen?</p>
+                                <p class="my-4">Definition: {{ property.definition }}</p>
+                                <p class="my-4">Unit: {{ property.unit }}</p>
+                                <p class="my-4">Data Type: {{ property.datatype }}</p>
+                                <p class="my-4">Type: {{ property.submodel_element_sub }}</p>
+                                <p class="my-4">Category: {{ property.category }}</p>
+                                <hr>
+                                <v-btn class="mt-3" variant="outline-secondary" @click="onSearchProperty (property, component)">Suchen</v-btn>
+                            </b-modal>
+                          </v-col>
+                        </v-row>
+                      </div>
+                  </div>
+              </div>
+            </div>
             <hr>
             <div v-if="matchedProperty != null">
                 <h5>Matched Property</h5>

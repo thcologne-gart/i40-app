@@ -1,55 +1,6 @@
 <template>
     <div>
-        <!-- <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
-          <v-card-title id="card-title">Energieeinsatzgruppen</v-card-title>
-            <hr>
-            <div id ="displayBuildingInformation">
-                <b-carousel
-                  id="carousel-energy-source-groups"
-                  v-model="slide"
-                  :interval="4000"
-                  background="#ababab"
-                  style="text-shadow: 1px 1px 2px #333;"
-                  controls
-                  indicators
-                  @sliding-start="onSlideStart"
-                  @sliding-end="onSlideEnd"
-                >
-                    <div v-for="item in energyTypes" :key="item.elementCollectionId">
-                        <div v-if="item.site === site[4].value && item.building === building " >
-                            <div v-if="item.elementCollectionSemanticId === 'energyUseGroupHeating'">
-                                <router-link :to = "{ name: energySourceGroups[0].name, params: { site: site, building: building, buildings: buildings, energySourceGroup: item, energySources: energySources, energyTypes: energyTypes, allEnergyTypesWithGroup: allEnergyTypesWithGroup, heatingComponents: heatingComponents, airComponents: airComponents } }">
-                                    <b-carousel-slide
-                                    v-bind:caption = energySourceGroups[0].groupName
-                                    v-bind:text = item.elementCollection
-                                    :img-src= energySourceGroups[0].pic
-                                    ></b-carousel-slide>
-                                </router-link>
-                            </div>
-                            <div v-if="item.elementCollectionSemanticId === 'energyUseGroupCooling'">
-                                 <router-link :to = "{ name: energySourceGroups[1].name, params: { site: site, building: building, buildings: buildings, energySourceGroup: item, energySources: energySources, energyTypes: energyTypes, allEnergyTypesWithGroup: allEnergyTypesWithGroup, heatingComponents: heatingComponents, airComponents: airComponents } }">
-                                    <b-carousel-slide
-                                    v-bind:caption = energySourceGroups[1].groupName
-                                    v-bind:text = item.elementCollection
-                                    :img-src= energySourceGroups[1].pic
-                                    ></b-carousel-slide>
-                                </router-link>
-                            </div>
-                            <div v-if="item.elementCollectionSemanticId === 'energyUseGroupAirHandling'">
-                                 <router-link :to = "{ name: energySourceGroups[2].name, params: { site: site, building: building, buildings: buildings, energySourceGroup: item, energySources: energySources, energyTypes: energyTypes, allEnergyTypesWithGroup: allEnergyTypesWithGroup } }">
-                                    <b-carousel-slide
-                                    v-bind:caption = energySourceGroups[2].groupName
-                                    v-bind:text = item.elementCollection
-                                    :img-src= energySourceGroups[2].pic
-                                    ></b-carousel-slide>
-                                </router-link>
-                            </div>
-                        </div>
-                    </div>
-                </b-carousel>
-            </div>
-        </v-card> -->
-
+      <div v-if="showSelectedEnergyTypes != 0">
         <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
           <v-card-title id="card-title">Energieeinsatzgruppen</v-card-title>
             <hr>
@@ -123,6 +74,7 @@
                 </v-carousel>
             </div>
         </v-card>
+      </div>
     </div>
 </template>
 
@@ -144,6 +96,21 @@ export default {
     buildings: Array
   },
   computed: {
+    showSelectedEnergyTypes () {
+      const loadedEnergyInformation = this.$store.getters.loadedEnergyTypeInformation
+      let selectedEnergyGroups = 0
+      for (const item in loadedEnergyInformation) {
+        let i
+        for (i = 1; i < loadedEnergyInformation[item].length; i++) {
+          for (const key in loadedEnergyInformation[item][i]) {
+            if (loadedEnergyInformation[item][i][key].modelType.name === 'SubmodelElementCollection' && loadedEnergyInformation[item][1][0].value === this.site[4].value && loadedEnergyInformation[item][2][1].value === this.building) {
+              selectedEnergyGroups = 1
+            }
+          }
+        }
+      }
+      return selectedEnergyGroups
+    },
     energyTypes () {
       const energySourceGroups = []
       const loadedEnergyInformation = this.$store.getters.loadedEnergyTypeInformation
@@ -176,7 +143,7 @@ export default {
           // }
         }
       }
-      // console.log(energySourceGroups)
+      console.log(typeof energySourceGroups)
       // console.log(this.$store.getters.loadedEnergyTypeInformation)
       return energySourceGroups
     }

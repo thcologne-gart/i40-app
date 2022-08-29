@@ -1,17 +1,14 @@
 <template>
     <div v-if="energySourceComponents.length != 0">
         <hr>
-        <b-row>
-            <b-col class="text-left" cols="4">
-                <h5>Ausgewählte Komponente</h5>
-            </b-col>
-            <b-col cols="4">
-                <h5>Upload Datenblatt</h5>
-            </b-col>
-            <b-col cols="4">
-                <h5>Gespeicherte Datenblätter</h5>
-            </b-col>
-        </b-row>
+        <v-row>
+            <v-col cols="6">
+                <h6>Ausgewählte Komponente</h6>
+            </v-col>
+            <v-col cols="6">
+                <h6>Upload Datenblatt</h6>
+            </v-col>
+        </v-row>
         <hr>
         <div v-for="component in energySourceComponents" :key="component.componentElementCollectionId">
             <EnergySourceSheet :energySources ="energySources" :energySourceGroup="energySourceGroup" :component="component" :energySourceComponents="energySourceComponents" />

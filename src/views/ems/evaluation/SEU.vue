@@ -6,11 +6,11 @@
                 <div v-if="site === site2">
                     <SubmodelHeader :site ="site2" :submodelName="submodelName" :numberOfBuildings="numberOfBuildings">
                       <template v-slot:building="{ building }">
-                              <div v-for="site in sites" :key="site[2].value">
-                                  <div v-if="site[4].value === site2">
-                                      {{ building }}
-                                  </div>
-                              </div>
+                        <div v-for="site in sites" :key="site[2].value">
+                            <div v-if="site[4].value === site2">
+                                {{ building }}
+                            </div>
+                        </div>
                       </template>
                     </SubmodelHeader >
                 </div>

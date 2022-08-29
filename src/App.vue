@@ -1,7 +1,12 @@
 <template>
   <v-app>
-    <TopHeader/>
+    <div v-if="isSignUp">
       <router-view />
+    </div>
+    <div v-else>
+      <TopHeader/>
+        <router-view />
+    </div>
     <Footer/>
   </v-app>
 </template>
@@ -25,6 +30,9 @@ export default {
         console.log(i)
       }
       return this.submodels
+    },
+    isSignUp () {
+      return this.$route.name === 'Sign Up'
     }
   }
   /*
@@ -123,7 +131,6 @@ body {
 #sticky-ems-chapter {
   position: sticky;
   top: 0;
-  z-index: 999;
   border-bottom-style: solid;
   border-color: #FFAC1C;
 }
@@ -147,7 +154,7 @@ body {
 }
 #navigation {
     padding:0;
-    min-height: calc(100vh - 180px);
+    min-height: calc(100vh - 110px);
 }
 .card {
   margin-inline:5%;
@@ -170,6 +177,15 @@ body {
   padding-bottom: 0px;
 }
 
+#source-group-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0a322b;
+  font-weight: 500;
+  font-size: 22px;
+}
+
 #edit-button {
   margin-bottom: 10px;
 }
@@ -183,4 +199,8 @@ body {
 #custom-tab-items {
     background-color: transparent !important;
 }
+.border {
+  color: #5D3FD3;
+}
+
 </style>

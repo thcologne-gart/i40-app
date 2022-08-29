@@ -1,13 +1,13 @@
 <template>
     <div>
         <div v-if="energySourceGroup.elementCollectionSemanticId === 'energyUseGroupHeating'">
-            <EnergyGroupHeating :energySources="energySources" :energySourceGroup="energySourceGroup" :building="building" :heatingComponents="heatingComponents" :enpiSubmodels="enpiSubmodels"/>
+            <EnergyGroupHeating :energySources="energySources" :energySourceGroup="energySourceGroup" :site="site" :building="building" :heatingComponents="heatingComponents" :enpiSubmodels="enpiSubmodels"/>
         </div>
         <div v-if="energySourceGroup.elementCollectionSemanticId === 'energyUseGroupCooling'">
-            <EnergyGroupCooling  :energySources="energySources" :energySourceGroup="energySourceGroup" :building="building" :enpiSubmodels="enpiSubmodels"/>
+            <EnergyGroupCooling  :energySources="energySources" :energySourceGroup="energySourceGroup" :site="site" :building="building" :enpiSubmodels="enpiSubmodels"/>
         </div>
         <div v-if="energySourceGroup.elementCollectionSemanticId === 'energyUseGroupAirHandling'">
-            <EnergyGroupAir :energySources="energySources" :energySourceGroup="energySourceGroup" :building="building" :airComponents="airComponents" :enpiSubmodels="enpiSubmodels"/>
+            <EnergyGroupAir :energySources="energySources" :energySourceGroup="energySourceGroup" :site="site" :building="building" :airComponents="airComponents" :enpiSubmodels="enpiSubmodels"/>
         </div>
     </div>
 </template>
@@ -20,6 +20,7 @@ import EnergyGroupAir from '@/components/ems/evaluation/EnergyGroupAir.vue'
 export default {
   components: { EnergyGroupHeating, EnergyGroupCooling, EnergyGroupAir },
   props: {
+    site: Number,
     building: Number,
     energySourceGroup: Object,
     energySources: Array,

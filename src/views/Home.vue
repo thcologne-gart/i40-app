@@ -25,9 +25,10 @@ export default {
     return {
       solutions: [
         { link: '/emsstart', title: 'Energiemanagement' },
-        { link: '/performance', title: 'Performance Monitoring' },
-        { link: '/buildingperformance', title: 'Building Performance' },
-        { link: '/digitaltwins', title: 'Digital Twins' }
+        // { link: '/performance', title: 'Performance Monitoring' },
+        // { link: '/register', title: 'Registrierung' },
+        { link: '/digitaltwins', title: 'Digital Twins' },
+        { link: '/generalstart', title: 'Allgemeine Infos' }
       ]
     }
   }

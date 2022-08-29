@@ -10,18 +10,17 @@
                     </v-toolbar-title>
                 </v-col>
                 <v-col md = "10" id="chapter">
-                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/contextstart">1</v-btn>
-                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/management-start">2</v-btn>
-                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/ressources-start">3</v-btn>
-                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/evaluation-start">4</v-btn>
-                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/indicators-start">5</v-btn>
-                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/goals-start">6</v-btn>
-                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/competence">7</v-btn>
-                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/operation">8</v-btn>
-                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/buying">9</v-btn>
-                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/communication">10</v-btn>
-                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/analysis">11</v-btn>
-                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/optimization">12</v-btn>
+                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/management-start">1</v-btn>
+                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/ressources-start">2</v-btn>
+                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/evaluation-start">3</v-btn>
+                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/indicators-start">4</v-btn>
+                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/goals-start">5</v-btn>
+                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/competence">6</v-btn>
+                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/operation">7</v-btn>
+                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/buying">8</v-btn>
+                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/communication">9</v-btn>
+                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/analysis">10</v-btn>
+                            <v-btn outlined color="grey" active-class="active-chapter-button" id="btn-ems-chapter" to="/optimization">11</v-btn>
                 </v-col>
             </v-row>
         </v-app-bar>

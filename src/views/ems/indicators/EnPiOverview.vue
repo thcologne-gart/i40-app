@@ -6,36 +6,23 @@
                 <div v-if="site === site2">
                     <SubmodelHeader :site ="site2" :submodelName="submodelName" :numberOfBuildings="numberOfBuildings">
                         <template v-slot:building="{ building }">
-                          <v-sheet elevation="2">
+                          <v-sheet>
                             <v-tabs center-active v-model="tab" background-color="grey lighten-2" slider-color="#FFAC1C" color="#0a322b">
-                              <div v-for="enpi in enpiSubmodels" :key="enpi.submodelKey">
-                                <v-tab v-if="site === enpi.numberOfSite && building === enpi.numberOfBuilding">{{ enpi.submodelName }}</v-tab>
+                              <div v-for="enpi in enpisBuilding" :key="enpi.submodelKey">
+                                <v-tab class ="pa-4" v-if="site === enpi.numberOfSite && building === enpi.numberOfBuilding">
+                                  {{ enpi.submodelName }}
+                                </v-tab>
                               </div>
                             </v-tabs>
+                            <v-tabs-items v-model="tab" id="custom-tab-items">
+                              <div v-for="enpi in enpiSubmodels" :key="enpi.submodelKey">
+                                  <v-tab-item v-if="site === enpi.numberOfSite && building === enpi.numberOfBuilding">
+                                    <!-- <slot name="enpiSubmodel" v-bind:enpiSubmodel="enpi.submodelName">Platzhalter</slot> -->
+                                    <EnpisEnergyGroups :enpiSubmodel="enpi" :site="site2" :building="building" />
+                                  </v-tab-item>
+                              </div>
+                            </v-tabs-items>
                           </v-sheet>
-                          <v-tabs-items v-model="tab" id="custom-tab-items">
-                            <div v-for="enpi in enpiSubmodels" :key="enpi.submodelKey">
-                              <v-tab-item v-if="site === enpi.numberOfSite && building === enpi.numberOfBuilding">
-                                <slot name="enpiSubmodel" v-bind:enpiSubmodel="enpi.submodelName">Platzhalter</slot>
-                                <EnpisEnergyGroups :enpiSubmodel="enpi" :site="site2" :building="building" />
-                              </v-tab-item>
-                            </div>
-                          </v-tabs-items>
-                            <!-- <v-card class ="mx-auto" max-width="90%" elevation="2">
-                              <v-tabs v-model="tab" id="buildings-tabs" background-color="grey lighten-2" slider-color="#FFAC1C" color="#0a322b">
-                                <div v-for="enpi in enpiSubmodels" :key="enpi.submodelKey">
-                                  <div>
-                                    <v-tab v-if="site === enpi.numberOfSite && building === enpi.numberOfBuilding">
-                                      {{ enpi.submodelName }}
-                                    </v-tab>
-                                    <v-tab-item>
-                                      <slot name="enpiSubmodel" v-bind:enpiSubmodel="enpi.submodelName"></slot>
-                                      <EnpisEnergyGroups :enpiSubmodel="enpi" :site="site2" :building="building" />
-                                    </v-tab-item>
-                                  </div>
-                                </div>
-                              </v-tabs>
-                            </v-card> -->
                         </template>
                     </SubmodelHeader>
                 </div>
@@ -123,10 +110,47 @@ export default {
       }
       return this.submodels
     },
+    enpisBuilding () {
+      const enpiSubmodels = this.$store.getters.loadedEnpiSubmodels
+      // console.log(enpiSubmodels)
+      const enpis = []
+      for (const item in enpiSubmodels) {
+        // console.log(enpiSubmodels[item])
+        const enpiSubmodel = enpiSubmodels[item]
+        const enpiInformation = {
+          submodelKey: enpiSubmodel[0].key,
+          submodelId: enpiSubmodel[0].submodelId,
+          submodelName: enpiSubmodel[0].submodelName,
+          numberOfSite: enpiSubmodel[1][0].value,
+          numberOfBuilding: enpiSubmodel[2][1].value
+        }
+        enpis.push(enpiInformation)
+        // for (const element in enpiSubmodel) {
+        //   for (const nextElement in enpiSubmodel[element]) {
+        //     if (typeof enpiSubmodel[element][nextElement].idShort !== 'undefined') {
+        //       const enpiInformation = {
+        //         submodelKey: enpiSubmodel[0].key,
+        //         submodelId: enpiSubmodel[0].submodelId,
+        //         submodelName: enpiSubmodel[0].submodelName,
+        //         numberOfSite: enpiSubmodel[1][0].value,
+        //         numberOfBuilding: enpiSubmodel[2][1].value,
+        //         submodelSemanticId: enpiSubmodel[0].submodelSemanticId,
+        //         enpiGroupKey: enpiSubmodel[element][nextElement].value,
+        //         idShort: enpiSubmodel[element][nextElement].idShort,
+        //         semanticId: enpiSubmodel[element][nextElement].semanticId.keys[0].value
+        //       }
+        //       enpis.push(enpiInformation)
+        //     }
+        //   }
+        // }
+      }
+      console.log(enpis)
+      return enpis
+    },
+
     enpiSubmodels () {
       const enpiSubmodels = this.$store.getters.loadedEnpiSubmodels
       // console.log(enpiSubmodels)
-      // console.log(this.energySourceGroup)
       const submodels = []
       // const enpiSubmodelCollections = []
       for (const item in enpiSubmodels) {
@@ -134,7 +158,7 @@ export default {
         const enpiSubmodel = enpiSubmodels[item]
         for (const element in enpiSubmodel) {
           for (const nextElement in enpiSubmodel[element]) {
-            console.log(enpiSubmodel[element][nextElement])
+            // console.log(enpiSubmodel[element][nextElement])
             if (typeof enpiSubmodel[element][nextElement].idShort !== 'undefined' && enpiSubmodel[element][nextElement].idShort.includes('EnPis Energiegruppe')) {
               // console.log(enpiSubmodels[item])
               const enpiInformation = {
@@ -169,7 +193,7 @@ export default {
         }
         */
       }
-      console.log(submodels)
+      // console.log(submodels)
       return submodels
     }
   },
