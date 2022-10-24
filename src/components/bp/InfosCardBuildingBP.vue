@@ -2,44 +2,83 @@
   <div>
     <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
         <v-card-title id="card-title">{{ building.buildingDesignation }}</v-card-title>
+        <hr>
         <b-button class="my-3" variant="outline-secondary" block @click="query(bacnetData)">Hinzufügen Automationsstation</b-button>
-        <div>{{ numberOfGrundfunktionen }}</div>
+          <v-container>
+            <v-row>
+              <v-col v-for="grundfunktion in numberOfGrundfunktionen" :key="grundfunktion">
+                <div v-if="grundfunktion ==='WaermeVersorgen'">
+                    <v-card class="mx-auto my-8" elevation="2"
+                        max-width="80%">
+                    <v-card-subtitle>Wärme versorgen</v-card-subtitle>
+                    <v-divider class="mx-4"></v-divider>
+                      <v-img class="mx-auto" max-width="60" href="#" contain :src= energyUseGroup[0].pic></v-img>
+                      <v-btn
+                        color="deep-grey lighten-2"
+                        text
+                        @click="reserve"
+                      >
+                        Go to
+                      </v-btn>
+                    </v-card>
+                </div>
+                <div v-if="grundfunktion ==='KaelteVersorgen'">
+                  <v-card class="mx-auto my-8" elevation="2"
+                        max-width="80%">
+                    <v-card-subtitle>Kälte versorgen</v-card-subtitle>
+                    <v-divider class="mx-4"></v-divider>
+                      <v-img class="mx-auto" max-width="60" href="#" contain :src= energyUseGroup[1].pic></v-img>
+                      <v-btn
+                        color="deep-grey lighten-2"
+                        text
+                        @click="reserve"
+                      >
+                        Go to
+                      </v-btn>
+                    </v-card>
+                </div>
+                <div v-if="grundfunktion ==='LuftVersorgen'">
+                  <v-card class="mx-auto my-8" elevation="2"
+                        max-width="80%">
+                    <v-card-subtitle>Luft versorgen</v-card-subtitle>
+                    <v-divider class="mx-4"></v-divider>
+                      <v-img class="mx-auto" max-width="60" href="#" contain :src= energyUseGroup[2].pic></v-img>
+                      <v-btn
+                        color="deep-grey lighten-2"
+                        text
+                        @click="reserve"
+                      >
+                        Go to
+                      </v-btn>
+                    </v-card>
+                </div>
+                <div v-if="grundfunktion ==='MedienVersorgen'">
+                  <v-card class="mx-auto my-8" elevation="2"
+                        max-width="80%">
+                    <v-card-subtitle>Medien versorgen</v-card-subtitle>
+                    <v-divider class="mx-4"></v-divider>
+                      <v-img class="mx-auto" max-width="60" href="#" contain :src= energyUseGroup[3].pic></v-img>
+                      <v-btn
+                        color="deep-grey lighten-2"
+                        text
+                        @click="reserve"
+                      >
+                        Go to
+                      </v-btn>
+                    </v-card>
+                </div>
+              </v-col>
+            </v-row>
+          </v-container>
     </v-card>
   </div>
 </template>
 
 <script>
-/*
-async function query (data) {
-  const response = await fetch(
-    'https://api-inference.huggingface.co/models/mboth/klassifizierungGrundfunktionen',
-    {
-      headers: { Authorization: 'Bearer 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' },
-      method: 'POST',
-      body: JSON.stringify(data)
-    }
-  )
-  const result = await response.json()
-  return result
-}
-
-query({ inputs: this.bacnetData[0] }).then((response) => {
-// query({ inputs: 'Heizkreis vorlauftemperatur' }).then((response) => {
-  console.log(JSON.stringify(response))
-  console.log(this.bacnetData[0])
-})
-*/
 export default {
   props: {
     building: Object
   },
-  /*
-  data () {
-    return {
-      grundfunktionen: []
-    }
-  },
-  */
   computed: {
     bacnetData () {
       console.log(this.$store.getters.loadedBACnet)
@@ -110,6 +149,43 @@ export default {
       console.log(bacnetDataScore)
       return result
     }
+  },
+  created () {
+    this.energyUseGroup = [
+      { name: 'Wärme versorgen', pic: require('@/assets/heizung.svg') },
+      { name: 'Kälte versorgen', pic: require('@/assets/kuehlung.svg') },
+      { name: 'Luft versorgen', pic: require('@/assets/lueftung.svg') },
+      { name: 'Medien versorgen', pic: require('@/assets/lueftung.svg') }
+    ]
+    this.energySourceGroups = [
+      { id: 1, groupName: 'Energie Gruppe Heizung', pic: require('@/assets/heating-system.jpeg'), name: 'Energy Source Group' },
+      { id: 2, groupName: 'Energie Gruppe Kühlung', pic: require('@/assets/cooling-system.jpeg'), name: 'Energy Source Group' },
+      { id: 3, groupName: 'Energie Gruppe Lüftung', pic: require('@/assets/air-system.jpeg'), name: 'Energy Source Group' }
+    ]
+    this.energySources = [
+      { id: 1, groupType: 'Heizung', sourceName: 'Grundwasserwärmepumpe', pic: require('@/assets/grundwärmepumpe.svg'), name: 'Component', idShortCD: 'GroundwaterHeatPump', idShortEnpi: 'EnPis Grundwasserwärmepumpe', idShortCDEnpi: 'EnpiGroundwaterHeatpump' },
+      { id: 2, groupType: 'Heizung', sourceName: 'Luftwärmepumpe', pic: require('@/assets/luftwärmepumpe.svg'), name: 'Component', idShortCD: 'AirHeatPump', idShortEnpi: 'EnPis Luftwärmepumpe', idShortCDEnpi: 'EnpiAirHeatpump' },
+      { id: 3, groupType: 'Heizung', sourceName: 'Erdwärmepumpe', pic: require('@/assets/erdwärmepumpe.svg'), name: 'Component', idShortCD: 'GroundSourceHeatPump', idShortEnpi: 'EnPis Erdwärmepumpe', idShortCDEnpi: 'EnpiGroundSourceHeatpump' },
+      { id: 4, groupType: 'Kühlung', sourceName: 'Grundwasserwärmepumpe', pic: require('@/assets/grundwärmepumpe.svg'), name: 'Component', idShortCD: 'GroundWaterHeatPump', idShortEnpi: 'EnPis Grundwasserwärmepumpe', idShortCDEnpi: 'EnpiGroundwaterHeatpump' },
+      { id: 5, groupType: 'Kühlung', sourceName: 'Luftwärmepumpe', pic: require('@/assets/luftwärmepumpe.svg'), name: 'Component', idShortCD: 'AirHeatPump', idShortEnpi: 'EnPis Luftwärmepumpe', idShortCDEnpi: 'EnpiAirHeatpump' },
+      { id: 6, groupType: 'Kühlung', sourceName: 'Erdwärmepumpe', pic: require('@/assets/erdwärmepumpe.svg'), name: 'Component', idShortCD: 'GroundSourceHeatPump', idShortEnpi: 'EnPis Erdwärmepumpe', idShortCDEnpi: 'EnpiGroundSourceHeatpump' },
+      { id: 7, groupType: 'Kühlung', sourceName: 'Kaltwassersatz', pic: require('@/assets/kaltwasser.svg'), name: 'Component', idShortCD: 'ColdWaterSet', idShortEnpi: 'EnPis Kalwassersatz', idShortCDEnpi: 'EnpiColdWaterSet' },
+      { id: 8, groupType: 'Kühlung', sourceName: 'Splitgerät', pic: require('@/assets/split.svg'), name: 'Component', idShortCD: 'SplitDevice', idShortEnpi: 'EnPis Splitgerät', idShortCDEnpi: 'EnpiSplitDevice' },
+      { id: 9, groupType: 'Lüftung', sourceName: 'Klimaanlage', pic: require('@/assets/klimaanlage.svg'), name: 'Component', idShortCD: 'AirConditioningSystem', idShortEnpi: 'EnPis Klimaanlage', idShortCDEnpi: 'EnpiAirConditioningSystem' },
+      // { id: 10, groupType: 'Lüftung', sourceName: 'Teilklimaanlage', pic: require('../assets/teilklimaanlage.svg'), name: 'Component' },
+      { id: 11, groupType: 'Lüftung', sourceName: 'Lüftungsanlage', pic: require('@/assets/lüftungsanlage.svg'), name: 'Component', idShortCD: 'VentilationSystem', idShortEnpi: 'EnPis Lüftungsanlagae', idShortCDEnpi: 'EnpiVentilationSystem' }
+    ]
+    this.heatingComponents = [
+      { id: 1, groupType: 'Pumpe', sourceName: 'Kreiselpumpe', pic: require('@/assets/kreiselpumpe.svg'), name: 'Component', idShortCD: 'CentrifugalPump', idShortEnpi: 'EnPis Kreiselpumpe', idShortCDEnpi: 'EnpiCentrifugalPump' },
+      { id: 2, groupType: 'Pumpe', sourceName: 'Verdrängerpumpe', pic: require('@/assets/verdrängerpumpe.svg'), name: 'Component', idShortCD: 'DisplacementPump', idShortEnpi: 'EnPis Verdrängerpumpe', idShortCDEnpi: 'EnpiDisplacementPump' },
+      { id: 3, groupType: 'Pumpe', sourceName: 'Strahlpumpe', pic: require('@/assets/strahlpumpe.svg'), name: 'Component', idShortCD: 'JetPump', idShortEnpi: 'EnPis Strahlpumpe', idShortCDEnpi: 'EnpiJetPump' }
+    ]
+    this.airComponents = [
+      { id: 1, groupType: 'Lüftung', sourceName: 'Ventilator', pic: require('@/assets/ventilator.svg'), name: 'Component', idShortCD: 'Fan', idShortEnpi: 'EnPis Ventilator', idShortCDEnpi: 'EnpiFan' },
+      { id: 2, groupType: 'Klimaanlage', sourceName: 'Erhitzer', pic: require('@/assets/erhitzer.svg'), name: 'Component', idShortCD: 'Heater', idShortEnpi: 'EnPis Erhitzer', idShortCDEnpi: 'EnpiHeater' },
+      { id: 3, groupType: 'Klimaanlage', sourceName: 'Kühler', pic: require('@/assets/kühler.svg'), name: 'Component', idShortCD: 'Cooler', idShortEnpi: 'EnPis Kühler' },
+      { id: 4, groupType: 'Klimaanlage', sourceName: 'Wärmerückgewinnung', pic: require('@/assets/wrg.svg'), name: 'Component', idShortCD: 'HeatRecovery', idShortEnpi: 'EnPis Wärmerückgewinnung', idShortCDEnpi: 'EnpiHeatRecovery' }
+    ]
   }
 }
 </script>
