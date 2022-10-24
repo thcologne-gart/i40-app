@@ -1,28 +1,15 @@
 <template>
   <div>
-    <GeneralGrid :sites="sites" :buildings="buildings" :linkToInfos="linkToInfos">
-      <div v-for="data in bacnetData" :key="data.name">{{ data }}</div>
-        <!-- <v-sheet elevation="2">
-          <v-tabs center-active v-model="tab" background-color="grey lighten-2" slider-color="#FFAC1C" color="#0a322b">
-            <v-tab v-for="site in numberofSites" :key="site">{{ sites[site][1].value }}</v-tab>
-          </v-tabs>
-        </v-sheet>
-        <v-tabs-items v-model="tab" id="custom-tab-items">
-          <v-tab-item v-for="site in numberofSites" :key="site">
-            <slot name="site" v-bind:site="site">Platzhalter</slot>
-          </v-tab-item>
-        </v-tabs-items> -->
-      <!-- <slot name="site" v-bind:site="site">Platzhalter</slot> -->
-      <!-- <slot>Platzhalter</slot> -->
-    </GeneralGrid>
+    <BPGrid :sites="sites" :buildings="buildings" :linkToInfos="linkToInfos">
+    </BPGrid>
   </div>
 </template>
 
 <script>
-import GeneralGrid from '@/components/general/GeneralGrid.vue'
+import BPGrid from '@/components/bp/BPGrid.vue'
 
 export default {
-  components: { GeneralGrid },
+  components: { BPGrid },
   data () {
     return {
       linkToInfos: '/buildingperformance',
@@ -70,19 +57,6 @@ export default {
     sites () {
       console.log(this.$store.getters.loadedSiteInformation)
       return this.$store.getters.loadedSiteInformation
-    },
-    bacnetData () {
-      console.log(this.$store.getters.loadedBACnet)
-      const loadedBacnetData = this.$store.getters.loadedBACnet
-      // console.log(loadedAas.aas1)
-      // this.loadAas = loadedAas
-      // for (const item in loadedAas) {
-      // console.log(loadedAas[item].payload.aasContent)
-      // const json = atob(loadedAas[item].payload.aasContent)
-      // const result = JSON.parse(json)
-      // console.log(result)
-      // }
-      return loadedBacnetData
     }
   }
 }
