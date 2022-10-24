@@ -266,6 +266,20 @@ export default new Vuex.Store({
       })
     },
 
+    addGrundfunktionToBacnet ({ commit }, payload) {
+      console.log(payload)
+      // const newPayload = payload[0]
+      const database = getDatabase()
+      for (const element in payload) {
+        console.log(payload[element].grundfunktionLabel)
+        // const elementString = element.toString()
+        push(ref(database, 'bacnet/' + element + '/'), {
+          grundfunktionLabel: payload[element].grundfunktionLabel,
+          grundfunktionScore: payload[element].grundfunktionScore
+        })
+      }
+    },
+
     addEnergyUseGroup ({ commit }, payload) {
       console.log(payload)
       // const newPayload = payload[0]

@@ -12,6 +12,7 @@
 </template>
 
 <script>
+/*
 async function query (data) {
   const response = await fetch(
     'https://api-inference.huggingface.co/models/mboth/klassifizierungGrundfunktionen',
@@ -29,7 +30,7 @@ async function query (data) {
 query({ inputs: 'Heizkreis vorlauftemperatur' }).then((response) => {
   console.log(JSON.stringify(response))
 })
-
+*/
 export default {
   props: {
     site: Array
