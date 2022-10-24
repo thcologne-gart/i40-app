@@ -28,7 +28,8 @@ export default {
         // { link: '/performance', title: 'Performance Monitoring' },
         // { link: '/register', title: 'Registrierung' },
         { link: '/digitaltwins', title: 'Digital Twins' },
-        { link: '/generalstart', title: 'Allgemeine Infos' }
+        { link: '/generalstart', title: 'Allgemeine Infos' },
+        { link: '/buildingperformance', title: 'Building Performance' }
       ]
     }
   }

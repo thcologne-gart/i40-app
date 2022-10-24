@@ -1,43 +1,75 @@
 <template>
   <div>
-    <div>
-      <v-card
-        id="bp-start"
-        style="max-width: 40rem;"
-        class="shadow p-3 mb-5 bg-white rounded mx-auto"
-      >
-        <v-card-title id="card-title">Building Performance</v-card-title>
-        <v-img :src="require('@/assets/bp-start.jpeg')"></v-img>
-        <v-card-text>
-          Starten Sie mit der Konfiguration Ihrer Building Performance Applikation
-        </v-card-text>
-        <v-btn to="/home"
-          variant="outline-secondary"
-          >Start</v-btn>
-      </v-card>
-    </div>
+    <GeneralGrid :sites="sites" :buildings="buildings" :linkToInfos="linkToInfos">
+        <!-- <v-sheet elevation="2">
+          <v-tabs center-active v-model="tab" background-color="grey lighten-2" slider-color="#FFAC1C" color="#0a322b">
+            <v-tab v-for="site in numberofSites" :key="site">{{ sites[site][1].value }}</v-tab>
+          </v-tabs>
+        </v-sheet>
+        <v-tabs-items v-model="tab" id="custom-tab-items">
+          <v-tab-item v-for="site in numberofSites" :key="site">
+            <slot name="site" v-bind:site="site">Platzhalter</slot>
+          </v-tab-item>
+        </v-tabs-items> -->
+      <!-- <slot name="site" v-bind:site="site">Platzhalter</slot> -->
+      <!-- <slot>Platzhalter</slot> -->
+    </GeneralGrid>
   </div>
 </template>
 
-<style scoped>
-#bp-start {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
+<script>
+import GeneralGrid from '@/components/general/GeneralGrid.vue'
 
-#grid-layout {
-  margin-top: 10px;
-}
+export default {
+  components: { GeneralGrid },
+  data () {
+    return {
+      linkToInfos: '/buildingperformance',
+      tab: null,
+      submodels: []
+    }
+  },
+  computed: {
+    buildings () {
+      // console.log(this.sites)
+      // console.log(this.$store.getters.loadedBuildingInformation)
+      const buildings = this.$store.getters.loadedBuildingInformation
+      console.log(buildings)
+      const buildingsArray = []
+      for (const item in buildings) {
+        buildingsArray.push({
+          numberOfSite: buildings[item][2].value,
+          buildingNumber: buildings[item][3].value,
+          submodelId: buildings[item][4].submodelId,
+          buildingDesignation: buildings[item][1].value
+        })
+      }
+      console.log(buildingsArray)
+      return buildingsArray
+    },
 
-#navigation {
-  border-right-style: solid;
-  border-top-style: solid;
-  border-color: #F2F2F2;
-  text-align: left;
+    numberofSites () {
+      const loadInfos = this.$store.getters.loadedOrganizationInformation
+      // console.log(loadInfos)
+      let numberSites
+      for (const item in loadInfos) {
+        if (loadInfos[item].idShort === 'NumberOfSites') {
+          numberSites = loadInfos[item].value
+          // console.log(typeof numberSites)
+        }
+      }
+      const numberOfSites = [0]
+      let i
+      for (i = 1; i < numberSites; i++) {
+        numberOfSites.push(i)
+      }
+      // console.log(numberOfSites)
+      return numberOfSites
+    },
+    sites () {
+      console.log(this.$store.getters.loadedSiteInformation)
+      return this.$store.getters.loadedSiteInformation
+    }
+  }
 }
-
-#content {
-  border-top-style: solid;
-  border-color: #F2F2F2;
-}
-</style>
+</script>
