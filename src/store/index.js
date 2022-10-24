@@ -13,6 +13,7 @@ export default new Vuex.Store({
     loadedSubmodelsCaBo: null,
     loadedAas: null,
     loadedAASJson: null,
+    loadedBACnet: null,
     loadedAasDeletionEnergyTypes: null,
     loadedSubmodels: null,
     loadedConceptDescriptions: null,
@@ -77,6 +78,9 @@ export default new Vuex.Store({
     },
     setLoadedAASJson (state, payload) {
       state.loadedAASJson = payload
+    },
+    setLoadedBACnet (state, payload) {
+      state.loadedBACnet = payload
     },
     setLoadedAasDeletionEnergyTypes (state, payload) {
       state.loadedAasDeletionEnergyTypes = payload
@@ -412,6 +416,30 @@ export default new Vuex.Store({
         */
         // console.log(aas)
         commit('setLoadedAASJson', data)
+      })
+    },
+
+    loadBACnet ({ commit }) {
+      const database = getDatabase()
+      onValue(ref(database, 'bacnet/'), (snapshot) => {
+        const data = snapshot.val()
+        // console.log(data)
+        // let keyAas
+        // const aas = []
+        /*
+        for (const key in data) {
+          const submodelId = data[key].payload.submodels.keys[0].value
+          if (submodelId.includes('submodels/building-information/')) {
+            keyAas = key
+            aas.push({
+              key: keyAas,
+              submodelId: submodelId
+            })
+          }
+        }
+        */
+        // console.log(aas)
+        commit('setLoadedBACnet', data)
       })
     },
 
@@ -1079,6 +1107,9 @@ export default new Vuex.Store({
     },
     loadedAASJson (state) {
       return state.loadedAASJson
+    },
+    loadedBACnet (state) {
+      return state.loadedBACnet
     },
     loadedAasDeletionEnergyTypes (state) {
       return state.loadedAasDeletionEnergyTypes

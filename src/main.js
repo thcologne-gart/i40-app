@@ -53,6 +53,7 @@ new Vue({
     this.$store.dispatch('loadOrganizationInformationCaBo')
     this.$store.dispatch('loadAas')
     this.$store.dispatch('loadAASJson')
+    this.$store.dispatch('loadBACnet')
     this.$store.dispatch('loadSubmodels')
     this.$store.dispatch('loadConceptDescriptions')
     this.$store.dispatch('loadOrganizationInformation')
