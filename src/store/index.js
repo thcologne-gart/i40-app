@@ -275,7 +275,9 @@ export default new Vuex.Store({
         // const elementString = element.toString()
         push(ref(database, 'bacnet/' + element + '/'), {
           grundfunktionLabel: payload[element].grundfunktionLabel,
-          grundfunktionScore: payload[element].grundfunktionScore
+          grundfunktionScore: payload[element].grundfunktionScore,
+          zweiteGrundfunktionLabel: payload[element].zweiteGrundfunktionLabel,
+          zweiteGrundfunktionScore: payload[element].zweiteGrundfunktionScore
         })
       }
     },

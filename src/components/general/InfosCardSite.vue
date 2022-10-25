@@ -4,7 +4,6 @@
       <div v-if="site[4].value === site2">
         <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
             <v-card-title id="card-title">{{ site[1].value }}</v-card-title>
-            <div>Hiiiiii</div>
         </v-card>
       </div>
     </div>

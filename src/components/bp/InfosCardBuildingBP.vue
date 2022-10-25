@@ -16,7 +16,6 @@
                       <v-btn
                         color="deep-grey lighten-2"
                         text
-                        @click="reserve"
                       >
                         Go to
                       </v-btn>
@@ -58,6 +57,66 @@
                     <v-card-subtitle>Medien versorgen</v-card-subtitle>
                     <v-divider class="mx-4"></v-divider>
                       <v-img class="mx-auto" max-width="60" href="#" contain :src= energyUseGroup[3].pic></v-img>
+                      <v-btn
+                        color="deep-grey lighten-2"
+                        text
+                        @click="reserve"
+                      >
+                        Go to
+                      </v-btn>
+                    </v-card>
+                </div>
+                <div v-if="grundfunktion ==='Sichern'">
+                  <v-card class="mx-auto my-8" elevation="2"
+                        max-width="80%">
+                    <v-card-subtitle>Sichern</v-card-subtitle>
+                    <v-divider class="mx-4"></v-divider>
+                      <v-img class="mx-auto" max-width="60" href="#" contain :src= energyUseGroup[4].pic></v-img>
+                      <v-btn
+                        color="deep-grey lighten-2"
+                        text
+                        @click="reserve"
+                      >
+                        Go to
+                      </v-btn>
+                    </v-card>
+                </div>
+                <div v-if="grundfunktion ==='StromVersorgen'">
+                  <v-card class="mx-auto my-8" elevation="2"
+                        max-width="80%">
+                    <v-card-subtitle>Strom versorgen</v-card-subtitle>
+                    <v-divider class="mx-4"></v-divider>
+                      <v-img class="mx-auto" max-width="60" href="#" contain :src= energyUseGroup[5].pic></v-img>
+                      <v-btn
+                        color="deep-grey lighten-2"
+                        text
+                        @click="reserve"
+                      >
+                        Go to
+                      </v-btn>
+                    </v-card>
+                </div>
+                <div v-if="grundfunktion ==='Befoerdern'">
+                  <v-card class="mx-auto my-8" elevation="2"
+                        max-width="80%">
+                    <v-card-subtitle>Befördern</v-card-subtitle>
+                    <v-divider class="mx-4"></v-divider>
+                      <v-img class="mx-auto" max-width="60" href="#" contain :src= energyUseGroup[6].pic></v-img>
+                      <v-btn
+                        color="deep-grey lighten-2"
+                        text
+                        @click="reserve"
+                      >
+                        Go to
+                      </v-btn>
+                    </v-card>
+                </div>
+                <div v-if="grundfunktion ==='AndereAnlagen'">
+                  <v-card class="mx-auto my-8" elevation="2"
+                        max-width="80%">
+                    <v-card-subtitle>Andere Anlagen</v-card-subtitle>
+                    <v-divider class="mx-4"></v-divider>
+                      <v-img class="mx-auto" max-width="60" href="#" contain :src= energyUseGroup[7].pic></v-img>
                       <v-btn
                         color="deep-grey lighten-2"
                         text
@@ -127,7 +186,7 @@ export default {
       // console.log(data[2].input)
       let result
       for (const example in examples) {
-        console.log(examples[example].input)
+        // console.log(examples[example].input)
         const response = await fetch(
           'https://api-inference.huggingface.co/models/mboth/klassifizierungGrundfunktionen',
           {
@@ -141,13 +200,130 @@ export default {
           name: examples[example].name,
           description: examples[example].description,
           grundfunktionLabel: result[0][0].label,
-          grundfunktionScore: result[0][0].score
+          grundfunktionScore: result[0][0].score,
+          input: examples[example].input
         })
-        console.log(result)
+        // console.log(result)
       }
-      this.$store.dispatch('addGrundfunktionToBacnet', bacnetDataScore)
-      console.log(bacnetDataScore)
+      this.zweiteGrundfunktion(bacnetDataScore)
+      // this.$store.dispatch('addGrundfunktionToBacnet', bacnetDataScore)
+      // console.log(bacnetDataScore)
       return result
+    },
+    async zweiteGrundfunktion (bacnetDataScore) {
+      console.log(bacnetDataScore)
+      const bacnetArrayZweiteGrundfunktion = []
+      let result
+      for (const element in bacnetDataScore) {
+        if (bacnetDataScore[element].grundfunktionLabel === 'WaermeVersorgen') {
+          const response = await fetch(
+            'https://api-inference.huggingface.co/models/mboth/klassifizierungWaermeVersorgen',
+            {
+              headers: { Authorization: 'Bearer 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' },
+              method: 'POST',
+              body: JSON.stringify(bacnetDataScore[element].input)
+            }
+          )
+          result = await response.json()
+          bacnetArrayZweiteGrundfunktion.push({
+            name: bacnetDataScore[element].name,
+            description: bacnetDataScore[element].description,
+            grundfunktionLabel: bacnetDataScore[element].grundfunktionLabel,
+            grundfunktionScore: bacnetDataScore[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: result[0][0].label,
+            zweiteGrundfunktionScore: result[0][0].score,
+            input: bacnetDataScore[element].input
+          })
+        } else if (bacnetDataScore[element].grundfunktionLabel === 'LuftVersorgen') {
+          const response = await fetch(
+            'https://api-inference.huggingface.co/models/mboth/klassifizierungLuftVersorgen',
+            {
+              headers: { Authorization: 'Bearer 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' },
+              method: 'POST',
+              body: JSON.stringify(bacnetDataScore[element].input)
+            }
+          )
+          result = await response.json()
+          bacnetArrayZweiteGrundfunktion.push({
+            name: bacnetDataScore[element].name,
+            description: bacnetDataScore[element].description,
+            grundfunktionLabel: bacnetDataScore[element].grundfunktionLabel,
+            grundfunktionScore: bacnetDataScore[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: result[0][0].label,
+            zweiteGrundfunktionScore: result[0][0].score,
+            input: bacnetDataScore[element].input
+          })
+        } else if (bacnetDataScore[element].grundfunktionLabel === 'MedienVersorgen') {
+          const response = await fetch(
+            'https://api-inference.huggingface.co/models/mboth/klassifizierungMedienVersorgen',
+            {
+              headers: { Authorization: 'Bearer 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' },
+              method: 'POST',
+              body: JSON.stringify(bacnetDataScore[element].input)
+            }
+          )
+          result = await response.json()
+          bacnetArrayZweiteGrundfunktion.push({
+            name: bacnetDataScore[element].name,
+            description: bacnetDataScore[element].description,
+            grundfunktionLabel: bacnetDataScore[element].grundfunktionLabel,
+            grundfunktionScore: bacnetDataScore[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: result[0][0].label,
+            zweiteGrundfunktionScore: result[0][0].score,
+            input: bacnetDataScore[element].input
+          })
+        } else if (bacnetDataScore[element].grundfunktionLabel === 'KaelteVersorgen') {
+          const response = await fetch(
+            'https://api-inference.huggingface.co/models/mboth/klassifizierungKaelteVersorgen',
+            {
+              headers: { Authorization: 'Bearer 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' },
+              method: 'POST',
+              body: JSON.stringify(bacnetDataScore[element].input)
+            }
+          )
+          result = await response.json()
+          bacnetArrayZweiteGrundfunktion.push({
+            name: bacnetDataScore[element].name,
+            description: bacnetDataScore[element].description,
+            grundfunktionLabel: bacnetDataScore[element].grundfunktionLabel,
+            grundfunktionScore: bacnetDataScore[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: result[0][0].label,
+            zweiteGrundfunktionScore: result[0][0].score,
+            input: bacnetDataScore[element].input
+          })
+        } else if (bacnetDataScore[element].grundfunktionLabel === 'Sichern') {
+          const response = await fetch(
+            'https://api-inference.huggingface.co/models/mboth/klassifizierungSichern',
+            {
+              headers: { Authorization: 'Bearer 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' },
+              method: 'POST',
+              body: JSON.stringify(bacnetDataScore[element].input)
+            }
+          )
+          result = await response.json()
+          bacnetArrayZweiteGrundfunktion.push({
+            name: bacnetDataScore[element].name,
+            description: bacnetDataScore[element].description,
+            grundfunktionLabel: bacnetDataScore[element].grundfunktionLabel,
+            grundfunktionScore: bacnetDataScore[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: result[0][0].label,
+            zweiteGrundfunktionScore: result[0][0].score,
+            input: bacnetDataScore[element].input
+          })
+        } else if (bacnetDataScore[element].grundfunktionLabel === 'Befoerdern' || bacnetDataScore[element].grundfunktionLabel === 'StromVersorgen' || bacnetDataScore[element].grundfunktionLabel === 'AndereAnlagen') {
+          bacnetArrayZweiteGrundfunktion.push({
+            name: bacnetDataScore[element].name,
+            description: bacnetDataScore[element].description,
+            grundfunktionLabel: bacnetDataScore[element].grundfunktionLabel,
+            grundfunktionScore: bacnetDataScore[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: 'Noch nicht ausgeprägt',
+            zweiteGrundfunktionScore: 0,
+            input: bacnetDataScore[element].input
+          })
+        }
+      }
+      this.$store.dispatch('addGrundfunktionToBacnet', bacnetArrayZweiteGrundfunktion)
+      console.log(bacnetArrayZweiteGrundfunktion)
     }
   },
   created () {
@@ -155,7 +331,11 @@ export default {
       { name: 'Wärme versorgen', pic: require('@/assets/heizung.svg') },
       { name: 'Kälte versorgen', pic: require('@/assets/kuehlung.svg') },
       { name: 'Luft versorgen', pic: require('@/assets/lueftung.svg') },
-      { name: 'Medien versorgen', pic: require('@/assets/lueftung.svg') }
+      { name: 'Medien versorgen', pic: require('@/assets/medien.svg') },
+      { name: 'Sichern', pic: require('@/assets/sichern.svg') },
+      { name: 'Strom versorgen', pic: require('@/assets/elektro.svg') },
+      { name: 'Befördern', pic: require('@/assets/befördern.svg') },
+      { name: 'Andere Anlagen', pic: require('@/assets/andere_anlagen.svg') }
     ]
     this.energySourceGroups = [
       { id: 1, groupName: 'Energie Gruppe Heizung', pic: require('@/assets/heating-system.jpeg'), name: 'Energy Source Group' },
