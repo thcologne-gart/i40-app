@@ -36,7 +36,7 @@
             <InfosCardSiteBP :site="choosedSite" />
           </div>
           <div v-else-if="choosedBuilding !== '' & choosedSite === ''">
-            <InfosCardBuildingBP :building="choosedBuilding" />
+            <InfosCardBuildingBP :building="choosedBuilding" :site="choosedSite" />
           </div>
         </v-col>
     </v-row>

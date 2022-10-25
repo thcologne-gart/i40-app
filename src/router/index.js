@@ -293,6 +293,54 @@ const routes = [
     path: '/optimization/optimization',
     name: 'Optimization Optimization',
     component: () => import('../views/ems/optimization/OptimizationSubmodel.vue')
+  },
+  {
+    path: '/buildingperformance/wärmeversorgen',
+    name: 'Wärme versorgen',
+    component: () => import('../views/buildingperformance/WärmeVersorgen.vue'),
+    props: true
+  },
+  {
+    path: '/buildingperformance/kälteversorgen',
+    name: 'Kälte versorgen',
+    component: () => import('../views/buildingperformance/KälteVersorgen.vue'),
+    props: true
+  },
+  {
+    path: '/buildingperformance/medienversorgen',
+    name: 'Medien versorgen',
+    component: () => import('../views/buildingperformance/MedienVersorgen.vue'),
+    props: true
+  },
+  {
+    path: '/buildingperformance/stromversorgen',
+    name: 'Strom versorgen',
+    component: () => import('../views/buildingperformance/StromVersorgen.vue'),
+    props: true
+  },
+  {
+    path: '/buildingperformance/luftversorgen',
+    name: 'Luft versorgen',
+    component: () => import('../views/buildingperformance/LuftVersorgen.vue'),
+    props: true
+  },
+  {
+    path: '/buildingperformance/sichern',
+    name: 'Sichern',
+    component: () => import('../views/buildingperformance/Sichern.vue'),
+    props: true
+  },
+  {
+    path: '/buildingperformance/befördern',
+    name: 'Befördern',
+    component: () => import('../views/buildingperformance/Befördern.vue'),
+    props: true
+  },
+  {
+    path: '/buildingperformance/andereanlagen',
+    name: 'Andere Anlagen',
+    component: () => import('../views/buildingperformance/AndereAnlagen.vue'),
+    props: true
   }
 ]
 

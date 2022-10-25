@@ -16,6 +16,7 @@
                       <v-btn
                         color="deep-grey lighten-2"
                         text
+                        @click="() => {}" :to= "{ name: 'Wärme versorgen', params: { building: building, grundfunktion: wärmeVersorgen } }"
                       >
                         Go to
                       </v-btn>
@@ -30,7 +31,7 @@
                       <v-btn
                         color="deep-grey lighten-2"
                         text
-                        @click="reserve"
+                        @click="() => {}" :to="{ name: 'Kälte versorgen', params: { building: building, grundfunktion: kälteVersorgen } }"
                       >
                         Go to
                       </v-btn>
@@ -45,7 +46,7 @@
                       <v-btn
                         color="deep-grey lighten-2"
                         text
-                        @click="reserve"
+                        @click="() => {}" :to= "{ name: 'Luft versorgen', params: { building: building, grundfunktion: luftVersorgen } }"
                       >
                         Go to
                       </v-btn>
@@ -60,7 +61,7 @@
                       <v-btn
                         color="deep-grey lighten-2"
                         text
-                        @click="reserve"
+                        @click="() => {}" :to= "{ name: 'Medien versorgen', params: { building: building, grundfunktion: medienVersorgen } }"
                       >
                         Go to
                       </v-btn>
@@ -75,7 +76,7 @@
                       <v-btn
                         color="deep-grey lighten-2"
                         text
-                        @click="reserve"
+                        @click="() => {}" :to= "{ name: 'Sichern', params: { building: building, grundfunktion: sichern } }"
                       >
                         Go to
                       </v-btn>
@@ -90,7 +91,7 @@
                       <v-btn
                         color="deep-grey lighten-2"
                         text
-                        @click="reserve"
+                        @click="() => {}" :to= "{ name: 'Strom versorgen', params: { building: building, grundfunktion: stromVersorgen } }"
                       >
                         Go to
                       </v-btn>
@@ -105,7 +106,7 @@
                       <v-btn
                         color="deep-grey lighten-2"
                         text
-                        @click="reserve"
+                        @click="() => {}" :to= "{ name: 'Befördern', params: { building: building, grundfunktion: befördern } }"
                       >
                         Go to
                       </v-btn>
@@ -120,7 +121,7 @@
                       <v-btn
                         color="deep-grey lighten-2"
                         text
-                        @click="reserve"
+                        @click="() => {}" :to= "{ name: 'Andere Anlagen', params: { building: building, grundfunktion: andereAnlagen } }"
                       >
                         Go to
                       </v-btn>
@@ -139,6 +140,158 @@ export default {
     building: Object
   },
   computed: {
+    wärmeVersorgen () {
+      const loadedBacnetData = this.$store.getters.loadedBACnet
+      const wärmeVersorgen = []
+      for (const data in loadedBacnetData) {
+        const keys = [Object.keys(loadedBacnetData[data])]
+        const key = keys[0][0]
+        console.log(loadedBacnetData[data][key].grundfunktionLabel)
+        if (loadedBacnetData[data][key].grundfunktionLabel === 'WaermeVersorgen') {
+          wärmeVersorgen.push({
+            name: loadedBacnetData[data].name,
+            description: loadedBacnetData[data].text,
+            grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
+            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel
+          })
+        }
+      }
+      console.log(wärmeVersorgen)
+      return wärmeVersorgen
+    },
+    kälteVersorgen () {
+      const loadedBacnetData = this.$store.getters.loadedBACnet
+      const kälteVersorgen = []
+      for (const data in loadedBacnetData) {
+        const keys = [Object.keys(loadedBacnetData[data])]
+        const key = keys[0][0]
+        console.log(loadedBacnetData[data][key].grundfunktionLabel)
+        if (loadedBacnetData[data][key].grundfunktionLabel === 'KaelteVersorgen') {
+          kälteVersorgen.push({
+            name: loadedBacnetData[data].name,
+            description: loadedBacnetData[data].text,
+            grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
+            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel
+          })
+        }
+      }
+      console.log(kälteVersorgen)
+      return kälteVersorgen
+    },
+    luftVersorgen () {
+      const loadedBacnetData = this.$store.getters.loadedBACnet
+      const funktion = []
+      for (const data in loadedBacnetData) {
+        const keys = [Object.keys(loadedBacnetData[data])]
+        const key = keys[0][0]
+        console.log(loadedBacnetData[data][key].grundfunktionLabel)
+        if (loadedBacnetData[data][key].grundfunktionLabel === 'LuftVersorgen') {
+          funktion.push({
+            name: loadedBacnetData[data].name,
+            description: loadedBacnetData[data].text,
+            grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
+            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel
+          })
+        }
+      }
+      console.log(funktion)
+      return funktion
+    },
+    medienVersorgen () {
+      const loadedBacnetData = this.$store.getters.loadedBACnet
+      const funktion = []
+      for (const data in loadedBacnetData) {
+        const keys = [Object.keys(loadedBacnetData[data])]
+        const key = keys[0][0]
+        console.log(loadedBacnetData[data][key].grundfunktionLabel)
+        if (loadedBacnetData[data][key].grundfunktionLabel === 'MedienVersorgen') {
+          funktion.push({
+            name: loadedBacnetData[data].name,
+            description: loadedBacnetData[data].text,
+            grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
+            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel
+          })
+        }
+      }
+      console.log(funktion)
+      return funktion
+    },
+    sichern () {
+      const loadedBacnetData = this.$store.getters.loadedBACnet
+      const funktion = []
+      for (const data in loadedBacnetData) {
+        const keys = [Object.keys(loadedBacnetData[data])]
+        const key = keys[0][0]
+        console.log(loadedBacnetData[data][key].grundfunktionLabel)
+        if (loadedBacnetData[data][key].grundfunktionLabel === 'Sichern') {
+          funktion.push({
+            name: loadedBacnetData[data].name,
+            description: loadedBacnetData[data].text,
+            grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
+            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel
+          })
+        }
+      }
+      console.log(funktion)
+      return funktion
+    },
+    befördern () {
+      const loadedBacnetData = this.$store.getters.loadedBACnet
+      const funktion = []
+      for (const data in loadedBacnetData) {
+        const keys = [Object.keys(loadedBacnetData[data])]
+        const key = keys[0][0]
+        console.log(loadedBacnetData[data][key].grundfunktionLabel)
+        if (loadedBacnetData[data][key].grundfunktionLabel === 'Befoerdern') {
+          funktion.push({
+            name: loadedBacnetData[data].name,
+            description: loadedBacnetData[data].text,
+            grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
+            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel
+          })
+        }
+      }
+      console.log(funktion)
+      return funktion
+    },
+    stromVersorgen () {
+      const loadedBacnetData = this.$store.getters.loadedBACnet
+      const funktion = []
+      for (const data in loadedBacnetData) {
+        const keys = [Object.keys(loadedBacnetData[data])]
+        const key = keys[0][0]
+        console.log(loadedBacnetData[data][key].grundfunktionLabel)
+        if (loadedBacnetData[data][key].grundfunktionLabel === 'StromVersorgen') {
+          funktion.push({
+            name: loadedBacnetData[data].name,
+            description: loadedBacnetData[data].text,
+            grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
+            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel
+          })
+        }
+      }
+      console.log(funktion)
+      return funktion
+    },
+    andereAnlagen () {
+      const loadedBacnetData = this.$store.getters.loadedBACnet
+      const funktion = []
+      for (const data in loadedBacnetData) {
+        const keys = [Object.keys(loadedBacnetData[data])]
+        const key = keys[0][0]
+        console.log(loadedBacnetData[data][key].grundfunktionLabel)
+        if (loadedBacnetData[data][key].grundfunktionLabel === 'AndereAnlagen') {
+          funktion.push({
+            name: loadedBacnetData[data].name,
+            description: loadedBacnetData[data].text,
+            grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
+            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel
+          })
+        }
+      }
+      console.log(funktion)
+      return funktion
+    },
     bacnetData () {
       console.log(this.$store.getters.loadedBACnet)
       const loadedBacnetData = this.$store.getters.loadedBACnet
@@ -180,9 +333,9 @@ export default {
   },
   methods: {
     async query (data) {
-      const examples = data.slice(0, 6)
+      const examples = data.slice(0, 300)
       const bacnetDataScore = []
-      // console.log(examples)
+      console.log(examples)
       // console.log(data[2].input)
       let result
       for (const example in examples) {
@@ -196,6 +349,7 @@ export default {
           }
         )
         result = await response.json()
+        console.log(result)
         bacnetDataScore.push({
           name: examples[example].name,
           description: examples[example].description,
@@ -204,6 +358,7 @@ export default {
           input: examples[example].input
         })
         // console.log(result)
+        console.log(bacnetDataScore)
       }
       this.zweiteGrundfunktion(bacnetDataScore)
       // this.$store.dispatch('addGrundfunktionToBacnet', bacnetDataScore)
@@ -324,18 +479,19 @@ export default {
       }
       this.$store.dispatch('addGrundfunktionToBacnet', bacnetArrayZweiteGrundfunktion)
       console.log(bacnetArrayZweiteGrundfunktion)
+      return bacnetArrayZweiteGrundfunktion
     }
   },
   created () {
     this.energyUseGroup = [
-      { name: 'Wärme versorgen', pic: require('@/assets/heizung.svg') },
-      { name: 'Kälte versorgen', pic: require('@/assets/kuehlung.svg') },
-      { name: 'Luft versorgen', pic: require('@/assets/lueftung.svg') },
-      { name: 'Medien versorgen', pic: require('@/assets/medien.svg') },
-      { name: 'Sichern', pic: require('@/assets/sichern.svg') },
-      { name: 'Strom versorgen', pic: require('@/assets/elektro.svg') },
-      { name: 'Befördern', pic: require('@/assets/befördern.svg') },
-      { name: 'Andere Anlagen', pic: require('@/assets/andere_anlagen.svg') }
+      { name: 'Wärme versorgen', pic: require('@/assets/heizung.svg'), link: '/wärmeversorgen' },
+      { name: 'Kälte versorgen', pic: require('@/assets/kuehlung.svg'), link: '/kälteversorgen' },
+      { name: 'Luft versorgen', pic: require('@/assets/lueftung.svg'), link: 'luftversorgen' },
+      { name: 'Medien versorgen', pic: require('@/assets/medien.svg'), link: 'medienversorgen' },
+      { name: 'Sichern', pic: require('@/assets/sichern.svg'), link: 'sichern' },
+      { name: 'Strom versorgen', pic: require('@/assets/elektro.svg'), link: 'stromversorgen' },
+      { name: 'Befördern', pic: require('@/assets/befördern.svg'), link: 'befördern' },
+      { name: 'Andere Anlagen', pic: require('@/assets/andere_anlagen.svg'), link: 'andereanlagen' }
     ]
     this.energySourceGroups = [
       { id: 1, groupName: 'Energie Gruppe Heizung', pic: require('@/assets/heating-system.jpeg'), name: 'Energy Source Group' },
