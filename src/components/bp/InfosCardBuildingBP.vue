@@ -3,13 +3,11 @@
     <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
         <v-card-title id="card-title">{{ building.buildingDesignation }}</v-card-title>
         <hr>
-        <b-button class="my-3" variant="outline-secondary" block @click="query(bacnetData)">Hinzufügen Automationsstation</b-button>
+        <v-btn class="my-3" variant="outline-secondary" :loading="loading" @click="query(bacnetData)">Hinzufügen Automationsstation</v-btn>
           <v-container>
-            <v-row>
-              <v-col v-for="grundfunktion in numberOfGrundfunktionen" :key="grundfunktion">
-                <div v-if="grundfunktion ==='WaermeVersorgen'">
-                    <v-card class="mx-auto my-8" elevation="2"
-                        max-width="80%">
+            <v-row dense>
+                <v-col v-for="grundfunktion in numberOfGrundfunktionen" :key="grundfunktion" cols = '6'>
+                    <v-card max-width="70%" v-if="grundfunktion ==='WaermeVersorgen'" class="mx-auto my-8" elevation="2">
                     <v-card-subtitle>Wärme versorgen</v-card-subtitle>
                     <v-divider class="mx-4"></v-divider>
                       <v-img class="mx-auto" max-width="60" href="#" contain :src= energyUseGroup[0].pic></v-img>
@@ -21,10 +19,7 @@
                         Go to
                       </v-btn>
                     </v-card>
-                </div>
-                <div v-if="grundfunktion ==='KaelteVersorgen'">
-                  <v-card class="mx-auto my-8" elevation="2"
-                        max-width="80%">
+                    <v-card v-if="grundfunktion ==='KaelteVersorgen'" class="mx-auto my-8" elevation="2" max-width="70%">
                     <v-card-subtitle>Kälte versorgen</v-card-subtitle>
                     <v-divider class="mx-4"></v-divider>
                       <v-img class="mx-auto" max-width="60" href="#" contain :src= energyUseGroup[1].pic></v-img>
@@ -36,10 +31,8 @@
                         Go to
                       </v-btn>
                     </v-card>
-                </div>
-                <div v-if="grundfunktion ==='LuftVersorgen'">
-                  <v-card class="mx-auto my-8" elevation="2"
-                        max-width="80%">
+                  <v-card v-if="grundfunktion ==='LuftVersorgen'" class="mx-auto my-8" elevation="2"
+                        max-width="70%">
                     <v-card-subtitle>Luft versorgen</v-card-subtitle>
                     <v-divider class="mx-4"></v-divider>
                       <v-img class="mx-auto" max-width="60" href="#" contain :src= energyUseGroup[2].pic></v-img>
@@ -51,10 +44,8 @@
                         Go to
                       </v-btn>
                     </v-card>
-                </div>
-                <div v-if="grundfunktion ==='MedienVersorgen'">
-                  <v-card class="mx-auto my-8" elevation="2"
-                        max-width="80%">
+                  <v-card v-if="grundfunktion ==='MedienVersorgen'" class="mx-auto my-8" elevation="2"
+                        max-width="70%">
                     <v-card-subtitle>Medien versorgen</v-card-subtitle>
                     <v-divider class="mx-4"></v-divider>
                       <v-img class="mx-auto" max-width="60" href="#" contain :src= energyUseGroup[3].pic></v-img>
@@ -66,10 +57,8 @@
                         Go to
                       </v-btn>
                     </v-card>
-                </div>
-                <div v-if="grundfunktion ==='Sichern'">
-                  <v-card class="mx-auto my-8" elevation="2"
-                        max-width="80%">
+                  <v-card v-if="grundfunktion ==='Sichern'" class="mx-auto my-8" elevation="2"
+                        max-width="70%">
                     <v-card-subtitle>Sichern</v-card-subtitle>
                     <v-divider class="mx-4"></v-divider>
                       <v-img class="mx-auto" max-width="60" href="#" contain :src= energyUseGroup[4].pic></v-img>
@@ -81,10 +70,8 @@
                         Go to
                       </v-btn>
                     </v-card>
-                </div>
-                <div v-if="grundfunktion ==='StromVersorgen'">
-                  <v-card class="mx-auto my-8" elevation="2"
-                        max-width="80%">
+                  <v-card v-if="grundfunktion ==='StromVersorgen'" class="mx-auto my-8" elevation="2"
+                        max-width="70%">
                     <v-card-subtitle>Strom versorgen</v-card-subtitle>
                     <v-divider class="mx-4"></v-divider>
                       <v-img class="mx-auto" max-width="60" href="#" contain :src= energyUseGroup[5].pic></v-img>
@@ -96,10 +83,8 @@
                         Go to
                       </v-btn>
                     </v-card>
-                </div>
-                <div v-if="grundfunktion ==='Befoerdern'">
-                  <v-card class="mx-auto my-8" elevation="2"
-                        max-width="80%">
+                  <v-card v-if="grundfunktion ==='Befoerdern'" class="mx-auto my-8" elevation="2"
+                        max-width="70%">
                     <v-card-subtitle>Befördern</v-card-subtitle>
                     <v-divider class="mx-4"></v-divider>
                       <v-img class="mx-auto" max-width="60" href="#" contain :src= energyUseGroup[6].pic></v-img>
@@ -111,10 +96,8 @@
                         Go to
                       </v-btn>
                     </v-card>
-                </div>
-                <div v-if="grundfunktion ==='AndereAnlagen'">
-                  <v-card class="mx-auto my-8" elevation="2"
-                        max-width="80%">
+                  <v-card v-if="grundfunktion ==='AndereAnlagen'" class="mx-auto my-8" elevation="2"
+                        max-width="70%">
                     <v-card-subtitle>Andere Anlagen</v-card-subtitle>
                     <v-divider class="mx-4"></v-divider>
                       <v-img class="mx-auto" max-width="60" href="#" contain :src= energyUseGroup[7].pic></v-img>
@@ -126,9 +109,8 @@
                         Go to
                       </v-btn>
                     </v-card>
-                </div>
-              </v-col>
-            </v-row>
+                  </v-col>
+              </v-row>
           </v-container>
     </v-card>
   </div>
@@ -136,6 +118,11 @@
 
 <script>
 export default {
+  data () {
+    return {
+      loading: false
+    }
+  },
   props: {
     building: Object
   },
@@ -333,7 +320,8 @@ export default {
   },
   methods: {
     async query (data) {
-      const examples = data.slice(0, 300)
+      this.loading = true
+      const examples = data.slice(0, 50)
       const bacnetDataScore = []
       console.log(examples)
       // console.log(data[2].input)
@@ -363,6 +351,8 @@ export default {
       this.zweiteGrundfunktion(bacnetDataScore)
       // this.$store.dispatch('addGrundfunktionToBacnet', bacnetDataScore)
       // console.log(bacnetDataScore)
+      // this.loading = false
+      console.log('Ahhhhhhhhhhhhhhha')
       return result
     },
     async zweiteGrundfunktion (bacnetDataScore) {
@@ -479,6 +469,7 @@ export default {
       }
       this.$store.dispatch('addGrundfunktionToBacnet', bacnetArrayZweiteGrundfunktion)
       console.log(bacnetArrayZweiteGrundfunktion)
+      this.loading = false
       return bacnetArrayZweiteGrundfunktion
     }
   },

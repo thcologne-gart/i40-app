@@ -273,7 +273,8 @@ export default new Vuex.Store({
       for (const element in payload) {
         console.log(payload[element].grundfunktionLabel)
         // const elementString = element.toString()
-        push(ref(database, 'bacnet/' + element + '/'), {
+        // push(ref(database, 'bacnet/' + element + '/'), {
+        push(ref(database, 'test1/' + element + '/'), {
           grundfunktionLabel: payload[element].grundfunktionLabel,
           grundfunktionScore: payload[element].grundfunktionScore,
           zweiteGrundfunktionLabel: payload[element].zweiteGrundfunktionLabel,
@@ -437,7 +438,8 @@ export default new Vuex.Store({
 
     loadBACnet ({ commit }) {
       const database = getDatabase()
-      onValue(ref(database, 'bacnet/'), (snapshot) => {
+      onValue(ref(database, 'test1/'), (snapshot) => {
+      // onValue(ref(database, 'bacnet/'), (snapshot) => {
         const data = snapshot.val()
         // console.log(data)
         // let keyAas

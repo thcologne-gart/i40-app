@@ -59,7 +59,7 @@ export default {
       let solutions = [
         { icon: '', title: 'Energiemanagement', link: '/ems' },
         { icon: '', title: 'Performance Monitoring', link: '/performance' },
-        { icon: '', title: 'Building Performance', link: '/buildingperformance' },
+        { icon: '', title: 'Energiemonitoring', link: '/buildingperformance' },
         { icon: '', title: 'Digital Twins', link: '/digitaltwins' }
       ]
       if (this.userIsAuthenticated) {
@@ -78,7 +78,7 @@ export default {
           { icon: '', title: 'Home', link: '/home' },
           { icon: '', title: 'Performance Monitoring', link: '/performance' },
           { icon: '', title: 'Energiemanagement', link: '/ems' },
-          { icon: '', title: 'Building Performance', link: '/buildingperformance' },
+          { icon: '', title: 'Energiemonitoring', link: '/buildingperformance' },
           { icon: '', title: 'Digital Twins', link: '/digitaltwins' }
         ]
       }

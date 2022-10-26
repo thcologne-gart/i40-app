@@ -94,7 +94,7 @@ export default {
       const solutions = [
         { icon: '', title: 'Allgemeine Infos', link: '/generalstart' },
         { icon: '', title: 'Digital Twins', link: '/digitaltwins' },
-        { icon: '', title: 'Building Performance', link: '/buildingperformance' },
+        { icon: '', title: 'Energiemonitoring', link: '/buildingperformance' },
         { icon: '', title: 'Energiemanagement', link: '/emsstart' }
         // { icon: '', title: 'Performance Monitoring', link: '/performance' }
       ]
@@ -105,7 +105,7 @@ export default {
         { icon: '', title: 'Home', link: '/home' },
         { icon: '', title: 'Allgemeine Infos', link: '/generalstart' },
         { icon: '', title: 'Digital Twins', link: '/digitaltwins' },
-        { icon: '', title: 'Building Performance', link: '/buildingperformance' },
+        { icon: '', title: 'Energiemonitoring', link: '/buildingperformance' },
         { icon: '', title: 'Energiemanagement', link: '/emsstart' },
         { icon: '', title: 'Hinzufügen Standorte & Gebäude', link: '/register' }
         // { icon: '', title: 'Performance Monitoring', link: '/performance' }
@@ -123,7 +123,7 @@ export default {
           { icon: '', title: 'Allgemeine Infos', link: '/generalstart' },
           // { icon: '', title: 'Performance Monitoring', link: '/performance' },
           { icon: '', title: 'Energiemanagement', link: '/emsstart' },
-          { icon: '', title: 'Building Performance', link: '/buildingperformance' },
+          { icon: '', title: 'Energiemonitoring', link: '/buildingperformance' },
           { icon: '', title: 'Digital Twins', link: '/digitaltwins' }
           // { icon: '', title: 'CaBo', link: '/cabo' }
         ]

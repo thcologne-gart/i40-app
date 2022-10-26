@@ -29,7 +29,7 @@ export default {
         // { link: '/register', title: 'Registrierung' },
         { link: '/digitaltwins', title: 'Digital Twins' },
         { link: '/generalstart', title: 'Allgemeine Infos' },
-        { link: '/buildingperformance', title: 'Building Performance' }
+        { link: '/buildingperformance', title: 'Energiemonitoring' }
       ]
     }
   }
