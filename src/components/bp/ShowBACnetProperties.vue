@@ -34,6 +34,9 @@
                         <th class="text-left">
                             Komponente
                         </th>
+                        <th class="text-left">
+                            Score
+                        </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,6 +47,7 @@
                         <td class="text-left">{{ item.name }}</td>
                         <td class="text-left">{{ item.description }}</td>
                         <td class="text-left">{{ item.dritteEbeneLabel }}</td>
+                        <td class="text-left">{{ item.dritteEbeneScore }}</td>
                         </tr>
                     </tbody>
                     </template>

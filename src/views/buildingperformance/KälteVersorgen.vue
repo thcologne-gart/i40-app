@@ -57,8 +57,11 @@ export default {
             name: this.grundfunktion[element].name,
             description: this.grundfunktion[element].description,
             grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
+            grundfunktionScore: this.grundfunktion[element].grundfunktionScore,
             zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
-            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel
+            zweiteGrundfunktionScore: this.grundfunktion[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel,
+            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore
           })
         }
       }
@@ -72,8 +75,11 @@ export default {
             name: this.grundfunktion[element].name,
             description: this.grundfunktion[element].description,
             grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
+            grundfunktionScore: this.grundfunktion[element].grundfunktionScore,
             zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
-            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel
+            zweiteGrundfunktionScore: this.grundfunktion[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel,
+            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore
           })
         }
       }
@@ -87,8 +93,11 @@ export default {
             name: this.grundfunktion[element].name,
             description: this.grundfunktion[element].description,
             grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
+            grundfunktionScore: this.grundfunktion[element].grundfunktionScore,
             zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
-            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel
+            zweiteGrundfunktionScore: this.grundfunktion[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel,
+            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore
           })
         }
       }
