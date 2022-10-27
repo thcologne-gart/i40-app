@@ -31,6 +31,9 @@
                         <th class="text-left">
                             Description
                         </th>
+                        <th class="text-left">
+                            Komponente
+                        </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,6 +43,7 @@
                         >
                         <td class="text-left">{{ item.name }}</td>
                         <td class="text-left">{{ item.description }}</td>
+                        <td class="text-left">{{ item.dritteEbeneLabel }}</td>
                         </tr>
                     </tbody>
                     </template>

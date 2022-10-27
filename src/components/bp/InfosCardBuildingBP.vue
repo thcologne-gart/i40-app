@@ -139,7 +139,8 @@ export default {
             name: loadedBacnetData[data].name,
             description: loadedBacnetData[data].text,
             grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
-            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel
+            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel,
+            dritteEbeneLabel: loadedBacnetData[data][key].dritteEbeneLabel
           })
         }
       }
@@ -158,7 +159,8 @@ export default {
             name: loadedBacnetData[data].name,
             description: loadedBacnetData[data].text,
             grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
-            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel
+            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel,
+            dritteEbeneLabel: loadedBacnetData[data][key].dritteEbeneLabel
           })
         }
       }
@@ -177,7 +179,8 @@ export default {
             name: loadedBacnetData[data].name,
             description: loadedBacnetData[data].text,
             grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
-            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel
+            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel,
+            dritteEbeneLabel: loadedBacnetData[data][key].dritteEbeneLabel
           })
         }
       }
@@ -196,7 +199,8 @@ export default {
             name: loadedBacnetData[data].name,
             description: loadedBacnetData[data].text,
             grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
-            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel
+            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel,
+            dritteEbeneLabel: loadedBacnetData[data][key].dritteEbeneLabel
           })
         }
       }
@@ -215,7 +219,8 @@ export default {
             name: loadedBacnetData[data].name,
             description: loadedBacnetData[data].text,
             grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
-            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel
+            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel,
+            dritteEbeneLabel: loadedBacnetData[data][key].dritteEbeneLabel
           })
         }
       }
@@ -234,7 +239,8 @@ export default {
             name: loadedBacnetData[data].name,
             description: loadedBacnetData[data].text,
             grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
-            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel
+            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel,
+            dritteEbeneLabel: loadedBacnetData[data][key].dritteEbeneLabel
           })
         }
       }
@@ -253,7 +259,8 @@ export default {
             name: loadedBacnetData[data].name,
             description: loadedBacnetData[data].text,
             grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
-            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel
+            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel,
+            dritteEbeneLabel: loadedBacnetData[data][key].dritteEbeneLabel
           })
         }
       }
@@ -272,7 +279,8 @@ export default {
             name: loadedBacnetData[data].name,
             description: loadedBacnetData[data].text,
             grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
-            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel
+            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel,
+            dritteEbeneLabel: loadedBacnetData[data][key].dritteEbeneLabel
           })
         }
       }
@@ -321,11 +329,37 @@ export default {
   methods: {
     async query (data) {
       this.loading = true
-      const examples = data.slice(0, 50)
+      const examples = data.slice(0, 20)
       const bacnetDataScore = []
       console.log(examples)
       // console.log(data[2].input)
       let result
+      // Huggingface Inferrence Endpoints
+      /*
+      for (const example in examples) {
+        // console.log(examples[example].input)
+        const response = await fetch(
+          'https://nuewytpayodx0hlp.eu-west-1.aws.endpoints.huggingface.cloud',
+          {
+            headers: { Authorization: 'Bearer SxMgRdoPkIocLyTWtBuJHBqtPqNhlpjMBuMuEVtnRggnzRDCsIFMWpOXMAJnnqUyyAbQfpkLpqnsyXVWYRNgzMRFSApCRjSKdQaFBUFwboHrHvTfVKkWYWUTWhimpqdo', 'Content-Type': 'application/json' },
+            method: 'POST',
+            body: JSON.stringify({ inputs: examples[example].input })
+          }
+        )
+        result = await response.json()
+        console.log(result)
+        bacnetDataScore.push({
+          name: examples[example].name,
+          description: examples[example].description,
+          grundfunktionLabel: result[0].label,
+          grundfunktionScore: result[0].score,
+          input: examples[example].input
+        })
+        // console.log(result)
+        console.log(bacnetDataScore)
+      }
+      */
+      // Huggingface Normale Inference
       for (const example in examples) {
         // console.log(examples[example].input)
         const response = await fetch(
@@ -333,7 +367,8 @@ export default {
           {
             headers: { Authorization: 'Bearer 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' },
             method: 'POST',
-            body: JSON.stringify(examples[example].input)
+            body: JSON.stringify({ inputs: examples[example].input, options: { wait_for_model: true } })
+            // options: { wait_for_model: true }
           }
         )
         result = await response.json()
@@ -352,13 +387,13 @@ export default {
       // this.$store.dispatch('addGrundfunktionToBacnet', bacnetDataScore)
       // console.log(bacnetDataScore)
       // this.loading = false
-      console.log('Ahhhhhhhhhhhhhhha')
       return result
     },
     async zweiteGrundfunktion (bacnetDataScore) {
       console.log(bacnetDataScore)
       const bacnetArrayZweiteGrundfunktion = []
       let result
+      // const hfOptions = { wait_for_model: true }
       for (const element in bacnetDataScore) {
         if (bacnetDataScore[element].grundfunktionLabel === 'WaermeVersorgen') {
           const response = await fetch(
@@ -366,7 +401,8 @@ export default {
             {
               headers: { Authorization: 'Bearer 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' },
               method: 'POST',
-              body: JSON.stringify(bacnetDataScore[element].input)
+              body: JSON.stringify({ inputs: bacnetDataScore[element].input, options: { wait_for_model: true } })
+              // options: { wait_for_model: true }
             }
           )
           result = await response.json()
@@ -385,7 +421,8 @@ export default {
             {
               headers: { Authorization: 'Bearer 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' },
               method: 'POST',
-              body: JSON.stringify(bacnetDataScore[element].input)
+              body: JSON.stringify({ inputs: bacnetDataScore[element].input, options: { wait_for_model: true } })
+              // options: { wait_for_model: true }
             }
           )
           result = await response.json()
@@ -404,7 +441,8 @@ export default {
             {
               headers: { Authorization: 'Bearer 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' },
               method: 'POST',
-              body: JSON.stringify(bacnetDataScore[element].input)
+              body: JSON.stringify({ inputs: bacnetDataScore[element].input, options: { wait_for_model: true } })
+              // options: { wait_for_model: true }
             }
           )
           result = await response.json()
@@ -423,7 +461,8 @@ export default {
             {
               headers: { Authorization: 'Bearer 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' },
               method: 'POST',
-              body: JSON.stringify(bacnetDataScore[element].input)
+              body: JSON.stringify({ inputs: bacnetDataScore[element].input, options: { wait_for_model: true } })
+              // options: { wait_for_model: true }
             }
           )
           result = await response.json()
@@ -442,7 +481,8 @@ export default {
             {
               headers: { Authorization: 'Bearer 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' },
               method: 'POST',
-              body: JSON.stringify(bacnetDataScore[element].input)
+              body: JSON.stringify({ inputs: bacnetDataScore[element].input, options: { wait_for_model: true } })
+              // options: { wait_for_model: true }
             }
           )
           result = await response.json()
@@ -467,10 +507,147 @@ export default {
           })
         }
       }
-      this.$store.dispatch('addGrundfunktionToBacnet', bacnetArrayZweiteGrundfunktion)
+      this.klassifiziereDritteEbene(bacnetArrayZweiteGrundfunktion)
+      // this.$store.dispatch('addGrundfunktionToBacnet', bacnetArrayZweiteGrundfunktion)
       console.log(bacnetArrayZweiteGrundfunktion)
-      this.loading = false
+      // this.loading = false
       return bacnetArrayZweiteGrundfunktion
+    },
+    async klassifiziereDritteEbene (bacnetArrayZweiteGrundfunktion) {
+      const bacnetArrayDritteEbene = []
+      let result
+      // const hfOptions = { wait_for_model: true }
+      for (const element in bacnetArrayZweiteGrundfunktion) {
+        if (bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'WaermeVersorgen' && bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionLabel === 'Verteilen') {
+          const response = await fetch(
+            'https://api-inference.huggingface.co/models/mboth/klassifizierungWaermeVerteilen',
+            {
+              headers: { Authorization: 'Bearer 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' },
+              method: 'POST',
+              body: JSON.stringify({ inputs: bacnetArrayZweiteGrundfunktion[element].input, options: { wait_for_model: true } })
+              // options: { wait_for_model: true }
+            }
+          )
+          result = await response.json()
+          bacnetArrayDritteEbene.push({
+            name: bacnetArrayZweiteGrundfunktion[element].name,
+            description: bacnetArrayZweiteGrundfunktion[element].description,
+            grundfunktionLabel: bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel,
+            grundfunktionScore: bacnetArrayZweiteGrundfunktion[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: result[0][0].label,
+            dritteEbeneScore: result[0][0].score,
+            input: bacnetArrayZweiteGrundfunktion.input
+          })
+        } else if (bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'WaermeVersorgen' && bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionLabel === 'Erzeugen') {
+          const response = await fetch(
+            'https://api-inference.huggingface.co/models/mboth/klassifizierungWaermeErzeugen',
+            {
+              headers: { Authorization: 'Bearer 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' },
+              method: 'POST',
+              body: JSON.stringify({ inputs: bacnetArrayZweiteGrundfunktion[element].input, options: { wait_for_model: true } })
+              // options: { wait_for_model: true }
+            }
+          )
+          result = await response.json()
+          bacnetArrayDritteEbene.push({
+            name: bacnetArrayZweiteGrundfunktion[element].name,
+            description: bacnetArrayZweiteGrundfunktion[element].description,
+            grundfunktionLabel: bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel,
+            grundfunktionScore: bacnetArrayZweiteGrundfunktion[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: result[0][0].label,
+            dritteEbeneScore: result[0][0].score,
+            input: bacnetArrayZweiteGrundfunktion.input
+          })
+        } else if (bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'LuftVersorgen' && bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionLabel === 'LuftBereitstellen') {
+          const response = await fetch(
+            'https://api-inference.huggingface.co/models/mboth/klassifizierungLuftBereitstellen',
+            {
+              headers: { Authorization: 'Bearer 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' },
+              method: 'POST',
+              body: JSON.stringify({ inputs: bacnetArrayZweiteGrundfunktion[element].input, options: { wait_for_model: true } })
+              // options: { wait_for_model: true }
+            }
+          )
+          result = await response.json()
+          bacnetArrayDritteEbene.push({
+            name: bacnetArrayZweiteGrundfunktion[element].name,
+            description: bacnetArrayZweiteGrundfunktion[element].description,
+            grundfunktionLabel: bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel,
+            grundfunktionScore: bacnetArrayZweiteGrundfunktion[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: result[0][0].label,
+            dritteEbeneScore: result[0][0].score,
+            input: bacnetArrayZweiteGrundfunktion.input
+          })
+        } else if (bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'LuftVersorgen' && bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionLabel === 'LuftVerteilen') {
+          const response = await fetch(
+            'https://api-inference.huggingface.co/models/mboth/klassifizierungLuftVerteilen',
+            {
+              headers: { Authorization: 'Bearer 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' },
+              method: 'POST',
+              body: JSON.stringify({ inputs: bacnetArrayZweiteGrundfunktion[element].input, options: { wait_for_model: true } })
+              // options: { wait_for_model: true }
+            }
+          )
+          result = await response.json()
+          bacnetArrayDritteEbene.push({
+            name: bacnetArrayZweiteGrundfunktion[element].name,
+            description: bacnetArrayZweiteGrundfunktion[element].description,
+            grundfunktionLabel: bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel,
+            grundfunktionScore: bacnetArrayZweiteGrundfunktion[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: result[0][0].label,
+            dritteEbeneScore: result[0][0].score,
+            input: bacnetArrayZweiteGrundfunktion.input
+          })
+        } else if (bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'WaermeVersorgen' && bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionLabel === 'Beziehen') {
+          bacnetArrayDritteEbene.push({
+            name: bacnetArrayZweiteGrundfunktion[element].name,
+            description: bacnetArrayZweiteGrundfunktion[element].description,
+            grundfunktionLabel: bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel,
+            grundfunktionScore: bacnetArrayZweiteGrundfunktion[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: 'Fernwärme',
+            dritteEbeneScore: 1.0,
+            input: bacnetArrayZweiteGrundfunktion.input
+          })
+        } else if (bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'WaermeVersorgen' && bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionLabel === 'Speichern') {
+          bacnetArrayDritteEbene.push({
+            name: bacnetArrayZweiteGrundfunktion[element].name,
+            description: bacnetArrayZweiteGrundfunktion[element].description,
+            grundfunktionLabel: bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel,
+            grundfunktionScore: bacnetArrayZweiteGrundfunktion[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: 'Speicher',
+            dritteEbeneScore: 1.0,
+            input: bacnetArrayZweiteGrundfunktion.input
+          })
+        } else if (bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'Sichern' || bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'KaelteVersorgen' || bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'Befoerdern' || bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'StromVersorgen' || bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'AndereAnlagen') {
+          bacnetArrayDritteEbene.push({
+            name: bacnetArrayZweiteGrundfunktion[element].name,
+            description: bacnetArrayZweiteGrundfunktion[element].description,
+            grundfunktionLabel: bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel,
+            grundfunktionScore: bacnetArrayZweiteGrundfunktion[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: 'Noch nicht ausgeprägt',
+            dritteEbeneScore: 0,
+            input: bacnetArrayZweiteGrundfunktion.input
+          })
+        }
+      }
+      this.$store.dispatch('addGrundfunktionToBacnet', bacnetArrayDritteEbene)
+      console.log(bacnetArrayDritteEbene)
+      this.loading = false
+      return bacnetArrayDritteEbene
     }
   },
   created () {

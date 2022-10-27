@@ -278,7 +278,9 @@ export default new Vuex.Store({
           grundfunktionLabel: payload[element].grundfunktionLabel,
           grundfunktionScore: payload[element].grundfunktionScore,
           zweiteGrundfunktionLabel: payload[element].zweiteGrundfunktionLabel,
-          zweiteGrundfunktionScore: payload[element].zweiteGrundfunktionScore
+          zweiteGrundfunktionScore: payload[element].zweiteGrundfunktionScore,
+          dritteEbeneLabel: payload[element].dritteEbeneLabel,
+          dritteEbeneScore: payload[element].dritteEbeneScore
         })
       }
     },

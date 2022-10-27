@@ -60,7 +60,8 @@ export default {
             name: this.grundfunktion[element].name,
             description: this.grundfunktion[element].description,
             grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
-            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel
+            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
+            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel
           })
         }
       }
@@ -74,7 +75,8 @@ export default {
             name: this.grundfunktion[element].name,
             description: this.grundfunktion[element].description,
             grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
-            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel
+            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
+            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel
           })
         }
       }
@@ -88,7 +90,8 @@ export default {
             name: this.grundfunktion[element].name,
             description: this.grundfunktion[element].description,
             grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
-            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel
+            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
+            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel
           })
         }
       }
@@ -102,7 +105,8 @@ export default {
             name: this.grundfunktion[element].name,
             description: this.grundfunktion[element].description,
             grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
-            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel
+            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
+            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel
           })
         }
       }
