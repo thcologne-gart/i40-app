@@ -465,6 +465,14 @@ export default new Vuex.Store({
       })
     },
 
+    labelCorrect ({ commit }, payload) {
+      const database = getDatabase()
+      const updateObj = {}
+      updateObj['/grundfunktionScore'] = 1.0
+      // console.log(updateObj)
+      return update(ref(database, 'test1/' + payload.data + '/' + payload.key), updateObj)
+    },
+
     loadAasDeleteionEnergyTypes ({ commit }) {
       const database = getDatabase()
       onValue(ref(database, 'assetAdministrationShells/'), (snapshot) => {

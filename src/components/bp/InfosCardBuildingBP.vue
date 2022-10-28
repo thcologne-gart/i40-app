@@ -112,6 +112,111 @@
                   </v-col>
               </v-row>
           </v-container>
+          <v-card-actions>
+            <v-btn
+                text
+                @click="show = !show"
+            >Edit Datenpunkte</v-btn>
+            <v-spacer></v-spacer>
+            <v-btn
+                icon
+                @click="show = !show"
+            >
+                <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+            </v-btn>
+        </v-card-actions>
+        <v-expand-transition>
+            <div v-show="show">
+                <v-divider></v-divider>
+                <v-simple-table class="grey lighten-5" width="100px">
+                    <template v-slot:default>
+                    <thead>
+                        <tr>
+                        <th class="text-left">
+                            Name
+                        </th>
+                        <th class="text-left">
+                            Description
+                        </th>
+                        <th class="text-left">
+                            Label
+                        </th>
+                        <th class="text-left">
+                            Score
+                        </th>
+                        <th class="text-left">
+                            Edit
+                        </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                        v-for="item in bacnetDataUnsure"
+                        :key="item.name"
+                        >
+                        <td class="text-left">{{ item.name }}</td>
+                        <td class="text-left">{{ item.description }}</td>
+                        <td v-if="item.grundfunktionLabel === 'WaermeVersorgen' " class="text-left">Wärme versorgen</td>
+                        <td v-if="item.grundfunktionLabel === 'LuftVersorgen' " class="text-left">Luft versorgen</td>
+                        <td v-if="item.grundfunktionLabel === 'KaelteVersorgen' " class="text-left">Kälte versorgen</td>
+                        <td v-if="item.grundfunktionLabel === 'MedienVersorgen' " class="text-left">Medien versorgen</td>
+                        <td v-if="item.grundfunktionLabel === 'StromVersorgen' " class="text-left">Strom versorgen</td>
+                        <td v-if="item.grundfunktionLabel === 'Sichern' " class="text-left">Sichern</td>
+                        <td v-if="item.grundfunktionLabel === 'Befoerdern' " class="text-left">Befördern</td>
+                        <td class="text-left">{{ item.grundfunktionScore }}</td>
+                        <td>
+                          <v-btn class="mx-auto my-6" @click="labelCorrect(item)" color="outline-secondary" id= "buttons-card">
+                            <v-icon>
+                                mdi-check
+                            </v-icon>
+                          </v-btn>
+                        </td>
+                        <td>
+                        <v-dialog transition="dialog-bottom-transition" max-width="600">
+                              <template v-slot:activator="{ on, attrs }">
+                                  <v-btn class="mx-auto my-6" v-bind="attrs" v-on="on" color="outline-secondary" id= "buttons-card">
+                                      <v-icon>
+                                          mdi-plus
+                                      </v-icon>
+                                  </v-btn>
+                              </template>
+                              <template v-slot:default="dialog">
+                                  <v-card >
+                                      <v-toolbar
+                                      color="#5D3FD3"
+                                      dark
+                                      >Edit Klassifizierung Grundfunktionen</v-toolbar>
+                                      <v-container>
+                                        <v-card-text>
+                                          <v-row>
+                                            <p class="text-left black--text">{{ item.name }}</p>
+                                          </v-row>
+                                          <v-row>
+                                            <p class="text-left black--text">{{ item.description }}</p>
+                                          </v-row>
+                                          <v-row>
+                                            <p class="text-left black--text">Label: {{ item.grundfunktionLabel }}</p>
+                                          </v-row>
+                                          <v-row>
+                                            <p class="text-left black--text">Score: {{ item.grundfunktionScore }}</p>
+                                          </v-row>
+                                          <v-select :items="grundfunktionen" v-model="neueGrundfunktion" label= 'Korrektes Label' />
+                                        </v-card-text>
+                                      </v-container>
+                                      <v-card-actions class="justify-end">
+                                      <v-btn id="buttons-card" variant="outline-secondary" @click="dialog.value = false; editBacnetProperty(item)">Submit</v-btn>
+                                      <v-btn id="buttons-card" variant="outline-secondary" @click="dialog.value = false; onReset()">Reset</v-btn>
+                                      </v-card-actions>
+                                  </v-card>
+                              </template>
+                          </v-dialog>
+                        </td>
+                        </tr>
+                    </tbody>
+                    </template>
+                </v-simple-table>
+            </div>
+        </v-expand-transition>
     </v-card>
   </div>
 </template>
@@ -120,7 +225,10 @@
 export default {
   data () {
     return {
-      loading: false
+      show: false,
+      loading: false,
+      neueGrundfunktion: '',
+      grundfunktionen: ['Wärme versorgen', 'Luft versorgen', 'Kälte versorgen', 'Medien versorgen', 'Strom versorgen', 'Sichern', 'Befördern', 'Andere Anlagen']
     }
   },
   props: {
@@ -350,6 +458,39 @@ export default {
       // console.log(bacnetDataArray)
       return bacnetDataArray
     },
+    bacnetDataUnsure () {
+      // console.log(this.$store.getters.loadedBACnet)
+      const loadedBacnetData = this.$store.getters.loadedBACnet
+      const bacnetDataArrayUnsure = []
+      for (const data in loadedBacnetData) {
+        // const str = 'Hello' + ' ' + 'World'
+        // console.log(Object.keys(loadedBacnetData[data]))
+        const keys = [Object.keys(loadedBacnetData[data])]
+        // console.log(keys)
+        const key = keys[0][0]
+        // console.log(key)
+        const input = loadedBacnetData[data].text + ',' + loadedBacnetData[data].name
+        if (loadedBacnetData[data][key].grundfunktionScore < 0.85) {
+          bacnetDataArrayUnsure.push({
+            data: data,
+            key: key,
+            name: loadedBacnetData[data].name,
+            description: loadedBacnetData[data].text,
+            grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
+            grundfunktionScore: loadedBacnetData[data][key].grundfunktionScore,
+            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: loadedBacnetData[data][key].zweiteGrundfunktionScore,
+            dritteEbeneLabel: loadedBacnetData[data][key].dritteEbeneLabel,
+            dritteEbeneScore: loadedBacnetData[data][key].dritteEbeneScore,
+            datenpunktLabel: loadedBacnetData[data][key].datenpunktLabel,
+            datenpunktScore: loadedBacnetData[data][key].datenpunktScore,
+            input: input
+          })
+        }
+      }
+      console.log(bacnetDataArrayUnsure)
+      return bacnetDataArrayUnsure
+    },
     numberOfGrundfunktionen () {
       const grundfunktionen = []
       // console.log(this.$store.getters.loadedBACnet)
@@ -367,6 +508,156 @@ export default {
     }
   },
   methods: {
+    labelCorrect (item) {
+      console.log(item)
+      this.$store.dispatch('labelCorrect', item)
+    },
+    async editBacnetProperty (bacnetDataScore) {
+      console.log(bacnetDataScore)
+      const bacnetArrayZweiteGrundfunktion = []
+      let result
+      // const hfOptions = { wait_for_model: true }
+      if (this.neueGrundfunktion === 'Wärme versorgen') {
+        const response = await fetch(
+          'https://api-inference.huggingface.co/models/mboth/klassifizierungWaermeVersorgen',
+          {
+            headers: { Authorization: 'Bearer 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' },
+            method: 'POST',
+            body: JSON.stringify({ inputs: bacnetDataScore.input, options: { wait_for_model: true } })
+            // options: { wait_for_model: true }
+          }
+        )
+        result = await response.json()
+        bacnetArrayZweiteGrundfunktion.push({
+          name: bacnetDataScore.name,
+          description: bacnetDataScore.description,
+          grundfunktionLabel: 'WaermeVersorgen',
+          grundfunktionScore: 1.0,
+          zweiteGrundfunktionLabel: result[0][0].label,
+          zweiteGrundfunktionScore: result[0][0].score,
+          input: bacnetDataScore.input
+        })
+        // console.log('zweite Ebene')
+      } else if (this.neueGrundfunktion === 'Luft versorgen') {
+        const response = await fetch(
+          'https://api-inference.huggingface.co/models/mboth/klassifizierungLuftVersorgen',
+          {
+            headers: { Authorization: 'Bearer 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' },
+            method: 'POST',
+            body: JSON.stringify({ inputs: bacnetDataScore.input, options: { wait_for_model: true } })
+            // options: { wait_for_model: true }
+          }
+        )
+        result = await response.json()
+        bacnetArrayZweiteGrundfunktion.push({
+          name: bacnetDataScore.name,
+          description: bacnetDataScore.description,
+          grundfunktionLabel: 'LuftVersorgen',
+          grundfunktionScore: 1.0,
+          zweiteGrundfunktionLabel: result[0][0].label,
+          zweiteGrundfunktionScore: result[0][0].score,
+          input: bacnetDataScore.input
+        })
+        // console.log('zweite Ebene')
+      } else if (this.neueGrundfunktion === 'Medien versorgen') {
+        const response = await fetch(
+          'https://api-inference.huggingface.co/models/mboth/klassifizierungMedienVersorgen',
+          {
+            headers: { Authorization: 'Bearer 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' },
+            method: 'POST',
+            body: JSON.stringify({ inputs: bacnetDataScore.input, options: { wait_for_model: true } })
+            // options: { wait_for_model: true }
+          }
+        )
+        result = await response.json()
+        bacnetArrayZweiteGrundfunktion.push({
+          name: bacnetDataScore.name,
+          description: bacnetDataScore.description,
+          grundfunktionLabel: 'MedienVersorgen',
+          grundfunktionScore: 1.0,
+          zweiteGrundfunktionLabel: result[0][0].label,
+          zweiteGrundfunktionScore: result[0][0].score,
+          input: bacnetDataScore.input
+        })
+        // console.log('zweite Ebene')
+      } else if (this.neueGrundfunktion === 'Kälte versorgen') {
+        const response = await fetch(
+          'https://api-inference.huggingface.co/models/mboth/klassifizierungKaelteVersorgen',
+          {
+            headers: { Authorization: 'Bearer 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' },
+            method: 'POST',
+            body: JSON.stringify({ inputs: bacnetDataScore.input, options: { wait_for_model: true } })
+            // options: { wait_for_model: true }
+          }
+        )
+        result = await response.json()
+        bacnetArrayZweiteGrundfunktion.push({
+          name: bacnetDataScore.name,
+          description: bacnetDataScore.description,
+          grundfunktionLabel: 'KaelteVersorgen',
+          grundfunktionScore: 1.0,
+          zweiteGrundfunktionLabel: result[0][0].label,
+          zweiteGrundfunktionScore: result[0][0].score,
+          input: bacnetDataScore.input
+        })
+      } else if (this.neueGrundfunktion === 'Sichern') {
+        const response = await fetch(
+          'https://api-inference.huggingface.co/models/mboth/klassifizierungSichern',
+          {
+            headers: { Authorization: 'Bearer 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' },
+            method: 'POST',
+            body: JSON.stringify({ inputs: bacnetDataScore.input, options: { wait_for_model: true } })
+            // options: { wait_for_model: true }
+          }
+        )
+        result = await response.json()
+        bacnetArrayZweiteGrundfunktion.push({
+          name: bacnetDataScore.name,
+          description: bacnetDataScore.description,
+          grundfunktionLabel: 'Sichern',
+          grundfunktionScore: 1.0,
+          zweiteGrundfunktionLabel: result[0][0].label,
+          zweiteGrundfunktionScore: result[0][0].score,
+          input: bacnetDataScore.input
+        })
+      } else if (this.neueGrundfunktion === 'Befördern') {
+        bacnetArrayZweiteGrundfunktion.push({
+          name: bacnetDataScore.name,
+          description: bacnetDataScore.description,
+          grundfunktionLabel: 'Befoerdern',
+          grundfunktionScore: 1.0,
+          zweiteGrundfunktionLabel: 'Noch nicht ausgeprägt',
+          zweiteGrundfunktionScore: 0,
+          input: bacnetDataScore.input
+        })
+      } else if (this.neueGrundfunktion === 'Strom versorgen') {
+        bacnetArrayZweiteGrundfunktion.push({
+          name: bacnetDataScore.name,
+          description: bacnetDataScore.description,
+          grundfunktionLabel: 'StromVersorgen',
+          grundfunktionScore: 1.0,
+          zweiteGrundfunktionLabel: 'Noch nicht ausgeprägt',
+          zweiteGrundfunktionScore: 0,
+          input: bacnetDataScore.input
+        })
+      } else if (this.neueGrundfunktion === 'Andere Anlagen') {
+        bacnetArrayZweiteGrundfunktion.push({
+          name: bacnetDataScore.name,
+          description: bacnetDataScore.description,
+          grundfunktionLabel: 'AndereAnlagen',
+          grundfunktionScore: 1.0,
+          zweiteGrundfunktionLabel: 'Noch nicht ausgeprägt',
+          zweiteGrundfunktionScore: 0,
+          input: bacnetDataScore.input
+        })
+      }
+      this.neueGrundfunktion = ''
+      // this.klassifiziereDritteEbene(bacnetArrayZweiteGrundfunktion)
+      // this.$store.dispatch('addGrundfunktionToBacnet', bacnetArrayZweiteGrundfunktion)
+      console.log(bacnetArrayZweiteGrundfunktion)
+      // this.loading = false
+      return bacnetArrayZweiteGrundfunktion
+    },
     async query (data) {
       this.loading = true
       const examples = data.slice(0, 367)
