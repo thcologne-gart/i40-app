@@ -1,6 +1,6 @@
 <template>
 <div>
-    <v-card class="mx-auto my-8" elevation="2" max-width="60%">
+    <v-card class="mx-auto my-8" elevation="2" max-width="80%">
         <v-card-title id="card-title">{{ building.buildingDesignation }}</v-card-title>
         <v-card-subtitle class="mt-3">Kälte versorgen</v-card-subtitle>
         <hr>
@@ -61,7 +61,9 @@ export default {
             zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
             zweiteGrundfunktionScore: this.grundfunktion[element].zweiteGrundfunktionScore,
             dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel,
-            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore
+            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore,
+            datenpunktLabel: this.grundfunktion[element].datenpunktLabel,
+            datenpunktScore: this.grundfunktion[element].datenpunktScore
           })
         }
       }
@@ -79,7 +81,9 @@ export default {
             zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
             zweiteGrundfunktionScore: this.grundfunktion[element].zweiteGrundfunktionScore,
             dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel,
-            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore
+            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore,
+            datenpunktLabel: this.grundfunktion[element].datenpunktLabel,
+            datenpunktScore: this.grundfunktion[element].datenpunktScore
           })
         }
       }
@@ -97,7 +101,9 @@ export default {
             zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
             zweiteGrundfunktionScore: this.grundfunktion[element].zweiteGrundfunktionScore,
             dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel,
-            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore
+            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore,
+            datenpunktLabel: this.grundfunktion[element].datenpunktLabel,
+            datenpunktScore: this.grundfunktion[element].datenpunktScore
           })
         }
       }

@@ -143,7 +143,9 @@ export default {
             zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel,
             zweiteGrundfunktionScore: loadedBacnetData[data][key].zweiteGrundfunktionScore,
             dritteEbeneLabel: loadedBacnetData[data][key].dritteEbeneLabel,
-            dritteEbeneScore: loadedBacnetData[data][key].dritteEbeneScore
+            dritteEbeneScore: loadedBacnetData[data][key].dritteEbeneScore,
+            datenpunktLabel: loadedBacnetData[data][key].datenpunktLabel,
+            datenpunktScore: loadedBacnetData[data][key].datenpunktScore
           })
         }
       }
@@ -166,7 +168,9 @@ export default {
             zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel,
             zweiteGrundfunktionScore: loadedBacnetData[data][key].zweiteGrundfunktionScore,
             dritteEbeneLabel: loadedBacnetData[data][key].dritteEbeneLabel,
-            dritteEbeneScore: loadedBacnetData[data][key].dritteEbeneScore
+            dritteEbeneScore: loadedBacnetData[data][key].dritteEbeneScore,
+            datenpunktLabel: loadedBacnetData[data][key].datenpunktLabel,
+            datenpunktScore: loadedBacnetData[data][key].datenpunktScore
           })
         }
       }
@@ -189,7 +193,9 @@ export default {
             zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel,
             zweiteGrundfunktionScore: loadedBacnetData[data][key].zweiteGrundfunktionScore,
             dritteEbeneLabel: loadedBacnetData[data][key].dritteEbeneLabel,
-            dritteEbeneScore: loadedBacnetData[data][key].dritteEbeneScore
+            dritteEbeneScore: loadedBacnetData[data][key].dritteEbeneScore,
+            datenpunktLabel: loadedBacnetData[data][key].datenpunktLabel,
+            datenpunktScore: loadedBacnetData[data][key].datenpunktScore
           })
         }
       }
@@ -212,7 +218,9 @@ export default {
             zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel,
             zweiteGrundfunktionScore: loadedBacnetData[data][key].zweiteGrundfunktionScore,
             dritteEbeneLabel: loadedBacnetData[data][key].dritteEbeneLabel,
-            dritteEbeneScore: loadedBacnetData[data][key].dritteEbeneScore
+            dritteEbeneScore: loadedBacnetData[data][key].dritteEbeneScore,
+            datenpunktLabel: loadedBacnetData[data][key].datenpunktLabel,
+            datenpunktScore: loadedBacnetData[data][key].datenpunktScore
           })
         }
       }
@@ -235,7 +243,9 @@ export default {
             zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel,
             zweiteGrundfunktionScore: loadedBacnetData[data][key].zweiteGrundfunktionScore,
             dritteEbeneLabel: loadedBacnetData[data][key].dritteEbeneLabel,
-            dritteEbeneScore: loadedBacnetData[data][key].dritteEbeneScore
+            dritteEbeneScore: loadedBacnetData[data][key].dritteEbeneScore,
+            datenpunktLabel: loadedBacnetData[data][key].datenpunktLabel,
+            datenpunktScore: loadedBacnetData[data][key].datenpunktScore
           })
         }
       }
@@ -258,7 +268,9 @@ export default {
             zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel,
             zweiteGrundfunktionScore: loadedBacnetData[data][key].zweiteGrundfunktionScore,
             dritteEbeneLabel: loadedBacnetData[data][key].dritteEbeneLabel,
-            dritteEbeneScore: loadedBacnetData[data][key].dritteEbeneScore
+            dritteEbeneScore: loadedBacnetData[data][key].dritteEbeneScore,
+            datenpunktLabel: loadedBacnetData[data][key].datenpunktLabel,
+            datenpunktScore: loadedBacnetData[data][key].datenpunktScore
           })
         }
       }
@@ -281,7 +293,9 @@ export default {
             zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel,
             zweiteGrundfunktionScore: loadedBacnetData[data][key].zweiteGrundfunktionScore,
             dritteEbeneLabel: loadedBacnetData[data][key].dritteEbeneLabel,
-            dritteEbeneScore: loadedBacnetData[data][key].dritteEbeneScore
+            dritteEbeneScore: loadedBacnetData[data][key].dritteEbeneScore,
+            datenpunktLabel: loadedBacnetData[data][key].datenpunktLabel,
+            datenpunktScore: loadedBacnetData[data][key].datenpunktScore
           })
         }
       }
@@ -304,7 +318,9 @@ export default {
             zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel,
             zweiteGrundfunktionScore: loadedBacnetData[data][key].zweiteGrundfunktionScore,
             dritteEbeneLabel: loadedBacnetData[data][key].dritteEbeneLabel,
-            dritteEbeneScore: loadedBacnetData[data][key].dritteEbeneScore
+            dritteEbeneScore: loadedBacnetData[data][key].dritteEbeneScore,
+            datenpunktLabel: loadedBacnetData[data][key].datenpunktLabel,
+            datenpunktScore: loadedBacnetData[data][key].datenpunktScore
           })
         }
       }

@@ -37,6 +37,12 @@
                         <th class="text-left">
                             Score
                         </th>
+                        <th class="text-left">
+                            Datenpunkt
+                        </th>
+                        <th class="text-left">
+                            Score
+                        </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,6 +54,8 @@
                         <td class="text-left">{{ item.description }}</td>
                         <td class="text-left">{{ item.dritteEbeneLabel }}</td>
                         <td class="text-left">{{ item.dritteEbeneScore }}</td>
+                        <td class="text-left">{{ item.datenpunktLabel }}</td>
+                        <td class="text-left">{{ item.datenpunktScore }}</td>
                         </tr>
                     </tbody>
                     </template>
