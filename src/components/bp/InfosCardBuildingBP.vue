@@ -353,7 +353,7 @@ export default {
   methods: {
     async query (data) {
       this.loading = true
-      const examples = data.slice(0, 5)
+      const examples = data.slice(0, 3)
       const bacnetDataScore = []
       console.log(examples)
       // console.log(data[2].input)
@@ -833,6 +833,60 @@ export default {
         const inputHF = bacnetArrayDritteEbene[element].input
         console.log(inputHF)
         const hypothese = 'Der Datenpunkt beschreibt: {}.'
+        const labelsLength = candidateLabels.length
+        // let numberOfChunks = 0
+        const chuncksArray = []
+        const chunkSize = 10
+        if (labelsLength > 10) {
+          for (let i = 0; i < candidateLabels.length; i += chunkSize) {
+            const chunk = candidateLabels.slice(i, i + chunkSize)
+            chuncksArray.push({
+              chunck: chunk
+            })
+          }
+        }
+        console.log(chuncksArray)
+        if (chuncksArray.length === 0) {
+          const response = await fetch(
+            'https://api-inference.huggingface.co/models/mboth/klassifizierungDatenpunkteNLI',
+            // 'https://wud35qw7z2z6jh5f.eu-west-1.aws.endpoints.huggingface.cloud',
+            {
+              headers: { Authorization: 'Bearer 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' },
+              // headers: { Authorization: 'Bearer SxMgRdoPkIocLyTWtBuJHBqtPqNhlpjMBuMuEVtnRggnzRDCsIFMWpOXMAJnnqUyyAbQfpkLpqnsyXVWYRNgzMRFSApCRjSKdQaFBUFwboHrHvTfVKkWYWUTWhimpqdo', 'Content-Type': 'application/json' },
+              method: 'POST',
+              // body: JSON.stringify({ inputs: bacnetArrayDritteEbene[element].input, parameters: { candidate_labels: candidateLabels } })
+              body: JSON.stringify({ inputs: inputHF, parameters: { candidate_labels: candidateLabels, hypothesis_template: hypothese }, options: { wait_for_model: true } })
+              // options: { wait_for_model: true }
+            }
+          )
+          result = await response.json()
+          console.log(result)
+        } else {
+          const chunckLabels = []
+          for (const element in chuncksArray) {
+            const candidateLabels = chuncksArray[element].chunck
+            console.log(candidateLabels)
+            const response = await fetch(
+              'https://api-inference.huggingface.co/models/mboth/klassifizierungDatenpunkteNLI',
+              // 'https://wud35qw7z2z6jh5f.eu-west-1.aws.endpoints.huggingface.cloud',
+              {
+                headers: { Authorization: 'Bearer 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' },
+                // headers: { Authorization: 'Bearer SxMgRdoPkIocLyTWtBuJHBqtPqNhlpjMBuMuEVtnRggnzRDCsIFMWpOXMAJnnqUyyAbQfpkLpqnsyXVWYRNgzMRFSApCRjSKdQaFBUFwboHrHvTfVKkWYWUTWhimpqdo', 'Content-Type': 'application/json' },
+                method: 'POST',
+                // body: JSON.stringify({ inputs: bacnetArrayDritteEbene[element].input, parameters: { candidate_labels: candidateLabels } })
+                body: JSON.stringify({ inputs: inputHF, parameters: { candidate_labels: candidateLabels, hypothesis_template: hypothese }, options: { wait_for_model: true } })
+                // options: { wait_for_model: true }
+              }
+            )
+            result = await response.json()
+            console.log(result)
+            chunckLabels.push({
+              scores: result
+            })
+          }
+          console.log(chunckLabels)
+        }
+        /*
         const response = await fetch(
           'https://api-inference.huggingface.co/models/mboth/klassifizierungDatenpunkteNLI',
           // 'https://wud35qw7z2z6jh5f.eu-west-1.aws.endpoints.huggingface.cloud',
@@ -847,6 +901,7 @@ export default {
         )
         result = await response.json()
         console.log(result)
+        */
         /*
         bacnetArrayDatenpunktEbene.push({
           name: bacnetArrayDritteEbene[element].name,
