@@ -112,19 +112,25 @@
                   </v-col>
               </v-row>
           </v-container>
-          <v-card-actions>
-            <v-btn
-                text
-                @click="show = !show"
-            >Edit Datenpunkte</v-btn>
-            <v-spacer></v-spacer>
-            <v-btn
-                icon
-                @click="show = !show"
-            >
-                <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-            </v-btn>
-        </v-card-actions>
+          <div v-if="bacnetDataUnsure.length !== 0">
+            <v-card-actions>
+              <v-row>
+                <v-col>
+              <v-btn
+                  text
+                  @click="show = !show"
+              >Edit Datenpunkte</v-btn>
+            </v-col>
+              <v-col>
+              <v-btn
+                  icon
+                  @click="show = !show"
+              >
+                  <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+              </v-btn>
+            </v-col>
+            </v-row>
+          </v-card-actions>
         <v-expand-transition>
             <div v-show="show">
                 <v-divider></v-divider>
@@ -174,7 +180,7 @@
                         <td>
                         <v-dialog transition="dialog-bottom-transition" max-width="600">
                               <template v-slot:activator="{ on, attrs }">
-                                  <v-btn class="mx-auto my-6" v-bind="attrs" v-on="on" color="outline-secondary" id= "buttons-card">
+                                  <v-btn class="mx-auto my-6" v-bind="attrs" v-on="on" color="outline-secondary" id= "buttons-card" :loading="loading1">
                                       <v-icon>
                                           mdi-plus
                                       </v-icon>
@@ -217,6 +223,7 @@
                 </v-simple-table>
             </div>
         </v-expand-transition>
+        </div>
     </v-card>
   </div>
 </template>
@@ -227,6 +234,7 @@ export default {
     return {
       show: false,
       loading: false,
+      loading1: false,
       neueGrundfunktion: '',
       grundfunktionen: ['Wärme versorgen', 'Luft versorgen', 'Kälte versorgen', 'Medien versorgen', 'Strom versorgen', 'Sichern', 'Befördern', 'Andere Anlagen']
     }
@@ -241,7 +249,7 @@ export default {
       for (const data in loadedBacnetData) {
         const keys = [Object.keys(loadedBacnetData[data])]
         const key = keys[0][0]
-        console.log(loadedBacnetData[data][key].grundfunktionLabel)
+        // console.log(loadedBacnetData[data][key].grundfunktionLabel)
         if (loadedBacnetData[data][key].grundfunktionLabel === 'WaermeVersorgen') {
           wärmeVersorgen.push({
             name: loadedBacnetData[data].name,
@@ -508,11 +516,19 @@ export default {
     }
   },
   methods: {
+    onReset (event) {
+      event.preventDefault()
+      // Reset our form values
+
+      // this.form.country = null
+      this.neueGrundfunktion = ''
+    },
     labelCorrect (item) {
       console.log(item)
       this.$store.dispatch('labelCorrect', item)
     },
     async editBacnetProperty (bacnetDataScore) {
+      this.loading1 = true
       console.log(bacnetDataScore)
       const bacnetArrayZweiteGrundfunktion = []
       let result
@@ -535,7 +551,9 @@ export default {
           grundfunktionScore: 1.0,
           zweiteGrundfunktionLabel: result[0][0].label,
           zweiteGrundfunktionScore: result[0][0].score,
-          input: bacnetDataScore.input
+          input: bacnetDataScore.input,
+          data: bacnetDataScore.data,
+          key: bacnetDataScore.key
         })
         // console.log('zweite Ebene')
       } else if (this.neueGrundfunktion === 'Luft versorgen') {
@@ -556,7 +574,9 @@ export default {
           grundfunktionScore: 1.0,
           zweiteGrundfunktionLabel: result[0][0].label,
           zweiteGrundfunktionScore: result[0][0].score,
-          input: bacnetDataScore.input
+          input: bacnetDataScore.input,
+          data: bacnetDataScore.data,
+          key: bacnetDataScore.key
         })
         // console.log('zweite Ebene')
       } else if (this.neueGrundfunktion === 'Medien versorgen') {
@@ -577,7 +597,9 @@ export default {
           grundfunktionScore: 1.0,
           zweiteGrundfunktionLabel: result[0][0].label,
           zweiteGrundfunktionScore: result[0][0].score,
-          input: bacnetDataScore.input
+          input: bacnetDataScore.input,
+          data: bacnetDataScore.data,
+          key: bacnetDataScore.key
         })
         // console.log('zweite Ebene')
       } else if (this.neueGrundfunktion === 'Kälte versorgen') {
@@ -598,7 +620,9 @@ export default {
           grundfunktionScore: 1.0,
           zweiteGrundfunktionLabel: result[0][0].label,
           zweiteGrundfunktionScore: result[0][0].score,
-          input: bacnetDataScore.input
+          input: bacnetDataScore.input,
+          data: bacnetDataScore.data,
+          key: bacnetDataScore.key
         })
       } else if (this.neueGrundfunktion === 'Sichern') {
         const response = await fetch(
@@ -618,7 +642,9 @@ export default {
           grundfunktionScore: 1.0,
           zweiteGrundfunktionLabel: result[0][0].label,
           zweiteGrundfunktionScore: result[0][0].score,
-          input: bacnetDataScore.input
+          input: bacnetDataScore.input,
+          data: bacnetDataScore.data,
+          key: bacnetDataScore.key
         })
       } else if (this.neueGrundfunktion === 'Befördern') {
         bacnetArrayZweiteGrundfunktion.push({
@@ -628,7 +654,9 @@ export default {
           grundfunktionScore: 1.0,
           zweiteGrundfunktionLabel: 'Noch nicht ausgeprägt',
           zweiteGrundfunktionScore: 0,
-          input: bacnetDataScore.input
+          input: bacnetDataScore.input,
+          data: bacnetDataScore.data,
+          key: bacnetDataScore.key
         })
       } else if (this.neueGrundfunktion === 'Strom versorgen') {
         bacnetArrayZweiteGrundfunktion.push({
@@ -638,7 +666,9 @@ export default {
           grundfunktionScore: 1.0,
           zweiteGrundfunktionLabel: 'Noch nicht ausgeprägt',
           zweiteGrundfunktionScore: 0,
-          input: bacnetDataScore.input
+          input: bacnetDataScore.input,
+          data: bacnetDataScore.data,
+          key: bacnetDataScore.key
         })
       } else if (this.neueGrundfunktion === 'Andere Anlagen') {
         bacnetArrayZweiteGrundfunktion.push({
@@ -648,11 +678,13 @@ export default {
           grundfunktionScore: 1.0,
           zweiteGrundfunktionLabel: 'Noch nicht ausgeprägt',
           zweiteGrundfunktionScore: 0,
-          input: bacnetDataScore.input
+          input: bacnetDataScore.input,
+          data: bacnetDataScore.data,
+          key: bacnetDataScore.key
         })
       }
       this.neueGrundfunktion = ''
-      // this.klassifiziereDritteEbene(bacnetArrayZweiteGrundfunktion)
+      this.klassifiziereDritteEbene(bacnetArrayZweiteGrundfunktion)
       // this.$store.dispatch('addGrundfunktionToBacnet', bacnetArrayZweiteGrundfunktion)
       console.log(bacnetArrayZweiteGrundfunktion)
       // this.loading = false
@@ -660,7 +692,7 @@ export default {
     },
     async query (data) {
       this.loading = true
-      const examples = data.slice(0, 367)
+      const examples = data.slice(0, 100)
       const bacnetDataScore = []
       // console.log(examples)
       // console.log(data[2].input)
@@ -872,7 +904,9 @@ export default {
             zweiteGrundfunktionScore: bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionScore,
             dritteEbeneLabel: result[0][0].label,
             dritteEbeneScore: result[0][0].score,
-            input: bacnetArrayZweiteGrundfunktion[element].input
+            input: bacnetArrayZweiteGrundfunktion[element].input,
+            data: bacnetArrayZweiteGrundfunktion[element].data,
+            key: bacnetArrayZweiteGrundfunktion[element].key
           })
         } else if (bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'WaermeVersorgen' && bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionLabel === 'Erzeugen') {
           const response = await fetch(
@@ -894,7 +928,9 @@ export default {
             zweiteGrundfunktionScore: bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionScore,
             dritteEbeneLabel: result[0][0].label,
             dritteEbeneScore: result[0][0].score,
-            input: bacnetArrayZweiteGrundfunktion[element].input
+            input: bacnetArrayZweiteGrundfunktion[element].input,
+            data: bacnetArrayZweiteGrundfunktion[element].data,
+            key: bacnetArrayZweiteGrundfunktion[element].key
           })
         } else if (bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'LuftVersorgen' && bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionLabel === 'LuftBereitstellen') {
           const response = await fetch(
@@ -916,7 +952,9 @@ export default {
             zweiteGrundfunktionScore: bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionScore,
             dritteEbeneLabel: result[0][0].label,
             dritteEbeneScore: result[0][0].score,
-            input: bacnetArrayZweiteGrundfunktion[element].input
+            input: bacnetArrayZweiteGrundfunktion[element].input,
+            data: bacnetArrayZweiteGrundfunktion[element].data,
+            key: bacnetArrayZweiteGrundfunktion[element].key
           })
         } else if (bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'LuftVersorgen' && bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionLabel === 'LuftVerteilen') {
           const response = await fetch(
@@ -938,7 +976,9 @@ export default {
             zweiteGrundfunktionScore: bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionScore,
             dritteEbeneLabel: result[0][0].label,
             dritteEbeneScore: result[0][0].score,
-            input: bacnetArrayZweiteGrundfunktion[element].input
+            input: bacnetArrayZweiteGrundfunktion[element].input,
+            data: bacnetArrayZweiteGrundfunktion[element].data,
+            key: bacnetArrayZweiteGrundfunktion[element].key
           })
         } else if (bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'WaermeVersorgen' && bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionLabel === 'Beziehen') {
           bacnetArrayDritteEbene.push({
@@ -950,7 +990,9 @@ export default {
             zweiteGrundfunktionScore: bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionScore,
             dritteEbeneLabel: 'Fernwärme',
             dritteEbeneScore: 1.0,
-            input: bacnetArrayZweiteGrundfunktion[element].input
+            input: bacnetArrayZweiteGrundfunktion[element].input,
+            data: bacnetArrayZweiteGrundfunktion[element].data,
+            key: bacnetArrayZweiteGrundfunktion[element].key
           })
         } else if (bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'WaermeVersorgen' && bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionLabel === 'Speichern') {
           bacnetArrayDritteEbene.push({
@@ -962,7 +1004,9 @@ export default {
             zweiteGrundfunktionScore: bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionScore,
             dritteEbeneLabel: 'Speicher',
             dritteEbeneScore: 1.0,
-            input: bacnetArrayZweiteGrundfunktion[element].input
+            input: bacnetArrayZweiteGrundfunktion[element].input,
+            data: bacnetArrayZweiteGrundfunktion[element].data,
+            key: bacnetArrayZweiteGrundfunktion[element].key
           })
         } else if (bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'Sichern' || bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'KaelteVersorgen' || bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'Befoerdern' || bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'StromVersorgen' || bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'AndereAnlagen') {
           bacnetArrayDritteEbene.push({
@@ -974,7 +1018,9 @@ export default {
             zweiteGrundfunktionScore: bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionScore,
             dritteEbeneLabel: 'Noch nicht ausgeprägt',
             dritteEbeneScore: 0,
-            input: bacnetArrayZweiteGrundfunktion[element].input
+            input: bacnetArrayZweiteGrundfunktion[element].input,
+            data: bacnetArrayZweiteGrundfunktion[element].data,
+            key: bacnetArrayZweiteGrundfunktion[element].key
           })
         }
       }
@@ -1122,7 +1168,9 @@ export default {
             dritteEbeneScore: bacnetArrayDritteEbene[element].dritteEbeneScore,
             datenpunktLabel: 'Noch nicht ausgeprägt',
             datenpunktScore: 0,
-            input: bacnetArrayDritteEbene[element].input
+            input: bacnetArrayDritteEbene[element].input,
+            data: bacnetArrayDritteEbene[element].data,
+            key: bacnetArrayDritteEbene[element].key
           })
           continue
         }
@@ -1188,7 +1236,7 @@ export default {
         const response = await fetch(
           // Muss angepasst werden wenn der Endpoint neu hochgefahren wird
           // 'https://api-inference.huggingface.co/models/mboth/klassifizierungDatenpunkteNLI',
-          'https://tic68t0enypopc1d.eu-west-1.aws.endpoints.huggingface.cloud',
+          'https://gf7jcbswzsvtall4.eu-west-1.aws.endpoints.huggingface.cloud',
           {
             // headers: { Authorization: 'Bearer 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' },
             headers: { Authorization: 'Bearer SxMgRdoPkIocLyTWtBuJHBqtPqNhlpjMBuMuEVtnRggnzRDCsIFMWpOXMAJnnqUyyAbQfpkLpqnsyXVWYRNgzMRFSApCRjSKdQaFBUFwboHrHvTfVKkWYWUTWhimpqdo', 'Content-Type': 'application/json' },
@@ -1211,13 +1259,20 @@ export default {
           dritteEbeneScore: bacnetArrayDritteEbene[element].dritteEbeneScore,
           datenpunktLabel: result.labels[0],
           datenpunktScore: result.scores[0],
-          input: bacnetArrayDritteEbene[element].input
+          input: bacnetArrayDritteEbene[element].input,
+          data: bacnetArrayDritteEbene[element].data,
+          key: bacnetArrayDritteEbene[element].key
         })
         // console.log(bacnetArrayDatenpunktEbene)
       }
       console.log(bacnetArrayDatenpunktEbene)
-      this.$store.dispatch('addGrundfunktionToBacnet', bacnetArrayDatenpunktEbene)
+      if (typeof bacnetArrayDatenpunktEbene[0].key !== 'undefined') {
+        this.$store.dispatch('editBacnetDatapoint', bacnetArrayDatenpunktEbene)
+      } else {
+        this.$store.dispatch('addGrundfunktionToBacnet', bacnetArrayDatenpunktEbene)
+      }
       this.loading = false
+      this.loading1 = false
     }
   },
   created () {

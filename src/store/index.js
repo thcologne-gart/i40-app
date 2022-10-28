@@ -465,6 +465,21 @@ export default new Vuex.Store({
       })
     },
 
+    editBacnetDatapoint ({ commit }, payload) {
+      const database = getDatabase()
+      console.log(payload)
+      const updateObj = {}
+      updateObj['/grundfunktionScore'] = payload[0].grundfunktionScore
+      updateObj['/grundfunktionLabel'] = payload[0].grundfunktionLabel
+      updateObj['/datenpunktLabel'] = payload[0].datenpunktLabel
+      updateObj['/datenpunktScore'] = payload[0].datenpunktScore
+      updateObj['/zweiteGrundfunktionLabel'] = payload[0].zweiteGrundfunktionLabel
+      updateObj['/zweiteGrundfunktionScore'] = payload[0].zweiteGrundfunktionScore
+      updateObj['/dritteEbeneLabel'] = payload[0].dritteEbeneLabel
+      updateObj['/dritteEbeneScore'] = payload[0].dritteEbeneScore
+      // console.log(updateObj)
+      return update(ref(database, 'test1/' + payload[0].data + '/' + payload[0].key), updateObj)
+    },
     labelCorrect ({ commit }, payload) {
       const database = getDatabase()
       const updateObj = {}
