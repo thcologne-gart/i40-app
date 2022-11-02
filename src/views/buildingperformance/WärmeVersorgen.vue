@@ -1,150 +1,24 @@
 <template>
-<div>
-    <v-card class="mx-auto my-8" elevation="2" max-width="80%">
-        <v-card-title id="card-title">{{ building.buildingDesignation }}</v-card-title>
-        <v-card-subtitle class="mt-3">Wärme versorgen</v-card-subtitle>
-        <hr>
-        <div v-for="funktion in differentGrundfunktionen" :key="funktion">
-            <div v-if="funktion === 'Verteilen'">
-                <ShowBACnetProperties :zweiteGrundfunktion="verteilen" :funktion="funktion"/>
-            </div>
-            <div v-if="funktion === 'Erzeugen'">
-                <ShowBACnetProperties :zweiteGrundfunktion="erzeugen" :funktion="funktion"/>
-            </div>
-            <div v-if="funktion === 'Beziehen'">
-                <ShowBACnetProperties :zweiteGrundfunktion="beziehen" :funktion="funktion"/>
-            </div>
-            <div v-if="funktion === 'Speichern'">
-                <ShowBACnetProperties :zweiteGrundfunktion="speichern" :funktion="funktion"/>
-            </div>
-        </div>
-    </v-card>
-    <EditBACnetProperties :grundfunktion=grundfunktion />
-</div>
+  <div>
+    <ZweiteGrundfunktionGrid :sites="sites" :buildings="buildings" :differentGrundfunktionen="differentGrundfunktionen" :grundfunktion="wärmeVersorgen" :verteilen="verteilen" :erzeugen="erzeugen" :speichern="speichern" :beziehen="beziehen" :grundfunktionString="grundfunktionString">
+    </ZweiteGrundfunktionGrid>
+  </div>
 </template>
 
 <script>
-import ShowBACnetProperties from '@/components/bp/ShowBACnetProperties.vue'
-import EditBACnetProperties from '@/components/bp/EditBACnetProperties.vue'
+import ZweiteGrundfunktionGrid from '@/components/bp/ZweiteGrundfunktionGrid.vue'
 
 export default {
-  components: {
-    ShowBACnetProperties, EditBACnetProperties
-  },
-  props: {
-    building: Object,
-    grundfunktion: Array
-  },
+  components: { ZweiteGrundfunktionGrid },
   data () {
     return {
-      linkToInfos: '/buildingperformance',
-      tab: null,
-      submodels: []
+      grundfunktionString: 'Wärme versorgen'
     }
   },
   computed: {
-    differentGrundfunktionen () {
-      const differentGrundfunktionen = []
-      for (const element in this.grundfunktion) {
-        if (differentGrundfunktionen.includes(this.grundfunktion[element].zweiteGrundfunktionLabel)) {
-          continue
-        } else {
-          differentGrundfunktionen.push(this.grundfunktion[element].zweiteGrundfunktionLabel)
-        }
-      }
-      return differentGrundfunktionen
-    },
-    verteilen () {
-      const verteilen = []
-      for (const element in this.grundfunktion) {
-        if (this.grundfunktion[element].zweiteGrundfunktionLabel === 'Verteilen') {
-          verteilen.push({
-            data: this.grundfunktion[element].data,
-            key: this.grundfunktion[element].key,
-            name: this.grundfunktion[element].name,
-            description: this.grundfunktion[element].description,
-            grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
-            grundfunktionScore: this.grundfunktion[element].grundfunktionScore,
-            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
-            zweiteGrundfunktionScore: this.grundfunktion[element].zweiteGrundfunktionScore,
-            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel,
-            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore,
-            datenpunktLabel: this.grundfunktion[element].datenpunktLabel,
-            datenpunktScore: this.grundfunktion[element].datenpunktScore
-          })
-        }
-      }
-      return verteilen
-    },
-    erzeugen () {
-      const erzeugen = []
-      for (const element in this.grundfunktion) {
-        if (this.grundfunktion[element].zweiteGrundfunktionLabel === 'Erzeugen') {
-          erzeugen.push({
-            data: this.grundfunktion[element].data,
-            key: this.grundfunktion[element].key,
-            name: this.grundfunktion[element].name,
-            description: this.grundfunktion[element].description,
-            grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
-            grundfunktionScore: this.grundfunktion[element].grundfunktionScore,
-            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
-            zweiteGrundfunktionScore: this.grundfunktion[element].zweiteGrundfunktionScore,
-            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel,
-            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore,
-            datenpunktLabel: this.grundfunktion[element].datenpunktLabel,
-            datenpunktScore: this.grundfunktion[element].datenpunktScore
-          })
-        }
-      }
-      return erzeugen
-    },
-    beziehen () {
-      const beziehen = []
-      for (const element in this.grundfunktion) {
-        if (this.grundfunktion[element].zweiteGrundfunktionLabel === 'Beziehen') {
-          beziehen.push({
-            data: this.grundfunktion[element].data,
-            key: this.grundfunktion[element].key,
-            name: this.grundfunktion[element].name,
-            description: this.grundfunktion[element].description,
-            grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
-            grundfunktionScore: this.grundfunktion[element].grundfunktionScore,
-            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
-            zweiteGrundfunktionScore: this.grundfunktion[element].zweiteGrundfunktionScore,
-            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel,
-            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore,
-            datenpunktLabel: this.grundfunktion[element].datenpunktLabel,
-            datenpunktScore: this.grundfunktion[element].datenpunktScore
-          })
-        }
-      }
-      return beziehen
-    },
-    speichern () {
-      const speichern = []
-      for (const element in this.grundfunktion) {
-        if (this.grundfunktion[element].zweiteGrundfunktionLabel === 'Speichern') {
-          speichern.push({
-            data: this.grundfunktion[element].data,
-            key: this.grundfunktion[element].key,
-            name: this.grundfunktion[element].name,
-            description: this.grundfunktion[element].description,
-            grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
-            grundfunktionScore: this.grundfunktion[element].grundfunktionScore,
-            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
-            zweiteGrundfunktionScore: this.grundfunktion[element].zweiteGrundfunktionScore,
-            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel,
-            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore,
-            datenpunktLabel: this.grundfunktion[element].datenpunktLabel,
-            datenpunktScore: this.grundfunktion[element].datenpunktScore
-          })
-        }
-      }
-      return speichern
-    },
     buildings () {
-    // console.log(this.sites)
-    // console.log(this.$store.getters.loadedBuildingInformation)
+      // console.log(this.sites)
+      // console.log(this.$store.getters.loadedBuildingInformation)
       const buildings = this.$store.getters.loadedBuildingInformation
       console.log(buildings)
       const buildingsArray = []
@@ -159,7 +33,6 @@ export default {
       console.log(buildingsArray)
       return buildingsArray
     },
-
     numberofSites () {
       const loadInfos = this.$store.getters.loadedOrganizationInformation
       // console.log(loadInfos)
@@ -181,6 +54,133 @@ export default {
     sites () {
       console.log(this.$store.getters.loadedSiteInformation)
       return this.$store.getters.loadedSiteInformation
+    },
+    wärmeVersorgen () {
+      const loadedBacnetData = this.$store.getters.loadedBACnet
+      const wärmeVersorgen = []
+      for (const data in loadedBacnetData) {
+        const keys = [Object.keys(loadedBacnetData[data])]
+        const key = keys[0][0]
+        // console.log(loadedBacnetData[data][key].grundfunktionLabel)
+        if (loadedBacnetData[data][key].grundfunktionLabel === 'WaermeVersorgen') {
+          wärmeVersorgen.push({
+            data: data,
+            key: key,
+            name: loadedBacnetData[data].name,
+            description: loadedBacnetData[data].text,
+            grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
+            grundfunktionScore: loadedBacnetData[data][key].grundfunktionScore,
+            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: loadedBacnetData[data][key].zweiteGrundfunktionScore,
+            dritteEbeneLabel: loadedBacnetData[data][key].dritteEbeneLabel,
+            dritteEbeneScore: loadedBacnetData[data][key].dritteEbeneScore,
+            datenpunktLabel: loadedBacnetData[data][key].datenpunktLabel,
+            datenpunktScore: loadedBacnetData[data][key].datenpunktScore
+          })
+        }
+      }
+      // console.log(wärmeVersorgen)
+      return wärmeVersorgen
+    },
+    differentGrundfunktionen () {
+      const differentGrundfunktionen = []
+      for (const element in this.wärmeVersorgen) {
+        if (differentGrundfunktionen.includes(this.wärmeVersorgen[element].zweiteGrundfunktionLabel)) {
+          continue
+        } else {
+          differentGrundfunktionen.push(this.wärmeVersorgen[element].zweiteGrundfunktionLabel)
+        }
+      }
+      return differentGrundfunktionen
+    },
+    verteilen () {
+      const verteilen = []
+      // console.log(this.wärmeVersorgen)
+      for (const element in this.wärmeVersorgen) {
+        if (this.wärmeVersorgen[element].zweiteGrundfunktionLabel === 'Verteilen') {
+          verteilen.push({
+            data: this.wärmeVersorgen[element].data,
+            key: this.wärmeVersorgen[element].key,
+            name: this.wärmeVersorgen[element].name,
+            description: this.wärmeVersorgen[element].description,
+            grundfunktionLabel: this.wärmeVersorgen[element].grundfunktionLabel,
+            grundfunktionScore: this.wärmeVersorgen[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: this.wärmeVersorgen[element].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: this.wärmeVersorgen[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: this.wärmeVersorgen[element].dritteEbeneLabel,
+            dritteEbeneScore: this.wärmeVersorgen[element].dritteEbeneScore,
+            datenpunktLabel: this.wärmeVersorgen[element].datenpunktLabel,
+            datenpunktScore: this.wärmeVersorgen[element].datenpunktScore
+          })
+        }
+      }
+      return verteilen
+    },
+    erzeugen () {
+      const erzeugen = []
+      for (const element in this.wärmeVersorgen) {
+        if (this.wärmeVersorgen[element].zweiteGrundfunktionLabel === 'Erzeugen') {
+          erzeugen.push({
+            data: this.wärmeVersorgen[element].data,
+            key: this.wärmeVersorgen[element].key,
+            name: this.wärmeVersorgen[element].name,
+            description: this.wärmeVersorgen[element].description,
+            grundfunktionLabel: this.wärmeVersorgen[element].grundfunktionLabel,
+            grundfunktionScore: this.wärmeVersorgen[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: this.wärmeVersorgen[element].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: this.wärmeVersorgen[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: this.wärmeVersorgen[element].dritteEbeneLabel,
+            dritteEbeneScore: this.wärmeVersorgen[element].dritteEbeneScore,
+            datenpunktLabel: this.wärmeVersorgen[element].datenpunktLabel,
+            datenpunktScore: this.wärmeVersorgen[element].datenpunktScore
+          })
+        }
+      }
+      return erzeugen
+    },
+    beziehen () {
+      const beziehen = []
+      for (const element in this.wärmeVersorgen) {
+        if (this.wärmeVersorgen[element].zweiteGrundfunktionLabel === 'Beziehen') {
+          beziehen.push({
+            data: this.wärmeVersorgen[element].data,
+            key: this.wärmeVersorgen[element].key,
+            name: this.wärmeVersorgen[element].name,
+            description: this.wärmeVersorgen[element].description,
+            grundfunktionLabel: this.wärmeVersorgen[element].grundfunktionLabel,
+            grundfunktionScore: this.wärmeVersorgen[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: this.wärmeVersorgen[element].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: this.wärmeVersorgen[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: this.wärmeVersorgen[element].dritteEbeneLabel,
+            dritteEbeneScore: this.wärmeVersorgen[element].dritteEbeneScore,
+            datenpunktLabel: this.wärmeVersorgen[element].datenpunktLabel,
+            datenpunktScore: this.wärmeVersorgen[element].datenpunktScore
+          })
+        }
+      }
+      return beziehen
+    },
+    speichern () {
+      const speichern = []
+      for (const element in this.wärmeVersorgen) {
+        if (this.wärmeVersorgen[element].zweiteGrundfunktionLabel === 'Speichern') {
+          speichern.push({
+            data: this.wärmeVersorgen[element].data,
+            key: this.wärmeVersorgen[element].key,
+            name: this.wärmeVersorgen[element].name,
+            description: this.wärmeVersorgen[element].description,
+            grundfunktionLabel: this.wärmeVersorgen[element].grundfunktionLabel,
+            grundfunktionScore: this.wärmeVersorgen[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: this.wärmeVersorgen[element].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: this.wärmeVersorgen[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: this.wärmeVersorgen[element].dritteEbeneLabel,
+            dritteEbeneScore: this.wärmeVersorgen[element].dritteEbeneScore,
+            datenpunktLabel: this.wärmeVersorgen[element].datenpunktLabel,
+            datenpunktScore: this.wärmeVersorgen[element].datenpunktScore
+          })
+        }
+      }
+      return speichern
     }
   }
 }

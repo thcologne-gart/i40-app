@@ -136,7 +136,7 @@ export default {
       const loadedBacnetData = this.grundfunktion
       const bacnetDataArrayUnsure = []
       for (const data in loadedBacnetData) {
-        const input = loadedBacnetData[data].text + ',' + loadedBacnetData[data].name
+        const input = loadedBacnetData[data].description + ',' + loadedBacnetData[data].name
         if (loadedBacnetData[data].zweiteGrundfunktionScore < 0.9) {
           bacnetDataArrayUnsure.push({
             data: loadedBacnetData[data].data,

@@ -295,13 +295,13 @@ const routes = [
     component: () => import('../views/ems/optimization/OptimizationSubmodel.vue')
   },
   {
-    path: '/buildingperformance/wärmeversorgen',
+    path: '/buildingperformance/waermeversorgen',
     name: 'Wärme versorgen',
     component: () => import('../views/buildingperformance/WärmeVersorgen.vue'),
     props: true
   },
   {
-    path: '/buildingperformance/kälteversorgen',
+    path: '/buildingperformance/kaelteversorgen',
     name: 'Kälte versorgen',
     component: () => import('../views/buildingperformance/KälteVersorgen.vue'),
     props: true
@@ -331,7 +331,7 @@ const routes = [
     props: true
   },
   {
-    path: '/buildingperformance/befördern',
+    path: '/buildingperformance/befoerdern',
     name: 'Befördern',
     component: () => import('../views/buildingperformance/Befördern.vue'),
     props: true

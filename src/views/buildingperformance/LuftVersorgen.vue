@@ -1,100 +1,24 @@
 <template>
-<div>
-    <v-card class="mx-auto my-8" elevation="2" max-width="80%">
-        <v-card-title id="card-title">{{ building.buildingDesignation }}</v-card-title>
-        <v-card-subtitle class="mt-3">Luft versorgen</v-card-subtitle>
-        <hr>
-        <div v-for="funktion in differentGrundfunktionen" :key="funktion">
-            <div v-if="funktion === 'LuftBereitstellen'">
-                <ShowBACnetProperties :zweiteGrundfunktion="bereitstellen" funktion="Luft bereitstellen"/>
-            </div>
-            <div v-if="funktion === 'LuftVerteilen'">
-                <ShowBACnetProperties :zweiteGrundfunktion="verteilen" funktion="Luft verteilen"/>
-            </div>
-        </div>
-    </v-card>
-    <EditBACnetProperties :grundfunktion=grundfunktion />
-</div>
+  <div>
+    <ZweiteGrundfunktionGrid :sites="sites" :buildings="buildings" :differentGrundfunktionen="differentGrundfunktionen" :grundfunktion="luftVersorgen" :verteilen="verteilen" :bereitstellen="bereitstellen" :grundfunktionString="grundfunktionString">
+    </ZweiteGrundfunktionGrid>
+  </div>
 </template>
 
 <script>
-import ShowBACnetProperties from '@/components/bp/ShowBACnetProperties.vue'
-import EditBACnetProperties from '@/components/bp/EditBACnetProperties.vue'
+import ZweiteGrundfunktionGrid from '@/components/bp/ZweiteGrundfunktionGrid.vue'
 
 export default {
-  components: {
-    ShowBACnetProperties, EditBACnetProperties
-  },
-  props: {
-    building: Object,
-    grundfunktion: Array
-  },
+  components: { ZweiteGrundfunktionGrid },
   data () {
     return {
-      linkToInfos: '/buildingperformance',
-      tab: null,
-      submodels: []
+      grundfunktionString: 'Luft versorgen'
     }
   },
   computed: {
-    differentGrundfunktionen () {
-      const differentGrundfunktionen = []
-      for (const element in this.grundfunktion) {
-        if (differentGrundfunktionen.includes(this.grundfunktion[element].zweiteGrundfunktionLabel)) {
-          continue
-        } else {
-          differentGrundfunktionen.push(this.grundfunktion[element].zweiteGrundfunktionLabel)
-        }
-      }
-      return differentGrundfunktionen
-    },
-    verteilen () {
-      const verteilen = []
-      for (const element in this.grundfunktion) {
-        if (this.grundfunktion[element].zweiteGrundfunktionLabel === 'LuftVerteilen') {
-          verteilen.push({
-            data: this.grundfunktion[element].data,
-            key: this.grundfunktion[element].key,
-            name: this.grundfunktion[element].name,
-            description: this.grundfunktion[element].description,
-            grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
-            grundfunktionScore: this.grundfunktion[element].grundfunktionScore,
-            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
-            zweiteGrundfunktionScore: this.grundfunktion[element].zweiteGrundfunktionScore,
-            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel,
-            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore,
-            datenpunktLabel: this.grundfunktion[element].datenpunktLabel,
-            datenpunktScore: this.grundfunktion[element].datenpunktScore
-          })
-        }
-      }
-      return verteilen
-    },
-    bereitstellen () {
-      const bereitstellen = []
-      for (const element in this.grundfunktion) {
-        if (this.grundfunktion[element].zweiteGrundfunktionLabel === 'LuftBereitstellen') {
-          bereitstellen.push({
-            data: this.grundfunktion[element].data,
-            key: this.grundfunktion[element].key,
-            name: this.grundfunktion[element].name,
-            description: this.grundfunktion[element].description,
-            grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
-            grundfunktionScore: this.grundfunktion[element].grundfunktionScore,
-            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
-            zweiteGrundfunktionScore: this.grundfunktion[element].zweiteGrundfunktionScore,
-            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel,
-            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore,
-            datenpunktLabel: this.grundfunktion[element].datenpunktLabel,
-            datenpunktScore: this.grundfunktion[element].datenpunktScore
-          })
-        }
-      }
-      return bereitstellen
-    },
     buildings () {
-    // console.log(this.sites)
-    // console.log(this.$store.getters.loadedBuildingInformation)
+      // console.log(this.sites)
+      // console.log(this.$store.getters.loadedBuildingInformation)
       const buildings = this.$store.getters.loadedBuildingInformation
       console.log(buildings)
       const buildingsArray = []
@@ -109,7 +33,6 @@ export default {
       console.log(buildingsArray)
       return buildingsArray
     },
-
     numberofSites () {
       const loadInfos = this.$store.getters.loadedOrganizationInformation
       // console.log(loadInfos)
@@ -131,6 +54,88 @@ export default {
     sites () {
       console.log(this.$store.getters.loadedSiteInformation)
       return this.$store.getters.loadedSiteInformation
+    },
+    luftVersorgen () {
+      const loadedBacnetData = this.$store.getters.loadedBACnet
+      const luftVersorgen = []
+      for (const data in loadedBacnetData) {
+        const keys = [Object.keys(loadedBacnetData[data])]
+        const key = keys[0][0]
+        if (loadedBacnetData[data][key].grundfunktionLabel === 'LuftVersorgen') {
+          luftVersorgen.push({
+            data: data,
+            key: key,
+            name: loadedBacnetData[data].name,
+            description: loadedBacnetData[data].text,
+            grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
+            grundfunktionScore: loadedBacnetData[data][key].grundfunktionScore,
+            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: loadedBacnetData[data][key].zweiteGrundfunktionScore,
+            dritteEbeneLabel: loadedBacnetData[data][key].dritteEbeneLabel,
+            dritteEbeneScore: loadedBacnetData[data][key].dritteEbeneScore,
+            datenpunktLabel: loadedBacnetData[data][key].datenpunktLabel,
+            datenpunktScore: loadedBacnetData[data][key].datenpunktScore
+          })
+        }
+      }
+      return luftVersorgen
+    },
+    differentGrundfunktionen () {
+      const differentGrundfunktionen = []
+      for (const element in this.luftVersorgen) {
+        if (differentGrundfunktionen.includes(this.luftVersorgen[element].zweiteGrundfunktionLabel)) {
+          continue
+        } else {
+          differentGrundfunktionen.push(this.luftVersorgen[element].zweiteGrundfunktionLabel)
+        }
+      }
+      console.log(differentGrundfunktionen)
+      return differentGrundfunktionen
+    },
+    verteilen () {
+      const verteilen = []
+      for (const element in this.luftVersorgen) {
+        if (this.luftVersorgen[element].zweiteGrundfunktionLabel === 'LuftVerteilen') {
+          verteilen.push({
+            data: this.luftVersorgen[element].data,
+            key: this.luftVersorgen[element].key,
+            name: this.luftVersorgen[element].name,
+            description: this.luftVersorgen[element].description,
+            grundfunktionLabel: this.luftVersorgen[element].grundfunktionLabel,
+            grundfunktionScore: this.luftVersorgen[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: this.luftVersorgen[element].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: this.luftVersorgen[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: this.luftVersorgen[element].dritteEbeneLabel,
+            dritteEbeneScore: this.luftVersorgen[element].dritteEbeneScore,
+            datenpunktLabel: this.luftVersorgen[element].datenpunktLabel,
+            datenpunktScore: this.luftVersorgen[element].datenpunktScore
+          })
+        }
+      }
+      console.log(verteilen)
+      return verteilen
+    },
+    bereitstellen () {
+      const bereitstellen = []
+      for (const element in this.luftVersorgen) {
+        if (this.luftVersorgen[element].zweiteGrundfunktionLabel === 'LuftBereitstellen') {
+          bereitstellen.push({
+            data: this.luftVersorgen[element].data,
+            key: this.luftVersorgen[element].key,
+            name: this.luftVersorgen[element].name,
+            description: this.luftVersorgen[element].description,
+            grundfunktionLabel: this.luftVersorgen[element].grundfunktionLabel,
+            grundfunktionScore: this.luftVersorgen[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: this.luftVersorgen[element].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: this.luftVersorgen[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: this.luftVersorgen[element].dritteEbeneLabel,
+            dritteEbeneScore: this.luftVersorgen[element].dritteEbeneScore,
+            datenpunktLabel: this.luftVersorgen[element].datenpunktLabel,
+            datenpunktScore: this.luftVersorgen[element].datenpunktScore
+          })
+        }
+      }
+      return bereitstellen
     }
   }
 }

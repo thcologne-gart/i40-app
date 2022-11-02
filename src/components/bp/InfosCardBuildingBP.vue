@@ -14,7 +14,7 @@
                       <v-btn
                         color="deep-grey lighten-2"
                         text
-                        @click="() => {}" :to= "{ name: 'Wärme versorgen', params: { building: building, grundfunktion: wärmeVersorgen } }"
+                        @click="() => {}" :to= "{ name: 'Wärme versorgen' }"
                       >
                         Go to
                       </v-btn>
@@ -1296,13 +1296,13 @@ export default {
   },
   created () {
     this.energyUseGroup = [
-      { name: 'Wärme versorgen', pic: require('@/assets/heizung.svg'), link: '/wärmeversorgen' },
-      { name: 'Kälte versorgen', pic: require('@/assets/kuehlung.svg'), link: '/kälteversorgen' },
+      { name: 'Wärme versorgen', pic: require('@/assets/heizung.svg'), link: '/waermeversorgen' },
+      { name: 'Kälte versorgen', pic: require('@/assets/kuehlung.svg'), link: '/kaelteversorgen' },
       { name: 'Luft versorgen', pic: require('@/assets/lueftung.svg'), link: 'luftversorgen' },
       { name: 'Medien versorgen', pic: require('@/assets/medien.svg'), link: 'medienversorgen' },
       { name: 'Sichern', pic: require('@/assets/sichern.svg'), link: 'sichern' },
       { name: 'Strom versorgen', pic: require('@/assets/elektro.svg'), link: 'stromversorgen' },
-      { name: 'Befördern', pic: require('@/assets/befördern.svg'), link: 'befördern' },
+      { name: 'Befördern', pic: require('@/assets/befördern.svg'), link: 'befoerdern' },
       { name: 'Andere Anlagen', pic: require('@/assets/andere_anlagen.svg'), link: 'andereanlagen' }
     ]
     this.energySourceGroups = [
