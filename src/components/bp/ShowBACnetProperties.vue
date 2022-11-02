@@ -61,7 +61,7 @@
                     </template>
                 </v-simple-table>
             </div>
-        </v-expand-transition>
+            </v-expand-transition>
     </div>
 </template>
 

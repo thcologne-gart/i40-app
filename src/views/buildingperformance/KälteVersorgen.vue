@@ -16,15 +16,17 @@
             </div>
         </div>
     </v-card>
+    <EditBACnetProperties :grundfunktion=grundfunktion />
 </div>
 </template>
 
 <script>
+import EditBACnetProperties from '@/components/bp/EditBACnetProperties.vue'
 import ShowBACnetProperties from '@/components/bp/ShowBACnetProperties.vue'
 
 export default {
   components: {
-    ShowBACnetProperties
+    ShowBACnetProperties, EditBACnetProperties
   },
   props: {
     building: Object,
@@ -54,6 +56,8 @@ export default {
       for (const element in this.grundfunktion) {
         if (this.grundfunktion[element].zweiteGrundfunktionLabel === 'Verteilen') {
           verteilen.push({
+            data: this.grundfunktion[element].data,
+            key: this.grundfunktion[element].key,
             name: this.grundfunktion[element].name,
             description: this.grundfunktion[element].description,
             grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
@@ -74,6 +78,8 @@ export default {
       for (const element in this.grundfunktion) {
         if (this.grundfunktion[element].zweiteGrundfunktionLabel === 'Erzeugen') {
           erzeugen.push({
+            data: this.grundfunktion[element].data,
+            key: this.grundfunktion[element].key,
             name: this.grundfunktion[element].name,
             description: this.grundfunktion[element].description,
             grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
@@ -94,6 +100,8 @@ export default {
       for (const element in this.grundfunktion) {
         if (this.grundfunktion[element].zweiteGrundfunktionLabel === 'Speichern') {
           speichern.push({
+            data: this.grundfunktion[element].data,
+            key: this.grundfunktion[element].key,
             name: this.grundfunktion[element].name,
             description: this.grundfunktion[element].description,
             grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,

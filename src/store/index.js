@@ -487,6 +487,13 @@ export default new Vuex.Store({
       // console.log(updateObj)
       return update(ref(database, 'test1/' + payload.data + '/' + payload.key), updateObj)
     },
+    labelCorrectZweiteGrundfunktion ({ commit }, payload) {
+      const database = getDatabase()
+      const updateObj = {}
+      updateObj['/zweiteGrundfunktionScore'] = 1.0
+      // console.log(updateObj)
+      return update(ref(database, 'test1/' + payload.data + '/' + payload.key), updateObj)
+    },
 
     loadAasDeleteionEnergyTypes ({ commit }) {
       const database = getDatabase()

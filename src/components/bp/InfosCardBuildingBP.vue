@@ -151,6 +151,9 @@
                             Score
                         </th>
                         <th class="text-left">
+                            Accept
+                        </th>
+                        <th class="text-left">
                             Edit
                         </th>
                         </tr>
@@ -252,6 +255,8 @@ export default {
         // console.log(loadedBacnetData[data][key].grundfunktionLabel)
         if (loadedBacnetData[data][key].grundfunktionLabel === 'WaermeVersorgen') {
           wärmeVersorgen.push({
+            data: data,
+            key: key,
             name: loadedBacnetData[data].name,
             description: loadedBacnetData[data].text,
             grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
@@ -277,6 +282,8 @@ export default {
         // console.log(loadedBacnetData[data][key].grundfunktionLabel)
         if (loadedBacnetData[data][key].grundfunktionLabel === 'KaelteVersorgen') {
           kälteVersorgen.push({
+            data: data,
+            key: key,
             name: loadedBacnetData[data].name,
             description: loadedBacnetData[data].text,
             grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
@@ -302,6 +309,8 @@ export default {
         // console.log(loadedBacnetData[data][key].grundfunktionLabel)
         if (loadedBacnetData[data][key].grundfunktionLabel === 'LuftVersorgen') {
           funktion.push({
+            data: data,
+            key: key,
             name: loadedBacnetData[data].name,
             description: loadedBacnetData[data].text,
             grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
@@ -327,6 +336,8 @@ export default {
         // console.log(loadedBacnetData[data][key].grundfunktionLabel)
         if (loadedBacnetData[data][key].grundfunktionLabel === 'MedienVersorgen') {
           funktion.push({
+            data: data,
+            key: key,
             name: loadedBacnetData[data].name,
             description: loadedBacnetData[data].text,
             grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
@@ -352,6 +363,8 @@ export default {
         // console.log(loadedBacnetData[data][key].grundfunktionLabel)
         if (loadedBacnetData[data][key].grundfunktionLabel === 'Sichern') {
           funktion.push({
+            data: data,
+            key: key,
             name: loadedBacnetData[data].name,
             description: loadedBacnetData[data].text,
             grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
@@ -377,6 +390,8 @@ export default {
         // console.log(loadedBacnetData[data][key].grundfunktionLabel)
         if (loadedBacnetData[data][key].grundfunktionLabel === 'Befoerdern') {
           funktion.push({
+            data: data,
+            key: key,
             name: loadedBacnetData[data].name,
             description: loadedBacnetData[data].text,
             grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
@@ -402,6 +417,8 @@ export default {
         // console.log(loadedBacnetData[data][key].grundfunktionLabel)
         if (loadedBacnetData[data][key].grundfunktionLabel === 'StromVersorgen') {
           funktion.push({
+            data: data,
+            key: key,
             name: loadedBacnetData[data].name,
             description: loadedBacnetData[data].text,
             grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
@@ -427,6 +444,8 @@ export default {
         // console.log(loadedBacnetData[data][key].grundfunktionLabel)
         if (loadedBacnetData[data][key].grundfunktionLabel === 'AndereAnlagen') {
           funktion.push({
+            data: data,
+            key: key,
             name: loadedBacnetData[data].name,
             description: loadedBacnetData[data].text,
             grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
