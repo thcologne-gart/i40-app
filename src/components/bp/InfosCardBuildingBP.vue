@@ -713,7 +713,7 @@ export default {
     },
     async query (data) {
       this.loading = true
-      const examples = data.slice(0, 100)
+      const examples = data.slice(0, 700)
       const bacnetDataScore = []
       // console.log(examples)
       // console.log(data[2].input)

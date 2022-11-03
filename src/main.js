@@ -11,6 +11,7 @@ import './plugins/bootstrap-vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import vueCountryRegionSelect from 'vue-country-region-select'
 import vuetify from './plugins/vuetify'
+import * as VueGoogleMaps from 'vue2-google-maps'
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 // import Axios from 'axios'
 
@@ -34,6 +35,12 @@ Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(vueCountryRegionSelect)
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyDrSZaSw1y8mnFuNa_ZYHTd-0kFxd4eCnQ',
+    libraries: 'places'
+  }
+})
 // Vue.use(Axios)
 
 new Vue({
