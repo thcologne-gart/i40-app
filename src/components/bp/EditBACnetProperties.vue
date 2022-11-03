@@ -625,7 +625,7 @@ export default {
         const response = await fetch(
           // Muss angepasst werden wenn der Endpoint neu hochgefahren wird
           // 'https://api-inference.huggingface.co/models/mboth/klassifizierungDatenpunkteNLI',
-          'https://gl95ydojcmmebc96.eu-west-1.aws.endpoints.huggingface.cloud',
+          'https://pxccan8ep07bpaxt.eu-west-1.aws.endpoints.huggingface.cloud',
           {
             // headers: { Authorization: 'Bearer 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' },
             headers: { Authorization: 'Bearer SxMgRdoPkIocLyTWtBuJHBqtPqNhlpjMBuMuEVtnRggnzRDCsIFMWpOXMAJnnqUyyAbQfpkLpqnsyXVWYRNgzMRFSApCRjSKdQaFBUFwboHrHvTfVKkWYWUTWhimpqdo', 'Content-Type': 'application/json' },

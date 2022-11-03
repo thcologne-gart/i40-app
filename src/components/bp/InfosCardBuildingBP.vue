@@ -249,6 +249,7 @@ export default {
     wärmeVersorgen () {
       const loadedBacnetData = this.$store.getters.loadedBACnet
       const wärmeVersorgen = []
+      console.log(loadedBacnetData)
       for (const data in loadedBacnetData) {
         const keys = [Object.keys(loadedBacnetData[data])]
         const key = keys[0][0]
@@ -930,7 +931,7 @@ export default {
           })
         } else if (bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'WaermeVersorgen' && bacnetArrayZweiteGrundfunktion[element].zweiteGrundfunktionLabel === 'Erzeugen') {
           const response = await fetch(
-            'https://api-inference.huggingface.co/models/mboth/klassifizierungWaermeErzeugen',
+            'https://api-inference.huggingface.co/models/mboth/klassifizierungErzeugen',
             {
               headers: { Authorization: 'Bearer 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' },
               method: 'POST',
@@ -1257,7 +1258,7 @@ export default {
         const response = await fetch(
           // Muss angepasst werden wenn der Endpoint neu hochgefahren wird
           // 'https://api-inference.huggingface.co/models/mboth/klassifizierungDatenpunkteNLI',
-          'https://gl95ydojcmmebc96.eu-west-1.aws.endpoints.huggingface.cloud',
+          'https://pxccan8ep07bpaxt.eu-west-1.aws.endpoints.huggingface.cloud',
           {
             // headers: { Authorization: 'Bearer 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' },
             headers: { Authorization: 'Bearer SxMgRdoPkIocLyTWtBuJHBqtPqNhlpjMBuMuEVtnRggnzRDCsIFMWpOXMAJnnqUyyAbQfpkLpqnsyXVWYRNgzMRFSApCRjSKdQaFBUFwboHrHvTfVKkWYWUTWhimpqdo', 'Content-Type': 'application/json' },

@@ -87,6 +87,12 @@
                     <div v-if="funktion === 'Speichern' && grundfunktionString ==='Medien versorgen'">
                         <ShowBACnetProperties :zweiteGrundfunktion="speichern" :funktion="funktion" name="Speichern"/>
                     </div>
+                    <div v-if="grundfunktionString ==='Strom versorgen'">
+                        <ShowBACnetProperties :zweiteGrundfunktion="grundfunktion" :funktion="funktion" name="Strom"/>
+                    </div>
+                    <div v-if="grundfunktionString ==='Andere Anlagen'">
+                        <ShowBACnetProperties :zweiteGrundfunktion="grundfunktion" :funktion="funktion" name="Andere Anlagen"/>
+                    </div>
                 </div>
             </v-card>
             <EditBACnetProperties :grundfunktion="grundfunktion" />
