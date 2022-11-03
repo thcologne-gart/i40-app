@@ -1,21 +1,24 @@
 <template>
     <div>
         <v-card-actions>
-            <v-btn
-                text
-                @click="show = !show"
-            >
-                {{ funktion }}
-            </v-btn>
-
-            <v-spacer></v-spacer>
-
-            <v-btn
-                icon
-                @click="show = !show"
-            >
-                <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-            </v-btn>
+            <v-row>
+                <v-col>
+                    <v-btn
+                        text
+                        @click="show = !show"
+                    >
+                        {{ name }}
+                    </v-btn>
+                </v-col>
+                <v-col>
+                    <v-btn
+                        icon
+                        @click="show = !show"
+                    >
+                        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                    </v-btn>
+                </v-col>
+            </v-row>
         </v-card-actions>
 
         <v-expand-transition>
@@ -72,7 +75,8 @@ export default {
   }),
   props: {
     zweiteGrundfunktion: Array,
-    funktion: String
+    funktion: String,
+    name: String
   }
 }
 </script>

@@ -1,150 +1,24 @@
 <template>
-<div>
-    <v-card class="mx-auto my-8" elevation="2" max-width="80%">
-        <v-card-title id="card-title">{{ building.buildingDesignation }}</v-card-title>
-        <v-card-subtitle class="mt-3">Medien versorgen</v-card-subtitle>
-        <hr>
-        <div v-for="funktion in differentGrundfunktionen" :key="funktion">
-            <div v-if="funktion === 'Verteilen'">
-                <ShowBACnetProperties :zweiteGrundfunktion="verteilen" :funktion="funktion"/>
-            </div>
-            <div v-if="funktion === 'Bereitstellen'">
-                <ShowBACnetProperties :zweiteGrundfunktion="bereitstellen" :funktion="funktion"/>
-            </div>
-            <div v-if="funktion === 'Entsorgen'">
-                <ShowBACnetProperties :zweiteGrundfunktion="entsorgen" :funktion="funktion"/>
-            </div>
-            <div v-if="funktion === 'Speichern'">
-                <ShowBACnetProperties :zweiteGrundfunktion="speichern" :funktion="funktion"/>
-            </div>
-        </div>
-    </v-card>
-    <EditBACnetProperties :grundfunktion=grundfunktion />
-</div>
+  <div>
+    <ZweiteGrundfunktionGrid :sites="sites" :buildings="buildings" :differentGrundfunktionen="differentGrundfunktionen" :grundfunktion="medienVersorgen" :verteilen="verteilen" :bereitstellen="bereitstellen" :entsorgen="entsorgen" :speichern="speichern" :grundfunktionString="grundfunktionString">
+    </ZweiteGrundfunktionGrid>
+  </div>
 </template>
 
 <script>
-import ShowBACnetProperties from '@/components/bp/ShowBACnetProperties.vue'
-import EditBACnetProperties from '@/components/bp/EditBACnetProperties.vue'
+import ZweiteGrundfunktionGrid from '@/components/bp/ZweiteGrundfunktionGrid.vue'
 
 export default {
-  components: {
-    ShowBACnetProperties, EditBACnetProperties
-  },
-  props: {
-    building: Object,
-    grundfunktion: Array
-  },
+  components: { ZweiteGrundfunktionGrid },
   data () {
     return {
-      linkToInfos: '/buildingperformance',
-      tab: null,
-      submodels: []
+      grundfunktionString: 'Medien versorgen'
     }
   },
   computed: {
-    differentGrundfunktionen () {
-      const differentGrundfunktionen = []
-      for (const element in this.grundfunktion) {
-        if (differentGrundfunktionen.includes(this.grundfunktion[element].zweiteGrundfunktionLabel)) {
-          continue
-        } else {
-          differentGrundfunktionen.push(this.grundfunktion[element].zweiteGrundfunktionLabel)
-        }
-      }
-      return differentGrundfunktionen
-    },
-    verteilen () {
-      const verteilen = []
-      for (const element in this.grundfunktion) {
-        if (this.grundfunktion[element].zweiteGrundfunktionLabel === 'Verteilen') {
-          verteilen.push({
-            data: this.grundfunktion[element].data,
-            key: this.grundfunktion[element].key,
-            name: this.grundfunktion[element].name,
-            description: this.grundfunktion[element].description,
-            grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
-            grundfunktionScore: this.grundfunktion[element].grundfunktionScore,
-            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
-            zweiteGrundfunktionScore: this.grundfunktion[element].zweiteGrundfunktionScore,
-            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel,
-            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore,
-            datenpunktLabel: this.grundfunktion[element].datenpunktLabel,
-            datenpunktScore: this.grundfunktion[element].datenpunktScore
-          })
-        }
-      }
-      return verteilen
-    },
-    bereitstellen () {
-      const bereitstellen = []
-      for (const element in this.grundfunktion) {
-        if (this.grundfunktion[element].zweiteGrundfunktionLabel === 'Bereitstellen') {
-          bereitstellen.push({
-            data: this.grundfunktion[element].data,
-            key: this.grundfunktion[element].key,
-            name: this.grundfunktion[element].name,
-            description: this.grundfunktion[element].description,
-            grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
-            grundfunktionScore: this.grundfunktion[element].grundfunktionScore,
-            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
-            zweiteGrundfunktionScore: this.grundfunktion[element].zweiteGrundfunktionScore,
-            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel,
-            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore,
-            datenpunktLabel: this.grundfunktion[element].datenpunktLabel,
-            datenpunktScore: this.grundfunktion[element].datenpunktScore
-          })
-        }
-      }
-      return bereitstellen
-    },
-    entsorgen () {
-      const entsorgen = []
-      for (const element in this.grundfunktion) {
-        if (this.grundfunktion[element].zweiteGrundfunktionLabel === 'Entsorgen') {
-          entsorgen.push({
-            data: this.grundfunktion[element].data,
-            key: this.grundfunktion[element].key,
-            name: this.grundfunktion[element].name,
-            description: this.grundfunktion[element].description,
-            grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
-            grundfunktionScore: this.grundfunktion[element].grundfunktionScore,
-            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
-            zweiteGrundfunktionScore: this.grundfunktion[element].zweiteGrundfunktionScore,
-            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel,
-            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore,
-            datenpunktLabel: this.grundfunktion[element].datenpunktLabel,
-            datenpunktScore: this.grundfunktion[element].datenpunktScore
-          })
-        }
-      }
-      return entsorgen
-    },
-    speichern () {
-      const speichern = []
-      for (const element in this.grundfunktion) {
-        if (this.grundfunktion[element].zweiteGrundfunktionLabel === 'Speichern') {
-          speichern.push({
-            data: this.grundfunktion[element].data,
-            key: this.grundfunktion[element].key,
-            name: this.grundfunktion[element].name,
-            description: this.grundfunktion[element].description,
-            grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
-            grundfunktionScore: this.grundfunktion[element].grundfunktionScore,
-            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
-            zweiteGrundfunktionScore: this.grundfunktion[element].zweiteGrundfunktionScore,
-            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel,
-            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore,
-            datenpunktLabel: this.grundfunktion[element].datenpunktLabel,
-            datenpunktScore: this.grundfunktion[element].datenpunktScore
-          })
-        }
-      }
-      return speichern
-    },
     buildings () {
-    // console.log(this.sites)
-    // console.log(this.$store.getters.loadedBuildingInformation)
+      // console.log(this.sites)
+      // console.log(this.$store.getters.loadedBuildingInformation)
       const buildings = this.$store.getters.loadedBuildingInformation
       console.log(buildings)
       const buildingsArray = []
@@ -159,7 +33,6 @@ export default {
       console.log(buildingsArray)
       return buildingsArray
     },
-
     numberofSites () {
       const loadInfos = this.$store.getters.loadedOrganizationInformation
       // console.log(loadInfos)
@@ -181,6 +54,133 @@ export default {
     sites () {
       console.log(this.$store.getters.loadedSiteInformation)
       return this.$store.getters.loadedSiteInformation
+    },
+    medienVersorgen () {
+      const loadedBacnetData = this.$store.getters.loadedBACnet
+      const medienVersorgen = []
+      for (const data in loadedBacnetData) {
+        const keys = [Object.keys(loadedBacnetData[data])]
+        const key = keys[0][0]
+        // console.log(loadedBacnetData[data][key].grundfunktionLabel)
+        if (loadedBacnetData[data][key].grundfunktionLabel === 'MedienVersorgen') {
+          medienVersorgen.push({
+            data: data,
+            key: key,
+            name: loadedBacnetData[data].name,
+            description: loadedBacnetData[data].text,
+            grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
+            grundfunktionScore: loadedBacnetData[data][key].grundfunktionScore,
+            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: loadedBacnetData[data][key].zweiteGrundfunktionScore,
+            dritteEbeneLabel: loadedBacnetData[data][key].dritteEbeneLabel,
+            dritteEbeneScore: loadedBacnetData[data][key].dritteEbeneScore,
+            datenpunktLabel: loadedBacnetData[data][key].datenpunktLabel,
+            datenpunktScore: loadedBacnetData[data][key].datenpunktScore
+          })
+        }
+      }
+      // console.log(wärmeVersorgen)
+      return medienVersorgen
+    },
+    differentGrundfunktionen () {
+      const differentGrundfunktionen = []
+      for (const element in this.medienVersorgen) {
+        if (differentGrundfunktionen.includes(this.medienVersorgen[element].zweiteGrundfunktionLabel)) {
+          continue
+        } else {
+          differentGrundfunktionen.push(this.medienVersorgen[element].zweiteGrundfunktionLabel)
+        }
+      }
+      return differentGrundfunktionen
+    },
+    verteilen () {
+      const verteilen = []
+      // console.log(this.medienVersorgen)
+      for (const element in this.medienVersorgen) {
+        if (this.medienVersorgen[element].zweiteGrundfunktionLabel === 'Verteilen') {
+          verteilen.push({
+            data: this.medienVersorgen[element].data,
+            key: this.medienVersorgen[element].key,
+            name: this.medienVersorgen[element].name,
+            description: this.medienVersorgen[element].description,
+            grundfunktionLabel: this.medienVersorgen[element].grundfunktionLabel,
+            grundfunktionScore: this.medienVersorgen[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: this.medienVersorgen[element].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: this.medienVersorgen[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: this.medienVersorgen[element].dritteEbeneLabel,
+            dritteEbeneScore: this.medienVersorgen[element].dritteEbeneScore,
+            datenpunktLabel: this.medienVersorgen[element].datenpunktLabel,
+            datenpunktScore: this.medienVersorgen[element].datenpunktScore
+          })
+        }
+      }
+      return verteilen
+    },
+    bereitstellen () {
+      const erzeugen = []
+      for (const element in this.medienVersorgen) {
+        if (this.medienVersorgen[element].zweiteGrundfunktionLabel === 'Bereitstellen') {
+          erzeugen.push({
+            data: this.medienVersorgen[element].data,
+            key: this.medienVersorgen[element].key,
+            name: this.medienVersorgen[element].name,
+            description: this.medienVersorgen[element].description,
+            grundfunktionLabel: this.medienVersorgen[element].grundfunktionLabel,
+            grundfunktionScore: this.medienVersorgen[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: this.medienVersorgen[element].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: this.medienVersorgen[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: this.medienVersorgen[element].dritteEbeneLabel,
+            dritteEbeneScore: this.medienVersorgen[element].dritteEbeneScore,
+            datenpunktLabel: this.medienVersorgen[element].datenpunktLabel,
+            datenpunktScore: this.medienVersorgen[element].datenpunktScore
+          })
+        }
+      }
+      return erzeugen
+    },
+    speichern () {
+      const speichern = []
+      for (const element in this.medienVersorgen) {
+        if (this.medienVersorgen[element].zweiteGrundfunktionLabel === 'Speichern') {
+          speichern.push({
+            data: this.medienVersorgen[element].data,
+            key: this.medienVersorgen[element].key,
+            name: this.medienVersorgen[element].name,
+            description: this.medienVersorgen[element].description,
+            grundfunktionLabel: this.medienVersorgen[element].grundfunktionLabel,
+            grundfunktionScore: this.medienVersorgen[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: this.medienVersorgen[element].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: this.medienVersorgen[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: this.medienVersorgen[element].dritteEbeneLabel,
+            dritteEbeneScore: this.medienVersorgen[element].dritteEbeneScore,
+            datenpunktLabel: this.medienVersorgen[element].datenpunktLabel,
+            datenpunktScore: this.medienVersorgen[element].datenpunktScore
+          })
+        }
+      }
+      return speichern
+    },
+    entsorgen () {
+      const entsorgen = []
+      for (const element in this.medienVersorgen) {
+        if (this.medienVersorgen[element].zweiteGrundfunktionLabel === 'Entsorgen') {
+          entsorgen.push({
+            data: this.medienVersorgen[element].data,
+            key: this.medienVersorgen[element].key,
+            name: this.medienVersorgen[element].name,
+            description: this.medienVersorgen[element].description,
+            grundfunktionLabel: this.medienVersorgen[element].grundfunktionLabel,
+            grundfunktionScore: this.medienVersorgen[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: this.medienVersorgen[element].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: this.medienVersorgen[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: this.medienVersorgen[element].dritteEbeneLabel,
+            dritteEbeneScore: this.medienVersorgen[element].dritteEbeneScore,
+            datenpunktLabel: this.medienVersorgen[element].datenpunktLabel,
+            datenpunktScore: this.medienVersorgen[element].datenpunktScore
+          })
+        }
+      }
+      return entsorgen
     }
   }
 }

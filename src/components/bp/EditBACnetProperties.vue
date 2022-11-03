@@ -172,6 +172,7 @@ export default {
       this.$store.dispatch('labelCorrectZweiteGrundfunktion', item)
     },
     async editBacnetProperty (item) {
+      console.log(item)
       const bacnetArrayDritteEbene = []
       let result
       // const hfOptions = { wait_for_model: true }
@@ -617,7 +618,7 @@ export default {
           })
           continue
         }
-        // console.log(candidateLabels)
+        console.log(candidateLabels)
         const inputHF = bacnetArrayDritteEbene[element].input
         // console.log(inputHF)
         const hypothese = 'Der Datenpunkt beschreibt: {}.'

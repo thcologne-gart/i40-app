@@ -1,150 +1,25 @@
 <template>
-<div>
-    <v-card class="mx-auto my-8" elevation="2" max-width="80%">
-        <v-card-title id="card-title">{{ building.buildingDesignation }}</v-card-title>
-        <v-card-subtitle class="mt-3">Sichern</v-card-subtitle>
-        <hr>
-        <div v-for="funktion in differentGrundfunktionen" :key="funktion">
-            <div v-if="funktion === 'Brandmeldeanlage'">
-                <ShowBACnetProperties :zweiteGrundfunktion="brandmeldeanlage" :funktion="funktion"/>
-            </div>
-            <div v-if="funktion === 'Brandschutzklappe'">
-                <ShowBACnetProperties :zweiteGrundfunktion="brandschutzklappe" :funktion="funktion"/>
-            </div>
-            <div v-if="funktion === 'Rauchmeldeanlage'">
-                <ShowBACnetProperties :zweiteGrundfunktion="rauchmeldeanlage" :funktion="funktion"/>
-            </div>
-            <div v-if="funktion === 'SichernAllgemein'">
-                <ShowBACnetProperties :zweiteGrundfunktion="sichernAllgemein" :funktion="funktion"/>
-            </div>
-        </div>
-    </v-card>
-    <EditBACnetProperties :grundfunktion=grundfunktion />
-</div>
+  <div>
+    <ZweiteGrundfunktionGrid :sites="sites" :buildings="buildings" :differentGrundfunktionen="differentGrundfunktionen" :grundfunktion="sichern" :brandschutzklappe="brandschutzklappe" :brandmeldeanlage="brandmeldeanlage"
+    :rauchmeldeanlage="rauchmeldeanlage" :sichernAllgemein="sichernAllgemein" :grundfunktionString="grundfunktionString">
+    </ZweiteGrundfunktionGrid>
+  </div>
 </template>
 
 <script>
-import EditBACnetProperties from '@/components/bp/EditBACnetProperties.vue'
-import ShowBACnetProperties from '@/components/bp/ShowBACnetProperties.vue'
+import ZweiteGrundfunktionGrid from '@/components/bp/ZweiteGrundfunktionGrid.vue'
 
 export default {
-  components: {
-    ShowBACnetProperties, EditBACnetProperties
-  },
-  props: {
-    building: Object,
-    grundfunktion: Array
-  },
+  components: { ZweiteGrundfunktionGrid },
   data () {
     return {
-      linkToInfos: '/buildingperformance',
-      tab: null,
-      submodels: []
+      grundfunktionString: 'Sichern'
     }
   },
   computed: {
-    differentGrundfunktionen () {
-      const differentGrundfunktionen = []
-      for (const element in this.grundfunktion) {
-        if (differentGrundfunktionen.includes(this.grundfunktion[element].zweiteGrundfunktionLabel)) {
-          continue
-        } else {
-          differentGrundfunktionen.push(this.grundfunktion[element].zweiteGrundfunktionLabel)
-        }
-      }
-      return differentGrundfunktionen
-    },
-    brandmeldeanlage () {
-      const brandmeldeanlage = []
-      for (const element in this.grundfunktion) {
-        if (this.grundfunktion[element].zweiteGrundfunktionLabel === 'Brandmeldeanlage') {
-          brandmeldeanlage.push({
-            data: this.grundfunktion[element].data,
-            key: this.grundfunktion[element].key,
-            name: this.grundfunktion[element].name,
-            description: this.grundfunktion[element].description,
-            grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
-            grundfunktionScore: this.grundfunktion[element].grundfunktionScore,
-            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
-            zweiteGrundfunktionScore: this.grundfunktion[element].zweiteGrundfunktionScore,
-            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel,
-            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore,
-            datenpunktLabel: this.grundfunktion[element].datenpunktLabel,
-            datenpunktScore: this.grundfunktion[element].datenpunktScore
-          })
-        }
-      }
-      return brandmeldeanlage
-    },
-    brandschutzklappe () {
-      const brandschutzklappe = []
-      for (const element in this.grundfunktion) {
-        if (this.grundfunktion[element].zweiteGrundfunktionLabel === 'Brandschutzklappe') {
-          brandschutzklappe.push({
-            data: this.grundfunktion[element].data,
-            key: this.grundfunktion[element].key,
-            name: this.grundfunktion[element].name,
-            description: this.grundfunktion[element].description,
-            grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
-            grundfunktionScore: this.grundfunktion[element].grundfunktionScore,
-            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
-            zweiteGrundfunktionScore: this.grundfunktion[element].zweiteGrundfunktionScore,
-            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel,
-            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore,
-            datenpunktLabel: this.grundfunktion[element].datenpunktLabel,
-            datenpunktScore: this.grundfunktion[element].datenpunktScore
-          })
-        }
-      }
-      return brandschutzklappe
-    },
-    rauchmeldeanlage () {
-      const rauchmeldeanlage = []
-      for (const element in this.grundfunktion) {
-        if (this.grundfunktion[element].zweiteGrundfunktionLabel === 'Rauchmeldeanlage') {
-          rauchmeldeanlage.push({
-            data: this.grundfunktion[element].data,
-            key: this.grundfunktion[element].key,
-            name: this.grundfunktion[element].name,
-            description: this.grundfunktion[element].description,
-            grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
-            grundfunktionScore: this.grundfunktion[element].grundfunktionScore,
-            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
-            zweiteGrundfunktionScore: this.grundfunktion[element].zweiteGrundfunktionScore,
-            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel,
-            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore,
-            datenpunktLabel: this.grundfunktion[element].datenpunktLabel,
-            datenpunktScore: this.grundfunktion[element].datenpunktScore
-          })
-        }
-      }
-      return rauchmeldeanlage
-    },
-    sichernAllgemein () {
-      const sichernAllgemein = []
-      for (const element in this.grundfunktion) {
-        if (this.grundfunktion[element].zweiteGrundfunktionLabel === 'SichernAllgemein') {
-          sichernAllgemein.push({
-            data: this.grundfunktion[element].data,
-            key: this.grundfunktion[element].key,
-            name: this.grundfunktion[element].name,
-            description: this.grundfunktion[element].description,
-            grundfunktionLabel: this.grundfunktion[element].grundfunktionLabel,
-            grundfunktionScore: this.grundfunktion[element].grundfunktionScore,
-            zweiteGrundfunktionLabel: this.grundfunktion[element].zweiteGrundfunktionLabel,
-            zweiteGrundfunktionScore: this.grundfunktion[element].zweiteGrundfunktionScore,
-            dritteEbeneLabel: this.grundfunktion[element].dritteEbeneLabel,
-            dritteEbeneScore: this.grundfunktion[element].dritteEbeneScore,
-            datenpunktLabel: this.grundfunktion[element].datenpunktLabel,
-            datenpunktScore: this.grundfunktion[element].datenpunktScore
-          })
-        }
-      }
-      return sichernAllgemein
-    },
     buildings () {
-    // console.log(this.sites)
-    // console.log(this.$store.getters.loadedBuildingInformation)
+      // console.log(this.sites)
+      // console.log(this.$store.getters.loadedBuildingInformation)
       const buildings = this.$store.getters.loadedBuildingInformation
       console.log(buildings)
       const buildingsArray = []
@@ -159,7 +34,6 @@ export default {
       console.log(buildingsArray)
       return buildingsArray
     },
-
     numberofSites () {
       const loadInfos = this.$store.getters.loadedOrganizationInformation
       // console.log(loadInfos)
@@ -181,6 +55,132 @@ export default {
     sites () {
       console.log(this.$store.getters.loadedSiteInformation)
       return this.$store.getters.loadedSiteInformation
+    },
+    sichern () {
+      const loadedBacnetData = this.$store.getters.loadedBACnet
+      const sichern = []
+      for (const data in loadedBacnetData) {
+        const keys = [Object.keys(loadedBacnetData[data])]
+        const key = keys[0][0]
+        if (loadedBacnetData[data][key].grundfunktionLabel === 'Sichern') {
+          sichern.push({
+            data: data,
+            key: key,
+            name: loadedBacnetData[data].name,
+            description: loadedBacnetData[data].text,
+            grundfunktionLabel: loadedBacnetData[data][key].grundfunktionLabel,
+            grundfunktionScore: loadedBacnetData[data][key].grundfunktionScore,
+            zweiteGrundfunktionLabel: loadedBacnetData[data][key].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: loadedBacnetData[data][key].zweiteGrundfunktionScore,
+            dritteEbeneLabel: loadedBacnetData[data][key].dritteEbeneLabel,
+            dritteEbeneScore: loadedBacnetData[data][key].dritteEbeneScore,
+            datenpunktLabel: loadedBacnetData[data][key].datenpunktLabel,
+            datenpunktScore: loadedBacnetData[data][key].datenpunktScore
+          })
+        }
+      }
+      return sichern
+    },
+    differentGrundfunktionen () {
+      const differentGrundfunktionen = []
+      for (const element in this.sichern) {
+        if (differentGrundfunktionen.includes(this.sichern[element].zweiteGrundfunktionLabel)) {
+          continue
+        } else {
+          differentGrundfunktionen.push(this.sichern[element].zweiteGrundfunktionLabel)
+        }
+      }
+      console.log(differentGrundfunktionen)
+      return differentGrundfunktionen
+    },
+    brandschutzklappe () {
+      const bsk = []
+      for (const element in this.sichern) {
+        if (this.sichern[element].zweiteGrundfunktionLabel === 'Brandschutzklappe') {
+          bsk.push({
+            data: this.sichern[element].data,
+            key: this.sichern[element].key,
+            name: this.sichern[element].name,
+            description: this.sichern[element].description,
+            grundfunktionLabel: this.sichern[element].grundfunktionLabel,
+            grundfunktionScore: this.sichern[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: this.sichern[element].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: this.sichern[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: this.sichern[element].dritteEbeneLabel,
+            dritteEbeneScore: this.sichern[element].dritteEbeneScore,
+            datenpunktLabel: this.sichern[element].datenpunktLabel,
+            datenpunktScore: this.sichern[element].datenpunktScore
+          })
+        }
+      }
+      console.log(bsk)
+      return bsk
+    },
+    brandmeldeanlage () {
+      const bma = []
+      for (const element in this.sichern) {
+        if (this.sichern[element].zweiteGrundfunktionLabel === 'Brandmeldeanlage') {
+          bma.push({
+            data: this.sichern[element].data,
+            key: this.sichern[element].key,
+            name: this.sichern[element].name,
+            description: this.sichern[element].description,
+            grundfunktionLabel: this.sichern[element].grundfunktionLabel,
+            grundfunktionScore: this.sichern[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: this.sichern[element].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: this.sichern[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: this.sichern[element].dritteEbeneLabel,
+            dritteEbeneScore: this.sichern[element].dritteEbeneScore,
+            datenpunktLabel: this.sichern[element].datenpunktLabel,
+            datenpunktScore: this.sichern[element].datenpunktScore
+          })
+        }
+      }
+      return bma
+    },
+    rauchmeldeanlage () {
+      const rma = []
+      for (const element in this.sichern) {
+        if (this.sichern[element].zweiteGrundfunktionLabel === 'Rauchmeldeanlage') {
+          rma.push({
+            data: this.sichern[element].data,
+            key: this.sichern[element].key,
+            name: this.sichern[element].name,
+            description: this.sichern[element].description,
+            grundfunktionLabel: this.sichern[element].grundfunktionLabel,
+            grundfunktionScore: this.sichern[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: this.sichern[element].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: this.sichern[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: this.sichern[element].dritteEbeneLabel,
+            dritteEbeneScore: this.sichern[element].dritteEbeneScore,
+            datenpunktLabel: this.sichern[element].datenpunktLabel,
+            datenpunktScore: this.sichern[element].datenpunktScore
+          })
+        }
+      }
+      return rma
+    },
+    sichernAllgemein () {
+      const sAllgemein = []
+      for (const element in this.sichern) {
+        if (this.sichern[element].zweiteGrundfunktionLabel === 'SichernAllgemein') {
+          sAllgemein.push({
+            data: this.sichern[element].data,
+            key: this.sichern[element].key,
+            name: this.sichern[element].name,
+            description: this.sichern[element].description,
+            grundfunktionLabel: this.sichern[element].grundfunktionLabel,
+            grundfunktionScore: this.sichern[element].grundfunktionScore,
+            zweiteGrundfunktionLabel: this.sichern[element].zweiteGrundfunktionLabel,
+            zweiteGrundfunktionScore: this.sichern[element].zweiteGrundfunktionScore,
+            dritteEbeneLabel: this.sichern[element].dritteEbeneLabel,
+            dritteEbeneScore: this.sichern[element].dritteEbeneScore,
+            datenpunktLabel: this.sichern[element].datenpunktLabel,
+            datenpunktScore: this.sichern[element].datenpunktScore
+          })
+        }
+      }
+      return sAllgemein
     }
   }
 }

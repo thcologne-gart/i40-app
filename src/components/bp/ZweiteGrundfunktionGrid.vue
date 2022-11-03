@@ -30,32 +30,67 @@
           </v-card>
         </v-col>
         <v-col id = "content" md = "10">
-            <v-card v-if="choosedBuilding !==''" class="mx-auto my-8" elevation="2" max-width="80%">
+          <div v-if="choosedBuilding !==''" >
+            <v-card class="mx-auto my-8" elevation="2" max-width="80%">
                 <v-card-title id="card-title">{{ choosedBuilding.buildingDesignation }}</v-card-title>
                 <v-card-subtitle class="mt-3">{{ grundfunktionString }}</v-card-subtitle>
                 <hr>
                 <div v-for="funktion in differentGrundfunktionen" :key="funktion">
                     <div v-if="funktion === 'Verteilen' && grundfunktionString ==='Wärme versorgen'">
-                        <ShowBACnetProperties :zweiteGrundfunktion="verteilen" :funktion="funktion"/>
+                        <ShowBACnetProperties :zweiteGrundfunktion="verteilen" :funktion="funktion" name="Verteilen"/>
                     </div>
                     <div v-if="funktion === 'Erzeugen' && grundfunktionString ==='Wärme versorgen'">
-                        <ShowBACnetProperties :zweiteGrundfunktion="erzeugen" :funktion="funktion"/>
+                        <ShowBACnetProperties :zweiteGrundfunktion="erzeugen" :funktion="funktion" name="Erzeugen"/>
                     </div>
                     <div v-if="funktion === 'Beziehen' && grundfunktionString ==='Wärme versorgen'">
-                        <ShowBACnetProperties :zweiteGrundfunktion="beziehen" :funktion="funktion"/>
+                        <ShowBACnetProperties :zweiteGrundfunktion="beziehen" :funktion="funktion" name="Beziehen"/>
                     </div>
                     <div v-if="funktion === 'Speichern' && grundfunktionString ==='Wärme versorgen'">
-                        <ShowBACnetProperties :zweiteGrundfunktion="speichern" :funktion="funktion"/>
+                        <ShowBACnetProperties :zweiteGrundfunktion="speichern" :funktion="funktion" name="Speichern"/>
                     </div>
                     <div v-if="funktion === 'LuftVerteilen' && grundfunktionString ==='Luft versorgen'">
-                        <ShowBACnetProperties :zweiteGrundfunktion="verteilen" :funktion="funktion"/>
+                        <ShowBACnetProperties :zweiteGrundfunktion="verteilen" :funktion="funktion" name="Verteilen"/>
                     </div>
                     <div v-if="funktion === 'LuftBereitstellen' && grundfunktionString ==='Luft versorgen'">
-                        <ShowBACnetProperties :zweiteGrundfunktion="bereitstellen" :funktion="funktion"/>
+                        <ShowBACnetProperties :zweiteGrundfunktion="bereitstellen" :funktion="funktion" name="Bereitstellen"/>
+                    </div>
+                    <div v-if="funktion === 'Brandschutzklappe' && grundfunktionString ==='Sichern'">
+                        <ShowBACnetProperties :zweiteGrundfunktion="brandschutzklappe" :funktion="funktion" name="Brandschutzklappe"/>
+                    </div>
+                    <div v-if="funktion === 'Brandmeldeanlage' && grundfunktionString ==='Sichern'">
+                        <ShowBACnetProperties :zweiteGrundfunktion="brandmeldeanlage" :funktion="funktion" name="Brandmeldeanlage"/>
+                    </div>
+                    <div v-if="funktion === 'Rauchmeldeanlage' && grundfunktionString ==='Sichern'">
+                        <ShowBACnetProperties :zweiteGrundfunktion="rauchmeldeanlage" :funktion="funktion" name="Rauchmeldeanlage"/>
+                    </div>
+                    <div v-if="funktion === 'SichernAllgemein' && grundfunktionString ==='Sichern'">
+                        <ShowBACnetProperties :zweiteGrundfunktion="sichernAllgemein" :funktion="funktion" name="Sichern allgemein"/>
+                    </div>
+                    <div v-if="funktion === 'Verteilen' && grundfunktionString ==='Kälte versorgen'">
+                        <ShowBACnetProperties :zweiteGrundfunktion="verteilen" :funktion="funktion" name="Verteilen"/>
+                    </div>
+                    <div v-if="funktion === 'Erzeugen' && grundfunktionString ==='Kälte versorgen'">
+                        <ShowBACnetProperties :zweiteGrundfunktion="erzeugen" :funktion="funktion" name="Erzeugen"/>
+                    </div>
+                    <div v-if="funktion === 'Speichern' && grundfunktionString ==='Kälte versorgen'">
+                        <ShowBACnetProperties :zweiteGrundfunktion="speichern" :funktion="funktion" name="Speichern"/>
+                    </div>
+                    <div v-if="funktion === 'Verteilen' && grundfunktionString ==='Medien versorgen'">
+                        <ShowBACnetProperties :zweiteGrundfunktion="verteilen" :funktion="funktion" name="Verteilen"/>
+                    </div>
+                    <div v-if="funktion === 'Bereitstellen' && grundfunktionString ==='Medien versorgen'">
+                        <ShowBACnetProperties :zweiteGrundfunktion="bereitstellen" :funktion="funktion" name="Bereitstellen"/>
+                    </div>
+                    <div v-if="funktion === 'Entsorgen' && grundfunktionString ==='Medien versorgen'">
+                        <ShowBACnetProperties :zweiteGrundfunktion="entsorgen" :funktion="funktion" name="Entsorgen"/>
+                    </div>
+                    <div v-if="funktion === 'Speichern' && grundfunktionString ==='Medien versorgen'">
+                        <ShowBACnetProperties :zweiteGrundfunktion="speichern" :funktion="funktion" name="Speichern"/>
                     </div>
                 </div>
             </v-card>
             <EditBACnetProperties :grundfunktion="grundfunktion" />
+          </div>
             <v-card v-if="choosedSite !==''" class="mx-auto my-8" elevation="2" max-width="80%">
                 <v-card-title id="card-title">{{ choosedSite[1].value }}</v-card-title>
                 <v-card-subtitle class="mt-3">{{ grundfunktionString }}</v-card-subtitle>
@@ -81,6 +116,11 @@ export default {
     speichern: Array,
     beziehen: Array,
     bereitstellen: Array,
+    brandschutzklappe: Array,
+    brandmeldeanlage: Array,
+    rauchmeldeanlage: Array,
+    sichernAllgemein: Array,
+    entsorgen: Array,
     grundfunktionString: String
   },
   data () {

@@ -703,6 +703,7 @@ export default {
         })
       }
       this.neueGrundfunktion = ''
+      console.log(bacnetArrayZweiteGrundfunktion)
       this.klassifiziereDritteEbene(bacnetArrayZweiteGrundfunktion)
       // this.$store.dispatch('addGrundfunktionToBacnet', bacnetArrayZweiteGrundfunktion)
       console.log(bacnetArrayZweiteGrundfunktion)
@@ -1027,7 +1028,7 @@ export default {
             data: bacnetArrayZweiteGrundfunktion[element].data,
             key: bacnetArrayZweiteGrundfunktion[element].key
           })
-        } else if (bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'Sichern' || bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'KaelteVersorgen' || bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'Befoerdern' || bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'StromVersorgen' || bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'AndereAnlagen') {
+        } else if (bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'MedienVersorgen' || bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'Sichern' || bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'KaelteVersorgen' || bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'Befoerdern' || bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'StromVersorgen' || bacnetArrayZweiteGrundfunktion[element].grundfunktionLabel === 'AndereAnlagen') {
           bacnetArrayDritteEbene.push({
             name: bacnetArrayZweiteGrundfunktion[element].name,
             description: bacnetArrayZweiteGrundfunktion[element].description,
@@ -1104,6 +1105,7 @@ export default {
       const labelWrg = ['Alarmmeldung', 'Messwert Temperatur Austritt Zuluft', 'Messwert Temperatur Eintritt Zuluft', 'Messwert Temperatur Eintritt Abluft', 'Messwert Temperatur Austritt Abluft', 'Messwert Vorlauftemperatur', 'Pumpe', 'Rückmeldung Betrieb', 'Rückmeldung Handschaltung', 'Rückmeldung Stellsignal', 'Schaltbefehl', 'Sollwert Frostschutz', 'Sollwert Stellsignal', 'Sollwert Stellsignal Min', 'Sollwert Stellsignal Max', 'Stellbefehl', 'Stellbefehl WRG Bypass', 'Störmeldung']
       const bacnetArrayDatenpunktEbene = []
       let result
+      console.log(bacnetArrayDritteEbene)
       for (const element in bacnetArrayDritteEbene) {
         const grundfunktion = bacnetArrayDritteEbene[element].grundfunktionLabel
         const zweiteFunktion = bacnetArrayDritteEbene[element].zweiteGrundfunktionLabel
