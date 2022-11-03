@@ -56,6 +56,11 @@
                 </div>
             </v-card>
             <EditBACnetProperties :grundfunktion="grundfunktion" />
+            <v-card v-if="choosedSite !==''" class="mx-auto my-8" elevation="2" max-width="80%">
+                <v-card-title id="card-title">{{ choosedSite[1].value }}</v-card-title>
+                <v-card-subtitle class="mt-3">{{ grundfunktionString }}</v-card-subtitle>
+                <hr>
+            </v-card>
         </v-col>
     </v-row>
 </template>
@@ -116,6 +121,25 @@ export default {
         console.log(i)
       }
       return this.submodels
+    }
+  },
+  mounted () {
+    if (localStorage.getItem('choosedSite')) {
+      try {
+        this.choosedSite = JSON.parse(localStorage.getItem('choosedSite'))
+      } catch (e) {
+        localStorage.removeItem('choosedSite')
+      }
+      // this.choosedSite = localStorage.choosedSite
+    } else if (localStorage.getItem('choosedBuilding')) {
+      try {
+        this.choosedBuilding = JSON.parse(localStorage.getItem('choosedBuilding'))
+      } catch (e) {
+        localStorage.removeItem('choosedBuilding')
+      }
+      console.log(this.choosedSite)
+      console.log(this.choosedBuilding)
+      // this.choosedSite = localStorage.choosedSite
     }
   },
   methods: {

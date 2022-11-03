@@ -67,6 +67,30 @@ export default {
       // ]
     }
   },
+  mounted () {
+    if (localStorage.getItem('choosedSite')) {
+      try {
+        this.choosedSite = JSON.parse(localStorage.getItem('choosedSite'))
+      } catch (e) {
+        localStorage.removeItem('choosedSite')
+      }
+      // this.choosedSite = localStorage.choosedSite
+    } else if (localStorage.getItem('choosedBuilding')) {
+      try {
+        this.choosedBuilding = JSON.parse(localStorage.getItem('choosedBuilding'))
+      } catch (e) {
+        localStorage.removeItem('choosedBuilding')
+      }
+      // this.choosedSite = localStorage.choosedSite
+    }
+  },
+  /*
+  watch: {
+    choosedSite (newSite) {
+      localStorage.choosedSite = newSite[1].value
+    }
+  },
+  */
   computed: {
     numberofSites () {
       const loadInfos = this.$store.getters.loadedOrganizationInformation
@@ -99,10 +123,17 @@ export default {
       this.choosedSite = site
       this.choosedBuilding = ''
       console.log(this.choosedSite)
+      const parsed = JSON.stringify(this.choosedSite)
+      localStorage.setItem('choosedSite', parsed)
+      localStorage.setItem('choosedBuilding', '')
+      // localStorage.choosedSite = this.choosedSite[1].value
     },
     chooseBuilding (building) {
       // console.log(this.choosedSite)
       this.choosedBuilding = building
+      const parsed = JSON.stringify(this.choosedBuilding)
+      localStorage.setItem('choosedBuilding', parsed)
+      localStorage.setItem('choosedSite', '')
       this.choosedSite = ''
       // console.log(this.choosedSite)
     }

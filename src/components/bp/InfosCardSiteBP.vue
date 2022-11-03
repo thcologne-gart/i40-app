@@ -40,18 +40,19 @@ export default {
       const loadInfos = this.$store.getters.loadedOrganizationInformation
       // console.log(loadInfos)
       let numberSites
+      const numberOfSites = [1]
       for (const item in loadInfos) {
         if (loadInfos[item].idShort === 'NumberOfSites') {
           numberSites = loadInfos[item].value
           // console.log(typeof numberSites)
         }
+        // console.log(numberSites)
+        let i
+        for (i = 1; i < numberSites; i++) {
+          numberOfSites.push(i + 1)
+        }
+        // console.log(numberOfSites)
       }
-      const numberOfSites = [0]
-      let i
-      for (i = 1; i < numberSites; i++) {
-        numberOfSites.push(i)
-      }
-      // console.log(numberOfSites)
       return numberOfSites
     }
   }
