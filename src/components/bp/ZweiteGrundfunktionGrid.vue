@@ -19,7 +19,7 @@
                     </v-list-item>
                 </template>
                     <div v-for="building in buildings" :key="building.submodelId">
-                        <v-list-item v-if="building.numberOfSite === site[4].value" @click="chooseBuilding(building)">
+                        <v-list-item v-if="building.numberOfSite === site[7].value" @click="chooseBuilding(building)">
                             <v-list-item-content >
                                 <v-list-item-title v-text="building.buildingDesignation"></v-list-item-title>
                             </v-list-item-content>

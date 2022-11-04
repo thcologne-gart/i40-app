@@ -47,10 +47,10 @@ export default {
       const buildingsArray = []
       for (const item in buildings) {
         buildingsArray.push({
-          numberOfSite: buildings[item][2].value,
-          buildingNumber: buildings[item][3].value,
-          submodelId: buildings[item][4].submodelId,
-          buildingDesignation: buildings[item][1].value
+          numberOfSite: buildings[item][7].value,
+          buildingNumber: buildings[item][8].value,
+          submodelId: buildings[item][9].submodelId,
+          buildingDesignation: buildings[item][6].value
         })
       }
       console.log(buildingsArray)
