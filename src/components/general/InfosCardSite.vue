@@ -1,9 +1,10 @@
 <template v-slot:site="{ site }" >
   <div>
     <div v-for="site2 in numberofSites" :key="site2">
-      <div v-if="site[4].value === site2">
+      <div v-if="site[7].value === site2">
         <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
             <v-card-title id="card-title">{{ site[1].value }}</v-card-title>
+            <GoogleMap :site="site" :buildings="buildings"/>
         </v-card>
       </div>
     </div>
@@ -11,6 +12,7 @@
 </template>
 
 <script>
+import GoogleMap from '@/components/general/GoogleMap.vue'
 /*
 async function query (data) {
   const response = await fetch(
@@ -31,8 +33,10 @@ query({ inputs: 'Heizkreis vorlauftemperatur' }).then((response) => {
 })
 */
 export default {
+  components: { GoogleMap },
   props: {
-    site: Array
+    site: Array,
+    buildings: Array
   },
   computed: {
     numberofSites () {
@@ -40,18 +44,19 @@ export default {
       const loadInfos = this.$store.getters.loadedOrganizationInformation
       // console.log(loadInfos)
       let numberSites
+      const numberOfSites = [1]
       for (const item in loadInfos) {
         if (loadInfos[item].idShort === 'NumberOfSites') {
           numberSites = loadInfos[item].value
           // console.log(typeof numberSites)
         }
+        // console.log(numberSites)
+        let i
+        for (i = 1; i < numberSites; i++) {
+          numberOfSites.push(i + 1)
+        }
+        // console.log(numberOfSites)
       }
-      const numberOfSites = [0]
-      let i
-      for (i = 1; i < numberSites; i++) {
-        numberOfSites.push(i)
-      }
-      // console.log(numberOfSites)
       return numberOfSites
     }
   }

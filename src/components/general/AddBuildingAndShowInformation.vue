@@ -31,6 +31,7 @@
                           <GmapAutocomplete class="introInput" @place_changed='setPlace'>
                             <template v-slot:default="slotProps">
                               <v-text-field label="Standort der Liegenschaft"
+                                            placeholder = ''
                                             ref="input"
                                             v-on:listeners="slotProps.listeners"
                                             v-on:attrs="slotProps.attrs">

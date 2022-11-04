@@ -39,6 +39,8 @@ export default {
       for (const item in buildings) {
         buildingsArray.push({
           numberOfSite: buildings[item][7].value,
+          lat: buildings[item][4].value,
+          lng: buildings[item][5].value,
           buildingNumber: buildings[item][8].value,
           submodelId: buildings[item][9].submodelId,
           buildingDesignation: buildings[item][6].value

@@ -1,7 +1,8 @@
 <template>
   <div>
     <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
-        <div>
+        <!--
+      <div>
         <GmapAutocomplete
             @place_changed='setPlace'
         />
@@ -12,6 +13,7 @@
         </button>
         </div>
         <br>
+      -->
         <GmapMap
         :center='center'
         :zoom='12'
@@ -31,14 +33,22 @@
 <script>
 export default {
   name: 'GoogleMap',
+  props: {
+    site: Array,
+    buildings: Array
+  },
   data () {
     return {
-      center: { lat: 45.508, lng: -73.587 },
+      center: {},
+      // center: { lat: 45.508, lng: -73.587 },
       currentPlace: null,
+      /*
       markers: [
         { position: { lat: 45.508, lng: -73.587 } },
         { position: { lat: 44.508, lng: 11.587 } }
       ],
+      */
+      markers: [],
       places: [
         { position: { lat: 45.508, lng: -73.587 } },
         { position: { lat: 44.508, lng: 11.587 } }
@@ -46,7 +56,23 @@ export default {
     }
   },
   mounted () {
-    this.geolocate()
+    console.log(this.site)
+    this.center = ({
+      lat: this.site[4].value,
+      lng: this.site[5].value
+    })
+    const markers = []
+    for (const element in this.buildings) {
+      markers.push({
+        position: {
+          lat: this.buildings[element].lat,
+          lng: this.buildings[element].lng
+        }
+      })
+    }
+    this.markers = markers
+    console.log(this.buildings)
+    // this.geolocate()
   },
   methods: {
     setPlace (place) {
