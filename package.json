@@ -16,6 +16,7 @@
     "core-js": "^3.6.5",
     "express": "^4.17.3",
     "firebase": "^9.6.6",
+    "gmap-vue": "^3.5.4",
     "json-server": "^0.17.0",
     "multer": "^1.4.4",
     "vue": "^2.6.11",

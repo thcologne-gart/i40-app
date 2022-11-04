@@ -50,10 +50,12 @@ export default {
   },
   methods: {
     setPlace (place) {
+      console.log(place)
       this.currentPlace = place
     },
     addMarker () {
       if (this.currentPlace) {
+        console.log(this.currentPlace.geometry.location.lat())
         const marker = {
           lat: this.currentPlace.geometry.location.lat(),
           lng: this.currentPlace.geometry.location.lng()

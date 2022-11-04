@@ -781,7 +781,7 @@ export default new Vuex.Store({
       // console.log(updateObj)
       // updateObj.value = payload.organizationName
       const updateObj = {}
-      updateObj['/3/value'] = payload.numberOfBuildings
+      updateObj['/6/value'] = payload.numberOfBuildings
       console.log(updateObj)
       console.log('submodels/' + payload.id + '/payload/submodelElements' + updateObj)
       return update(ref(database, 'submodels/' + payload.id + '/payload/submodelElements'), updateObj)

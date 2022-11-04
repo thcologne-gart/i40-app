@@ -5,7 +5,7 @@
                 text
                 @click="show = !show"
             >
-                {{ building[1].value }}
+                {{ building[6].value }}
             </v-btn>
 
             <v-spacer></v-spacer>

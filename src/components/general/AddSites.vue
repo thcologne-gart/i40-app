@@ -27,7 +27,7 @@
                         >Standort hinzufügen</v-toolbar>
                         <v-container>
                             <v-form>
-
+                              <!--
                                 <v-select :items="countries" v-model="form.country" label= 'Standort(Land)' />
                                 <v-text-field
                                 id="city"
@@ -42,6 +42,17 @@
                                 label="Standort (Postleitzahl)"
                                 required
                                 ></v-text-field>
+                              -->
+                                <GmapAutocomplete class="introInput" @place_changed='setPlace'>
+                                  <template v-slot:default="slotProps">
+                                    <v-text-field label="Standort der Liegenschaft"
+                                    placeholder = ''
+                                                  ref="input"
+                                                  v-on:listeners="slotProps.listeners"
+                                                  v-on:attrs="slotProps.attrs">
+                                    </v-text-field>
+                                  </template>
+                                </GmapAutocomplete>
                                 <!-- <v-text-field
                                 id="number-buildings"
                                 v-model.number="form.numberBuildings"
@@ -68,6 +79,7 @@ import ShowSiteInformation from '@/components/general/ShowSiteInformation.vue'
 export default {
   data () {
     return {
+      /*
       form: {
         country: '',
         numberSite: '',
@@ -75,6 +87,14 @@ export default {
         zipcode: null,
         numberBuildings: null
       },
+      */
+      currentPlace: null,
+      country: '',
+      city: '',
+      street: '',
+      streetNumber: '',
+      lat: '',
+      lng: '',
       countries: ['Deutschland', 'Österreich', 'Schweiz', 'Frankreich', 'Italien', 'England']
     }
   },
@@ -121,6 +141,42 @@ export default {
     }
   },
   methods: {
+    setPlace (place) {
+      console.log(place.address_components)
+      this.currentPlace = place
+      const location = place.address_components
+      for (const element in location) {
+        if (location[element].types[0] === 'country') {
+          this.country = location[element].long_name
+        } else if (location[element].types[0] === 'locality') {
+          this.city = location[element].long_name
+        } else if (location[element].types[0] === 'street_number') {
+          this.streetNumber = location[element].long_name
+        } else if (location[element].types[0] === 'route') {
+          this.street = location[element].long_name
+        }
+      }
+      this.lat = this.currentPlace.geometry.location.lat()
+      this.lng = this.currentPlace.geometry.location.lng()
+      console.log(this.country, this.city, this.street, this.streetNumber)
+    },
+    /*
+    addMarker () {
+      if (this.currentPlace) {
+        console.log(this.currentPlace.geometry.location.lat())
+        const marker = {
+          lat: this.currentPlace.geometry.location.lat(),
+          lng: this.currentPlace.geometry.location.lng()
+        }
+        this.markers.push({ position: marker })
+        this.places.push(this.currentPlace)
+        this.center = marker
+        this.currentPlace = null
+        console.log(marker)
+        console.log(this.markers[0])
+      }
+    },
+    */
     /*
     showForm () {
       console.log(this.site)
@@ -148,7 +204,7 @@ export default {
       const assetKeys = {
         type: 'Asset',
         local: true,
-        value: `ems-site-asset/${this.form.city}`,
+        value: `ems-site-asset/${this.city}`,
         index: 0,
         idType: 'IRI'
       }
@@ -159,7 +215,7 @@ export default {
       const submodelKeys = {
         type: 'Submodel',
         local: true,
-        value: `submodels/site-information/${this.form.city}`,
+        value: `submodels/site-information/${this.city}`,
         index: 0,
         idType: 'IRI'
       }
@@ -169,9 +225,9 @@ export default {
 
       newAas.identification = {
         idType: 'IRI',
-        id: `site-aas/${this.form.city}`
+        id: `site-aas/${this.city}`
       }
-      newAas.idShort = `SiteAas/${this.form.city}`
+      newAas.idShort = `SiteAas/${this.city}`
       newAas.category = 'CONSTANT'
       newAas.modelType = {
         name: 'AssetAdministrationShell'
@@ -192,7 +248,7 @@ export default {
 
       newSubmodel.identification = {
         idType: 'IRI',
-        id: `submodels/site-information/${this.form.city}`
+        id: `submodels/site-information/${this.city}`
       }
       newSubmodel.idShort = 'Site Information'
       newSubmodel.category = 'CONSTANT'
@@ -203,7 +259,7 @@ export default {
       // Inhalte aus der Form jetzt zu Submodel hinzufügen
       newSubmodel.submodelElements = [
         {
-          value: this.form.country,
+          value: this.country,
           semanticId: {
             keys: [{
               type: 'GlobalReference',
@@ -227,7 +283,7 @@ export default {
           kind: 'Instance'
         },
         {
-          value: this.form.city,
+          value: this.city,
           semanticId: {
             keys: [{
               type: 'GlobalReference',
@@ -251,18 +307,18 @@ export default {
           kind: 'Instance'
         },
         {
-          value: this.form.zipcode,
+          value: this.street,
           semanticId: {
             keys: [{
               type: 'GlobalReference',
               local: true,
-              value: 'ems/site/context-semantics/zipcode',
+              value: 'ems/site/context-semantics/street',
               index: 0,
               idType: 'IRI'
             }]
           },
           constraints: [],
-          idShort: 'ZipCode',
+          idShort: 'Street',
           category: 'CONSTANT',
           modelType: {
             name: 'Property'
@@ -270,6 +326,78 @@ export default {
           valuetype: {
             dataObjectType: {
               name: 'INTEGER'
+            }
+          },
+          kind: 'Instance'
+        },
+        {
+          value: this.streetNumber,
+          semanticId: {
+            keys: [{
+              type: 'GlobalReference',
+              local: true,
+              value: 'ems/site/context-semantics/streetNumber',
+              index: 0,
+              idType: 'IRI'
+            }]
+          },
+          constraints: [],
+          idShort: 'StreetNumber',
+          category: 'CONSTANT',
+          modelType: {
+            name: 'Property'
+          },
+          valuetype: {
+            dataObjectType: {
+              name: 'INTEGER'
+            }
+          },
+          kind: 'Instance'
+        },
+        {
+          value: this.lat,
+          semanticId: {
+            keys: [{
+              type: 'GlobalReference',
+              local: true,
+              value: 'ems/site/context-semantics/lattitude',
+              index: 0,
+              idType: 'IRI'
+            }]
+          },
+          constraints: [],
+          idShort: 'Lattitude',
+          category: 'CONSTANT',
+          modelType: {
+            name: 'Property'
+          },
+          valuetype: {
+            dataObjectType: {
+              name: 'REAL'
+            }
+          },
+          kind: 'Instance'
+        },
+        {
+          value: this.lng,
+          semanticId: {
+            keys: [{
+              type: 'GlobalReference',
+              local: true,
+              value: 'ems/site/context-semantics/longitude',
+              index: 0,
+              idType: 'IRI'
+            }]
+          },
+          constraints: [],
+          idShort: 'Longitude',
+          category: 'CONSTANT',
+          modelType: {
+            name: 'Property'
+          },
+          valuetype: {
+            dataObjectType: {
+              name: 'REAL'
             }
           },
           kind: 'Instance'
@@ -369,10 +497,10 @@ export default {
       // event.preventDefault()
       // Reset our form values
 
-      this.form.country = ''
-      this.form.city = ''
-      this.form.zipcode = ''
-      this.form.numberBuildings = ''
+      this.country = ''
+      this.city = ''
+      this.zipcode = ''
+      this.numberBuildings = ''
     }
   }
 }
