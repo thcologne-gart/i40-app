@@ -16,7 +16,7 @@
       -->
         <GmapMap
         :center='center'
-        :zoom='12'
+        :zoom='6'
         style='width:100%;  height: 400px;'
         >
         <GmapInfoWindow
@@ -38,11 +38,10 @@
 </template>
 
 <script>
-
 export default {
   name: 'GoogleMap',
   props: {
-    site: Array,
+    sites: Array,
     buildings: Array
   },
   data () {
@@ -58,44 +57,36 @@ export default {
         }
       },
       center: {},
-      // center: { lat: 45.508, lng: -73.587 },
       currentPlace: null,
-      /*
-      markers: [
-        { position: { lat: 45.508, lng: -73.587 } },
-        { position: { lat: 44.508, lng: 11.587 } }
-      ],
-      */
-      markers: [],
-      places: [
-        { position: { lat: 45.508, lng: -73.587 } },
-        { position: { lat: 44.508, lng: 11.587 } }
-      ]
+      markers: []
     }
   },
   mounted () {
+    /*
     console.log(this.site)
     this.center = ({
       lat: this.site[4].value,
       lng: this.site[5].value
     })
+    */
     const markers = []
-    for (const element in this.buildings) {
+    for (const element in this.sites) {
       const content =
       '<v-card class ="mx-auto my-8" max-width="90%" elevation="2">' +
-      '<v-card-title id="card-title">' + this.buildings[element].buildingDesignation + '</v-card-title>' +
+      '<v-card-title id="card-title">' + this.sites[element][1].value + '</v-card-title>' +
       '</v-card>'
       markers.push({
         position: {
-          lat: this.buildings[element].lat,
-          lng: this.buildings[element].lng
+          lat: this.sites[element][4].value,
+          lng: this.sites[element][5].value
         },
         infoText: content
       })
     }
     this.markers = markers
-    console.log(this.buildings)
-    // this.geolocate()
+    console.log(this.sites)
+    console.log(this.markers)
+    this.geolocate()
   },
   methods: {
     toggleInfoWindow: function (marker, idx) {
@@ -106,25 +97,6 @@ export default {
       } else {
         this.infoWinOpen = true
         this.currentMidx = idx
-      }
-    },
-    setPlace (place) {
-      console.log(place)
-      this.currentPlace = place
-    },
-    addMarker () {
-      if (this.currentPlace) {
-        console.log(this.currentPlace.geometry.location.lat())
-        const marker = {
-          lat: this.currentPlace.geometry.location.lat(),
-          lng: this.currentPlace.geometry.location.lng()
-        }
-        this.markers.push({ position: marker })
-        this.places.push(this.currentPlace)
-        this.center = marker
-        this.currentPlace = null
-        console.log(marker)
-        console.log(this.markers[0])
       }
     },
     geolocate: function () {

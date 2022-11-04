@@ -31,6 +31,7 @@
         </v-col>
         <v-col id = "content" md = "10">
           <div v-if="choosedSite === '' & choosedBuilding === ''">
+            <GoogleMapsAllSites :sites="sites" :buildings="buildings"/>
           </div>
           <div v-else-if="choosedSite !== '' & choosedBuilding === ''">
             <InfosCardSite :site="choosedSite" :buildings="buildings" />
@@ -45,9 +46,10 @@
 <script>
 import InfosCardSite from '@/components/general/InfosCardSite.vue'
 import InfosCardBuilding from '@/components/general/InfosCardBuilding.vue'
+import GoogleMapsAllSites from '@/components/general/GoogleMapsAllSites.vue'
 
 export default {
-  components: { InfosCardSite, InfosCardBuilding },
+  components: { InfosCardSite, InfosCardBuilding, GoogleMapsAllSites },
   props: {
     sites: Array,
     buildings: Array,
