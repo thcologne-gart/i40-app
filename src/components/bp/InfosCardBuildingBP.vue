@@ -713,7 +713,7 @@ export default {
     },
     async query (data) {
       this.loading = true
-      const examples = data.slice(0, 700)
+      const examples = data.slice(0, 100)
       const bacnetDataScore = []
       // console.log(examples)
       // console.log(data[2].input)
@@ -1258,10 +1258,11 @@ export default {
         const response = await fetch(
           // Muss angepasst werden wenn der Endpoint neu hochgefahren wird
           // 'https://api-inference.huggingface.co/models/mboth/klassifizierungDatenpunkteNLI',
-          'https://pxccan8ep07bpaxt.eu-west-1.aws.endpoints.huggingface.cloud',
+          'https://sw8xt22r46pvyo90.eu-west-1.aws.endpoints.huggingface.cloud',
           {
             // headers: { Authorization: 'Bearer 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' },
-            headers: { Authorization: 'Bearer SxMgRdoPkIocLyTWtBuJHBqtPqNhlpjMBuMuEVtnRggnzRDCsIFMWpOXMAJnnqUyyAbQfpkLpqnsyXVWYRNgzMRFSApCRjSKdQaFBUFwboHrHvTfVKkWYWUTWhimpqdo', 'Content-Type': 'application/json' },
+            // headers: { Authorization: 'Bearer SxMgRdoPkIocLyTWtBuJHBqtPqNhlpjMBuMuEVtnRggnzRDCsIFMWpOXMAJnnqUyyAbQfpkLpqnsyXVWYRNgzMRFSApCRjSKdQaFBUFwboHrHvTfVKkWYWUTWhimpqdo', 'Content-Type': 'application/json' },
+            headers: { Authorization: 'Bearer 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', 'Content-Type': 'application/json' },
             method: 'POST',
             body: JSON.stringify({ inputs: inputHF, parameters: { candidate_labels: candidateLabels, hypothesis_template: hypothese } })
             // body: JSON.stringify({ inputs: inputHF, parameters: { candidate_labels: candidateLabels, hypothesis_template: hypothese }, options: { wait_for_model: true } })

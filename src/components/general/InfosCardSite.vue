@@ -2,9 +2,9 @@
   <div>
     <div v-for="site2 in numberofSites" :key="site2">
       <div v-if="site[7].value === site2">
-        <v-card class ="mx-auto my-8" max-width="90%" elevation="2">
-            <v-card-title id="card-title">{{ site[1].value }}</v-card-title>
-            <GoogleMap :site="site" :buildings="buildings"/>
+        <v-card class="mx-auto my-8" max-width="90%" elevation="2">
+          <v-card-title id="card-title">{{ site[1].value }}</v-card-title>
+          <GoogleMap :site="site" :buildings="buildings" />
         </v-card>
       </div>
     </div>

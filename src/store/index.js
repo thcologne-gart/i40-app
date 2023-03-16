@@ -274,7 +274,7 @@ export default new Vuex.Store({
         console.log(payload[element].grundfunktionLabel)
         // const elementString = element.toString()
         // push(ref(database, 'bacnet/' + element + '/'), {
-        push(ref(database, 'test1/' + element + '/'), {
+        push(ref(database, 'test/' + element + '/'), {
           grundfunktionLabel: payload[element].grundfunktionLabel,
           grundfunktionScore: payload[element].grundfunktionScore,
           zweiteGrundfunktionLabel: payload[element].zweiteGrundfunktionLabel,
@@ -442,7 +442,7 @@ export default new Vuex.Store({
 
     loadBACnet ({ commit }) {
       const database = getDatabase()
-      onValue(ref(database, 'test1/'), (snapshot) => {
+      onValue(ref(database, 'test/'), (snapshot) => {
       // onValue(ref(database, 'bacnet/'), (snapshot) => {
         const data = snapshot.val()
         // console.log(data)
@@ -478,21 +478,21 @@ export default new Vuex.Store({
       updateObj['/dritteEbeneLabel'] = payload[0].dritteEbeneLabel
       updateObj['/dritteEbeneScore'] = payload[0].dritteEbeneScore
       // console.log(updateObj)
-      return update(ref(database, 'test1/' + payload[0].data + '/' + payload[0].key), updateObj)
+      return update(ref(database, 'test/' + payload[0].data + '/' + payload[0].key), updateObj)
     },
     labelCorrect ({ commit }, payload) {
       const database = getDatabase()
       const updateObj = {}
       updateObj['/grundfunktionScore'] = 1.0
       // console.log(updateObj)
-      return update(ref(database, 'test1/' + payload.data + '/' + payload.key), updateObj)
+      return update(ref(database, 'test/' + payload.data + '/' + payload.key), updateObj)
     },
     labelCorrectZweiteGrundfunktion ({ commit }, payload) {
       const database = getDatabase()
       const updateObj = {}
       updateObj['/zweiteGrundfunktionScore'] = 1.0
       // console.log(updateObj)
-      return update(ref(database, 'test1/' + payload.data + '/' + payload.key), updateObj)
+      return update(ref(database, 'test/' + payload.data + '/' + payload.key), updateObj)
     },
 
     loadAasDeleteionEnergyTypes ({ commit }) {
